@@ -1,0 +1,30 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.IPhoneRetina.7.1" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="AutoLink/SearchResults/listViewSource.cs">
+    <Files>
+      <File FileName="AutoLink/SearchResults/listViewSource.cs" Line="149" Column="4" />
+      <File FileName="AutoLink/SearchResults/listViewCell.cs" Line="48" Column="37" />
+      <File FileName="AutoLink/Services/SearchService.cs" Line="338" Column="1" />
+      <File FileName="AutoLink/Models/Listing.cs" Line="15" Column="26" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore>
+      <Breakpoint file="/Users/en-ed/Projects/AutoLink/AutoLink/Models/ListPicker.cs" line="86" column="1" />
+      <Breakpoint file="/Users/en-ed/Projects/AutoLink/AutoLink/Login/SignUpController.cs" line="132" column="1" />
+      <Breakpoint file="/Users/en-ed/Projects/AutoLink/AutoLink/Login/SignUpController.cs" line="104" column="1" />
+      <Breakpoint file="/Users/en-ed/Projects/AutoLink/AutoLink/Login/LoginScreenController.cs" line="97" column="1" />
+      <Breakpoint file="/Users/en-ed/Projects/AutoLink/AutoLink/Services/LoginService.cs" line="190" column="1" />
+      <Breakpoint file="/Users/en-ed/Projects/AutoLink/AutoLink/Services/LoginService.cs" line="203" column="34" />
+      <Breakpoint file="/Users/en-ed/Projects/AutoLink/AutoLink/Services/SearchService.cs" line="116" column="1" />
+      <Breakpoint file="/Users/en-ed/Projects/AutoLink/AutoLink/Utilities/ViewExtensions.cs" line="25" column="1" />
+      <Breakpoint file="/Users/en-ed/Projects/AutoLink/AutoLink/Utilities/ViewExtensions.cs" line="31" column="1" />
+      <Breakpoint file="/Users/en-ed/Projects/AutoLink/AutoLink/Services/API.cs" line="188" column="1" />
+      <Breakpoint file="/Users/en-ed/Projects/AutoLink/AutoLink/Services/SearchService.cs" line="338" column="1" />
+    </BreakpointStore>
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.AutoLink>
+    <IPhoneTestFlightSettings_27CRelease ApiToken="882166f753e2dff5252be1403ac9de7a_MTg4Njg0MjIwMTQtMDYtMDIgMDg6MDc6MjIuMTk3NTgy" TeamToken="a12a8285c81a262b1bef61b1733f77e4_Mzg4MDMwMjAxNC0wNi0wMiAwODowOToyMS42Nzk4MDE" ReleaseNotes="Test" NotifyTeamMembers="False" ReplaceBinaries="False" DistributionLists="" UploadDSYMs="False" />
+  </MonoDevelop.Ide.ItemProperties.AutoLink>
+</Properties>

@@ -1,0 +1,446 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1CD3369F0000000000000000 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2064433D0000000000000000 /* UIKit.framework */; };
+		3E68D9D20000000000000000 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F9E67000000000000000000 /* MapKit.framework */; };
+		139C426A0000000000000000 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 172D4F080000000000000000 /* Foundation.framework */; };
+		70724B300000000000000000 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A98315100000000000000000 /* CoreGraphics.framework */; };
+		274561900000000000000000 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 60562B700000000000000000 /* Default-568h@2x.png */; };
+		17A7BEB10000000000000000 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1B38CB4F0000000000000000 /* Default@2x.png */; };
+		5D27F9B00000000000000000 /* splash_1136@x2.png in Resources */ = {isa = PBXBuildFile; fileRef = 9638C3900000000000000000 /* splash_1136@x2.png */; };
+		33FD40850000000000000000 /* splash_960@x2.png in Resources */ = {isa = PBXBuildFile; fileRef = 378E4D230000000000000000 /* splash_960@x2.png */; };
+		1052C2590000000000000000 /* questionmark.png in Resources */ = {isa = PBXBuildFile; fileRef = 13E3CEF70000000000000000 /* questionmark.png */; };
+		1741F8790000000000000000 /* questionmark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AD305170000000000000000 /* questionmark@2x.png */; };
+		56CB96300000000000000000 /* Placeholder.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8FDC60100000000000000000 /* Placeholder.jpg */; };
+		33977A4D0000000000000000 /* Placeholder@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 372886EB0000000000000000 /* Placeholder@2x.jpg */; };
+		21C23B370000000000000000 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 255347D50000000000000000 /* Info.plist */; };
+		2C427DF50000000000000000 /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2FD38A930000000000000000 /* Entitlements.plist */; };
+		1A6D3EDF0000000000000000 /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1DFE4B7D0000000000000000 /* MainStoryboard_iPhone.storyboard */; };
+		897FFC900000000000000000 /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C290C6700000000000000000 /* MainStoryboard_iPad.storyboard */; };
+		33E2594A0000000000000000 /* RootController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 377365E80000000000000000 /* RootController_iPhone.xib */; };
+		271A58770000000000000000 /* RootController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2AAB65150000000000000000 /* RootController_iPad.xib */; };
+		235668BD0000000000000000 /* LoginScreenController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26E7755B0000000000000000 /* LoginScreenController_iPad.xib */; };
+		232385A10000000000000000 /* LoginScreenController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26B4923F0000000000000000 /* LoginScreenController_iPhone.xib */; };
+		2A12BBC10000000000000000 /* PasswordResetController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DA3C85F0000000000000000 /* PasswordResetController_iPad.xib */; };
+		2F1FFA040000000000000000 /* PasswordResetController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32B106A20000000000000000 /* PasswordResetController_iPhone.xib */; };
+		39A03CC20000000000000000 /* ResetController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D3149600000000000000000 /* ResetController_iPad.xib */; };
+		17A4D3570000000000000000 /* ResetController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1B35DFF50000000000000000 /* ResetController_iPhone.xib */; };
+		35A969EC0000000000000000 /* SearchScreen_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 393A768A0000000000000000 /* SearchScreen_iPad.xib */; };
+		357686D00000000000000000 /* SearchScreen_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3907936E0000000000000000 /* SearchScreen_iPhone.xib */; };
+		21BF4FDD0000000000000000 /* SignUpController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 25505C7B0000000000000000 /* SignUpController.xib */; };
+		354F31000000000000000000 /* MainScreenController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6E5FFAE00000000000000000 /* MainScreenController_iPad.xib */; };
+		3220FF400000000000000000 /* MainScreenController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6B31C9200000000000000000 /* MainScreenController_iPhone.xib */; };
+		2D88E1240000000000000000 /* FlyoutController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3119EDC20000000000000000 /* FlyoutController_iPad.xib */; };
+		7FC6B1B00000000000000000 /* FlyoutController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8D77B900000000000000000 /* FlyoutController_iPhone.xib */; };
+		30B4278A0000000000000000 /* InnerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 344534280000000000000000 /* InnerCell.xib */; };
+		33DF6DF00000000000000000 /* SearchResultController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 37707A8E0000000000000000 /* SearchResultController_iPhone.xib */; };
+		370AB4560000000000000000 /* SearchResultController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A9BC0F40000000000000000 /* SearchResultController_iPad.xib */; };
+		A5C251100000000000000000 /* AppDelegate.h in Sources */ = {isa = PBXBuildFile; fileRef = DED31AF00000000000000000 /* AppDelegate.h */; };
+		12530DC00000000000000000 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B63D7A00000000000000000 /* AppDelegate.m */; };
+		19E9A6120000000000000000 /* DetailViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = 1D7AB2B00000000000000000 /* DetailViewController.h */; };
+		2F1D0EAA0000000000000000 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 32AE1B480000000000000000 /* DetailViewController.m */; };
+		F039D1C00000000000000000 /* MasterViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = 1294A9BA0000000000000000 /* MasterViewController.h */; };
+		1983DFDA0000000000000000 /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D14EC780000000000000000 /* MasterViewController.m */; };
+		3CFB7AEA0000000000000000 /* RootController.h in Sources */ = {isa = PBXBuildFile; fileRef = 8C8788000000000000000000 /* RootController.h */; };
+		15BFF0200000000000000000 /* RootController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1950FCBE0000000000000000 /* RootController.m */; };
+		35A67E920000000000000000 /* LoginScreenController.h in Sources */ = {isa = PBXBuildFile; fileRef = 39378B300000000000000000 /* LoginScreenController.h */; };
+		35739B760000000000000000 /* LoginScreenController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3904A8140000000000000000 /* LoginScreenController.m */; };
+		AA7040E00000000000000000 /* PasswordResetController.h in Sources */ = {isa = PBXBuildFile; fileRef = E3810AC00000000000000000 /* PasswordResetController.h */; };
+		1FDA6CA60000000000000000 /* PasswordResetController.m in Sources */ = {isa = PBXBuildFile; fileRef = 236B79440000000000000000 /* PasswordResetController.m */; };
+		35207B600000000000000000 /* ResetController.h in Sources */ = {isa = PBXBuildFile; fileRef = 6E3145400000000000000000 /* ResetController.h */; };
+		1C167CEC0000000000000000 /* ResetController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FA7898A0000000000000000 /* ResetController.m */; };
+		3F8E17FC0000000000000000 /* SearchScreen.h in Sources */ = {isa = PBXBuildFile; fileRef = 31F249A00000000000000000 /* SearchScreen.h */; };
+		18528D320000000000000000 /* SearchScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BE399D00000000000000000 /* SearchScreen.m */; };
+		1A01A1F30000000000000000 /* SignUpController.h in Sources */ = {isa = PBXBuildFile; fileRef = 1D92AE910000000000000000 /* SignUpController.h */; };
+		30E41F4C0000000000000000 /* SignUpController.m in Sources */ = {isa = PBXBuildFile; fileRef = 34752BEA0000000000000000 /* SignUpController.m */; };
+		3EF56EA80000000000000000 /* MainScreenController.h in Sources */ = {isa = PBXBuildFile; fileRef = 2867B4600000000000000000 /* MainScreenController.h */; };
+		1428D7400000000000000000 /* MainScreenController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B9E3DE0000000000000000 /* MainScreenController.m */; };
+		15D7EC010000000000000000 /* FlyoutController.h in Sources */ = {isa = PBXBuildFile; fileRef = 1968F89F0000000000000000 /* FlyoutController.h */; };
+		CD3DAE800000000000000000 /* FlyoutController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1064E7860000000000000000 /* FlyoutController.m */; };
+		2CBA695A0000000000000000 /* SearchResultController.h in Sources */ = {isa = PBXBuildFile; fileRef = 304B75F80000000000000000 /* SearchResultController.h */; };
+		1EDD1F200000000000000000 /* SearchResultController.m in Sources */ = {isa = PBXBuildFile; fileRef = 57EDE9000000000000000000 /* SearchResultController.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		123AF8000000000000000000 /* AutoLink.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = "AutoLink.app"; path = "AutoLink.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2064433D0000000000000000 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "UIKit.framework"; path = "System/Library/Frameworks/UIKit.framework"; sourceTree = SDKROOT; };
+		1F9E67000000000000000000 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "MapKit.framework"; path = "System/Library/Frameworks/MapKit.framework"; sourceTree = SDKROOT; };
+		172D4F080000000000000000 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "Foundation.framework"; path = "System/Library/Frameworks/Foundation.framework"; sourceTree = SDKROOT; };
+		A98315100000000000000000 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "CoreGraphics.framework"; path = "System/Library/Frameworks/CoreGraphics.framework"; sourceTree = SDKROOT; };
+		60562B700000000000000000 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		1B38CB4F0000000000000000 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "Default@2x.png"; sourceTree = "<group>"; };
+		9638C3900000000000000000 /* splash_1136@x2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "splash_1136@x2.png"; path = "splash_1136@x2.png"; sourceTree = "<group>"; };
+		378E4D230000000000000000 /* splash_960@x2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "splash_960@x2.png"; path = "splash_960@x2.png"; sourceTree = "<group>"; };
+		13E3CEF70000000000000000 /* questionmark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "questionmark.png"; path = "questionmark.png"; sourceTree = "<group>"; };
+		1AD305170000000000000000 /* questionmark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "questionmark@2x.png"; path = "questionmark@2x.png"; sourceTree = "<group>"; };
+		8FDC60100000000000000000 /* Placeholder.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "Placeholder.jpg"; path = "Placeholder.jpg"; sourceTree = "<group>"; };
+		372886EB0000000000000000 /* Placeholder@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "Placeholder@2x.jpg"; path = "Placeholder@2x.jpg"; sourceTree = "<group>"; };
+		255347D50000000000000000 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Info.plist"; path = "Info.plist"; sourceTree = "<group>"; };
+		2FD38A930000000000000000 /* Entitlements.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Entitlements.plist"; path = "Entitlements.plist"; sourceTree = "<group>"; };
+		1DFE4B7D0000000000000000 /* MainStoryboard_iPhone.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = "MainStoryboard_iPhone.storyboard"; path = "MainStoryboard_iPhone.storyboard"; sourceTree = "<group>"; };
+		C290C6700000000000000000 /* MainStoryboard_iPad.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = "MainStoryboard_iPad.storyboard"; path = "MainStoryboard_iPad.storyboard"; sourceTree = "<group>"; };
+		377365E80000000000000000 /* RootController_iPhone.xib */ = {isa = PBXFileReference; name = "RootController_iPhone.xib"; path = "Controllers/RootController_iPhone.xib"; sourceTree = "<group>"; };
+		2AAB65150000000000000000 /* RootController_iPad.xib */ = {isa = PBXFileReference; name = "RootController_iPad.xib"; path = "Controllers/RootController_iPad.xib"; sourceTree = "<group>"; };
+		26E7755B0000000000000000 /* LoginScreenController_iPad.xib */ = {isa = PBXFileReference; name = "LoginScreenController_iPad.xib"; path = "Login/LoginScreenController_iPad.xib"; sourceTree = "<group>"; };
+		26B4923F0000000000000000 /* LoginScreenController_iPhone.xib */ = {isa = PBXFileReference; name = "LoginScreenController_iPhone.xib"; path = "Login/LoginScreenController_iPhone.xib"; sourceTree = "<group>"; };
+		2DA3C85F0000000000000000 /* PasswordResetController_iPad.xib */ = {isa = PBXFileReference; name = "PasswordResetController_iPad.xib"; path = "Login/PasswordResetController_iPad.xib"; sourceTree = "<group>"; };
+		32B106A20000000000000000 /* PasswordResetController_iPhone.xib */ = {isa = PBXFileReference; name = "PasswordResetController_iPhone.xib"; path = "Login/PasswordResetController_iPhone.xib"; sourceTree = "<group>"; };
+		3D3149600000000000000000 /* ResetController_iPad.xib */ = {isa = PBXFileReference; name = "ResetController_iPad.xib"; path = "Login/ResetController_iPad.xib"; sourceTree = "<group>"; };
+		1B35DFF50000000000000000 /* ResetController_iPhone.xib */ = {isa = PBXFileReference; name = "ResetController_iPhone.xib"; path = "Login/ResetController_iPhone.xib"; sourceTree = "<group>"; };
+		393A768A0000000000000000 /* SearchScreen_iPad.xib */ = {isa = PBXFileReference; name = "SearchScreen_iPad.xib"; path = "Search/SearchScreen_iPad.xib"; sourceTree = "<group>"; };
+		3907936E0000000000000000 /* SearchScreen_iPhone.xib */ = {isa = PBXFileReference; name = "SearchScreen_iPhone.xib"; path = "Search/SearchScreen_iPhone.xib"; sourceTree = "<group>"; };
+		25505C7B0000000000000000 /* SignUpController.xib */ = {isa = PBXFileReference; name = "SignUpController.xib"; path = "Login/SignUpController.xib"; sourceTree = "<group>"; };
+		6E5FFAE00000000000000000 /* MainScreenController_iPad.xib */ = {isa = PBXFileReference; name = "MainScreenController_iPad.xib"; path = "Controllers/MainScreenController_iPad.xib"; sourceTree = "<group>"; };
+		6B31C9200000000000000000 /* MainScreenController_iPhone.xib */ = {isa = PBXFileReference; name = "MainScreenController_iPhone.xib"; path = "Controllers/MainScreenController_iPhone.xib"; sourceTree = "<group>"; };
+		3119EDC20000000000000000 /* FlyoutController_iPad.xib */ = {isa = PBXFileReference; name = "FlyoutController_iPad.xib"; path = "SearchResults/FlyoutController_iPad.xib"; sourceTree = "<group>"; };
+		B8D77B900000000000000000 /* FlyoutController_iPhone.xib */ = {isa = PBXFileReference; name = "FlyoutController_iPhone.xib"; path = "SearchResults/FlyoutController_iPhone.xib"; sourceTree = "<group>"; };
+		344534280000000000000000 /* InnerCell.xib */ = {isa = PBXFileReference; name = "InnerCell.xib"; path = "SearchResults/InnerCell.xib"; sourceTree = "<group>"; };
+		37707A8E0000000000000000 /* SearchResultController_iPhone.xib */ = {isa = PBXFileReference; name = "SearchResultController_iPhone.xib"; path = "SearchResults/SearchResultController_iPhone.xib"; sourceTree = "<group>"; };
+		3A9BC0F40000000000000000 /* SearchResultController_iPad.xib */ = {isa = PBXFileReference; name = "SearchResultController_iPad.xib"; path = "SearchResults/SearchResultController_iPad.xib"; sourceTree = "<group>"; };
+		DED31AF00000000000000000 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "AppDelegate.h"; path = "AppDelegate.h"; sourceTree = "<group>"; };
+		4B63D7A00000000000000000 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "AppDelegate.m"; path = "AppDelegate.m"; sourceTree = "<group>"; };
+		1D7AB2B00000000000000000 /* DetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "DetailViewController.h"; path = "DetailViewController.h"; sourceTree = "<group>"; };
+		32AE1B480000000000000000 /* DetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "DetailViewController.m"; path = "DetailViewController.m"; sourceTree = "<group>"; };
+		1294A9BA0000000000000000 /* MasterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "MasterViewController.h"; path = "MasterViewController.h"; sourceTree = "<group>"; };
+		1D14EC780000000000000000 /* MasterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "MasterViewController.m"; path = "MasterViewController.m"; sourceTree = "<group>"; };
+		8C8788000000000000000000 /* RootController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "RootController.h"; path = "RootController.h"; sourceTree = "<group>"; };
+		1950FCBE0000000000000000 /* RootController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "RootController.m"; path = "RootController.m"; sourceTree = "<group>"; };
+		39378B300000000000000000 /* LoginScreenController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "LoginScreenController.h"; path = "LoginScreenController.h"; sourceTree = "<group>"; };
+		3904A8140000000000000000 /* LoginScreenController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "LoginScreenController.m"; path = "LoginScreenController.m"; sourceTree = "<group>"; };
+		E3810AC00000000000000000 /* PasswordResetController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "PasswordResetController.h"; path = "PasswordResetController.h"; sourceTree = "<group>"; };
+		236B79440000000000000000 /* PasswordResetController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "PasswordResetController.m"; path = "PasswordResetController.m"; sourceTree = "<group>"; };
+		6E3145400000000000000000 /* ResetController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "ResetController.h"; path = "ResetController.h"; sourceTree = "<group>"; };
+		1FA7898A0000000000000000 /* ResetController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "ResetController.m"; path = "ResetController.m"; sourceTree = "<group>"; };
+		31F249A00000000000000000 /* SearchScreen.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "SearchScreen.h"; path = "SearchScreen.h"; sourceTree = "<group>"; };
+		1BE399D00000000000000000 /* SearchScreen.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "SearchScreen.m"; path = "SearchScreen.m"; sourceTree = "<group>"; };
+		1D92AE910000000000000000 /* SignUpController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "SignUpController.h"; path = "SignUpController.h"; sourceTree = "<group>"; };
+		34752BEA0000000000000000 /* SignUpController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "SignUpController.m"; path = "SignUpController.m"; sourceTree = "<group>"; };
+		2867B4600000000000000000 /* MainScreenController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "MainScreenController.h"; path = "MainScreenController.h"; sourceTree = "<group>"; };
+		17B9E3DE0000000000000000 /* MainScreenController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "MainScreenController.m"; path = "MainScreenController.m"; sourceTree = "<group>"; };
+		1968F89F0000000000000000 /* FlyoutController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "FlyoutController.h"; path = "FlyoutController.h"; sourceTree = "<group>"; };
+		1064E7860000000000000000 /* FlyoutController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "FlyoutController.m"; path = "FlyoutController.m"; sourceTree = "<group>"; };
+		304B75F80000000000000000 /* SearchResultController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "SearchResultController.h"; path = "SearchResultController.h"; sourceTree = "<group>"; };
+		57EDE9000000000000000000 /* SearchResultController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "SearchResultController.m"; path = "SearchResultController.m"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		2B65336E0000000000000000 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1CD3369F0000000000000000 /* UIKit.framework in Frameworks */,
+				3E68D9D20000000000000000 /* MapKit.framework in Frameworks */,
+				139C426A0000000000000000 /* Foundation.framework in Frameworks */,
+				70724B300000000000000000 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		B7EA4FC00000000000000000 = {
+			isa = PBXGroup;
+			children = (
+				361859480000000000000000 /* AutoLink */,
+				19C2D7740000000000000000 /* Frameworks */,
+				CB7F22000000000000000000 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		CB7F22000000000000000000 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				123AF8000000000000000000 /* AutoLink.app */,
+			);
+			name = "Products";
+			sourceTree = "<group>";
+		};
+		19C2D7740000000000000000 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2064433D0000000000000000 /* UIKit.framework */,
+				1F9E67000000000000000000 /* MapKit.framework */,
+				172D4F080000000000000000 /* Foundation.framework */,
+				A98315100000000000000000 /* CoreGraphics.framework */,
+			);
+			name = "Frameworks";
+			sourceTree = "<group>";
+		};
+		361859480000000000000000 /* AutoLink */ = {
+			isa = PBXGroup;
+			children = (
+				DED31AF00000000000000000 /* AppDelegate.h */,
+				1B38CB4F0000000000000000 /* Default@2x.png */,
+				60562B700000000000000000 /* Default-568h@2x.png */,
+				1D7AB2B00000000000000000 /* DetailViewController.h */,
+				2FD38A930000000000000000 /* Entitlements.plist */,
+				1968F89F0000000000000000 /* FlyoutController.h */,
+				255347D50000000000000000 /* Info.plist */,
+				39378B300000000000000000 /* LoginScreenController.h */,
+				2867B4600000000000000000 /* MainScreenController.h */,
+				C290C6700000000000000000 /* MainStoryboard_iPad.storyboard */,
+				1DFE4B7D0000000000000000 /* MainStoryboard_iPhone.storyboard */,
+				1294A9BA0000000000000000 /* MasterViewController.h */,
+				E3810AC00000000000000000 /* PasswordResetController.h */,
+				8FDC60100000000000000000 /* Placeholder.jpg */,
+				372886EB0000000000000000 /* Placeholder@2x.jpg */,
+				13E3CEF70000000000000000 /* questionmark.png */,
+				1AD305170000000000000000 /* questionmark@2x.png */,
+				6E3145400000000000000000 /* ResetController.h */,
+				8C8788000000000000000000 /* RootController.h */,
+				304B75F80000000000000000 /* SearchResultController.h */,
+				31F249A00000000000000000 /* SearchScreen.h */,
+				1D92AE910000000000000000 /* SignUpController.h */,
+				9638C3900000000000000000 /* splash_1136@x2.png */,
+				378E4D230000000000000000 /* splash_960@x2.png */,
+				CD9B19C00000000000000000 /* Controllers */,
+				319A9B350000000000000000 /* Login */,
+				3ED9C6400000000000000000 /* Search */,
+				3BCD139C0000000000000000 /* SearchResults */,
+				A2941F500000000000000000 /* Supporting Files */,
+			);
+			name = "AutoLink";
+			sourceTree = "<group>";
+		};
+		CD9B19C00000000000000000 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				6E5FFAE00000000000000000 /* MainScreenController_iPad.xib */,
+				6B31C9200000000000000000 /* MainScreenController_iPhone.xib */,
+				2AAB65150000000000000000 /* RootController_iPad.xib */,
+				377365E80000000000000000 /* RootController_iPhone.xib */,
+			);
+			name = "Controllers";
+			sourceTree = "<group>";
+		};
+		319A9B350000000000000000 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				26E7755B0000000000000000 /* LoginScreenController_iPad.xib */,
+				26B4923F0000000000000000 /* LoginScreenController_iPhone.xib */,
+				2DA3C85F0000000000000000 /* PasswordResetController_iPad.xib */,
+				32B106A20000000000000000 /* PasswordResetController_iPhone.xib */,
+				3D3149600000000000000000 /* ResetController_iPad.xib */,
+				1B35DFF50000000000000000 /* ResetController_iPhone.xib */,
+				25505C7B0000000000000000 /* SignUpController.xib */,
+			);
+			name = "Login";
+			sourceTree = "<group>";
+		};
+		3ED9C6400000000000000000 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				393A768A0000000000000000 /* SearchScreen_iPad.xib */,
+				3907936E0000000000000000 /* SearchScreen_iPhone.xib */,
+			);
+			name = "Search";
+			sourceTree = "<group>";
+		};
+		3BCD139C0000000000000000 /* SearchResults */ = {
+			isa = PBXGroup;
+			children = (
+				3119EDC20000000000000000 /* FlyoutController_iPad.xib */,
+				B8D77B900000000000000000 /* FlyoutController_iPhone.xib */,
+				344534280000000000000000 /* InnerCell.xib */,
+				3A9BC0F40000000000000000 /* SearchResultController_iPad.xib */,
+				37707A8E0000000000000000 /* SearchResultController_iPhone.xib */,
+			);
+			name = "SearchResults";
+			sourceTree = "<group>";
+		};
+		A2941F500000000000000000 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				4B63D7A00000000000000000 /* AppDelegate.m */,
+				32AE1B480000000000000000 /* DetailViewController.m */,
+				1064E7860000000000000000 /* FlyoutController.m */,
+				3904A8140000000000000000 /* LoginScreenController.m */,
+				17B9E3DE0000000000000000 /* MainScreenController.m */,
+				1D14EC780000000000000000 /* MasterViewController.m */,
+				236B79440000000000000000 /* PasswordResetController.m */,
+				1FA7898A0000000000000000 /* ResetController.m */,
+				1950FCBE0000000000000000 /* RootController.m */,
+				57EDE9000000000000000000 /* SearchResultController.m */,
+				1BE399D00000000000000000 /* SearchScreen.m */,
+				34752BEA0000000000000000 /* SignUpController.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		219595E50000000000000000 /* AutoLink */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 787D22600000000000000000 /* Build configuration list for PBXNativeTarget "AutoLink" */;
+			buildPhases = (
+				15FEE7BA0000000000000000 /* Sources */,
+				2B65336E0000000000000000 /* Frameworks */,
+				3EE987450000000000000000 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "AutoLink";
+			productName = "AutoLink";
+			productReference = 123AF8000000000000000000 /* AutoLink.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		16E2700B0000000000000000 /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = 39439FAE0000000000000000 /* Build configuration list for PBXProject "AutoLink" */;
+			compatibilityVersion = "Xcode 3.2";
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = B7EA4FC00000000000000000;
+			productRefGroup = CB7F22000000000000000000 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				219595E50000000000000000 /* AutoLink */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		3EE987450000000000000000 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				274561900000000000000000 /* Default-568h@2x.png in Resources */,
+				17A7BEB10000000000000000 /* Default@2x.png in Resources */,
+				5D27F9B00000000000000000 /* splash_1136@x2.png in Resources */,
+				33FD40850000000000000000 /* splash_960@x2.png in Resources */,
+				1052C2590000000000000000 /* questionmark.png in Resources */,
+				1741F8790000000000000000 /* questionmark@2x.png in Resources */,
+				56CB96300000000000000000 /* Placeholder.jpg in Resources */,
+				33977A4D0000000000000000 /* Placeholder@2x.jpg in Resources */,
+				21C23B370000000000000000 /* Info.plist in Resources */,
+				2C427DF50000000000000000 /* Entitlements.plist in Resources */,
+				1A6D3EDF0000000000000000 /* MainStoryboard_iPhone.storyboard in Resources */,
+				897FFC900000000000000000 /* MainStoryboard_iPad.storyboard in Resources */,
+				33E2594A0000000000000000 /* RootController_iPhone.xib in Resources */,
+				271A58770000000000000000 /* RootController_iPad.xib in Resources */,
+				235668BD0000000000000000 /* LoginScreenController_iPad.xib in Resources */,
+				232385A10000000000000000 /* LoginScreenController_iPhone.xib in Resources */,
+				2A12BBC10000000000000000 /* PasswordResetController_iPad.xib in Resources */,
+				2F1FFA040000000000000000 /* PasswordResetController_iPhone.xib in Resources */,
+				39A03CC20000000000000000 /* ResetController_iPad.xib in Resources */,
+				17A4D3570000000000000000 /* ResetController_iPhone.xib in Resources */,
+				35A969EC0000000000000000 /* SearchScreen_iPad.xib in Resources */,
+				357686D00000000000000000 /* SearchScreen_iPhone.xib in Resources */,
+				21BF4FDD0000000000000000 /* SignUpController.xib in Resources */,
+				354F31000000000000000000 /* MainScreenController_iPad.xib in Resources */,
+				3220FF400000000000000000 /* MainScreenController_iPhone.xib in Resources */,
+				2D88E1240000000000000000 /* FlyoutController_iPad.xib in Resources */,
+				7FC6B1B00000000000000000 /* FlyoutController_iPhone.xib in Resources */,
+				30B4278A0000000000000000 /* InnerCell.xib in Resources */,
+				33DF6DF00000000000000000 /* SearchResultController_iPhone.xib in Resources */,
+				370AB4560000000000000000 /* SearchResultController_iPad.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		15FEE7BA0000000000000000 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A5C251100000000000000000 /* AppDelegate.h in Sources */,
+				12530DC00000000000000000 /* AppDelegate.m in Sources */,
+				19E9A6120000000000000000 /* DetailViewController.h in Sources */,
+				2F1D0EAA0000000000000000 /* DetailViewController.m in Sources */,
+				F039D1C00000000000000000 /* MasterViewController.h in Sources */,
+				1983DFDA0000000000000000 /* MasterViewController.m in Sources */,
+				3CFB7AEA0000000000000000 /* RootController.h in Sources */,
+				15BFF0200000000000000000 /* RootController.m in Sources */,
+				35A67E920000000000000000 /* LoginScreenController.h in Sources */,
+				35739B760000000000000000 /* LoginScreenController.m in Sources */,
+				AA7040E00000000000000000 /* PasswordResetController.h in Sources */,
+				1FDA6CA60000000000000000 /* PasswordResetController.m in Sources */,
+				35207B600000000000000000 /* ResetController.h in Sources */,
+				1C167CEC0000000000000000 /* ResetController.m in Sources */,
+				3F8E17FC0000000000000000 /* SearchScreen.h in Sources */,
+				18528D320000000000000000 /* SearchScreen.m in Sources */,
+				1A01A1F30000000000000000 /* SignUpController.h in Sources */,
+				30E41F4C0000000000000000 /* SignUpController.m in Sources */,
+				3EF56EA80000000000000000 /* MainScreenController.h in Sources */,
+				1428D7400000000000000000 /* MainScreenController.m in Sources */,
+				15D7EC010000000000000000 /* FlyoutController.h in Sources */,
+				CD3DAE800000000000000000 /* FlyoutController.m in Sources */,
+				2CBA695A0000000000000000 /* SearchResultController.h in Sources */,
+				1EDD1F200000000000000000 /* SearchResultController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		15663E660000000000000000 /* MonoTouch */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				SDKROOT = iphoneos;
+			};
+			name = MonoTouch;
+		};
+		936E6E700000000000000000 /* MonoTouch */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				PRODUCT_NAME = "AutoLink";
+				WRAPPER_EXTENSION = app;
+			};
+			name = MonoTouch;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		39439FAE0000000000000000 /* Build configuration list for PBXProject "AutoLink" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				15663E660000000000000000 /* MonoTouch */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = MonoTouch;
+		};
+		787D22600000000000000000 /* Build configuration list for PBXNativeTarget "AutoLink" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				936E6E700000000000000000 /* MonoTouch */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = MonoTouch;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 16E2700B0000000000000000 /* Project object */;
+}

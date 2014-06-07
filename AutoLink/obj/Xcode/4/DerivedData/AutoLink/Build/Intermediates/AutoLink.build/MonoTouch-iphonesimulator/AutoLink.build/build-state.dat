@@ -1,0 +1,387 @@
+TAutoLink
+v6
+r1
+cCheck dependencies
+cCompileC DerivedData/AutoLink/Build/Intermediates/AutoLink.build/MonoTouch-iphonesimulator/AutoLink.build/Objects-normal/i386/AppDelegate-C76B3A48B5B03CC0.o /Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/AppDelegate.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC DerivedData/AutoLink/Build/Intermediates/AutoLink.build/MonoTouch-iphonesimulator/AutoLink.build/Objects-normal/i386/DetailViewController-6DFDD235EA7089EB.o /Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/DetailViewController.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC DerivedData/AutoLink/Build/Intermediates/AutoLink.build/MonoTouch-iphonesimulator/AutoLink.build/Objects-normal/i386/MasterViewController-1EA2CC2E844029DC.o /Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/MasterViewController.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC DerivedData/AutoLink/Build/Intermediates/AutoLink.build/MonoTouch-iphonesimulator/AutoLink.build/Objects-normal/i386/RootController-99BB942758D7FCEA.o /Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/RootController.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC DerivedData/AutoLink/Build/Intermediates/AutoLink.build/MonoTouch-iphonesimulator/AutoLink.build/Objects-normal/i386/MainScreenController-37CBBDFFF5B2DBD5.o /Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/MainScreenController.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC DerivedData/AutoLink/Build/Intermediates/AutoLink.build/MonoTouch-iphonesimulator/AutoLink.build/Objects-normal/i386/LoginScreenController-DBF5C67A5143F9DB.o /Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/LoginScreenController.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cLd /Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/DerivedData/AutoLink/Build/Products/MonoTouch-iphonesimulator/AutoLink.app/AutoLink normal i386
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk
+c000000005348C0B20000000000000198
+t1397276850
+s408
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/SDKSettings.plist
+c00000000532E2B5200000000000003B4
+t1395534674
+s948
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/CoreServices/SystemVersion.plist
+c00000000532E2B56000000000000019E
+t1395534678
+s414
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/Frameworks/CoreGraphics.framework/CoreGraphics
+c000000005348C08B0000000000446820
+t1397276811
+s4483104
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/Frameworks/Foundation.framework/Foundation
+c00000000532E2B58000000000088D8C0
+t1395534680
+s8968384
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/Frameworks/MapKit.framework/MapKit
+c00000000532E2B5900000000002E6B60
+t1395534681
+s3042144
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/Frameworks/UIKit.framework/UIKit
+c00000000532E2B5B0000000001F1DE10
+t1395534683
+s32628240
+
+N/Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/AppDelegate.h
+c000000005367EE680000000000000171
+t1399320168
+s369
+
+N/Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/AppDelegate.m
+c000000005367EE680000000000000144
+t1399320168
+s324
+
+N/Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/DerivedData/AutoLink/Build/Intermediates/AutoLink.build/MonoTouch-iphonesimulator/AutoLink.build/Objects-normal/i386/AppDelegate-C76B3A48B5B03CC0.o
+t1399324211
+s2980
+
+N/Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/DerivedData/AutoLink/Build/Intermediates/AutoLink.build/MonoTouch-iphonesimulator/AutoLink.build/Objects-normal/i386/AutoLink.LinkFileList
+c000000005367FE3300000000000004D8
+t1399324211
+s1240
+
+N/Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/DerivedData/AutoLink/Build/Intermediates/AutoLink.build/MonoTouch-iphonesimulator/AutoLink.build/Objects-normal/i386/DetailViewController-6DFDD235EA7089EB.o
+t1399324211
+s42808
+
+N/Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/DerivedData/AutoLink/Build/Intermediates/AutoLink.build/MonoTouch-iphonesimulator/AutoLink.build/Objects-normal/i386/LoginScreenController-DBF5C67A5143F9DB.o
+t1399324240
+s49600
+
+N/Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/DerivedData/AutoLink/Build/Intermediates/AutoLink.build/MonoTouch-iphonesimulator/AutoLink.build/Objects-normal/i386/MainScreenController-37CBBDFFF5B2DBD5.o
+t1399324211
+s44808
+
+N/Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/DerivedData/AutoLink/Build/Intermediates/AutoLink.build/MonoTouch-iphonesimulator/AutoLink.build/Objects-normal/i386/MasterViewController-1EA2CC2E844029DC.o
+t1399324211
+s39276
+
+N/Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/DerivedData/AutoLink/Build/Intermediates/AutoLink.build/MonoTouch-iphonesimulator/AutoLink.build/Objects-normal/i386/RootController-99BB942758D7FCEA.o
+t1399324211
+s36804
+
+N/Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/DerivedData/AutoLink/Build/Products/MonoTouch-iphonesimulator/AutoLink.app/AutoLink
+t2
+s0
+
+N/Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/DetailViewController.h
+c000000005367E1900000000000000240
+t1399316880
+s576
+
+N/Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/DetailViewController.m
+c000000005367E19000000000000001B5
+t1399316880
+s437
+
+N/Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/LoginScreenController.h
+c000000005367FE4E0000000000000350
+t1399324238
+s848
+
+N/Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/LoginScreenController.m
+c000000005367FD8F000000000000022A
+t1399324047
+s554
+
+N/Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/MainScreenController.h
+c000000005367FD4D0000000000000238
+t1399323981
+s568
+
+N/Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/MainScreenController.m
+c000000005367FD4D00000000000001AD
+t1399323981
+s429
+
+N/Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/MasterViewController.h
+c000000005367F3410000000000000187
+t1399321409
+s391
+
+N/Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/MasterViewController.m
+c000000005367F3410000000000000156
+t1399321409
+s342
+
+N/Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/RootController.h
+c000000005367FD28000000000000017C
+t1399323944
+s380
+
+N/Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/RootController.m
+c000000005367FD28000000000000014A
+t1399323944
+s330
+
+CBuild AST from /Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/AppDelegate.m
+r0
+
+CBuild AST from /Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/DetailViewController.m
+r0
+
+CBuild AST from /Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/LoginScreenController.m
+r0
+
+CBuild AST from /Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/MainScreenController.m
+r0
+
+CBuild AST from /Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/MasterViewController.m
+r0
+
+CBuild AST from /Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/RootController.m
+r0
+
+CCheck dependencies
+r0
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection18"Check dependencies18"Check dependencies713a15d03518b941^da8e15d03518b941^-916"warning: no rule to process file '/Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/AppDelegate.h' of type sourcecode.c.h for architecture i386warning: no rule to process file '/Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/DetailViewController.h' of type sourcecode.c.h for architecture i386warning: no rule to process file '/Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/MasterViewController.h' of type sourcecode.c.h for architecture i386warning: no rule to process file '/Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/RootController.h' of type sourcecode.c.h for architecture i386warning: no rule to process file '/Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/MainScreenController.h' of type sourcecode.c.h for architecture i386warning: no rule to process file '/Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/LoginScreenController.h' of type sourcecode.c.h for architecture i3866(21%IDEActivityLogMessage2@145"Warning: no rule to process file '/Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/AppDelegate.h' of type sourcecode.c.h for architecture i386-421017040#18446744073709551615#0#-1#27"com.apple.dt.IDE.LogMessage-27"Dependency Analysis Warning--2@154"Warning: no rule to process file '/Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/DetailViewController.h' of type sourcecode.c.h for architecture i386-421017040#18446744073709551615#0#-1#27"com.apple.dt.IDE.LogMessage-27"Dependency Analysis Warning--2@154"Warning: no rule to process file '/Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/MasterViewController.h' of type sourcecode.c.h for architecture i386-421017040#18446744073709551615#0#-1#27"com.apple.dt.IDE.LogMessage-27"Dependency Analysis Warning--2@148"Warning: no rule to process file '/Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/RootController.h' of type sourcecode.c.h for architecture i386-421017040#18446744073709551615#0#-1#27"com.apple.dt.IDE.LogMessage-27"Dependency Analysis Warning--2@154"Warning: no rule to process file '/Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/MainScreenController.h' of type sourcecode.c.h for architecture i386-421017040#18446744073709551615#0#-1#27"com.apple.dt.IDE.LogMessage-27"Dependency Analysis Warning--2@155"Warning: no rule to process file '/Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/LoginScreenController.h' of type sourcecode.c.h for architecture i386-421017040#18446744073709551615#0#-1#27"com.apple.dt.IDE.LogMessage-27"Dependency Analysis Warning--0#1#1#--18"Check dependencies36"E928D1D5-004F-448E-97FC-36C11F7E45C4-
+
+CCompileC DerivedData/AutoLink/Build/Intermediates/AutoLink.build/MonoTouch-iphonesimulator/AutoLink.build/Objects-normal/i386/AppDelegate-C76B3A48B5B03CC0.o /Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/AppDelegate.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s421017011.220616
+e421017011.480701
+r1
+xCompileC
+xDerivedData/AutoLink/Build/Intermediates/AutoLink.build/MonoTouch-iphonesimulator/AutoLink.build/Objects-normal/i386/AppDelegate-C76B3A48B5B03CC0.o
+x/Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/AppDelegate.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+d/Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/AppDelegate.m
+d/Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/AppDelegate.h
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection73"Compile /Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/AppDelegate.m238"CompileC DerivedData/AutoLink/Build/Intermediates/AutoLink.build/MonoTouch-iphonesimulator/AutoLink.build/Objects-normal/i386/AppDelegate-C76B3A48B5B03CC0.o AppDelegate.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler42d138b33518b941^070b7bb33518b941^---0#0#1#-19%DVTDocumentLocation2@72"file:///Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/AppDelegate.m0000000000000000^3890"CompileC DerivedData/AutoLink/Build/Intermediates/AutoLink.build/MonoTouch-iphonesimulator/AutoLink.build/Objects-normal/i386/AppDelegate-C76B3A48B5B03CC0.o AppDelegate.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4    export LANG=en_US.US-ASCII    export PATH="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/Applications/Xamarin Studio.app/Contents/MacOS:/usr/bin:/bin:/usr/sbin:/sbin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch i386 -fmessage-length=0 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0 -std=gnu99 -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wmissing-prototypes -Wno-implicit-atomic-properties -Wno-receiver-is-weak -Wno-arc-repeated-use-of-weak -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-empty-body -Wno-uninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wno-constant-conversion -Wno-int-conversion -Wno-bool-conversion -Wno-enum-conversion -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wno-undeclared-selector -Wno-deprecated-implementations -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk -fexceptions -fasm-blocks -fstrict-aliasing -Wprotocol -Wdeprecated-declarations -g -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch -mios-simulator-version-min=7.1 -iquote /Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/DerivedData/AutoLink/Build/Intermediates/AutoLink.build/MonoTouch-iphonesimulator/AutoLink.build/AutoLink-generated-files.hmap -I/Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/DerivedData/AutoLink/Build/Intermediates/AutoLink.build/MonoTouch-iphonesimulator/AutoLink.build/AutoLink-own-target-headers.hmap -I/Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/DerivedData/AutoLink/Build/Intermediates/AutoLink.build/MonoTouch-iphonesimulator/AutoLink.build/AutoLink-all-target-headers.hmap -iquote /Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/DerivedData/AutoLink/Build/Intermediates/AutoLink.build/MonoTouch-iphonesimulator/AutoLink.build/AutoLink-project-headers.hmap -I/Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/DerivedData/AutoLink/Build/Products/MonoTouch-iphonesimulator/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/DerivedData/AutoLink/Build/Intermediates/AutoLink.build/MonoTouch-iphonesimulator/AutoLink.build/DerivedSources/i386 -I/Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/DerivedData/AutoLink/Build/Intermediates/AutoLink.build/MonoTouch-iphonesimulator/AutoLink.build/DerivedSources -F/Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/DerivedData/AutoLink/Build/Products/MonoTouch-iphonesimulator -MMD -MT dependencies -MF /Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/DerivedData/AutoLink/Build/Intermediates/AutoLink.build/MonoTouch-iphonesimulator/AutoLink.build/Objects-normal/i386/AppDelegate-C76B3A48B5B03CC0.d --serialize-diagnostics /Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/DerivedData/AutoLink/Build/Intermediates/AutoLink.build/MonoTouch-iphonesimulator/AutoLink.build/Objects-normal/i386/AppDelegate-C76B3A48B5B03CC0.dia -c /Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/AppDelegate.m -o /Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/DerivedData/AutoLink/Build/Intermediates/AutoLink.build/MonoTouch-iphonesimulator/AutoLink.build/Objects-normal/i386/AppDelegate-C76B3A48B5B03CC0.o36"944804CB-F580-4B42-87C3-5E2432E2BBEE-
+b33A3DF92-E00A-4D47-ABB0-0E4598EB630E
+
+CCompileC DerivedData/AutoLink/Build/Intermediates/AutoLink.build/MonoTouch-iphonesimulator/AutoLink.build/Objects-normal/i386/DetailViewController-6DFDD235EA7089EB.o /Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/DetailViewController.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s421017011.220756
+e421017011.581785
+r1
+xCompileC
+xDerivedData/AutoLink/Build/Intermediates/AutoLink.build/MonoTouch-iphonesimulator/AutoLink.build/Objects-normal/i386/DetailViewController-6DFDD235EA7089EB.o
+x/Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/DetailViewController.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+d/Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/DetailViewController.m
+d/Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/DetailViewController.h
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection82"Compile /Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/DetailViewController.m256"CompileC DerivedData/AutoLink/Build/Intermediates/AutoLink.build/MonoTouch-iphonesimulator/AutoLink.build/Objects-normal/i386/DetailViewController-6DFDD235EA7089EB.o DetailViewController.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compilerb7d138b33518b941^dbf794b33518b941^---0#0#1#-19%DVTDocumentLocation2@81"file:///Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/DetailViewController.m0000000000000000^3944"CompileC DerivedData/AutoLink/Build/Intermediates/AutoLink.build/MonoTouch-iphonesimulator/AutoLink.build/Objects-normal/i386/DetailViewController-6DFDD235EA7089EB.o DetailViewController.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4    export LANG=en_US.US-ASCII    export PATH="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/Applications/Xamarin Studio.app/Contents/MacOS:/usr/bin:/bin:/usr/sbin:/sbin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch i386 -fmessage-length=0 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0 -std=gnu99 -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wmissing-prototypes -Wno-implicit-atomic-properties -Wno-receiver-is-weak -Wno-arc-repeated-use-of-weak -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-empty-body -Wno-uninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wno-constant-conversion -Wno-int-conversion -Wno-bool-conversion -Wno-enum-conversion -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wno-undeclared-selector -Wno-deprecated-implementations -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk -fexceptions -fasm-blocks -fstrict-aliasing -Wprotocol -Wdeprecated-declarations -g -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch -mios-simulator-version-min=7.1 -iquote /Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/DerivedData/AutoLink/Build/Intermediates/AutoLink.build/MonoTouch-iphonesimulator/AutoLink.build/AutoLink-generated-files.hmap -I/Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/DerivedData/AutoLink/Build/Intermediates/AutoLink.build/MonoTouch-iphonesimulator/AutoLink.build/AutoLink-own-target-headers.hmap -I/Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/DerivedData/AutoLink/Build/Intermediates/AutoLink.build/MonoTouch-iphonesimulator/AutoLink.build/AutoLink-all-target-headers.hmap -iquote /Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/DerivedData/AutoLink/Build/Intermediates/AutoLink.build/MonoTouch-iphonesimulator/AutoLink.build/AutoLink-project-headers.hmap -I/Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/DerivedData/AutoLink/Build/Products/MonoTouch-iphonesimulator/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/DerivedData/AutoLink/Build/Intermediates/AutoLink.build/MonoTouch-iphonesimulator/AutoLink.build/DerivedSources/i386 -I/Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/DerivedData/AutoLink/Build/Intermediates/AutoLink.build/MonoTouch-iphonesimulator/AutoLink.build/DerivedSources -F/Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/DerivedData/AutoLink/Build/Products/MonoTouch-iphonesimulator -MMD -MT dependencies -MF /Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/DerivedData/AutoLink/Build/Intermediates/AutoLink.build/MonoTouch-iphonesimulator/AutoLink.build/Objects-normal/i386/DetailViewController-6DFDD235EA7089EB.d --serialize-diagnostics /Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/DerivedData/AutoLink/Build/Intermediates/AutoLink.build/MonoTouch-iphonesimulator/AutoLink.build/Objects-normal/i386/DetailViewController-6DFDD235EA7089EB.dia -c /Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/DetailViewController.m -o /Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/DerivedData/AutoLink/Build/Intermediates/AutoLink.build/MonoTouch-iphonesimulator/AutoLink.build/Objects-normal/i386/DetailViewController-6DFDD235EA7089EB.o36"E46547DE-39C1-4621-8959-367B0E8CC256-
+b33A3DF92-E00A-4D47-ABB0-0E4598EB630E
+
+CCompileC DerivedData/AutoLink/Build/Intermediates/AutoLink.build/MonoTouch-iphonesimulator/AutoLink.build/Objects-normal/i386/LoginScreenController-DBF5C67A5143F9DB.o /Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/LoginScreenController.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s421017040.084664
+e421017040.262087
+r1
+xCompileC
+xDerivedData/AutoLink/Build/Intermediates/AutoLink.build/MonoTouch-iphonesimulator/AutoLink.build/Objects-normal/i386/LoginScreenController-DBF5C67A5143F9DB.o
+x/Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/LoginScreenController.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+d/Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/LoginScreenController.m
+d/Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/LoginScreenController.h
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection83"Compile /Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/LoginScreenController.m258"CompileC DerivedData/AutoLink/Build/Intermediates/AutoLink.build/MonoTouch-iphonesimulator/AutoLink.build/Objects-normal/i386/LoginScreenController-DBF5C67A5143F9DB.o LoginScreenController.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler3cbe15d03518b941^4c1a43d03518b941^---0#0#1#-19%DVTDocumentLocation2@82"file:///Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/LoginScreenController.m0000000000000000^3950"CompileC DerivedData/AutoLink/Build/Intermediates/AutoLink.build/MonoTouch-iphonesimulator/AutoLink.build/Objects-normal/i386/LoginScreenController-DBF5C67A5143F9DB.o LoginScreenController.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4    export LANG=en_US.US-ASCII    export PATH="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/Applications/Xamarin Studio.app/Contents/MacOS:/usr/bin:/bin:/usr/sbin:/sbin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch i386 -fmessage-length=0 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0 -std=gnu99 -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wmissing-prototypes -Wno-implicit-atomic-properties -Wno-receiver-is-weak -Wno-arc-repeated-use-of-weak -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-empty-body -Wno-uninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wno-constant-conversion -Wno-int-conversion -Wno-bool-conversion -Wno-enum-conversion -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wno-undeclared-selector -Wno-deprecated-implementations -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk -fexceptions -fasm-blocks -fstrict-aliasing -Wprotocol -Wdeprecated-declarations -g -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch -mios-simulator-version-min=7.1 -iquote /Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/DerivedData/AutoLink/Build/Intermediates/AutoLink.build/MonoTouch-iphonesimulator/AutoLink.build/AutoLink-generated-files.hmap -I/Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/DerivedData/AutoLink/Build/Intermediates/AutoLink.build/MonoTouch-iphonesimulator/AutoLink.build/AutoLink-own-target-headers.hmap -I/Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/DerivedData/AutoLink/Build/Intermediates/AutoLink.build/MonoTouch-iphonesimulator/AutoLink.build/AutoLink-all-target-headers.hmap -iquote /Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/DerivedData/AutoLink/Build/Intermediates/AutoLink.build/MonoTouch-iphonesimulator/AutoLink.build/AutoLink-project-headers.hmap -I/Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/DerivedData/AutoLink/Build/Products/MonoTouch-iphonesimulator/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/DerivedData/AutoLink/Build/Intermediates/AutoLink.build/MonoTouch-iphonesimulator/AutoLink.build/DerivedSources/i386 -I/Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/DerivedData/AutoLink/Build/Intermediates/AutoLink.build/MonoTouch-iphonesimulator/AutoLink.build/DerivedSources -F/Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/DerivedData/AutoLink/Build/Products/MonoTouch-iphonesimulator -MMD -MT dependencies -MF /Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/DerivedData/AutoLink/Build/Intermediates/AutoLink.build/MonoTouch-iphonesimulator/AutoLink.build/Objects-normal/i386/LoginScreenController-DBF5C67A5143F9DB.d --serialize-diagnostics /Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/DerivedData/AutoLink/Build/Intermediates/AutoLink.build/MonoTouch-iphonesimulator/AutoLink.build/Objects-normal/i386/LoginScreenController-DBF5C67A5143F9DB.dia -c /Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/LoginScreenController.m -o /Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/DerivedData/AutoLink/Build/Intermediates/AutoLink.build/MonoTouch-iphonesimulator/AutoLink.build/Objects-normal/i386/LoginScreenController-DBF5C67A5143F9DB.o36"8913477E-5384-4394-A204-87C85E687019-
+bA5A6E580-3D36-4AF9-B867-3E47A41D26F4
+
+CCompileC DerivedData/AutoLink/Build/Intermediates/AutoLink.build/MonoTouch-iphonesimulator/AutoLink.build/Objects-normal/i386/MainScreenController-37CBBDFFF5B2DBD5.o /Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/MainScreenController.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s421017011.221411
+e421017011.581837
+r1
+xCompileC
+xDerivedData/AutoLink/Build/Intermediates/AutoLink.build/MonoTouch-iphonesimulator/AutoLink.build/Objects-normal/i386/MainScreenController-37CBBDFFF5B2DBD5.o
+x/Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/MainScreenController.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+d/Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/MainScreenController.m
+d/Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/MainScreenController.h
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection82"Compile /Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/MainScreenController.m256"CompileC DerivedData/AutoLink/Build/Intermediates/AutoLink.build/MonoTouch-iphonesimulator/AutoLink.build/Objects-normal/i386/MainScreenController-37CBBDFFF5B2DBD5.o MainScreenController.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler63d138b33518b941^b5fc94b33518b941^---0#0#1#-19%DVTDocumentLocation2@81"file:///Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/MainScreenController.m0000000000000000^3944"CompileC DerivedData/AutoLink/Build/Intermediates/AutoLink.build/MonoTouch-iphonesimulator/AutoLink.build/Objects-normal/i386/MainScreenController-37CBBDFFF5B2DBD5.o MainScreenController.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4    export LANG=en_US.US-ASCII    export PATH="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/Applications/Xamarin Studio.app/Contents/MacOS:/usr/bin:/bin:/usr/sbin:/sbin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch i386 -fmessage-length=0 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0 -std=gnu99 -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wmissing-prototypes -Wno-implicit-atomic-properties -Wno-receiver-is-weak -Wno-arc-repeated-use-of-weak -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-empty-body -Wno-uninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wno-constant-conversion -Wno-int-conversion -Wno-bool-conversion -Wno-enum-conversion -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wno-undeclared-selector -Wno-deprecated-implementations -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk -fexceptions -fasm-blocks -fstrict-aliasing -Wprotocol -Wdeprecated-declarations -g -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch -mios-simulator-version-min=7.1 -iquote /Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/DerivedData/AutoLink/Build/Intermediates/AutoLink.build/MonoTouch-iphonesimulator/AutoLink.build/AutoLink-generated-files.hmap -I/Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/DerivedData/AutoLink/Build/Intermediates/AutoLink.build/MonoTouch-iphonesimulator/AutoLink.build/AutoLink-own-target-headers.hmap -I/Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/DerivedData/AutoLink/Build/Intermediates/AutoLink.build/MonoTouch-iphonesimulator/AutoLink.build/AutoLink-all-target-headers.hmap -iquote /Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/DerivedData/AutoLink/Build/Intermediates/AutoLink.build/MonoTouch-iphonesimulator/AutoLink.build/AutoLink-project-headers.hmap -I/Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/DerivedData/AutoLink/Build/Products/MonoTouch-iphonesimulator/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/DerivedData/AutoLink/Build/Intermediates/AutoLink.build/MonoTouch-iphonesimulator/AutoLink.build/DerivedSources/i386 -I/Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/DerivedData/AutoLink/Build/Intermediates/AutoLink.build/MonoTouch-iphonesimulator/AutoLink.build/DerivedSources -F/Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/DerivedData/AutoLink/Build/Products/MonoTouch-iphonesimulator -MMD -MT dependencies -MF /Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/DerivedData/AutoLink/Build/Intermediates/AutoLink.build/MonoTouch-iphonesimulator/AutoLink.build/Objects-normal/i386/MainScreenController-37CBBDFFF5B2DBD5.d --serialize-diagnostics /Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/DerivedData/AutoLink/Build/Intermediates/AutoLink.build/MonoTouch-iphonesimulator/AutoLink.build/Objects-normal/i386/MainScreenController-37CBBDFFF5B2DBD5.dia -c /Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/MainScreenController.m -o /Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/DerivedData/AutoLink/Build/Intermediates/AutoLink.build/MonoTouch-iphonesimulator/AutoLink.build/Objects-normal/i386/MainScreenController-37CBBDFFF5B2DBD5.o36"3B3EB5B4-0046-4ACE-8B7D-308CD73036CC-
+b33A3DF92-E00A-4D47-ABB0-0E4598EB630E
+
+CCompileC DerivedData/AutoLink/Build/Intermediates/AutoLink.build/MonoTouch-iphonesimulator/AutoLink.build/Objects-normal/i386/MasterViewController-1EA2CC2E844029DC.o /Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/MasterViewController.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s421017011.221015
+e421017011.581723
+r1
+xCompileC
+xDerivedData/AutoLink/Build/Intermediates/AutoLink.build/MonoTouch-iphonesimulator/AutoLink.build/Objects-normal/i386/MasterViewController-1EA2CC2E844029DC.o
+x/Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/MasterViewController.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+d/Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/MasterViewController.m
+d/Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/MasterViewController.h
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection82"Compile /Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/MasterViewController.m256"CompileC DerivedData/AutoLink/Build/Intermediates/AutoLink.build/MonoTouch-iphonesimulator/AutoLink.build/Objects-normal/i386/MasterViewController-1EA2CC2E844029DC.o MasterViewController.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compilere9d138b33518b941^03ef94b33518b941^---0#0#1#-19%DVTDocumentLocation2@81"file:///Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/MasterViewController.m0000000000000000^3944"CompileC DerivedData/AutoLink/Build/Intermediates/AutoLink.build/MonoTouch-iphonesimulator/AutoLink.build/Objects-normal/i386/MasterViewController-1EA2CC2E844029DC.o MasterViewController.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4    export LANG=en_US.US-ASCII    export PATH="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/Applications/Xamarin Studio.app/Contents/MacOS:/usr/bin:/bin:/usr/sbin:/sbin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch i386 -fmessage-length=0 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0 -std=gnu99 -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wmissing-prototypes -Wno-implicit-atomic-properties -Wno-receiver-is-weak -Wno-arc-repeated-use-of-weak -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-empty-body -Wno-uninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wno-constant-conversion -Wno-int-conversion -Wno-bool-conversion -Wno-enum-conversion -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wno-undeclared-selector -Wno-deprecated-implementations -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk -fexceptions -fasm-blocks -fstrict-aliasing -Wprotocol -Wdeprecated-declarations -g -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch -mios-simulator-version-min=7.1 -iquote /Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/DerivedData/AutoLink/Build/Intermediates/AutoLink.build/MonoTouch-iphonesimulator/AutoLink.build/AutoLink-generated-files.hmap -I/Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/DerivedData/AutoLink/Build/Intermediates/AutoLink.build/MonoTouch-iphonesimulator/AutoLink.build/AutoLink-own-target-headers.hmap -I/Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/DerivedData/AutoLink/Build/Intermediates/AutoLink.build/MonoTouch-iphonesimulator/AutoLink.build/AutoLink-all-target-headers.hmap -iquote /Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/DerivedData/AutoLink/Build/Intermediates/AutoLink.build/MonoTouch-iphonesimulator/AutoLink.build/AutoLink-project-headers.hmap -I/Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/DerivedData/AutoLink/Build/Products/MonoTouch-iphonesimulator/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/DerivedData/AutoLink/Build/Intermediates/AutoLink.build/MonoTouch-iphonesimulator/AutoLink.build/DerivedSources/i386 -I/Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/DerivedData/AutoLink/Build/Intermediates/AutoLink.build/MonoTouch-iphonesimulator/AutoLink.build/DerivedSources -F/Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/DerivedData/AutoLink/Build/Products/MonoTouch-iphonesimulator -MMD -MT dependencies -MF /Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/DerivedData/AutoLink/Build/Intermediates/AutoLink.build/MonoTouch-iphonesimulator/AutoLink.build/Objects-normal/i386/MasterViewController-1EA2CC2E844029DC.d --serialize-diagnostics /Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/DerivedData/AutoLink/Build/Intermediates/AutoLink.build/MonoTouch-iphonesimulator/AutoLink.build/Objects-normal/i386/MasterViewController-1EA2CC2E844029DC.dia -c /Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/MasterViewController.m -o /Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/DerivedData/AutoLink/Build/Intermediates/AutoLink.build/MonoTouch-iphonesimulator/AutoLink.build/Objects-normal/i386/MasterViewController-1EA2CC2E844029DC.o36"AFA5F429-574F-4D8A-9CF8-EFA718033833-
+b33A3DF92-E00A-4D47-ABB0-0E4598EB630E
+
+CCompileC DerivedData/AutoLink/Build/Intermediates/AutoLink.build/MonoTouch-iphonesimulator/AutoLink.build/Objects-normal/i386/RootController-99BB942758D7FCEA.o /Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/RootController.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s421017011.221212
+e421017011.480539
+r1
+xCompileC
+xDerivedData/AutoLink/Build/Intermediates/AutoLink.build/MonoTouch-iphonesimulator/AutoLink.build/Objects-normal/i386/RootController-99BB942758D7FCEA.o
+x/Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/RootController.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+d/Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/RootController.m
+d/Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/RootController.h
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection76"Compile /Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/RootController.m244"CompileC DerivedData/AutoLink/Build/Intermediates/AutoLink.build/MonoTouch-iphonesimulator/AutoLink.build/Objects-normal/i386/RootController-99BB942758D7FCEA.o RootController.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler2dd238b33518b941^ea057bb33518b941^---0#0#1#-19%DVTDocumentLocation2@75"file:///Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/RootController.m0000000000000000^3908"CompileC DerivedData/AutoLink/Build/Intermediates/AutoLink.build/MonoTouch-iphonesimulator/AutoLink.build/Objects-normal/i386/RootController-99BB942758D7FCEA.o RootController.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4    export LANG=en_US.US-ASCII    export PATH="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/Applications/Xamarin Studio.app/Contents/MacOS:/usr/bin:/bin:/usr/sbin:/sbin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch i386 -fmessage-length=0 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0 -std=gnu99 -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wmissing-prototypes -Wno-implicit-atomic-properties -Wno-receiver-is-weak -Wno-arc-repeated-use-of-weak -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-empty-body -Wno-uninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wno-constant-conversion -Wno-int-conversion -Wno-bool-conversion -Wno-enum-conversion -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wno-undeclared-selector -Wno-deprecated-implementations -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk -fexceptions -fasm-blocks -fstrict-aliasing -Wprotocol -Wdeprecated-declarations -g -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch -mios-simulator-version-min=7.1 -iquote /Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/DerivedData/AutoLink/Build/Intermediates/AutoLink.build/MonoTouch-iphonesimulator/AutoLink.build/AutoLink-generated-files.hmap -I/Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/DerivedData/AutoLink/Build/Intermediates/AutoLink.build/MonoTouch-iphonesimulator/AutoLink.build/AutoLink-own-target-headers.hmap -I/Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/DerivedData/AutoLink/Build/Intermediates/AutoLink.build/MonoTouch-iphonesimulator/AutoLink.build/AutoLink-all-target-headers.hmap -iquote /Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/DerivedData/AutoLink/Build/Intermediates/AutoLink.build/MonoTouch-iphonesimulator/AutoLink.build/AutoLink-project-headers.hmap -I/Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/DerivedData/AutoLink/Build/Products/MonoTouch-iphonesimulator/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/DerivedData/AutoLink/Build/Intermediates/AutoLink.build/MonoTouch-iphonesimulator/AutoLink.build/DerivedSources/i386 -I/Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/DerivedData/AutoLink/Build/Intermediates/AutoLink.build/MonoTouch-iphonesimulator/AutoLink.build/DerivedSources -F/Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/DerivedData/AutoLink/Build/Products/MonoTouch-iphonesimulator -MMD -MT dependencies -MF /Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/DerivedData/AutoLink/Build/Intermediates/AutoLink.build/MonoTouch-iphonesimulator/AutoLink.build/Objects-normal/i386/RootController-99BB942758D7FCEA.d --serialize-diagnostics /Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/DerivedData/AutoLink/Build/Intermediates/AutoLink.build/MonoTouch-iphonesimulator/AutoLink.build/Objects-normal/i386/RootController-99BB942758D7FCEA.dia -c /Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/RootController.m -o /Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/DerivedData/AutoLink/Build/Intermediates/AutoLink.build/MonoTouch-iphonesimulator/AutoLink.build/Objects-normal/i386/RootController-99BB942758D7FCEA.o36"78085670-8130-440E-8E58-EFBDD8CCF667-
+b33A3DF92-E00A-4D47-ABB0-0E4598EB630E
+
+CCompileStoryboard /Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/MainStoryboard_iPad.storyboard
+r0
+
+CCompileStoryboard /Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/MainStoryboard_iPhone.storyboard
+r0
+
+CCompileXIB /Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/Controllers/RootController_iPad.xib
+r0
+
+CCompileXIB /Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/Controllers/RootController_iPhone.xib
+r0
+
+CCompileXIB /Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/Screens/LoginScreenController_iPad.xib
+r0
+
+CCompileXIB /Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/Screens/LoginScreenController_iPhone.xib
+r0
+
+CCompileXIB /Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/Screens/MainScreenController_iPad.xib
+r0
+
+CCompileXIB /Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/Screens/MainScreenController_iPhone.xib
+r0
+
+CCopyPlistFile /Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/DerivedData/AutoLink/Build/Products/MonoTouch-iphonesimulator/AutoLink.app/Entitlements.plist Entitlements.plist
+r0
+
+CCopyPlistFile /Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/DerivedData/AutoLink/Build/Products/MonoTouch-iphonesimulator/AutoLink.app/Info.plist Info.plist
+r0
+
+CCpResource Default-568h@2x.png DerivedData/AutoLink/Build/Products/MonoTouch-iphonesimulator/AutoLink.app/Default-568h@2x.png
+r0
+
+CCpResource Default@2x.png DerivedData/AutoLink/Build/Products/MonoTouch-iphonesimulator/AutoLink.app/Default@2x.png
+r0
+
+CCpResource splash_1136@x2.png DerivedData/AutoLink/Build/Products/MonoTouch-iphonesimulator/AutoLink.app/splash_1136@x2.png
+r0
+
+CCpResource splash_960@x2.png DerivedData/AutoLink/Build/Products/MonoTouch-iphonesimulator/AutoLink.app/splash_960@x2.png
+r0
+
+CGenerateDSYMFile /Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/DerivedData/AutoLink/Build/Products/MonoTouch-iphonesimulator/AutoLink.app.dSYM /Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/DerivedData/AutoLink/Build/Products/MonoTouch-iphonesimulator/AutoLink.app/AutoLink
+r0
+
+CLd /Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/DerivedData/AutoLink/Build/Products/MonoTouch-iphonesimulator/AutoLink.app/AutoLink normal i386
+s421017040.263241
+e421017040.288060
+r0
+xLd
+x/Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/DerivedData/AutoLink/Build/Products/MonoTouch-iphonesimulator/AutoLink.app/AutoLink
+xnormal
+xi386
+d/Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/DerivedData/AutoLink/Build/Intermediates/AutoLink.build/MonoTouch-iphonesimulator/AutoLink.build/Objects-normal/i386/AutoLink.LinkFileList
+d/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/usr/lib/crt1.o
+d/Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/DerivedData/AutoLink/Build/Intermediates/AutoLink.build/MonoTouch-iphonesimulator/AutoLink.build/Objects-normal/i386/AppDelegate-C76B3A48B5B03CC0.o
+d/Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/DerivedData/AutoLink/Build/Intermediates/AutoLink.build/MonoTouch-iphonesimulator/AutoLink.build/Objects-normal/i386/DetailViewController-6DFDD235EA7089EB.o
+d/Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/DerivedData/AutoLink/Build/Intermediates/AutoLink.build/MonoTouch-iphonesimulator/AutoLink.build/Objects-normal/i386/MasterViewController-1EA2CC2E844029DC.o
+d/Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/DerivedData/AutoLink/Build/Intermediates/AutoLink.build/MonoTouch-iphonesimulator/AutoLink.build/Objects-normal/i386/RootController-99BB942758D7FCEA.o
+d/Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/DerivedData/AutoLink/Build/Intermediates/AutoLink.build/MonoTouch-iphonesimulator/AutoLink.build/Objects-normal/i386/MainScreenController-37CBBDFFF5B2DBD5.o
+d/Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/DerivedData/AutoLink/Build/Intermediates/AutoLink.build/MonoTouch-iphonesimulator/AutoLink.build/Objects-normal/i386/LoginScreenController-DBF5C67A5143F9DB.o
+d/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/Frameworks/UIKit.framework/UIKit
+d/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/Frameworks/MapKit.framework/MapKit
+d/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/Frameworks/Foundation.framework/Foundation
+d/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/Frameworks/CoreGraphics.framework/CoreGraphics
+d/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/usr/lib/libobjc.dylib
+d/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/usr/lib/libSystem.dylib
+d/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/5.1/lib/darwin/libclang_rt.ios.a
+d/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/PrivateFrameworks/UIFoundation.framework/UIFoundation
+d/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/Frameworks/CoreFoundation.framework/CoreFoundation
+d/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/usr/lib/system/libsystem_override.dylib
+d/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/usr/lib/system/libcache_sim.dylib
+d/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/usr/lib/system/libcommonCrypto_sim.dylib
+d/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/usr/lib/system/libcorecrypto_sim.dylib
+d/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/usr/lib/system/libcompiler_rt_sim.dylib
+d/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/usr/lib/system/libcopyfile_sim.dylib
+d/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/usr/lib/system/libdispatch.dylib
+d/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/usr/lib/system/libdyld_sim.dylib
+d/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/usr/lib/system/libmacho_sim.dylib
+d/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/usr/lib/system/libnotify_sim.dylib
+d/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/usr/lib/system/libremovefile_sim.dylib
+d/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/usr/lib/system/libsystem_sim_blocks.dylib
+d/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/usr/lib/system/libsystem_sim_c.dylib
+d/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/usr/lib/system/libsystem_sim_dnssd.dylib
+d/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/usr/lib/system/libsystem_sim_info.dylib
+d/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/usr/lib/system/libsystem_sim_m.dylib
+d/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/usr/lib/system/libsystem_network.dylib
+d/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/usr/lib/system/libunwind_sim.dylib
+d/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/usr/lib/system/libxpc.dylib
+d/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/usr/lib/system/libsystem_sim_configuration.dylib
+d/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/usr/lib/system/libsystem_sim_asl.dylib
+d/usr/lib/libSystem.B.dylib
+d/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/usr/lib/system/host/libdyld.dylib
+d/usr/lib/system/libcache.dylib
+d/usr/lib/system/libcommonCrypto.dylib
+d/usr/lib/system/libcompiler_rt.dylib
+d/usr/lib/system/libcopyfile.dylib
+d/usr/lib/system/libcorecrypto.dylib
+d/usr/lib/system/libkeymgr.dylib
+d/usr/lib/system/liblaunch.dylib
+d/usr/lib/system/libmacho.dylib
+d/usr/lib/system/libquarantine.dylib
+d/usr/lib/system/libremovefile.dylib
+d/usr/lib/system/libsystem_asl.dylib
+d/usr/lib/system/libsystem_blocks.dylib
+d/usr/lib/system/libsystem_c.dylib
+d/usr/lib/system/libsystem_configuration.dylib
+d/usr/lib/system/libsystem_dnssd.dylib
+d/usr/lib/system/libsystem_info.dylib
+d/usr/lib/system/libsystem_kernel.dylib
+d/usr/lib/system/libsystem_m.dylib
+d/usr/lib/system/libsystem_malloc.dylib
+d/usr/lib/system/libsystem_notify.dylib
+d/usr/lib/system/libsystem_platform.dylib
+d/usr/lib/system/libsystem_pthread.dylib
+d/usr/lib/system/libsystem_sandbox.dylib
+d/usr/lib/system/libunc.dylib
+d/usr/lib/system/libunwind.dylib
+oUndefined symbols for architecture i386:
+o  "_main", referenced from:
+o      start in crt1.o
+old: symbol(s) not found for architecture i386
+oclang: error: linker command failed with exit code 1 (use -v to see invocation)
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection140"Link /Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/DerivedData/AutoLink/Build/Products/MonoTouch-iphonesimulator/AutoLink.app/AutoLink98"Ld DerivedData/AutoLink/Build/Products/MonoTouch-iphonesimulator/AutoLink.app/AutoLink normal i386137c43d03518b941^3cbe49d03518b941^-217"Undefined symbols for architecture i386:  "_main", referenced from:      start in crt1.old: symbol(s) not found for architecture i386clang: error: linker command failed with exit code 1 (use -v to see invocation)4(21%IDEActivityLogMessage2@25""_main", referenced from:-421017040#41#28#-2#-23%DVTTextDocumentLocation3@-0000000000000000^18446744073709551615#18446744073709551615#18446744073709551615#18446744073709551615#18446744073709551615#0#25"Apple Mach-O Linker Error--2@15"Start in crt1.o-421017040#69#22#-0#-3@-0000000000000000^18446744073709551615#18446744073709551615#18446744073709551615#18446744073709551615#18446744073709551615#0#26"Apple Mach-O Linker Notice--2@41"Symbol(s) not found for architecture i386-421017040#91#46#-0#-3@-0000000000000000^18446744073709551615#18446744073709551615#18446744073709551615#18446744073709551615#18446744073709551615#0#26"Apple Mach-O Linker Notice--2@65"Linker command failed with exit code 1 (use -v to see invocation)-421017040#137#80#-2#-3@-0000000000000000^18446744073709551615#18446744073709551615#18446744073709551615#18446744073709551615#18446744073709551615#0#25"Apple Mach-O Linker Error--0#0#1#--1682"Ld DerivedData/AutoLink/Build/Products/MonoTouch-iphonesimulator/AutoLink.app/AutoLink normal i386    cd /Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4    export IPHONEOS_DEPLOYMENT_TARGET=7.1    export PATH="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/Applications/Xamarin Studio.app/Contents/MacOS:/usr/bin:/bin:/usr/sbin:/sbin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -arch i386 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk -L/Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/DerivedData/AutoLink/Build/Products/MonoTouch-iphonesimulator -F/Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/DerivedData/AutoLink/Build/Products/MonoTouch-iphonesimulator -filelist /Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/DerivedData/AutoLink/Build/Intermediates/AutoLink.build/MonoTouch-iphonesimulator/AutoLink.build/Objects-normal/i386/AutoLink.LinkFileList -Xlinker -objc_abi_version -Xlinker 2 -fobjc-link-runtime -Xlinker -no_implicit_dylibs -mios-simulator-version-min=7.1 -framework UIKit -framework MapKit -framework Foundation -framework CoreGraphics -Xlinker -dependency_info -Xlinker /Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/DerivedData/AutoLink/Build/Intermediates/AutoLink.build/MonoTouch-iphonesimulator/AutoLink.build/Objects-normal/i386/AutoLink_dependency_info.dat -o /Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/DerivedData/AutoLink/Build/Products/MonoTouch-iphonesimulator/AutoLink.app/AutoLink36"41094800-215D-4F63-A001-19F28BDE6B1A-
+bA5A6E580-3D36-4AF9-B867-3E47A41D26F4
+
+CTouch /Users/en-ed/Projects/AutoLink/AutoLink/obj/Xcode/4/DerivedData/AutoLink/Build/Products/MonoTouch-iphonesimulator/AutoLink.app
+r0
+

@@ -1,0 +1,13 @@
+mscorlib.dll
+System.dll
+System.Core.dll
+Mono.Dynamic.Interpreter.dll
+System.Xml.dll
+SimpleStorage.iOS.dll
+MonoTouch.Dialog-1.dll
+System.Json.dll
+MonoTouch.FacebookConnect.dll
+Google.Plus.dll
+System.Net.Http.dll
+Newtonsoft.Json.dll
+System.Runtime.Serialization.dll
