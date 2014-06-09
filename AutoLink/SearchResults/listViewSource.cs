@@ -19,6 +19,7 @@ namespace AutoLink
 		AppDelegate app = (AppDelegate)UIApplication.SharedApplication.Delegate;
 		SearchService service; 
 		bool updating = false;
+		int startCount = 0;
 
 
 		public listViewSource (string id)
@@ -30,13 +31,14 @@ namespace AutoLink
 			listResults = service.GetListings (id); 
 			items = listResults.listings;
 
-			if(items == null){
-				using(var alert = new UIAlertView("Listing Fetch Failure","Listing Service not Responding, Please try again.",null,"OK",null))
-				{
+			if (items == null) {
+				using (var alert = new UIAlertView ("Listing Fetch Failure", "Listing Service not Responding, Please try again.", null, "OK", null)) {
 					alert.Show ();
 				}
 				listResults = service.GetListings (id); 
 				items = listResults.listings;
+			} else {
+				startCount = items.Count;
 			}
 
 
@@ -61,7 +63,7 @@ namespace AutoLink
 		{
 			//add edits
 			var leftView = new UILabel () {
-				Frame = new RectangleF (0, 0, SWTableViewCell.UtilityButtonsWidthMax, tableView.RowHeight),
+				Frame = new RectangleF (0, 0, SWTableViewCell.UtilityButtonsWidthMax, tableView.RowHeight/2),
 				BackgroundColor = UIColor.Red,
 				Text = "Peekaboo!",
 				TextColor = UIColor.White,
@@ -69,26 +71,25 @@ namespace AutoLink
 			};
 
 			var buttons = new List<UIButton> ();
-			buttons.AddUtilityButton ("More", UIColor.LightGray);
+			//buttons.AddUtilityButton ("More", UIColor.LightGray);
 			buttons.AddUtilityButton ("Edit", UIColor.Blue);
 
 			tableView.RowHeight = GetHeightForRow(tableView, indexPath);
 
-			var cell = new listViewCell (items [indexPath.Row],tableView,buttons,leftView );
-			//tableView.DequeueReusableCell (listViewCell.Key) as listViewCell;
+			//var cell = new listViewCell (items [indexPath.Row],tableView,buttons,leftView );
+			var cell = tableView.DequeueReusableCell (listViewCell.Key) as listViewCell;
 
-			/*if (cell == null) {
+			if (cell == null) {
 				cell = new listViewCell (items [indexPath.Row],tableView,buttons,leftView );
 			} else {
 				cell.UpdateCell (items [indexPath.Row],tableView,buttons,leftView );
-			}*/
+			}
 
 			cell.SizeToFit ();
 
-			if (indexPath.Row + 10 > items.Count && !updating) {
+			if (indexPath.Row + 10 > items.Count && !updating && startCount >= 20) {
 				updating = true;
 				UpdateItems (tableView);
-
 			
 			}
 
@@ -155,7 +156,6 @@ namespace AutoLink
 					listResults = task.Result.Result;
 					items.AddRange(listResults.listings);
 				
-					var c = tableView.NumberOfRowsInSection(1);
 					updating = false;
 					tableView.ReloadData ();
 

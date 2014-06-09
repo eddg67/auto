@@ -6,6 +6,7 @@ using Google.OpenSource;
 using MonoTouch.FacebookConnect;
 using AutoLink.Services;
 using AutoLink.Utilities;
+using BigTed;
 
 namespace AutoLink
 {
@@ -24,19 +25,30 @@ namespace AutoLink
 		public LoginService loginService;
 		public UINavigationController RootController;
 		public Validator validator;
+		public PasswordResetController forgot;
 		public SearchService searchService;
+		public SearchResultController searchResult;
+		public MainScreenController splash;
+		public SignupController signup;
+		public SearchScreen search;
+		public ResetController reset;
 
-		#region OverWrites on Delegate
+		public NetworkStatus noNetwork;
+		public LoginViewController login;
+
+		public static AppDelegate app;
+
 
 		public override bool FinishedLaunching (UIApplication application, NSDictionary launchOptions)
 		{
+			app = this;
 			// Override point for customization after application launch.
 			if (UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Pad) {
 				this.loadInitForPad ();
 			}
 			//check status
 		
-			NetworkStatus noNetwork = Reachability.InternetConnectionStatus();
+			noNetwork = Reachability.InternetConnectionStatus();
 			//check connection 
 			if (noNetwork == NetworkStatus.NotReachable) 
 			{
@@ -51,10 +63,15 @@ namespace AutoLink
 			//loading services
 			loadServices ();
 
-			//create and add root controller
-			RootController = new UINavigationController(new RootController()); 
-			RootController.ToolbarHidden = true;
+			RootController = new UINavigationController ();
 
+			//TODO make pass thru for logged in users
+			if (loginService.IsLoggedIn()) {
+				ShowResultList ();
+			} else {
+				ShowSplash ();
+			}
+				
 
 			Window = new UIWindow (UIScreen.MainScreen.Bounds) {
 				RootViewController = RootController
@@ -64,6 +81,85 @@ namespace AutoLink
 
 			return true;
 		}
+
+
+		public void ShowSplash()
+		{
+			splash = new MainScreenController ();
+			RootController.NavigationBarHidden = true;
+			RootController.ToolbarHidden = true;
+			RootController.PushViewController (splash, true);
+
+		}
+
+		public void ShowLogin()
+		{
+			login = new LoginViewController ();
+			RootController.NavigationBarHidden = true;
+			RootController.ToolbarHidden = true;
+			var nav = new UINavigationController (login);
+			RootController.PresentViewController (nav, true, null);
+			//RootController.AddChildViewController (nav);
+
+			login.LoginSucceeded += () => {
+				nav.DismissViewController(true,null);
+				ShowResultList();
+			};
+				
+
+		}
+
+		public void ShowSearch()
+		{
+			BTProgressHUD.Dismiss ();
+			search = new SearchScreen ();
+			RootController.NavigationBarHidden = true;
+			RootController.ToolbarHidden = true;
+			RootController.PushViewController (search, true);
+
+		}
+
+		public void ShowReset()
+		{
+			reset = new ResetController();
+			RootController.NavigationBarHidden = true;
+			RootController.ToolbarHidden = true;
+			RootController.PushViewController (reset, true);
+
+		}
+
+		public void ShowSignUp()
+		{
+			signup = new SignupController ();
+			RootController.NavigationBarHidden = true;
+			RootController.ToolbarHidden = true;
+			RootController.PushViewController (signup, true);
+
+
+		}
+
+		public void ShowForgotPassword()
+		{
+			BTProgressHUD.Dismiss ();
+			forgot = new PasswordResetController ();
+			RootController.NavigationBarHidden = true;
+			RootController.ToolbarHidden = true;
+			RootController.PushViewController (forgot, true);
+		}
+
+
+		public void ShowResultList()
+		{
+			BTProgressHUD.Show ("Get Search Results...");
+			searchResult = new SearchResultController ();
+			RootController.NavigationBarHidden = true;
+			RootController.ToolbarHidden = true;
+			RootController.PushViewController (searchResult, true);
+
+		}
+
+
+		#region OverWrites on Delegate
 		//
 		// This method is invoked when the application is about to move from active to inactive state.
 		//
@@ -106,6 +202,7 @@ namespace AutoLink
 
 		#endregion
 
+
 		#region Private Methods
 
 		private void loadInitForPad ()
@@ -131,14 +228,7 @@ namespace AutoLink
 			validator = new Validator ();
 			searchService = new SearchService ();
 		}
-
-		private void loadControllers()
-		{
-		}
-
-		private void loadViews()
-		{
-		}
+			
 
 		#endregion
 	}

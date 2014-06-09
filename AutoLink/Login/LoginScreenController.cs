@@ -9,6 +9,7 @@ using AutoLink.Utilities;
 using Autolink;
 using MonoTouch.Dialog;
 using AutoLink.Models;
+using BigTed;
 
 namespace AutoLink
 {
@@ -17,8 +18,9 @@ namespace AutoLink
 		AppDelegate app = (AppDelegate)UIApplication.SharedApplication.Delegate;
 		LoginService loginService;
 		Validator validate;
-		//FlyoutController flyOut;
-		LoadingOverlay loadingOverlay;
+		UIView ContentView;
+		public event Action LoginSucceeded = delegate {};
+	
 
 		static bool UserInterfaceIdiomIsPhone {
 			get { return UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Phone; }
@@ -46,15 +48,17 @@ namespace AutoLink
 			app.RootController.AddChildViewController(this);
 			//flyOut = new FlyoutController();
 			// Perform any additional setup after loading the view, typically from a nib.
+			this.Title = "Log in";
 			HandleBtn ();
 			HandleTxt ();
 
-			//UITapGestureRecognizer g = new UITapGestureRecognizer(() => this.View.EndEditing(true));
-			//UITapGestureRecognizer h = new UITapGestureRecognizer(() => this.txtPassword.EndEditing(true));
-			//this.View.AddGestureRecognizer(g);
-			//this.txtPassword.AddGestureRecognizer(h);
+		}
 
-
+		public override void ViewDidLayoutSubviews ()
+		{
+			//var bounds = View.Bounds;
+			//ContentView.Frame = bounds;
+		
 		}
 
 
@@ -87,41 +91,34 @@ namespace AutoLink
 			this.btnLogin.Layer.BorderColor = UIColor.White.CGColor;
 
 			this.btnLogin.TouchUpInside += (object sender, EventArgs e) => {
-
 				if(this.validate.isEmail(txtEmail) && !this.validate.isEmptyTxt(txtPassword)){
-
 					//loading screen
-					loadingOverlay = new LoadingOverlay (UIScreen.MainScreen.Bounds);
-					View.Add (loadingOverlay);
+					BTProgressHUD.Show ("Logging in...");
 
 					if(loginService.login("",txtEmail.Text,txtPassword.Text))
 					{
-						loadingOverlay.Hide();
 						//success
-						var nScreen = new SearchResultController();
-						//this.NavigationController.PopViewControllerAnimated(true);
-						this.NavigationController.PushViewController(nScreen,true);
+						LoginSucceeded ();
+						BTProgressHUD.Dismiss ();
+						return;
 					}
 
 				}else{
 					using(var alert = new UIAlertView("Form Errors", "Please try again",null,"OK",null))
 					{
 						alert.Show ();
-						loadingOverlay.Hide();
+						BTProgressHUD.Dismiss ();
 					}
 				}
 			};
 
 			this.btnSignup.TouchUpInside += (object sender, EventArgs e) => {
-				var screen = new SignUpController();
-				this.PresentViewController(screen,true,null);
-				screen.Dispose();
+				app.ShowSignUp();
+
 			};
 
 			this.btnForgotPassword.TouchUpInside += (sender, e) => {
-				var screen = new PasswordResetController();
-				this.PresentViewController(screen,true,null);
-				screen.Dispose();
+				app.ShowForgotPassword();
 
 			};
 

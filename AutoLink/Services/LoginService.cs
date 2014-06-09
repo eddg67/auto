@@ -166,6 +166,36 @@ namespace AutoLink.Services
 
 		}
 
+		public bool signUp(string name,string email,string password)
+		{
+			bool result = false;
+
+			APIResponse<LoginResult> response = api.CreateRequest<LoginResult>(
+				"account.signup",
+				new {name=name,email=email,password=password}
+			);
+
+			if (response != null)
+			{
+				if (response.error != null) 
+				{
+					using(var alert = new UIAlertView("Sign Up Error", 
+						string.Format("Please try again--{0}--Code:{1} ",
+							response.error.message,response.error.code),null,"OK",null))
+					{
+						alert.Show ();
+					}
+					//we good TODO
+				}else if(response.Result != null){
+					//processResponse (response.Result);
+					result = true;
+
+				}
+			}
+
+		  return result;
+		}
+
 
 		public bool login(string name,string email,string password)
 		{

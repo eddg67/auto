@@ -4,9 +4,9 @@ namespace AutoLink
 {
 	public class Pricing
 	{
-		public int[] trade;
-		public int[] @private;
-		public int[] retail;
+		public string[] trade;
+		public string[] @private;
+		public string[] retail;
 
 	}
 }

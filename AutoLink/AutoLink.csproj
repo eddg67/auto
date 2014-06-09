@@ -114,6 +114,9 @@
     <Reference Include="SimpleStorage.iOS">
       <HintPath>..\Components\simple-storage-1.2\lib\ios\SimpleStorage.iOS.dll</HintPath>
     </Reference>
+    <Reference Include="BTProgressHUD">
+      <HintPath>..\Components\btprogresshud-1.9\lib\ios\BTProgressHUD.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Default-568h%402x.png" />
@@ -165,10 +168,6 @@
     <Compile Include="Controllers\MasterViewController.designer.cs">
       <DependentUpon>MasterViewController.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controllers\RootController.cs" />
-    <Compile Include="Controllers\RootController.designer.cs">
-      <DependentUpon>RootController.cs</DependentUpon>
-    </Compile>
     <Compile Include="Utilities\Validator.cs" />
     <Compile Include="Models\AccountInfo.cs" />
     <Compile Include="Models\Search.cs" />
@@ -193,8 +192,6 @@
     <Compile Include="Search\SearchScreen.designer.cs">
       <DependentUpon>SearchScreen.cs</DependentUpon>
     </Compile>
-    <Compile Include="Login\SignUpController.cs" />
-    <Compile Include="Login\SignUpController.designer.cs" />
     <Compile Include="Controllers\MainScreenController.cs" />
     <Compile Include="Controllers\MainScreenController.designer.cs">
       <DependentUpon>MainScreenController.cs</DependentUpon>
@@ -234,12 +231,19 @@
     <Compile Include="Models\Bin.cs" />
     <Compile Include="Utilities\Reachability.cs" />
     <Compile Include="SearchResults\SWTableViewCell.cs" />
+    <Compile Include="Controllers\LoginViewController.cs" />
+    <Compile Include="Controllers\LoginViewController.designer.cs">
+      <DependentUpon>LoginViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\SignupController.cs" />
+    <Compile Include="Controllers\SignupController.designer.cs">
+      <DependentUpon>SignupController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Utilities\ScrollExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="MainStoryboard_iPhone.storyboard" />
     <InterfaceDefinition Include="MainStoryboard_iPad.storyboard" />
-    <InterfaceDefinition Include="Controllers\RootController_iPhone.xib" />
-    <InterfaceDefinition Include="Controllers\RootController_iPad.xib" />
     <InterfaceDefinition Include="Login\LoginScreenController_iPad.xib" />
     <InterfaceDefinition Include="Login\LoginScreenController_iPhone.xib" />
     <InterfaceDefinition Include="Login\PasswordResetController_iPad.xib" />
@@ -248,7 +252,6 @@
     <InterfaceDefinition Include="Login\ResetController_iPhone.xib" />
     <InterfaceDefinition Include="Search\SearchScreen_iPad.xib" />
     <InterfaceDefinition Include="Search\SearchScreen_iPhone.xib" />
-    <InterfaceDefinition Include="Login\SignUpController.xib" />
     <InterfaceDefinition Include="Controllers\MainScreenController_iPad.xib" />
     <InterfaceDefinition Include="Controllers\MainScreenController_iPhone.xib" />
     <InterfaceDefinition Include="SearchResults\FlyoutController_iPad.xib" />
@@ -257,6 +260,10 @@
     <InterfaceDefinition Include="SearchResults\SearchResultController_iPhone.xib" />
     <InterfaceDefinition Include="SearchResults\SearchResultController_iPad.xib" />
     <InterfaceDefinition Include="SearchResults\ListingCell.xib" />
+    <InterfaceDefinition Include="Controllers\LoginViewController_iPhone.xib" />
+    <InterfaceDefinition Include="Controllers\LoginViewController_iPad.xib" />
+    <InterfaceDefinition Include="Controllers\SignupController_iPhone.xib" />
+    <InterfaceDefinition Include="Controllers\SignupController_iPad.xib" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -285,6 +292,10 @@
     </XamarinComponentReference>
     <XamarinComponentReference Include="simple-storage">
       <Version>1.2</Version>
+      <Visible>False</Visible>
+    </XamarinComponentReference>
+    <XamarinComponentReference Include="btprogresshud">
+      <Version>1.9</Version>
       <Visible>False</Visible>
     </XamarinComponentReference>
   </ItemGroup>

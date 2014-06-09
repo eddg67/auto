@@ -461,6 +461,7 @@ namespace Autolink
 				return screenShot;
 			}
 			catch(Exception ex) {
+				Console.WriteLine (ex.Message);
 				return null;
 			}
 		}

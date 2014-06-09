@@ -7,6 +7,8 @@ namespace AutoLink
 {
 	public partial class MainScreenController : UIViewController
 	{
+		AppDelegate app = (AppDelegate)UIApplication.SharedApplication.Delegate;
+
 		static bool UserInterfaceIdiomIsPhone {
 			get { return UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Phone; }
 		}
@@ -38,20 +40,12 @@ namespace AutoLink
 		{
 			//tutorial screen
 			this.btnLearnMore.TouchUpInside += (sender, e) => {
-				using (var screen = new SearchScreen()){
 
-					this.NavigationController.PushViewController (screen, true);
-
-				}
-
+				app.ShowSearch();
 			};
 			//go to login screen
 			this.btnGetStarted.TouchUpInside += (sender, e) => {
-
-				using (var screen = new LoginScreenController()){
-
-					this.NavigationController.PresentViewController(screen,true,null);
-				}
+				app.ShowLogin();
 								
 			};
 		}

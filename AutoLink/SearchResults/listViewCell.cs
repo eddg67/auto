@@ -31,7 +31,7 @@ namespace AutoLink
 
 		public void UpdateCell (Listing list,UITableView tableView, List<UIButton> rightsBtns, UIView leftView)
 		{
-			//ContentView.RemoveAllSubViews ();
+			ContentView.RemoveAllSubViews ();
 
 			DownloadImageAsync(list.images[0]).ContinueWith((task) => InvokeOnMainThread(() =>
 				{

@@ -29,10 +29,8 @@ namespace AutoLink
 	public partial class SWTableViewCell : UITableViewCell
 	{
 		public const float UtilityButtonsWidthMax = 260;
-		public const float UtilityButtonWidthDefault = 50;
+		public const float UtilityButtonWidthDefault = 90;
 		public const float SectionIndexWidth = 15;
-		public const float UtilityButtonHeightDefault = 200;
-
 
 
 		UITableView containingTableView;
@@ -328,16 +326,6 @@ namespace AutoLink
 			return buttonWidth;
 		}
 
-		float CalculateUtilityButtonHeight ()
-		{
-			float buttonWidth = SWTableViewCell.UtilityButtonWidthDefault;
-			if (buttonWidth * utilityButtons.Length > SWTableViewCell.UtilityButtonsWidthMax) {
-				float buffer = buttonWidth * utilityButtons.Length - SWTableViewCell.UtilityButtonsWidthMax;
-				buttonWidth -= buffer / utilityButtons.Length;
-			}
-			return buttonWidth;
-		}
-
 		public void PopulateUtilityButtons ()
 		{
 			for (int i = 0; i < utilityButtons.Length; i++) {
@@ -345,7 +333,7 @@ namespace AutoLink
 				float x = 0;
 				if (i >= 1)
 					x = utilityButtonWidth * i;
-				button.Frame = new RectangleF (0, x, utilityButtonWidth, Bounds.Height);//TODO: frame
+				button.Frame = new RectangleF (x, 0, utilityButtonWidth, Bounds.Height);//TODO: frame
 				button.Tag = i;
 				button.TouchDown += (object sender, EventArgs e) => this.parentCell.OnLeftUtilityButtonPressed((UIButton)sender);
 
@@ -369,5 +357,6 @@ namespace AutoLink
 
 		}
 	}
+
 }
 

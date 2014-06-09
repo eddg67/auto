@@ -12,7 +12,7 @@ namespace AutoLink
 	public partial class SearchScreen : UIViewController
 	{
 
-		//AppDelegate app = (AppDelegate)UIApplication.SharedApplication.Delegate;
+		AppDelegate app = (AppDelegate)UIApplication.SharedApplication.Delegate;
 		SearchForm form,form2,form3;
 		SearchRequest postData;
 		//UITextView title,header;
@@ -124,6 +124,7 @@ namespace AutoLink
 		{
 			if (items != null) {
 				//toolBar.SetItems (items,false);
+				this.NavigationController.NavigationBarHidden = true;
 				this.NavigationController.ToolbarHidden = false;
 				this.NavigationController.Toolbar.Layer.BorderWidth = 0f;
 				this.ToolbarItems = items;
@@ -188,8 +189,8 @@ namespace AutoLink
 						}
 							
 					}else{
-						this.NavigationController.ToolbarHidden = true;
-						this.NavigationController.PopViewControllerAnimated(true);
+						app.RootController.ToolbarHidden = true;
+						app.RootController.PopViewControllerAnimated(true);
 					}
 	
 				};
@@ -211,9 +212,7 @@ namespace AutoLink
 						Console.Write(postData);
 						form.PostSearch(postData);
 
-						using(var screen = new SearchResultController()){
-							NavigationController.PushViewController(screen,true);
-						}
+						app.ShowResultList();
 
 
 					}else{
@@ -227,8 +226,7 @@ namespace AutoLink
 							stepOn =1;
 						}
 					}
-
-
+						
 				};
 
 			}

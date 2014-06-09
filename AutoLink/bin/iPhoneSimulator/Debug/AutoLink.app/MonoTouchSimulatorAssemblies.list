@@ -6,6 +6,7 @@ System.Xml.dll
 SimpleStorage.iOS.dll
 MonoTouch.Dialog-1.dll
 System.Json.dll
+BTProgressHUD.dll
 MonoTouch.FacebookConnect.dll
 Google.Plus.dll
 System.Net.Http.dll

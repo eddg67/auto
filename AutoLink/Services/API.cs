@@ -118,9 +118,6 @@ namespace AutoLink.Services
 					content = req.BuildRequestBody (parameters);
 
 			}
-					
-			//var result = client.PostAsync (URL);
-			// Send the request to the server
 		
 			var result = await client.UploadStringTaskAsync(new Uri(URL), content);
 			return ParseJson<T> (result);
@@ -153,8 +150,6 @@ namespace AutoLink.Services
 				HandleError<T>(ex);
 			}
 		}
-
-
 
 
 		private APIResponse<T> ParseJson<T>(string jsonString)

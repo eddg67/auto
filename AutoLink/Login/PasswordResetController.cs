@@ -7,8 +7,7 @@ namespace AutoLink
 {
 	public partial class PasswordResetController : UIViewController
 	{
-		LoginScreenController loginScreen;
-		//AppDelegate app = (AppDelegate)UIApplication.SharedApplication.Delegate;
+		AppDelegate app = (AppDelegate)UIApplication.SharedApplication.Delegate;
 
 		static bool UserInterfaceIdiomIsPhone {
 			get { return UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Phone; }
@@ -17,7 +16,7 @@ namespace AutoLink
 		public PasswordResetController ()
 			: base (UserInterfaceIdiomIsPhone ? "PasswordResetController_iPhone" : "PasswordResetController_iPad", null)
 		{
-			loginScreen = new LoginScreenController ();
+			//loginScreen = new LoginScreenController ();
 		}
 
 		public override void DidReceiveMemoryWarning ()
@@ -38,13 +37,12 @@ namespace AutoLink
 
 			this.btnTryAgain.TouchUpInside += (sender, e) => {
 
-				this.PresentViewController(loginScreen,true,null);
+				app.ShowLogin();
 
 			};
 			//submit
 			this.btnResetPwd.TouchUpInside += (sender, e) => {
-				var screen = new ResetController();
-				this.PresentViewController(screen,false,null);
+				app.ShowReset();
 			};
 
 

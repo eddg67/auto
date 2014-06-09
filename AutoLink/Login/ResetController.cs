@@ -9,7 +9,7 @@ namespace AutoLink
 {
 	public partial class ResetController : UIViewController
 	{
-		//AppDelegate app = (AppDelegate)UIApplication.SharedApplication.Delegate;
+		AppDelegate app = (AppDelegate)UIApplication.SharedApplication.Delegate;
 
 		static bool UserInterfaceIdiomIsPhone {
 			get { return UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Phone; }
@@ -34,17 +34,12 @@ namespace AutoLink
 			base.ViewDidLoad ();
 			
 			// Perform any additional setup after loading the view, typically from a nib.
-
 			this.btnBackLogin.Layer.BorderWidth = 1.0f;
 			this.btnBackLogin.Layer.BorderColor = UIColor.White.CGColor;
-
-
 	
-
 			this.btnBackLogin.TouchUpInside += (sender, e) => {
+				app.ShowLogin();
 
-				var loginVC = new LoginScreenController();
-				this.PresentViewController(loginVC,true,null);
 			};
 
 

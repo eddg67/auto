@@ -204,34 +204,33 @@ namespace AutoLink.Services
 
 		}
 		//TODO Async
-		public SearchResult PostData(SearchRequest postData)
+		public Task<APIResponse<List<SearchResult>>> PostData(SearchRequest postData)
 		{
 
-			SearchResult result = new SearchResult();
-
-			APIResponse<SearchResult> response = api.CreateRequest<SearchResult>(
+			Task<APIResponse<List<SearchResult>>> response = api.CreateAsync<List<SearchResult>>(
 				@"search.update",
 				postData
 			);
 
-			if (response != null)
+			if (response.IsCompleted && response.Result != null)
 			{
-				if (response.error != null) 
+				if (response.Result.error != null) 
 				{
-					using(var alert = new UIAlertView("Make load error", 
-						string.Format("Please try again--{0}--Code:{1} ",
-							response.error.message,response.error.code),null,"OK",null))
+					using(var alert = new UIAlertView
+						("Make load error", 
+							string.Format("Please try again--{0}--Code:{1} ",
+								response.Result.error.message,
+								response.Result.error.code),
+							null,"OK",
+							null)
+					)
 					{
 						alert.Show ();
 					}
 					//we good TODO
-				}else if(response.Result != null){
-
-					result = response.Result;
-
 				}
 			}
-			return result;
+			return response;
 
 		}
 
