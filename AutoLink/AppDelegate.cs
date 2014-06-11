@@ -7,6 +7,8 @@ using MonoTouch.FacebookConnect;
 using AutoLink.Services;
 using AutoLink.Utilities;
 using BigTed;
+using AutoLink.Models;
+using MonoTouch.MessageUI;
 
 namespace AutoLink
 {
@@ -32,7 +34,9 @@ namespace AutoLink
 		public SignupController signup;
 		public SearchScreen search;
 		public ResetController reset;
+		public DetailViewController detail;
 
+		MFMailComposeViewController mailController;
 		public NetworkStatus noNetwork;
 		public LoginViewController login;
 
@@ -117,6 +121,47 @@ namespace AutoLink
 			RootController.ToolbarHidden = true;
 			RootController.PushViewController (search, true);
 
+		}
+
+		public void SendEmail(string email, string title)
+		{
+			mailController.SetToRecipients (new string[]{email});
+			mailController.SetSubject (title);
+			//_mailController.SetMessageBody ("this is a test", false);
+			mailController.Finished += ( object s, MFComposeResultEventArgs args) => {
+				Console.WriteLine (args.Result.ToString ());
+				args.Controller.DismissViewController (true, null);
+			};
+			var nav = new UINavigationController (mailController);
+			RootController.PresentViewController (nav, true, null);
+
+
+		}
+
+		public void SendPhone(string phone)
+		{
+			 phone = phone
+				.Replace("-",string.Empty)
+				.Replace("/(",string.Empty).Replace(")",string.Empty);
+
+			var urlToSend = new NSUrl ("tel:" +phone ); // phonenum is in the format 1231231234
+
+			if (UIApplication.SharedApplication.CanOpenUrl (urlToSend)) {
+				UIApplication.SharedApplication.OpenUrl(urlToSend);
+			} else {
+				// Url is not able to be opened.
+			}
+		}
+
+		public void ShowDetail(string searchID,Listing item)
+		{
+			detail = new DetailViewController ();
+			detail.searchID = searchID;
+			detail.SetItems (item);
+			RootController.NavigationBarHidden = false;
+			RootController.ToolbarHidden = false;
+		
+			RootController.PushViewController (detail, true);
 		}
 
 		public void ShowReset()

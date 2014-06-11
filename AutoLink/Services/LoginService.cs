@@ -209,12 +209,14 @@ namespace AutoLink.Services
 			{
 				if (response.error != null) 
 				{
+					storage.Delete ("token");
 					using(var alert = new UIAlertView("Login Failed", 
 						string.Format("Please try again--{0}--Code:{1} ",
 							response.error.message,response.error.code),null,"OK",null))
 					{
 						alert.Show ();
 					}
+
 					//we good
 				}else if(response.Result != null){
 					processResponse (response);

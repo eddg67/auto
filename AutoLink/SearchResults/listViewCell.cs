@@ -26,7 +26,6 @@ namespace AutoLink
 			ContentView.AutosizesSubviews = true;
 			UpdateCell (item, tableView, rightsBtns, leftView);
 
-
 		}
 
 		public void UpdateCell (Listing list,UITableView tableView, List<UIButton> rightsBtns, UIView leftView)
@@ -35,7 +34,6 @@ namespace AutoLink
 
 			DownloadImageAsync(list.images[0]).ContinueWith((task) => InvokeOnMainThread(() =>
 				{
-
 					//DetailTextLabel.Text = list.description;
 					if(!task.IsFaulted){
 						ImageView.Image = task.Result;

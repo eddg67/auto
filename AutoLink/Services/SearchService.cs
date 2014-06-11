@@ -364,14 +364,97 @@ namespace AutoLink.Services
 
 		public Task<APIResponse<Bin>> GetBins()
 		{
-		
 			return api.CreateAsync<Bin>(
 				@"bin.get",
 				new {}
 			);
+		}
+
+		public List<Listing> GetBinsListings(string binId,string[] except)
+		{
+			List<Listing> result = new List<Listing>();
+			except = (except == null) ? new string[] { } : except;
+
+			var response = api.CreateRequest<List<Listing>>(
+				@"bin.moreListings",
+				new {binId = binId,except= except}
+			);
+
+			if (response != null)
+			{
+				if (response.error != null) 
+				{
+					using(var alert = new UIAlertView("Make load error", 
+						string.Format("Please try again--{0}--Code:{1} ",
+							response.error.message,response.error.code),null,"OK",null))
+					{
+						alert.Show ();
+					}
+					//we good TODO
+				}else if(response.Result != null){
+
+					result = response.Result;
+
+				}
+			}
+			return result;
+		}
+
+		public Task<APIResponse<List<Listing>>> GetBinsListingAsync(string id,string[] except)
+		{
+
+			except = (except == null) ? new string[] { } : except;
+
+			Task<APIResponse<List<Listing>>> response = api.CreateAsync<List<Listing>>(
+				@"bin.moreListings",
+				new{ binId = id,except= except }
+			);
+
+			if (response.IsCompleted && response.Result != null)
+			{
+				if (response.Result.error != null) 
+				{
+					using(var alert = new UIAlertView
+						("Make load error", 
+							string.Format("Please try again--{0}--Code:{1} ",
+								response.Result.error.message,
+								response.Result.error.code),
+							null,"OK",
+							null)
+					)
+					{
+						alert.Show ();
+					}
+					//we good TODO
+				}
+			}
+			return response;
 
 		}
 
+		public Task<APIResponse<object>> StarListing(string id,string listingId)
+		{
+			return api.CreateAsync<object>(
+				@"search.starListings",
+				new { searchId = id,listingId= listingId }
+			);
+		}
+
+		public Task<APIResponse<object>> DeleteListing(string id,string listingId)
+		{
+			return api.CreateAsync<object>(
+				@"search.deleteListings",
+				new { searchId = id,listingId= listingId }
+			);
+		}
+
+		public Task<APIResponse<object>> DeleteBinListing(string id,string listingId)
+		{
+			return api.CreateAsync<object>(
+				@"bin.deleteListings",
+				new { binId = id,listingId= listingId }
+			);
+		}
 
 
 

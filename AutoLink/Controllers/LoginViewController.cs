@@ -95,6 +95,8 @@ namespace AutoLink
 						LoginSucceeded ();
 						BTProgressHUD.Dismiss ();
 						return;
+					}else{
+						BTProgressHUD.Dismiss ();
 					}
 
 				}else{

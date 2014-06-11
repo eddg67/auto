@@ -160,10 +160,6 @@
     <Compile Include="Utilities\ImageDownloader.cs" />
     <Compile Include="Utilities\ThrottledHttp.cs" />
     <Compile Include="Services\LoginService.cs" />
-    <Compile Include="Controllers\DetailViewController.cs" />
-    <Compile Include="Controllers\DetailViewController.designer.cs">
-      <DependentUpon>DetailViewController.cs</DependentUpon>
-    </Compile>
     <Compile Include="Controllers\MasterViewController.cs" />
     <Compile Include="Controllers\MasterViewController.designer.cs">
       <DependentUpon>MasterViewController.cs</DependentUpon>
@@ -240,6 +236,11 @@
       <DependentUpon>SignupController.cs</DependentUpon>
     </Compile>
     <Compile Include="Utilities\ScrollExtensions.cs" />
+    <Compile Include="Views\Detail.cs" />
+    <Compile Include="Controllers\DetailViewController.cs" />
+    <Compile Include="Controllers\DetailViewController.designer.cs">
+      <DependentUpon>DetailViewController.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="MainStoryboard_iPhone.storyboard" />
@@ -264,6 +265,8 @@
     <InterfaceDefinition Include="Controllers\LoginViewController_iPad.xib" />
     <InterfaceDefinition Include="Controllers\SignupController_iPhone.xib" />
     <InterfaceDefinition Include="Controllers\SignupController_iPad.xib" />
+    <InterfaceDefinition Include="Controllers\DetailViewController_iPhone.xib" />
+    <InterfaceDefinition Include="Controllers\DetailViewController_iPad.xib" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -276,6 +279,7 @@
     <Folder Include="Login\" />
     <Folder Include="Search\" />
     <Folder Include="SearchResults\" />
+    <Folder Include="Views\" />
   </ItemGroup>
   <ItemGroup>
     <XamarinComponentReference Include="googleplusandplayios">

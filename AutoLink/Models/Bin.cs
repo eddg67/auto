@@ -8,7 +8,7 @@ namespace AutoLink.Models
 		public BinItems contacted;
 		public BinItems @new;
 		public BinItems seen;
-		public BinItems stared;
+		public BinItems starred;
 		public string[] custom;
 	}
 

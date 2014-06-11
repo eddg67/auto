@@ -8,6 +8,7 @@ using AutoLink.Services;
 using AutoLink.Models;
 using System.Collections.Generic;
 using MonoTouch.Dialog;
+using BigTed;
 
 namespace AutoLink
 {
@@ -42,9 +43,10 @@ namespace AutoLink
 		{
 			base.ViewDidLoad ();
 
-			View.AddOverlay(UIScreen.MainScreen.Bounds);
-
+			//BTProgressHUD.Show ("Searching in...");
 			results = service.GetResults ();
+
+			NavigationController.NavigationBar.BackgroundColor = UIColor.Black;
 
 			//var names = results
 
@@ -56,13 +58,12 @@ namespace AutoLink
 			this.AddChildViewController (binsController);
 
 
-
-
 			binsController.NavigationRoot = new RootElement ("Live Searches");
 			binsController.NavigationRoot.Add (GetSearchSection ());
 
 			var name = results.Select (x => x.name).ToArray ();
 			var searchIds = results.Select (x => x.id).ToArray ();
+
 			/*var res = results.Where (x => x.newListingsCount > 0)
 				.Select (y => y.id).ToArray();*/
 
@@ -74,17 +75,29 @@ namespace AutoLink
 				return nav;
 			});
 
-
-
 			service.GetBins ().ContinueWith((task) => InvokeOnMainThread(() =>
 				{
 					bins = task.Result.Result;
 					binsController.NavigationRoot.Add (UpdateBins(bins));
-					View.RemoveOverlay();
+
+					var vc = binsController.ViewControllers;
+
+					var vcArr = new UIViewController [] {
+						new UINavigationController ( new Bins (binsController,"Starred",bins.starred.id,true)),
+						new UINavigationController ( new Bins (binsController,"New",bins.@new.id,true)),
+						new UINavigationController ( new Bins (binsController,"Contacted",bins.contacted.id,true )),
+						new UINavigationController (new Bins (binsController,"Deleted",bins.deleted.id,true))
+
+						//new UINavigationController ( new Bins (binsController,"Seen",bins.seen.id,true))
+					};
+
+					var tmp = vc.Concat(vcArr).ToArray();				
+
+					binsController.ViewControllers = tmp;
+						
+				
 				}));
-
-
-			
+					
 			// Perform any additional setusp after loading the view, typically from a nib.
 		}
 
@@ -109,8 +122,6 @@ namespace AutoLink
 
 						Console.Write(x);
 						binsController.Title = x;
-						//navigation.
-						//binsController.ModalInPopover = true;
 
 					});
 
@@ -131,9 +142,12 @@ namespace AutoLink
 
 			var stared = new StyledStringElement (
 				             "Starred",
-				             (bin.stared != null) ? bin.stared.count.ToString () : "0",
+				(bin.starred != null) ? bin.starred.count.ToString () : "0",
 				UITableViewCellStyle.Value1
 			);
+
+			stared.Accessory = UITableViewCellAccessory.DisclosureIndicator;
+			stared.Tapped += () => {binsController.Title =  "Starred";};
 
 			var allNew = new StyledStringElement (
 				"All New",
@@ -141,17 +155,26 @@ namespace AutoLink
 				UITableViewCellStyle.Value1
 			);
 
+			allNew.Tapped += () => {binsController.Title =  "New";};
+			allNew.Accessory = UITableViewCellAccessory.DisclosureIndicator;
+
 			var contacted = new StyledStringElement (
 				"Contacted",
 				(bin.contacted != null)?bin.contacted.count.ToString():"0",
 				UITableViewCellStyle.Value1
 			);
 
+			contacted.Tapped += () => {binsController.Title =  "Contacted";};
+			contacted.Accessory = UITableViewCellAccessory.DisclosureIndicator;
+
 			var deleted = new StyledStringElement (
 				"Deleted Listing",
 				(bin.deleted != null)?bin.deleted.count.ToString():"0",
 				UITableViewCellStyle.Value1
 			);
+
+			deleted.Tapped += () => {binsController.Title =  "Deleted Listings";};
+			deleted.Accessory = UITableViewCellAccessory.DisclosureIndicator;
 
 			return new Section (header, null) {
 				stared,allNew,contacted,deleted
@@ -162,17 +185,20 @@ namespace AutoLink
 
 		class Bins : listViewController
 		{
-			public Bins (FlyoutController navigation, string title,string list): base (list)
+			public Bins (FlyoutController navigation, string title,string list, bool bin=false): base (list,bin)
 			{
 
 				UIBarButtonItem btn = new UIBarButtonItem (UIBarButtonSystemItem.Edit, delegate {
 					navigation.ToggleMenu ();
 				});
 				this.Title = title;	
+
 				NavigationItem.RightBarButtonItem = btn;
 				NavigationItem.LeftBarButtonItem = new UIBarButtonItem (UIBarButtonSystemItem.Action, delegate {
 					navigation.ToggleMenu ();
 				});
+				//navigation.NavigationController
+				navigation.NavigationController.NavigationBar.BackgroundColor = UIColor.Black;
 			}
 		}
 	}

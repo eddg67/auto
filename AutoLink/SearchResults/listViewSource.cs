@@ -15,35 +15,40 @@ namespace AutoLink
 
 		public List<Listing> items;
 		public ListResult listResults;
-		public string searchID;
+		public string searchID,binID;
 		AppDelegate app = (AppDelegate)UIApplication.SharedApplication.Delegate;
 		SearchService service; 
 		bool updating = false;
 		int startCount = 0;
 
+		public DetailViewController DetailViewController {
+			get;
+			set;
+		}
 
-		public listViewSource (string id)
+		public listViewSource (string id,string binId = "")
 		{
 	
 			service = app.searchService;
 			searchID = id;
-		
-			listResults = service.GetListings (id); 
-			items = listResults.listings;
+			binID = binId;
 
-			if (items == null) {
-				using (var alert = new UIAlertView ("Listing Fetch Failure", "Listing Service not Responding, Please try again.", null, "OK", null)) {
-					alert.Show ();
-				}
-				listResults = service.GetListings (id); 
-				items = listResults.listings;
+
+			if (!string.IsNullOrEmpty (binId)) {
+
+				items = service.GetBinsListings (binId, null);
+
 			} else {
-				startCount = items.Count;
+
+				listResults = service.GetListings (id);
+				items = listResults.listings;
 			}
+		
 
+			if (items != null) {
+				startCount = items.Count;
+			} 
 
-			//ount = listResults.Count;
-			//Head
 		}
 
 		public override int NumberOfSections (UITableView tableView)
@@ -63,16 +68,23 @@ namespace AutoLink
 		{
 			//add edits
 			var leftView = new UILabel () {
-				Frame = new RectangleF (0, 0, SWTableViewCell.UtilityButtonsWidthMax, tableView.RowHeight/2),
+				Frame = new RectangleF (0, 0, 50, tableView.RowHeight/2),
 				BackgroundColor = UIColor.Red,
-				Text = "Peekaboo!",
+				Text = "Delete Listing!",
 				TextColor = UIColor.White,
 				TextAlignment = UITextAlignment.Center
 			};
 
 			var buttons = new List<UIButton> ();
 			//buttons.AddUtilityButton ("More", UIColor.LightGray);
-			buttons.AddUtilityButton ("Edit", UIColor.Blue);
+			buttons.AddUtilityButton ("Star", UIColor.Blue);
+
+
+
+			buttons[0].TouchUpInside += (object sender, EventArgs e) => {
+
+				service.StarListing(searchID,items[indexPath.Row]._id);
+			};
 
 			tableView.RowHeight = GetHeightForRow(tableView, indexPath);
 
@@ -84,7 +96,7 @@ namespace AutoLink
 			} else {
 				cell.UpdateCell (items [indexPath.Row],tableView,buttons,leftView );
 			}
-
+				
 			cell.SizeToFit ();
 
 			if (indexPath.Row + 10 > items.Count && !updating && startCount >= 20) {
@@ -117,6 +129,9 @@ namespace AutoLink
 			var cell = GetCell (tableView, indexPath);
 			cell.SetEditing(true,true);
 			tableView.DeselectRow (indexPath, true); // iOS convention is to remove the highlight
+
+
+			app.ShowDetail (searchID,items [indexPath.Row]);
 		}
 
 		void OnScrolling (object sender, ScrollingEventArgs e)
@@ -150,17 +165,33 @@ namespace AutoLink
 		void UpdateItems(UITableView tableView)
 		{
 			var list = items.Select (x => x._id).ToArray ();
-			service.GetListingsAsync (searchID, list).ContinueWith((task) => InvokeOnMainThread(() =>
-				{
+
+			if (string.IsNullOrEmpty (binID)) {
+
+				service.GetListingsAsync (searchID, list).ContinueWith ((task) => InvokeOnMainThread (() => {
 
 					listResults = task.Result.Result;
-					items.AddRange(listResults.listings);
+					items.AddRange (listResults.listings);
 				
 					updating = false;
 					tableView.ReloadData ();
 
 			
 				}));
+
+			} else {
+		
+				service.GetBinsListingAsync (binID, list).ContinueWith ((task) => InvokeOnMainThread (() => {
+
+					var tmp = task.Result.Result;
+					items.AddRange (tmp);
+
+					updating = false;
+					tableView.ReloadData ();
+
+
+				}));
+			}
 		}
 
 

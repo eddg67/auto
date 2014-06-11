@@ -11,11 +11,20 @@ namespace AutoLink
 	public class listViewController : UITableViewController
 	{
 		public string searchId  { get; set; }
-		public listViewController (string id) : base (UITableViewStyle.Grouped)
+		public bool useBinId  { get; set; }
+
+		public DetailViewController DetailViewController {
+			get;
+			set;
+		}
+
+		public listViewController (string id,bool bin) : base (UITableViewStyle.Grouped)
 		{
 			searchId = id;
+			useBinId = bin;
 			TableView.TableHeaderView = null;
 			TableView.SeparatorInset = new UIEdgeInsets (0, 0, 0, 0);
+			//TableView.ContentInset = new UIEdgeInsets (0, 5, 0, 5); 
 
 		}
 
@@ -31,9 +40,14 @@ namespace AutoLink
 		{
 			base.ViewDidLoad ();
 			TableView.RowHeight = 0;
+			//this.NavigationController.NavigationBarHidden = true;
+			//TableView.ScrollEnabled = false; 
 			// Register the TableView's data source
-			TableView.Source = new listViewSource (searchId);
-
+			if (useBinId) {
+				TableView.Source = new listViewSource ("",searchId);
+			} else {
+				TableView.Source = new listViewSource (searchId);
+			}
 
 			UISwipeGestureRecognizer swipeGestureRecognizerRight = new UISwipeGestureRecognizer(HandleSwipeRight);
 			swipeGestureRecognizerRight.Direction = UISwipeGestureRecognizerDirection.Right;

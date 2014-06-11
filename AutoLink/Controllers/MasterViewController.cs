@@ -136,8 +136,8 @@ namespace AutoLink
 			*/
 			public override void RowSelected (UITableView tableView, NSIndexPath indexPath)
 			{
-				if (UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Pad)
-					controller.DetailViewController.SetDetailItem (objects [indexPath.Row]);
+				//if (UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Pad)
+					//controller.DetailViewController.SetDetailItem (objects [indexPath.Row]);
 			}
 		}
 
@@ -147,7 +147,7 @@ namespace AutoLink
 				var indexPath = TableView.IndexPathForSelectedRow;
 				var item = dataSource.Objects [indexPath.Row];
 
-				((DetailViewController)segue.DestinationViewController).SetDetailItem (item);
+				//((DetailViewController)segue.DestinationViewController).SetDetailItem (item);
 			}
 		}
 	}
