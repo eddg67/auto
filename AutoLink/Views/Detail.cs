@@ -26,7 +26,7 @@ namespace AutoLink
 			searchID = id;
 		}
 
-		public void setItems(Listing list){
+		public void setItem(Listing list){
 			item = list;
 
 			DownloadImageAsync (item.images [0]).ContinueWith ((task) => InvokeOnMainThread (() => {
@@ -34,8 +34,7 @@ namespace AutoLink
 				if (!task.IsFaulted) {
 
 					var img = task.Result;
-
-
+				
 					ImageView = new UIImageView(img);
 
 					ImageView.Frame = new RectangleF(0, 0 , Bounds.Width, 300f);
@@ -85,12 +84,13 @@ namespace AutoLink
 					Add(mileage);
 					Add(source);
 					Add(desc);
+
 				}
 
 
 			}));
 		}
-
+	
 		public async Task<UIImage> DownloadImageAsync(string imageUrl)
 		{
 			var httpClient = new HttpClient();

@@ -1,19 +1,27 @@
 ﻿<Properties GitUserInfo="UsingGIT">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.IPhoneRetina4.7.1" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="AutoLink/Controllers/DetailViewController.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.IPhoneRetina4_64.7.1" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="AutoLink/SearchResults/listViewSource.cs">
     <Files>
-      <File FileName="AutoLink/AppDelegate.cs" Line="130" Column="3" />
-      <File FileName="AutoLink/SearchResults/listViewSource.cs" Line="134" Column="1" />
-      <File FileName="AutoLink/SearchResults/listViewController.cs" Line="41" Column="24" />
-      <File FileName="AutoLink/Services/API.cs" Line="1" Column="1" />
-      <File FileName="AutoLink/Main.cs" Line="1" Column="1" />
-      <File FileName="AutoLink/SearchResults/SWTableViewCell.cs" Line="169" Column="1" />
-      <File FileName="AutoLink/Views/Detail.cs" Line="17" Column="40" />
-      <File FileName="AutoLink/Controllers/DetailViewController.cs" Line="73" Column="5" />
-      <File FileName="AutoLink/SearchResults/listViewCell.cs" Line="40" Column="7" />
-      <File FileName="AutoLink/Services/SearchService.cs" Line="435" Column="60" />
-      <File FileName="AutoLink/SearchResults/SearchResultController.cs" Line="125" Column="7" />
+      <File FileName="AutoLink/SearchResults/listViewCell.cs" Line="121" Column="74" />
+      <File FileName="AutoLink/Views/CellView.cs" Line="24" Column="25" />
+      <File FileName="AutoLink/Controllers/DetailViewController.cs" Line="176" Column="61" />
+      <File FileName="AutoLink/SearchResults/listViewSource.cs" Line="115" Column="15" />
     </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State expanded="True">
+          <Node name="AutoLink" expanded="True">
+            <Node name="ComponentReferenceFolder" expanded="True" />
+            <Node name="Controllers" expanded="True" />
+            <Node name="SearchResults" expanded="True">
+              <Node name="listViewSource.cs" selected="True" />
+            </Node>
+            <Node name="Services" expanded="True" />
+            <Node name="Views" expanded="True" />
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
@@ -27,13 +35,13 @@
       <Breakpoint file="/Users/en-ed/Downloads/xamarin-store-app-master/XamarinStore.iOS/ViewControllers/LoginViewController.cs" line="64" column="1" />
       <Breakpoint file="/Users/en-ed/Downloads/xamarin-store-app-master/XamarinStore.iOS/ViewControllers/LoginViewController.cs" line="57" column="1" />
       <Breakpoint file="/Users/en-ed/Downloads/xamarin-store-app-master/XamarinStore.iOS/ViewControllers/LoginViewController.cs" line="74" column="1" />
-      <Breakpoint file="/Users/en-ed/Projects/AutoLink/AutoLink/Services/LoginService.cs" line="178" column="1" />
-      <Breakpoint file="/Users/en-ed/Projects/AutoLink/AutoLink/SearchResults/SWTableViewCell.cs" line="169" column="1" />
       <Breakpoint file="/Users/en-ed/Projects/AutoLink/AutoLink/Services/SearchService.cs" line="437" column="1" />
       <Breakpoint file="/Users/en-ed/Projects/AutoLink/AutoLink/SearchResults/SWTableViewCell.cs" line="172" column="1" />
       <Breakpoint file="/Users/en-ed/Projects/AutoLink/AutoLink/Services/API.cs" line="126" column="1" />
       <Breakpoint file="/Users/en-ed/Projects/AutoLink/AutoLink/Services/API.cs" line="183" column="1" />
-      <Breakpoint file="/Users/en-ed/Projects/AutoLink/AutoLink/Controllers/DetailViewController.cs" line="101" column="1" />
+      <Breakpoint file="/Users/en-ed/Projects/AutoLink/AutoLink/Controllers/DetailViewController.cs" line="200" column="1" />
+      <Breakpoint file="/Users/en-ed/Projects/AutoLink/AutoLink/Services/LoginService.cs" line="172" column="1" />
+      <Breakpoint file="/Users/en-ed/Projects/AutoLink/AutoLink/Controllers/DetailViewController.cs" line="136" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />

@@ -90,8 +90,8 @@ namespace Autolink
 					return;
 				hideShadow = value;
 				if (hideShadow) {
-					if (mainView != null)
-						View.InsertSubviewBelow (shadowView, mainView);
+					if (currentView != null)
+						View.InsertSubviewBelow (shadowView, currentView);
 				} else {
 					shadowView.RemoveFromSuperview ();
 				}
@@ -104,10 +104,10 @@ namespace Autolink
 			get { return shadowView.BackgroundColor; }
 			set { shadowView.BackgroundColor = value; }
 		}
-
+		//Visibly controller 
 		public UIViewController CurrentViewController { get; private set; }
 
-		UIView mainView
+		UIView currentView
 		{
 			get
 			{
@@ -145,9 +145,9 @@ namespace Autolink
 		{
 			get {
 				if (Position == FlyOutNavigationPosition.Left) {
-					return mainView.Frame.X == menuWidth;
+					return currentView.Frame.X == menuWidth;
 				} else {
-					return mainView.Frame.X == -menuWidth;
+					return currentView.Frame.X == -menuWidth;
 				}
 			}
 			set
@@ -201,7 +201,7 @@ namespace Autolink
 			RectangleF navFrame = navigation.View.Frame;
 			navFrame.Width = menuWidth;
 			if (Position == FlyOutNavigationPosition.Right)
-				navFrame.X = mainView.Frame.Width - menuWidth;
+				navFrame.X = currentView.Frame.Width - menuWidth;
 			navigation.View.Frame = navFrame;
 			View.AddSubview(navigation.View);
 			//SearchBar = new UISearchBar(new RectangleF(0, 0, navigation.TableView.Bounds.Width, 44))
@@ -250,19 +250,19 @@ namespace Autolink
 			//this.statusbar
 			navFrame.Width = menuWidth;
 			if (Position == FlyOutNavigationPosition.Right)
-				navFrame.X = mainView.Frame.Width - menuWidth;
+				navFrame.X = currentView.Frame.Width - menuWidth;
 			if (navigation.View.Frame != navFrame)
 				navigation.View.Frame = navFrame;
 		}
 
 		public void DragContentView(UIPanGestureRecognizer panGesture)
 		{
-			if (ShouldStayOpen || mainView == null)
+			if (ShouldStayOpen || currentView == null)
 				return;
 			if (!HideShadow)
-				View.InsertSubviewBelow(shadowView, mainView);
+				View.InsertSubviewBelow(shadowView, currentView);
 			navigation.View.Hidden = false;
-			RectangleF frame = mainView.Frame;
+			RectangleF frame = currentView.Frame;
 			shadowView.Frame = frame;
 			float translation = panGesture.TranslationInView(View).X;
 			if (panGesture.State == UIGestureRecognizerState.Began)
@@ -309,13 +309,15 @@ namespace Autolink
 			RectangleF navFrame = navigation.View.Frame;
 			navFrame.Width = menuWidth;
 			if (Position == FlyOutNavigationPosition.Right)
-				navFrame.X = mainView.Frame.Width - menuWidth;
+				navFrame.X = currentView.Frame.Width - menuWidth;
 			navFrame.Location = PointF.Empty;
 			navigation.View.Frame = navFrame;
 			View.BackgroundColor = NavigationTableView.BackgroundColor;
-			var frame = mainView.Frame;
-			setViewSize ();
-			SetLocation (frame);
+			if (currentView != null) {
+				var frame = currentView.Frame;
+				setViewSize ();
+				SetLocation (frame);
+			}
 			base.ViewWillAppear(animated);
 		}
 
@@ -344,9 +346,9 @@ namespace Autolink
 				UIApplication.SharedApplication.SetStatusBarHidden(false,UIStatusBarAnimation.Fade);
 
 			bool isOpen = false;
-			if (mainView != null)
+			if (currentView != null)
 			{
-				mainView.RemoveFromSuperview();
+				currentView.RemoveFromSuperview();
 				isOpen = IsOpen;
 			}
 			CurrentViewController = ViewControllers[SelectedIndex];
@@ -356,7 +358,7 @@ namespace Autolink
 
 			setViewSize();
 			SetLocation(frame);
-			View.AddSubview(mainView);
+			View.AddSubview(currentView);
 			AddChildViewController(CurrentViewController);
 			if (!ShouldStayOpen)
 				HideMenu();
@@ -364,38 +366,38 @@ namespace Autolink
 				SelectedIndexChanged();
 		}
 
-		//bool isOpen {get{ return mainView.Frame.X == menuWidth; }}
+		//bool isOpen {get{ return currentView.Frame.X == menuWidth; }}
 
 		public void ShowMenu()
 		{
-			if (mainView == null)
+			if (currentView == null)
 				return;
 			EnsureInvokedOnMainThread(delegate
 				{
 					//navigation.ReloadData ();
 					//isOpen = true;
 					navigation.View.Hidden = false;
-					closeButton.Frame = mainView.Frame;
-					shadowView.Frame = mainView.Frame;
+					closeButton.Frame = currentView.Frame;
+					shadowView.Frame = currentView.Frame;
 					var statusFrame = statusImage.Frame;
-					statusFrame.X = mainView.Frame.X;
+					statusFrame.X = currentView.Frame.X;
 					statusImage.Frame = statusFrame;
 					if (!ShouldStayOpen)
 						View.AddSubview(closeButton);
 					if (!HideShadow)
-						View.InsertSubviewBelow (shadowView, mainView);
+						View.InsertSubviewBelow (shadowView, currentView);
 					UIView.BeginAnimations("slideMenu");
 					UIView.SetAnimationCurve(UIViewAnimationCurve.EaseIn);
 					//UIView.SetAnimationDuration(2);
 					setViewSize();
-					RectangleF frame = mainView.Frame;
+					RectangleF frame = currentView.Frame;
 					frame.X = Position == FlyOutNavigationPosition.Left ? menuWidth : -menuWidth;
 					SetLocation(frame);
 					setViewSize();
-					frame = mainView.Frame;
+					frame = currentView.Frame;
 					shadowView.Frame = frame;
 					closeButton.Frame = frame;
-					statusFrame.X = mainView.Frame.X;
+					statusFrame.X = currentView.Frame.X;
 					statusFrame.Height = 100f;
 					statusImage.Frame = statusFrame;
 
@@ -413,28 +415,28 @@ namespace Autolink
 			//frame.Location = PointF.Empty;
 			if (ShouldStayOpen)
 				frame.Width -= menuWidth;
-			if (mainView.Bounds == frame)
+			if (currentView.Bounds == frame)
 				return;
-			mainView.Bounds = frame;
+			currentView.Bounds = frame;
 		}
 
 		void SetLocation(RectangleF frame)
 		{
-			mainView.Layer.AnchorPoint = new PointF(.5f, .5f);
+			currentView.Layer.AnchorPoint = new PointF(.5f, .5f);
 			frame.Y = 0;
-			if (mainView.Frame.Location == frame.Location)
+			if (currentView.Frame.Location == frame.Location)
 				return;
-			frame.Size = mainView.Frame.Size;
+			frame.Size = currentView.Frame.Size;
 			var center = new PointF(frame.Left + frame.Width/2,
 				frame.Top + frame.Height/2);
-			mainView.Center = center;
+			currentView.Center = center;
 			shadowView.Center = center;
 
 			if (Math.Abs(frame.X - 0) > float.Epsilon)
 			{
 				getStatus();
 				var statusFrame = statusImage.Frame;
-				statusFrame.X = mainView.Frame.X;
+				statusFrame.X = currentView.Frame.X;
 				statusImage.Frame = statusFrame;
 			}
 		}
@@ -475,7 +477,7 @@ namespace Autolink
 
 		public void HideMenu()
 		{
-			if (mainView == null || mainView.Frame.X == 0)
+			if (currentView == null || currentView.Frame.X == 0)
 				return;
 
 			EnsureInvokedOnMainThread(delegate
@@ -483,9 +485,9 @@ namespace Autolink
 					//isOpen = false;
 					navigation.FinishSearch();
 					closeButton.RemoveFromSuperview();
-					shadowView.Frame = mainView.Frame;
+					shadowView.Frame = currentView.Frame;
 					var statusFrame = statusImage.Frame;
-					statusFrame.X = mainView.Frame.X;
+					statusFrame.X = currentView.Frame.X;
 					statusImage.Frame = statusFrame;
 					//UIView.AnimationWillEnd += hideComplete;
 					UIView.Animate(.2,	() =>

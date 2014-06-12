@@ -40,8 +40,6 @@ namespace AutoLink
 		{
 			base.ViewDidLoad ();
 			TableView.RowHeight = 0;
-			//this.NavigationController.NavigationBarHidden = true;
-			//TableView.ScrollEnabled = false; 
 			// Register the TableView's data source
 			if (useBinId) {
 				TableView.Source = new listViewSource ("",searchId);

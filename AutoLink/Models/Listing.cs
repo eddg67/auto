@@ -3,8 +3,14 @@ using System.Collections.Generic;
 
 namespace AutoLink.Models
 {
+	public enum ListType{
+		Bin,
+		Listings,
+		Custom
+	};
 	public class Listing
 	{
+		public ListType listType;
 		public string _id;
 		public DateTime ? created;
 		public string id;

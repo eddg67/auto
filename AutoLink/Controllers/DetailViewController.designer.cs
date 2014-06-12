@@ -15,9 +15,6 @@ namespace AutoLink
 		[GeneratedCodeAttribute ("iOS Designer", "1.0")]
 		MonoTouch.UIKit.UILabel detailDescriptionLabel { get; set; }
 
-		[Outlet]
-		[GeneratedCodeAttribute ("iOS Designer", "1.0")]
-		MonoTouch.UIKit.UIToolbar toolbar { get; set; }
 
 		void ReleaseDesignerOutlets ()
 		{

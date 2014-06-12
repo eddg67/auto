@@ -440,6 +440,22 @@ namespace AutoLink.Services
 			);
 		}
 
+		public Task<APIResponse<object>> DeleteItem(string id,Listing item)
+		{
+			if (item.listType == ListType.Listings) {
+
+				return DeleteListing( id, item._id );
+
+			} else if (item.listType == ListType.Bin) 
+			{
+				return DeleteBinListing( id, item._id );
+			} 
+
+			return null;
+
+
+		}
+
 		public Task<APIResponse<object>> DeleteListing(string id,string listingId)
 		{
 			return api.CreateAsync<object>(

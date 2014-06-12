@@ -69,7 +69,7 @@ namespace AutoLink
 
 			RootController = new UINavigationController ();
 
-			//TODO make pass thru for logged in users
+			//Pass Thru TO list if logged in
 			if (loginService.IsLoggedIn()) {
 				ShowResultList ();
 			} else {
@@ -135,7 +135,11 @@ namespace AutoLink
 			var nav = new UINavigationController (mailController);
 			RootController.PresentViewController (nav, true, null);
 
+		}
 
+		public void OpenUrl(string url){
+
+			UIApplication.SharedApplication.OpenUrl (new NSUrl (url));
 		}
 
 		public void SendPhone(string phone)

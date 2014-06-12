@@ -13,7 +13,7 @@ namespace AutoLink
 		AppDelegate app = (AppDelegate)UIApplication.SharedApplication.Delegate;
 		LoginService loginService;
 		Validator validate;
-		UIView ContentView;
+		//UIView ContentView;
 		public event Action LoginSucceeded = delegate {};
 
 		static bool UserInterfaceIdiomIsPhone {
@@ -94,7 +94,7 @@ namespace AutoLink
 						//success
 						LoginSucceeded ();
 						BTProgressHUD.Dismiss ();
-						return;
+					
 					}else{
 						BTProgressHUD.Dismiss ();
 					}

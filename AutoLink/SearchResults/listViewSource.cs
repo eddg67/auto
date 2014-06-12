@@ -66,30 +66,43 @@ namespace AutoLink
 
 		public override UITableViewCell GetCell (UITableView tableView, NSIndexPath indexPath)
 		{
+			var cell = tableView.DequeueReusableCell (listViewCell.Key) as listViewCell;
+			//set the type
+			items [indexPath.Row].listType = (!string.IsNullOrEmpty (binID)) ? ListType.Bin : ListType.Listings;
 			//add edits
 			var leftView = new UILabel () {
-				Frame = new RectangleF (0, 0, 50, tableView.RowHeight/2),
+				Frame = new RectangleF (0, 0, 75, tableView.RowHeight/2),
 				BackgroundColor = UIColor.Red,
-				Text = "Delete Listing!",
+				Text = "Delete!",
 				TextColor = UIColor.White,
-				TextAlignment = UITextAlignment.Center
+				TextAlignment = UITextAlignment.Left
 			};
+			UITapGestureRecognizer labelTap = new UITapGestureRecognizer(() => {
+				service.DeleteItem(searchID,items [indexPath.Row]);
+				CommitEditingStyle(tableView,UITableViewCellEditingStyle.Delete,indexPath:indexPath);
+
+			});
+
+			leftView.UserInteractionEnabled = true;
+			leftView.AddGestureRecognizer(labelTap);
+
 
 			var buttons = new List<UIButton> ();
 			//buttons.AddUtilityButton ("More", UIColor.LightGray);
 			buttons.AddUtilityButton ("Star", UIColor.Blue);
 
-
-
 			buttons[0].TouchUpInside += (object sender, EventArgs e) => {
 
-				service.StarListing(searchID,items[indexPath.Row]._id);
+				service.StarListing(searchID,items[indexPath.Row]._id).ContinueWith((task) => InvokeOnMainThread(() =>
+					{
+
+						new UIAlertView("Result Starred","Result Starred",null,"OK","").Show();
+				
+					}));
 			};
+				
 
 			tableView.RowHeight = GetHeightForRow(tableView, indexPath);
-
-			//var cell = new listViewCell (items [indexPath.Row],tableView,buttons,leftView );
-			var cell = tableView.DequeueReusableCell (listViewCell.Key) as listViewCell;
 
 			if (cell == null) {
 				cell = new listViewCell (items [indexPath.Row],tableView,buttons,leftView );
@@ -98,6 +111,7 @@ namespace AutoLink
 			}
 				
 			cell.SizeToFit ();
+			cell.IndentationLevel = 10;
 
 			if (indexPath.Row + 10 > items.Count && !updating && startCount >= 20) {
 				updating = true;
@@ -119,17 +133,46 @@ namespace AutoLink
 		{
 			return 0.0f;
 		}
+		public override bool CanEditRow (UITableView tableView, NSIndexPath indexPath)
+		{
+			return true; // return false if you wish to disable editing for a specific indexPath or for all rows
+		}
+		public override bool CanMoveRow (UITableView tableView, NSIndexPath indexPath)
+		{
+			return false; // return false if you don't allow re-ordering
+		}
+
+		public override void CommitEditingStyle (UITableView tableView, UITableViewCellEditingStyle editingStyle, MonoTouch.Foundation.NSIndexPath indexPath)
+		{
+			switch (editingStyle) {
+			case UITableViewCellEditingStyle.Delete:
+				tableView.BeginUpdates ();
+				// remove the item from the underlying data source
+				items.RemoveAt(indexPath.Row);
+				// delete the row from the table
+				tableView.DeleteRows (new NSIndexPath[] { indexPath }, UITableViewRowAnimation.Fade);
+				tableView.ReloadData ();
+				tableView.EndUpdates ();
+				break;
+			case UITableViewCellEditingStyle.None:
+				Console.WriteLine ("CommitEditingStyle:None called");
+				break;
+			}
+		}
+	
+		public override string TitleForDeleteConfirmation (UITableView tableView, NSIndexPath indexPath)
+		{   // Optional - default text is 'Delete'
+			return "Trash (" + items[indexPath.Row].title + ")";
+		}
 
 
 
 		//when click row on ListView
 		public override void RowSelected (UITableView tableView, NSIndexPath indexPath)
 		{
-			new UIAlertView("Row Selected", indexPath.Row.ToString(), null, "OK", null).Show();
 			var cell = GetCell (tableView, indexPath);
 			cell.SetEditing(true,true);
-			tableView.DeselectRow (indexPath, true); // iOS convention is to remove the highlight
-
+			tableView.DeselectRow (indexPath, true); 
 
 			app.ShowDetail (searchID,items [indexPath.Row]);
 		}
@@ -161,6 +204,8 @@ namespace AutoLink
 				new UIAlertView("Pressed", "You pressed the more button!", null, null, new[] {"OK"}).Show();
 			}
 		}
+
+
 
 		void UpdateItems(UITableView tableView)
 		{

@@ -237,10 +237,11 @@
     </Compile>
     <Compile Include="Utilities\ScrollExtensions.cs" />
     <Compile Include="Views\Detail.cs" />
-    <Compile Include="Controllers\DetailViewController.cs" />
     <Compile Include="Controllers\DetailViewController.designer.cs">
       <DependentUpon>DetailViewController.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\DetailViewController.cs" />
+    <Compile Include="Views\CellView.cs" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="MainStoryboard_iPhone.storyboard" />

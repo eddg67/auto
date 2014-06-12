@@ -48,8 +48,6 @@ namespace AutoLink
 
 			NavigationController.NavigationBar.BackgroundColor = UIColor.Black;
 
-			//var names = results
-
 			binsController = new FlyoutController ();
 
 			binsController.Position = FlyOutNavigationPosition.Left;
@@ -70,6 +68,7 @@ namespace AutoLink
 			int count = 0;
 			binsController.ViewControllers = Array.ConvertAll (name, title =>{
 				var nav = new UINavigationController (new Bins (binsController, title,searchIds[count]));
+				nav.NavigationBarHidden = false;
 				count++;
 
 				return nav;
@@ -101,29 +100,36 @@ namespace AutoLink
 			// Perform any additional setusp after loading the view, typically from a nib.
 		}
 
+		public override void LoadView ()
+		{
+			base.LoadView ();
+			BTProgressHUD.Dismiss ();
+
+		}
+
 		private Section GetSearchSection()
 		{
-			var header = new UIView (new RectangleF (0, 0, this.View.Bounds.Width, 60)) {
+			var header = new UILabel (new RectangleF (0, 0, this.View.Bounds.Width, 60)) {
 				BackgroundColor = UIColor.LightGray,
-				ClipsToBounds = true
-			};
-
-			header.Add (new UILabel (new RectangleF (0, 10, this.View.Bounds.Width, 60)){ 
 				ClipsToBounds = true,
 				Text = "Live Searches"
+			};
 
-			});
+			//var name = results.Select (x => x.name).ToArray ();
 
-			var name = results.Select (x => x.name).ToArray ();
 			var vals = new Section (header, null);
-			vals.AddAll (name.Select 
+			vals.AddAll (results.Select 
 				(x => {
-					return new StyledStringElement (x,  delegate() {
+					var str = new StyledStringElement (
+						x.name,
+						x.newListingsCount.ToString(),
+						UITableViewCellStyle.Value1
+					);
+	
+					str.Accessory = UITableViewCellAccessory.DisclosureIndicator;
+					str.Tapped += () => {binsController.Title = x.name;};
 
-						Console.Write(x);
-						binsController.Title = x;
-
-					});
+					return str;
 
 				})
 			);
@@ -147,6 +153,10 @@ namespace AutoLink
 			);
 
 			stared.Accessory = UITableViewCellAccessory.DisclosureIndicator;
+			using (var fav = new UITabBarItem (UITabBarSystemItem.Favorites, 1)) {
+				stared.Image = fav.SelectedImage;
+			}
+
 			stared.Tapped += () => {binsController.Title =  "Starred";};
 
 			var allNew = new StyledStringElement (
@@ -158,6 +168,10 @@ namespace AutoLink
 			allNew.Tapped += () => {binsController.Title =  "New";};
 			allNew.Accessory = UITableViewCellAccessory.DisclosureIndicator;
 
+			using (var fav = new UITabBarItem (UITabBarSystemItem.MostRecent, 1)) {
+				allNew.Image = fav.SelectedImage;
+			}
+
 			var contacted = new StyledStringElement (
 				"Contacted",
 				(bin.contacted != null)?bin.contacted.count.ToString():"0",
@@ -167,6 +181,10 @@ namespace AutoLink
 			contacted.Tapped += () => {binsController.Title =  "Contacted";};
 			contacted.Accessory = UITableViewCellAccessory.DisclosureIndicator;
 
+			using (var fav = new UITabBarItem (UITabBarSystemItem.Recents, 1)) {
+				contacted.Image = fav.SelectedImage;
+			}
+
 			var deleted = new StyledStringElement (
 				"Deleted Listing",
 				(bin.deleted != null)?bin.deleted.count.ToString():"0",
@@ -175,6 +193,10 @@ namespace AutoLink
 
 			deleted.Tapped += () => {binsController.Title =  "Deleted Listings";};
 			deleted.Accessory = UITableViewCellAccessory.DisclosureIndicator;
+
+			using (var fav = new UITabBarItem (UITabBarSystemItem.History, 1)) {
+				deleted.Image = fav.Image;
+			}
 
 			return new Section (header, null) {
 				stared,allNew,contacted,deleted
@@ -187,18 +209,21 @@ namespace AutoLink
 		{
 			public Bins (FlyoutController navigation, string title,string list, bool bin=false): base (list,bin)
 			{
-
-				UIBarButtonItem btn = new UIBarButtonItem (UIBarButtonSystemItem.Edit, delegate {
-					navigation.ToggleMenu ();
-				});
+				var fav = new UITabBarItem(UITabBarSystemItem.Contacts,1);
+				var img = fav.SelectedImage;
 				this.Title = title;	
 
-				NavigationItem.RightBarButtonItem = btn;
+				NavigationItem.RightBarButtonItem = new UIBarButtonItem (fav.SelectedImage,UIBarButtonItemStyle.Plain, delegate {
+					using(var app = (AppDelegate)UIApplication.SharedApplication.Delegate){
+						app.ShowSearch();
+					}
+				});
 				NavigationItem.LeftBarButtonItem = new UIBarButtonItem (UIBarButtonSystemItem.Action, delegate {
 					navigation.ToggleMenu ();
 				});
+
 				//navigation.NavigationController
-				navigation.NavigationController.NavigationBar.BackgroundColor = UIColor.Black;
+				//navigation.NavigationController.NavigationBar.BackgroundColor = UIColor.Black;
 			}
 		}
 	}

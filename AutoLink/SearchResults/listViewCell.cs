@@ -76,6 +76,8 @@ namespace AutoLink
 					source.TextAlignment = UITextAlignment.Left;
 					source.Text = string.Empty;
 					source.Text = string.Format("Source : {0}",list.source);
+
+
 				
 					//dialog = GetDialog(list);
 					ContentView.Add(make);
@@ -83,6 +85,7 @@ namespace AutoLink
 					ContentView.Add(mileage);
 					ContentView.Add(source);
 					ContentView.Add(desc);
+					ContentView.Add(GetToolBar());
 				}));
 		}
 		public override void LayoutSubviews ()
@@ -112,6 +115,39 @@ namespace AutoLink
 
 			return UIImage.LoadFromData(NSData.FromArray(contents));
 		}
+
+		UIToolbar GetToolBar()
+		{
+			var tool = new UIToolbar (new RectangleF (0 , ContentView.Frame.Height - 35 , ContentView.Frame.Width, 35));  
+			//tool.TintColor = UIColor.Clear;
+			//tool.Layer.BorderWidth = 0;
+
+
+
+			var location = new UIBarButtonItem (UIBarButtonSystemItem.Action);
+
+
+			var timeSpan = new UIBarButtonItem (UIBarButtonSystemItem.Organize);
+		
+
+			var price = new UIBarButtonItem (UIBarButtonSystemItem.Stop);
+
+		
+			var bbs = new UIBarButtonItem[] {
+				location,
+				new UIBarButtonItem(UIBarButtonSystemItem.FlexibleSpace),
+
+				timeSpan,
+				new UIBarButtonItem(UIBarButtonSystemItem.FlexibleSpace),
+
+				price
+
+			};
+
+			tool.SetItems (bbs, true);
+
+			return tool;
+		}
 			
 
 
@@ -139,7 +175,7 @@ namespace AutoLink
 				BackgroundColor = UIColor.DarkGray
 			}, false);
 
-			var desc = new MultilineElement ("", item.description);
+			//var desc = new MultilineElement ("", item.description);
 
 
 			//svar carImg = new UIViewElement ("",img,false);
