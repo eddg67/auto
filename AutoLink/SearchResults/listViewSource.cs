@@ -20,6 +20,7 @@ namespace AutoLink
 		SearchService service; 
 		bool updating = false;
 		int startCount = 0;
+		bool moreResults = true;
 
 		public DetailViewController DetailViewController {
 			get;
@@ -28,7 +29,7 @@ namespace AutoLink
 
 		public listViewSource (string id,string binId = "")
 		{
-	
+			//this.W
 			service = app.searchService;
 			searchID = id;
 			binID = binId;
@@ -66,7 +67,7 @@ namespace AutoLink
 
 		public override UITableViewCell GetCell (UITableView tableView, NSIndexPath indexPath)
 		{
-			var cell = tableView.DequeueReusableCell (listViewCell.Key) as listViewCell;
+
 			//set the type
 			items [indexPath.Row].listType = (!string.IsNullOrEmpty (binID)) ? ListType.Bin : ListType.Listings;
 			//add edits
@@ -79,7 +80,7 @@ namespace AutoLink
 			};
 			UITapGestureRecognizer labelTap = new UITapGestureRecognizer(() => {
 				service.DeleteItem(searchID,items [indexPath.Row]);
-				CommitEditingStyle(tableView,UITableViewCellEditingStyle.Delete,indexPath:indexPath);
+				CommitEditingStyle(tableView,UITableViewCellEditingStyle.Delete,indexPath);
 
 			});
 
@@ -91,36 +92,44 @@ namespace AutoLink
 			//buttons.AddUtilityButton ("More", UIColor.LightGray);
 			buttons.AddUtilityButton ("Star", UIColor.Blue);
 
-			buttons[0].TouchUpInside += (object sender, EventArgs e) => {
-
-				service.StarListing(searchID,items[indexPath.Row]._id).ContinueWith((task) => InvokeOnMainThread(() =>
-					{
-
-						new UIAlertView("Result Starred","Result Starred",null,"OK","").Show();
-				
-					}));
-			};
-				
-
 			tableView.RowHeight = GetHeightForRow(tableView, indexPath);
+			var cell = tableView.DequeueReusableCell (listViewCell.Key) as listViewCell;
 
 			if (cell == null) {
 				cell = new listViewCell (items [indexPath.Row],tableView,buttons,leftView );
 			} else {
-				cell.UpdateCell (items [indexPath.Row],tableView,buttons,leftView );
+				cell.UpdateCell (items [indexPath.Row], tableView, buttons, leftView,indexPath);
 			}
-				
-			cell.SizeToFit ();
-			cell.IndentationLevel = 10;
 
-			if (indexPath.Row + 10 > items.Count && !updating && startCount >= 20) {
+			buttons[0].TouchUpInside += (object sender, EventArgs e) => {
+				service.StarListing(searchID,items[indexPath.Row]._id).ContinueWith((task) => InvokeOnMainThread(() =>
+					{
+						new UIAlertView("Result Starred","Result Starred",null,"OK",null).Show();
+						cell.HideSwipedContent(true);
+					}));
+			};
+				
+			//reload
+			if (indexPath.Section + 1 == NumberOfSections (tableView) 
+				&& RowsInSection (tableView, indexPath.Section) == indexPath.Row + 1
+				&& !updating
+				&& startCount >= 20
+				&& items.Count > 0
+				&& moreResults) 
+			{
+
 				updating = true;
 				UpdateItems (tableView);
-			
 			}
+
+			cell.Tag = indexPath.Row;
+			cell.SizeToFit ();
+			cell.IndentationLevel = 10; 
 
 			return cell;
 		}
+
+
 			
 
 		public override float GetHeightForRow(UITableView tableView, NSIndexPath indexPath)
@@ -149,7 +158,7 @@ namespace AutoLink
 				tableView.BeginUpdates ();
 				// remove the item from the underlying data source
 				items.RemoveAt(indexPath.Row);
-				// delete the row from the table
+				// delete the row from the tabsle
 				tableView.DeleteRows (new NSIndexPath[] { indexPath }, UITableViewRowAnimation.Fade);
 				tableView.ReloadData ();
 				tableView.EndUpdates ();
@@ -175,10 +184,14 @@ namespace AutoLink
 			tableView.DeselectRow (indexPath, true); 
 
 			app.ShowDetail (searchID,items [indexPath.Row]);
+
 		}
+
+
 
 		void OnScrolling (object sender, ScrollingEventArgs e)
 		{
+
 			//uncomment to close any other cells that are open when another cell is swiped
 			/*
 				if (e.CellState != SWCellState.Center) {
@@ -214,12 +227,22 @@ namespace AutoLink
 			if (string.IsNullOrEmpty (binID)) {
 
 				service.GetListingsAsync (searchID, list).ContinueWith ((task) => InvokeOnMainThread (() => {
+					//tableView.BeginUpdates();
+					if(!task.IsFaulted){
+						listResults = task.Result.Result;
+						var newRes = listResults.listings;
+						if(newRes.Count > 0){
+							items.AddRange (listResults.listings);
+						
+							updating = false;
+							tableView.ReloadData ();
 
-					listResults = task.Result.Result;
-					items.AddRange (listResults.listings);
-				
-					updating = false;
-					tableView.ReloadData ();
+						}else{
+							moreResults = false;
+						}
+					}
+					//tableView.EndUpdates();
+					
 
 			
 				}));
@@ -227,12 +250,19 @@ namespace AutoLink
 			} else {
 		
 				service.GetBinsListingAsync (binID, list).ContinueWith ((task) => InvokeOnMainThread (() => {
+					//dont change more results flag to retry BANG BANG BITCH
+					if(!task.IsFaulted){
+						var tmp = task.Result.Result;
+						if(tmp.Count > 0){
+							items.AddRange (tmp);
 
-					var tmp = task.Result.Result;
-					items.AddRange (tmp);
+							updating = false;
+							tableView.ReloadData ();
 
-					updating = false;
-					tableView.ReloadData ();
+						}else{
+							moreResults = false;
+						}
+					}
 
 
 				}));

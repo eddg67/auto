@@ -16,7 +16,8 @@ namespace AutoLink.Services
 
 		public SearchService ()
 		{
-			api = new API ();
+			AppDelegate app = (AppDelegate)UIApplication.SharedApplication.Delegate;
+			api = app.webService;
 			storage = SimpleStorage.EditGroup ("SearchService");
 		}
 			
@@ -201,7 +202,6 @@ namespace AutoLink.Services
 				}
 			}
 			return result;
-
 		}
 		//TODO Async
 		public Task<APIResponse<List<SearchResult>>> PostData(SearchRequest postData)

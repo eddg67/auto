@@ -53,6 +53,36 @@ namespace AutoLink.Utilities
 			return result;
 		}
 
+		public bool isEmail(string item)
+		{
+			bool result = false;
+			string strIn;
+
+			if (!string.IsNullOrEmpty(item)) 
+			{
+				try {
+					strIn = Regex.Replace(item, @"(@)(.+)$", this.DomainMapper,
+						RegexOptions.None, TimeSpan.FromMilliseconds(200));
+				}
+				catch (RegexMatchTimeoutException) {
+					return false;
+				}
+
+				try {
+					result = Regex.IsMatch(strIn,
+						@"^(?("")("".+?(?<!\\)""@)|(([0-9a-z]((\.(?!\.))|[-!#\$%&'\*\+/=\?\^`\{\}\|~\w])*)(?<=[0-9a-z])@))" +
+						@"(?(\[)(\[(\d{1,3}\.){3}\d{1,3}\])|(([0-9a-z][-\w]*[0-9a-z]*\.)+[a-z0-9][\-a-z0-9]{0,22}[a-z0-9]))$",
+						RegexOptions.IgnoreCase, TimeSpan.FromMilliseconds(250));
+				}
+				catch (RegexMatchTimeoutException) {
+					return false;
+				}
+
+			}
+
+			return result;
+		}
+
 
 		private string DomainMapper(Match match)
 		{

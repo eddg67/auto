@@ -8,17 +8,18 @@ using System.Drawing;
 
 namespace AutoLink
 {
-	public class Detail : UIScrollView
+	public class Detail : UIView
 	{
 		public Listing item { get; set; }
 		public UIImageView ImageView { get; set; }
 		UILabel price,desc,make,mileage,source;
 		string searchID { get; set; }
+		AppDelegate app = (AppDelegate)UIApplication.SharedApplication.Delegate;
 
 		public Detail (RectangleF frame) : base (frame)
 		{
 
-			ScrollEnabled = true; 
+	
 
 		}
 
@@ -29,13 +30,22 @@ namespace AutoLink
 		public void setItem(Listing list){
 			item = list;
 
-			DownloadImageAsync (item.images [0]).ContinueWith ((task) => InvokeOnMainThread (() => {
+			this.DownloadImageAsync (item.images [0]).ContinueWith ((task) => InvokeOnMainThread (() => {
 				//DetailTextLabel.Text = list.description;
 				if (!task.IsFaulted) {
 
 					var img = task.Result;
-				
-					ImageView = new UIImageView(img);
+					var imgClick = new UIImageViewClickable();
+					imgClick.Image = img;
+					ImageView = imgClick;
+						//ImageView.Image = img;
+
+					imgClick.OnClick += () => {
+					
+						app.ShowImageController(item);
+					
+					};
+
 
 					ImageView.Frame = new RectangleF(0, 0 , Bounds.Width, 300f);
 
@@ -91,7 +101,7 @@ namespace AutoLink
 			}));
 		}
 	
-		public async Task<UIImage> DownloadImageAsync(string imageUrl)
+		/*public async Task<UIImage> DownloadImageAsync(string imageUrl)
 		{
 			var httpClient = new HttpClient();
 
@@ -100,7 +110,7 @@ namespace AutoLink
 			var contents = await contentsTask;
 
 			return UIImage.LoadFromData(NSData.FromArray(contents));
-		}
+		}*/
 	}
 }
 

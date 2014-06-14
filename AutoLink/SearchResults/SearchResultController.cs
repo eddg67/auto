@@ -77,22 +77,24 @@ namespace AutoLink
 			service.GetBins ().ContinueWith((task) => InvokeOnMainThread(() =>
 				{
 					bins = task.Result.Result;
-					binsController.NavigationRoot.Add (UpdateBins(bins));
+					if(bins != null){
+						app.setUpLocalNotifications(bins.@new.count);
+						binsController.NavigationRoot.Add (UpdateBins(bins));
 
-					var vc = binsController.ViewControllers;
+						var vc = binsController.ViewControllers;
 
-					var vcArr = new UIViewController [] {
-						new UINavigationController ( new Bins (binsController,"Starred",bins.starred.id,true)),
-						new UINavigationController ( new Bins (binsController,"New",bins.@new.id,true)),
-						new UINavigationController ( new Bins (binsController,"Contacted",bins.contacted.id,true )),
-						new UINavigationController (new Bins (binsController,"Deleted",bins.deleted.id,true))
+						var vcArr = new UIViewController [] {
+							new UINavigationController ( new Bins (binsController,"Starred",bins.starred.id,true)),
+							new UINavigationController ( new Bins (binsController,"New",bins.@new.id,true)),
+							new UINavigationController ( new Bins (binsController,"Contacted",bins.contacted.id,true )),
+							new UINavigationController (new Bins (binsController,"Deleted",bins.deleted.id,true))
 
-						//new UINavigationController ( new Bins (binsController,"Seen",bins.seen.id,true))
-					};
+							//new UINavigationController ( new Bins (binsController,"Seen",bins.seen.id,true))
+						};
 
-					var tmp = vc.Concat(vcArr).ToArray();				
-
-					binsController.ViewControllers = tmp;
+						var tmp = vc.Concat(vcArr).ToArray();			
+						binsController.ViewControllers = tmp;
+					}
 						
 				
 				}));

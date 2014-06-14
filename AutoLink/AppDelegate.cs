@@ -25,6 +25,7 @@ namespace AutoLink
 		}
 
 		public LoginService loginService;
+		public API webService;
 		public UINavigationController RootController;
 		public Validator validator;
 		public PasswordResetController forgot;
@@ -35,8 +36,9 @@ namespace AutoLink
 		public SearchScreen search;
 		public ResetController reset;
 		public DetailViewController detail;
+		public ImageViewerViewController imageController;
 
-		MFMailComposeViewController mailController;
+		MFMailComposeViewController mailController = new MFMailComposeViewController();
 		public NetworkStatus noNetwork;
 		public LoginViewController login;
 
@@ -125,21 +127,45 @@ namespace AutoLink
 
 		public void SendEmail(string email, string title)
 		{
-			mailController.SetToRecipients (new string[]{email});
-			mailController.SetSubject (title);
-			//_mailController.SetMessageBody ("this is a test", false);
-			mailController.Finished += ( object s, MFComposeResultEventArgs args) => {
-				Console.WriteLine (args.Result.ToString ());
-				args.Controller.DismissViewController (true, null);
-			};
-			var nav = new UINavigationController (mailController);
-			RootController.PresentViewController (nav, true, null);
+			if (MFMailComposeViewController.CanSendMail) {
+				try {
+					if (validator.isEmail (email)) {
+						mailController.SetToRecipients (new string[]{ email });
+					
+					
+					mailController.SetSubject (title);
+					}
+					//_mailController.SetMessageBody ("this is a test", false);
+					mailController.Finished += ( object s, MFComposeResultEventArgs args) => {
+						Console.WriteLine (args.Result.ToString ());
+						RootController.NavigationBarHidden = false;
+						RootController.ToolbarHidden = false;
+						args.Controller.DismissViewController (true, null);
+					};
+					RootController.PresentViewController(mailController, true, null);
+
+				} catch (Exception exp) {
+					Console.WriteLine (exp.Message);
+
+				}
+			}
+
 
 		}
 
 		public void OpenUrl(string url){
 
 			UIApplication.SharedApplication.OpenUrl (new NSUrl (url));
+		}
+
+		public void ShowImageController(Listing item)
+		{
+			imageController = new ImageViewerViewController (item);
+		
+			RootController.NavigationBarHidden = true;
+			RootController.ToolbarHidden = false;
+
+			RootController.PushViewController (imageController, true);
 		}
 
 		public void SendPhone(string phone)
@@ -205,6 +231,14 @@ namespace AutoLink
 			RootController.ToolbarHidden = true;
 			RootController.PushViewController (searchResult, true);
 
+		}
+
+		public void setUpLocalNotifications(int count){
+
+			UILocalNotification notification = new UILocalNotification();
+			notification.FireDate = DateTime.Now.AddMinutes(1);
+			notification.ApplicationIconBadgeNumber = count;
+			UIApplication.SharedApplication.ScheduleLocalNotification(notification);
 		}
 
 
@@ -273,10 +307,14 @@ namespace AutoLink
 
 		private void loadServices()
 		{
+			//must load API first since other services use
+			webService = new API ();
 			loginService = new LoginService ();
 			validator = new Validator ();
 			searchService = new SearchService ();
+
 		}
+			
 			
 
 		#endregion

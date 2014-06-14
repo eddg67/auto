@@ -35,7 +35,7 @@ namespace AutoLink.Services
 		{
 			APIResponse<T> result=null;
 			try{
-		
+				Console.WriteLine(method);
 			this.request = (HttpWebRequest)HttpWebRequest.Create(URL);
 			this.request.ContentType = "application/json";
 			this.request.Timeout =TimeOutFlag;
@@ -63,8 +63,9 @@ namespace AutoLink.Services
 			using (HttpWebResponse resp = request.GetResponse() as HttpWebResponse)
 			{
 				if (resp.StatusCode == HttpStatusCode.OK) {
-					Token = resp.Headers[1];
-					storage.Put ("token", Token);
+					
+					CheckToken(resp.Headers[1]);
+					
 					using (StreamReader reader = new StreamReader (resp.GetResponseStream ())) {
 						var content = reader.ReadToEnd ();
 						if (string.IsNullOrWhiteSpace (content)) {
@@ -77,7 +78,6 @@ namespace AutoLink.Services
 							Console.Out.WriteLine ("Response Body: \r\n {0}", content);
 								result = ParseJson<T> (content);
 						}
-
 
 					}
 				} else {
@@ -171,15 +171,14 @@ namespace AutoLink.Services
 						});
 
 				}else if(obj["error"] != null){
+					Console.Write (jsonString);
 					result.error = JsonConvert.DeserializeObject<Error>(obj["error"].ToString());
 				}
-
-				if(obj["error"] != null){
-				}
-
+					
 			}
 			catch (Exception ex)
 			{
+				Console.Write (jsonString);
 				HandleError<T>(ex);
 
 			}
@@ -200,6 +199,15 @@ namespace AutoLink.Services
 			};
 
 			return result;
+		}
+
+		void CheckToken(string token)
+		{
+			if (Token == null) {
+				Token = storage.Get ("token") ?? token;
+				Console.Write (Token);
+				//storage.Put ("token", Token);
+			}
 		}
 			
 	}

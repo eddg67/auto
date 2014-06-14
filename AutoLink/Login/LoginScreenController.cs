@@ -18,7 +18,7 @@ namespace AutoLink
 		AppDelegate app = (AppDelegate)UIApplication.SharedApplication.Delegate;
 		LoginService loginService;
 		Validator validate;
-		UIView ContentView;
+		//UIView ContentView;
 		public event Action LoginSucceeded = delegate {};
 	
 
@@ -95,7 +95,7 @@ namespace AutoLink
 					//loading screen
 					BTProgressHUD.Show ("Logging in...");
 
-					if(loginService.login("",txtEmail.Text,txtPassword.Text))
+					if(loginService.login(txtEmail.Text,txtPassword.Text))
 					{
 						//success
 						LoginSucceeded ();

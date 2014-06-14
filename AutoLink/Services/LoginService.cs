@@ -41,8 +41,9 @@ namespace AutoLink.Services
 
 		public LoginService ()
 		{
+			AppDelegate app = (AppDelegate)UIApplication.SharedApplication.Delegate;
 			InitSocialLogin();
-			api = new API ();
+			api = app.webService;
 			storage = SimpleStorage.EditGroup("login");
 			AccessToken = storage.Get ("token");
 
@@ -197,12 +198,12 @@ namespace AutoLink.Services
 		}
 
 
-		public bool login(string name,string email,string password)
+		public bool login(string email,string password)
 		{
 			bool result = false;
 			APIResponse<LoginResult> response = api.CreateRequest<LoginResult>(
 				"account.login",
-				new {name=name,email=email,password=password}
+				new {email=email,password=password}
 			);
 		
 			if (response != null)

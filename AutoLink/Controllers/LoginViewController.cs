@@ -89,7 +89,7 @@ namespace AutoLink
 					//loading screen
 					BTProgressHUD.Show ("Logging in...");
 
-					if(loginService.login("",txtEmail.Text,txtPassword.Text))
+					if(loginService.login(txtEmail.Text,txtPassword.Text))
 					{
 						//success
 						LoginSucceeded ();

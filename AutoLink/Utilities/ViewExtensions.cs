@@ -2,6 +2,8 @@
 using MonoTouch.UIKit;
 using MonoTouch.Foundation;
 using System.Drawing;
+using System.Threading.Tasks;
+using System.Net.Http;
 
 namespace AutoLink
 {
@@ -185,6 +187,19 @@ namespace AutoLink
 			if (overlayView != null) {
 				overlayView.Hide ();
 			}
+		}
+
+
+
+		public static async Task<UIImage> DownloadImageAsync(this UIView view,string imageUrl)
+		{
+			var httpClient = new HttpClient();
+
+			Task <Byte[]> contentsTask = httpClient.GetByteArrayAsync(imageUrl);
+
+			var contents = await contentsTask;
+
+			return UIImage.LoadFromData(NSData.FromArray(contents));
 		}
 
 

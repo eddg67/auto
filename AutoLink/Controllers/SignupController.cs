@@ -253,8 +253,9 @@ namespace AutoLink
 
 		private void KeyBoardUpNotification(NSNotification notification) {
 
-			// get the keyboard size
-			RectangleF r = UIKeyboard.BoundsFromNotification (notification); //THIS METHOD IS DEPRECATED SO I'M GETTING A RECTANGLE WITH EVERYTHING SET TO 0
+			//get size of keyboard
+			var val = new NSValue(notification.UserInfo.ValueForKey(UIKeyboard.FrameBeginUserInfoKey).Handle);
+			RectangleF r = val.RectangleFValue;
 
 			// Find what opened the keyboard
 			foreach (UIView view in this.View.Subviews) {

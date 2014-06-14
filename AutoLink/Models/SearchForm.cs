@@ -5,6 +5,7 @@ using MonoTouch.UIKit;
 using System.Collections.Generic;
 using System.Drawing;
 using AutoLink.Services;
+using BigTed;
 
 
 namespace AutoLink.Models
@@ -241,7 +242,12 @@ namespace AutoLink.Models
 
 		public void PostSearch(SearchRequest req)
 		{
-			service.PostData (req);
+			BTProgressHUD.Show ("Search Millions of Records...");
+			service.PostData (req).ContinueWith((task) => InvokeOnMainThread(() =>
+				{
+					BTProgressHUD.Dismiss ();
+				}
+			));
 		}
 
 
@@ -494,7 +500,7 @@ namespace AutoLink.Models
 					"Seller", 
 					el, 
 					new List<string> () 
-					{"All Sellers","Cars.com","Craiglist","Craiglist","Ebay","Hemmings","Oodle"}
+					{"All Sellers","Cars.com","Craiglist","Ebay","Hemmings","Oodle"}
 				);
 
 			};
@@ -579,9 +585,6 @@ namespace AutoLink.Models
 			//returns selected value 
 			model.PickerChanged += (object sender, EventArgs e) => {
 				var eve = (PickerChangedEventArgs)e;
-				Console.WriteLine(eve.SelectedItem);
-				Console.WriteLine(actionSheet.Id);
-			
 				if(eve.SelectedItem != null){
 					UpdateValueOnSelect(eve.SelectedItem.ToString());
 				}

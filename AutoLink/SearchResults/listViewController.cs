@@ -51,6 +51,7 @@ namespace AutoLink
 			swipeGestureRecognizerRight.Direction = UISwipeGestureRecognizerDirection.Right;
 			this.View.AddGestureRecognizer(swipeGestureRecognizerRight);
 		}
+			
 
 		private void HandleSwipeRight()
 		{

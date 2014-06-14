@@ -4,9 +4,17 @@
 <dict>
 	<key>files</key>
 	<dict>
+		<key>Alliance.Carousel.dll</key>
+		<data>
+		aAQZhjaKaOcR8+rqGrqkwm6pPnI=
+		</data>
 		<key>AutoLink.exe</key>
 		<data>
-		2xD9t+1aBWVIBdBfF+OpvB1MjeU=
+		EcuVpVKtMRImsRlJ1TF47Nz5jFE=
+		</data>
+		<key>BTProgressHUD.dll</key>
+		<data>
+		8seJIIdfpD5qkDHNpbgC8eaYhL0=
 		</data>
 		<key>ClanBol.TTF</key>
 		<data>
@@ -23,6 +31,14 @@
 		<key>Default@2x.png</key>
 		<data>
 		Ij06oz3f5sANTvWNpZSlp5ZCNb4=
+		</data>
+		<key>DetailViewController_iPad.nib</key>
+		<data>
+		ODe6pVyx18Gxr0XJV+iJDuYRJ/M=
+		</data>
+		<key>DetailViewController_iPhone.nib</key>
+		<data>
+		O0d97aHFzOqlsMyGx3USrjVZ890=
 		</data>
 		<key>FF Clan-Bold</key>
 		<data>
@@ -54,7 +70,7 @@
 		</data>
 		<key>Google.Plus.dll</key>
 		<data>
-		85ShhaC3EGlBemcljJk2NP2tMEw=
+		UgNIdbhSNxFDylKF+xNjQYZClnU=
 		</data>
 		<key>GooglePlus.bundle/GooglePlus</key>
 		<data>
@@ -496,6 +512,14 @@
 		<data>
 		EGOeNU0IHS8lM3RDh23mduxlvvc=
 		</data>
+		<key>ImageViewerViewController_iPad.nib</key>
+		<data>
+		KDGqwZDfGtvmdTPSdjuEUGXjKWU=
+		</data>
+		<key>ImageViewerViewController_iPhone.nib</key>
+		<data>
+		UQ1yGJ/gjs3TBLj0KSMllgESjzY=
+		</data>
 		<key>InnerCell.nib</key>
 		<data>
 		UIlCmL13mOoJyvBapEd3a6i1XuY=
@@ -511,6 +535,14 @@
 		<key>LoginScreenController_iPhone.nib</key>
 		<data>
 		QZ7ZxNUndko+jyJepxPmPXAazkc=
+		</data>
+		<key>LoginViewController_iPad.nib</key>
+		<data>
+		T8VP9y7sckritgZiSQllVQkvnHg=
+		</data>
+		<key>LoginViewController_iPhone.nib</key>
+		<data>
+		zP7D2fUwnBlLWOQ0iE5aERyGU4Y=
 		</data>
 		<key>MainScreenController_iPad.nib</key>
 		<data>
@@ -550,11 +582,11 @@
 		</data>
 		<key>MonoTouch.Dialog-1.dll</key>
 		<data>
-		tP89+ESiW0Y0be4ttGidUUemxoY=
+		LBJGIOUhhkaGTrvKYWj8BqMSiYQ=
 		</data>
 		<key>MonoTouch.FacebookConnect.dll</key>
 		<data>
-		CCb2QsTx+lgU8KXXz3qT5zCFxX0=
+		VA+ig1kgKoYn8/XNK5ljJGYUgDg=
 		</data>
 		<key>NOTICE</key>
 		<data>
@@ -562,7 +594,7 @@
 		</data>
 		<key>Newtonsoft.Json.dll</key>
 		<data>
-		GegHOFvH8mo9W/eU7oTEESVPluY=
+		lL07nbwAWdPbwmoT2XGzCXS8ewI=
 		</data>
 		<key>PasswordResetController_iPad.nib</key>
 		<data>
@@ -1284,41 +1316,65 @@
 		<data>
 		dMZSqeWiLcv9Ey9k2Zi1qxid+5U=
 		</data>
+		<key>SignupController_iPad.nib</key>
+		<data>
+		UxoNj8ZPhv80fZPKLj7Ol4Z5zW8=
+		</data>
+		<key>SignupController_iPhone.nib</key>
+		<data>
+		SQQKLoun702CPopcGxWCw+QSVzk=
+		</data>
 		<key>SimpleStorage.iOS.dll</key>
 		<data>
-		Ji32yuyfCxN3rmp5AETDUCVAGzI=
+		Xx0xJoiD1M8VzgotEl6sDhAoMto=
 		</data>
 		<key>System.Core.dll</key>
 		<data>
-		CdMRUNaVJv3L7ztA8Gr9GqH1K7o=
+		WOLFwZh9ccd6tgSUV3Q8Ocm5Uuo=
 		</data>
 		<key>System.Json.dll</key>
 		<data>
-		OZGj7fAoo367GWSNAaLDGFDZTXQ=
+		8ikl4i6btKT43JzRSroTTaj5P8c=
 		</data>
 		<key>System.Net.Http.dll</key>
 		<data>
-		gIbNE3j5bGA8mbuYeDpl2p9h3IA=
+		dwIF5HroUU1IuIqto6znn5MQe6M=
 		</data>
 		<key>System.Runtime.Serialization.dll</key>
 		<data>
-		2RAw15EvFnLQmXfElOscy6CYgVs=
+		Hi7ozi6a50vB4RkuN29qpXHOAQc=
 		</data>
 		<key>System.dll</key>
 		<data>
-		oBSQ7ze1vw2nCeVPkZAwQntgDCw=
+		UgHrAgw3Of3CbnJLhtRH3gzZXHg=
 		</data>
 		<key>embedded.mobileprovision</key>
 		<data>
 		Nm6apl6kYOCLBSoujFZXrVR7zcI=
 		</data>
+		<key>error.png</key>
+		<data>
+		CWEwxukNRgyvK2WPQU/GARPQlWQ=
+		</data>
+		<key>error@2x.png</key>
+		<data>
+		HqeNLdXB9oUNR3R50Ah0O1OBoyo=
+		</data>
+		<key>error_7.png</key>
+		<data>
+		uf2SQFZGOt5BpjgFqG3O4V60ESA=
+		</data>
+		<key>error_7@2x.png</key>
+		<data>
+		gfz4q9bQedIXVGgyk9SGbQteWTY=
+		</data>
 		<key>monotouch.dll</key>
 		<data>
-		ZSuHrQsbm66CjjaBLtu54qP1/1I=
+		tDDYfgonrtEF+/wGf50HDQjN0tY=
 		</data>
 		<key>mscorlib.dll</key>
 		<data>
-		OyjJCK4aDVxe7wMKETcgkrB5COM=
+		E3BRXRFs6h68qkS2drGZ8ZkkSVw=
 		</data>
 		<key>questionmark.png</key>
 		<data>
@@ -1335,13 +1391,37 @@
 		<key>splash_960@x2.png</key>
 		<data>
 		N0XCVNAZ5dSBqPvdjjVOAqfv6CY=
+		</data>
+		<key>success.png</key>
+		<data>
+		td57KucaUwKzHUwPgZA3u3Ir0q8=
+		</data>
+		<key>success@2x.png</key>
+		<data>
+		c5tHp/nrhfgmP3So1BLIB5LjhCk=
+		</data>
+		<key>success_7.png</key>
+		<data>
+		sl17MzAE0UExXFQlRwGluibtSpg=
+		</data>
+		<key>success_7@2x.png</key>
+		<data>
+		o5mmbM4AbVrrAOe1xk7cAFLndtw=
 		</data>
 	</dict>
 	<key>files2</key>
 	<dict>
+		<key>Alliance.Carousel.dll</key>
+		<data>
+		aAQZhjaKaOcR8+rqGrqkwm6pPnI=
+		</data>
 		<key>AutoLink.exe</key>
 		<data>
-		2xD9t+1aBWVIBdBfF+OpvB1MjeU=
+		EcuVpVKtMRImsRlJ1TF47Nz5jFE=
+		</data>
+		<key>BTProgressHUD.dll</key>
+		<data>
+		8seJIIdfpD5qkDHNpbgC8eaYhL0=
 		</data>
 		<key>ClanBol.TTF</key>
 		<data>
@@ -1358,6 +1438,14 @@
 		<key>Default@2x.png</key>
 		<data>
 		Ij06oz3f5sANTvWNpZSlp5ZCNb4=
+		</data>
+		<key>DetailViewController_iPad.nib</key>
+		<data>
+		ODe6pVyx18Gxr0XJV+iJDuYRJ/M=
+		</data>
+		<key>DetailViewController_iPhone.nib</key>
+		<data>
+		O0d97aHFzOqlsMyGx3USrjVZ890=
 		</data>
 		<key>FF Clan-Bold</key>
 		<data>
@@ -1389,7 +1477,7 @@
 		</data>
 		<key>Google.Plus.dll</key>
 		<data>
-		85ShhaC3EGlBemcljJk2NP2tMEw=
+		UgNIdbhSNxFDylKF+xNjQYZClnU=
 		</data>
 		<key>GooglePlus.bundle/GooglePlus</key>
 		<data>
@@ -1831,6 +1919,14 @@
 		<data>
 		EGOeNU0IHS8lM3RDh23mduxlvvc=
 		</data>
+		<key>ImageViewerViewController_iPad.nib</key>
+		<data>
+		KDGqwZDfGtvmdTPSdjuEUGXjKWU=
+		</data>
+		<key>ImageViewerViewController_iPhone.nib</key>
+		<data>
+		UQ1yGJ/gjs3TBLj0KSMllgESjzY=
+		</data>
 		<key>InnerCell.nib</key>
 		<data>
 		UIlCmL13mOoJyvBapEd3a6i1XuY=
@@ -1846,6 +1942,14 @@
 		<key>LoginScreenController_iPhone.nib</key>
 		<data>
 		QZ7ZxNUndko+jyJepxPmPXAazkc=
+		</data>
+		<key>LoginViewController_iPad.nib</key>
+		<data>
+		T8VP9y7sckritgZiSQllVQkvnHg=
+		</data>
+		<key>LoginViewController_iPhone.nib</key>
+		<data>
+		zP7D2fUwnBlLWOQ0iE5aERyGU4Y=
 		</data>
 		<key>MainScreenController_iPad.nib</key>
 		<data>
@@ -1885,11 +1989,11 @@
 		</data>
 		<key>MonoTouch.Dialog-1.dll</key>
 		<data>
-		tP89+ESiW0Y0be4ttGidUUemxoY=
+		LBJGIOUhhkaGTrvKYWj8BqMSiYQ=
 		</data>
 		<key>MonoTouch.FacebookConnect.dll</key>
 		<data>
-		CCb2QsTx+lgU8KXXz3qT5zCFxX0=
+		VA+ig1kgKoYn8/XNK5ljJGYUgDg=
 		</data>
 		<key>NOTICE</key>
 		<data>
@@ -1897,7 +2001,7 @@
 		</data>
 		<key>Newtonsoft.Json.dll</key>
 		<data>
-		GegHOFvH8mo9W/eU7oTEESVPluY=
+		lL07nbwAWdPbwmoT2XGzCXS8ewI=
 		</data>
 		<key>PasswordResetController_iPad.nib</key>
 		<data>
@@ -2619,41 +2723,65 @@
 		<data>
 		dMZSqeWiLcv9Ey9k2Zi1qxid+5U=
 		</data>
+		<key>SignupController_iPad.nib</key>
+		<data>
+		UxoNj8ZPhv80fZPKLj7Ol4Z5zW8=
+		</data>
+		<key>SignupController_iPhone.nib</key>
+		<data>
+		SQQKLoun702CPopcGxWCw+QSVzk=
+		</data>
 		<key>SimpleStorage.iOS.dll</key>
 		<data>
-		Ji32yuyfCxN3rmp5AETDUCVAGzI=
+		Xx0xJoiD1M8VzgotEl6sDhAoMto=
 		</data>
 		<key>System.Core.dll</key>
 		<data>
-		CdMRUNaVJv3L7ztA8Gr9GqH1K7o=
+		WOLFwZh9ccd6tgSUV3Q8Ocm5Uuo=
 		</data>
 		<key>System.Json.dll</key>
 		<data>
-		OZGj7fAoo367GWSNAaLDGFDZTXQ=
+		8ikl4i6btKT43JzRSroTTaj5P8c=
 		</data>
 		<key>System.Net.Http.dll</key>
 		<data>
-		gIbNE3j5bGA8mbuYeDpl2p9h3IA=
+		dwIF5HroUU1IuIqto6znn5MQe6M=
 		</data>
 		<key>System.Runtime.Serialization.dll</key>
 		<data>
-		2RAw15EvFnLQmXfElOscy6CYgVs=
+		Hi7ozi6a50vB4RkuN29qpXHOAQc=
 		</data>
 		<key>System.dll</key>
 		<data>
-		oBSQ7ze1vw2nCeVPkZAwQntgDCw=
+		UgHrAgw3Of3CbnJLhtRH3gzZXHg=
 		</data>
 		<key>embedded.mobileprovision</key>
 		<data>
 		Nm6apl6kYOCLBSoujFZXrVR7zcI=
 		</data>
+		<key>error.png</key>
+		<data>
+		CWEwxukNRgyvK2WPQU/GARPQlWQ=
+		</data>
+		<key>error@2x.png</key>
+		<data>
+		HqeNLdXB9oUNR3R50Ah0O1OBoyo=
+		</data>
+		<key>error_7.png</key>
+		<data>
+		uf2SQFZGOt5BpjgFqG3O4V60ESA=
+		</data>
+		<key>error_7@2x.png</key>
+		<data>
+		gfz4q9bQedIXVGgyk9SGbQteWTY=
+		</data>
 		<key>monotouch.dll</key>
 		<data>
-		ZSuHrQsbm66CjjaBLtu54qP1/1I=
+		tDDYfgonrtEF+/wGf50HDQjN0tY=
 		</data>
 		<key>mscorlib.dll</key>
 		<data>
-		OyjJCK4aDVxe7wMKETcgkrB5COM=
+		E3BRXRFs6h68qkS2drGZ8ZkkSVw=
 		</data>
 		<key>questionmark.png</key>
 		<data>
@@ -2670,6 +2798,22 @@
 		<key>splash_960@x2.png</key>
 		<data>
 		N0XCVNAZ5dSBqPvdjjVOAqfv6CY=
+		</data>
+		<key>success.png</key>
+		<data>
+		td57KucaUwKzHUwPgZA3u3Ir0q8=
+		</data>
+		<key>success@2x.png</key>
+		<data>
+		c5tHp/nrhfgmP3So1BLIB5LjhCk=
+		</data>
+		<key>success_7.png</key>
+		<data>
+		sl17MzAE0UExXFQlRwGluibtSpg=
+		</data>
+		<key>success_7@2x.png</key>
+		<data>
+		o5mmbM4AbVrrAOe1xk7cAFLndtw=
 		</data>
 	</dict>
 	<key>rules</key>

@@ -24,13 +24,13 @@ namespace AutoLink.Models
 		public float ? longitude;
 		public SellerContact sellerContact;
 		public int ? price;
-		public int mileage;
+		public int ? mileage;
 		public string interiorColor;
 		public string exteriorColor;
 		public string trim;
 		public string model;
 		public string make;
-		public int year;
+		public int ? year;
 		public List<string> images;
 		public string descriptionCollapsed;
 		public string description;

@@ -142,13 +142,17 @@ namespace AutoLink
 
 				actionSheet.Clicked += (object s, UIButtonEventArgs btnEv) => {
 					if(btnEv.ButtonIndex == deleteIndex){
+						//BigTed.BTProgressHUD.Show("Deleting Item...");
+						service.DeleteItem(searchID,items);
 
-						service.DeleteItem(searchID,items).ContinueWith((task) => InvokeOnMainThread(() =>
-							{
+						//BigTed.BTProgressHUD.Show("Loading Results...");
+						//app.ShowResultList();
 
-								app.ShowResultList();
-								//DismissViewController(true,null);
-							}));
+						//BigTed.BTProgressHUD.Dismiss();
+						//app.searchResult.up
+
+						NavigationController.PopViewControllerAnimated(true);
+
 					}
 
 				};
@@ -158,14 +162,13 @@ namespace AutoLink
 
 			var action = new UIBarButtonItem (UIBarButtonSystemItem.Action);
 			action.Clicked += (object sender, EventArgs e) => {
+		
+				CreateActionSheet("Menu");
 
-				int addTo=0,goTo=0,shareTo=0;
-
-				CreateActionSheet("");
-
-				addTo = actionSheet.AddButton ("Add listing to Bin");
-				shareTo = actionSheet.AddButton ("Share listing");
-				goTo = actionSheet.AddButton ("Go to listing");
+				int addTo = actionSheet.AddButton ("Add listing to Bin");
+				int shareTo = actionSheet.AddButton ("Share listing");
+				int goTo = actionSheet.AddButton ("Go to listing");
+				actionSheet.BackgroundColor = UIColor.Clear;
 
 				actionSheet.Clicked += (object s, UIButtonEventArgs btnEv) => {
 
@@ -181,7 +184,9 @@ namespace AutoLink
 
 						service.StarListing(searchID,items._id).ContinueWith((task) => InvokeOnMainThread(() =>
 							{
+								BigTed.BTProgressHUD.Show("Loading Results...");
 								app.ShowResultList();
+								BigTed.BTProgressHUD.Dismiss();
 								//DismissViewController(true,null);
 							}));
 

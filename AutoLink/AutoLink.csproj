@@ -54,6 +54,7 @@
     <MtouchI18n>
     </MtouchI18n>
     <MtouchArch>ARMv7</MtouchArch>
+    <BuildIpa>true</BuildIpa>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
     <Optimize>true</Optimize>
@@ -69,6 +70,8 @@
     <MtouchArch>ARMv7</MtouchArch>
     <MtouchSdkVersion>7.1</MtouchSdkVersion>
     <BuildIpa>true</BuildIpa>
+    <IpaPackageName>
+    </IpaPackageName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Ad-Hoc|iPhone' ">
     <DebugType>full</DebugType>
@@ -116,6 +119,9 @@
     </Reference>
     <Reference Include="BTProgressHUD">
       <HintPath>..\Components\btprogresshud-1.9\lib\ios\BTProgressHUD.dll</HintPath>
+    </Reference>
+    <Reference Include="Alliance.Carousel">
+      <HintPath>..\Components\Alliance.Carousel-1.2\lib\ios\Alliance.Carousel.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -242,6 +248,14 @@
     </Compile>
     <Compile Include="Controllers\DetailViewController.cs" />
     <Compile Include="Views\CellView.cs" />
+    <Compile Include="Views\UIImageViewClickable.cs" />
+    <Compile Include="Views\UIViewFullscreen.cs" />
+    <Compile Include="Views\UIScrollViewImage.cs" />
+    <Compile Include="Controllers\ImageViewerViewController.cs" />
+    <Compile Include="Controllers\ImageViewerViewController.designer.cs">
+      <DependentUpon>ImageViewerViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\LinearDataSource.cs" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="MainStoryboard_iPhone.storyboard" />
@@ -268,6 +282,8 @@
     <InterfaceDefinition Include="Controllers\SignupController_iPad.xib" />
     <InterfaceDefinition Include="Controllers\DetailViewController_iPhone.xib" />
     <InterfaceDefinition Include="Controllers\DetailViewController_iPad.xib" />
+    <InterfaceDefinition Include="Controllers\ImageViewerViewController_iPhone.xib" />
+    <InterfaceDefinition Include="Controllers\ImageViewerViewController_iPad.xib" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -301,6 +317,10 @@
     </XamarinComponentReference>
     <XamarinComponentReference Include="btprogresshud">
       <Version>1.9</Version>
+      <Visible>False</Visible>
+    </XamarinComponentReference>
+    <XamarinComponentReference Include="Alliance.Carousel">
+      <Version>1.2</Version>
       <Visible>False</Visible>
     </XamarinComponentReference>
   </ItemGroup>
