@@ -641,7 +641,7 @@ namespace AutoLink.Models
 			case "MileageTo":
 				MileageTo.Value = val;
 				searchReq.mileage = searchReq.mileage == null ? new Range () : searchReq.mileage;
-				int.TryParse(val, out searchReq.mileage.min);
+				int.TryParse(val, out searchReq.mileage.min );
 				MileageTo.Accessory = UITableViewCellAccessory.Checkmark;
 				Root.Reload (MileageTo, UITableViewRowAnimation.Automatic);
 				break;

@@ -7,7 +7,7 @@ namespace AutoLink
 {
 	public class CellView : UIView
 	{
-		UILabel price,desc,make,mileage,source;
+		//UILabel price,desc,make,mileage,source;
 		Listing listing;
 		public CellView (RectangleF frame) : base(frame)
 		{

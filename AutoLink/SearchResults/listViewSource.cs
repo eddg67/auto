@@ -49,7 +49,13 @@ namespace AutoLink
 			if (items != null) {
 				startCount = items.Count;
 			} 
+				
 
+		}
+
+		public override string TitleForHeader (UITableView tableView, int section)
+		{
+			return "test";
 		}
 
 		public override int NumberOfSections (UITableView tableView)
@@ -64,10 +70,15 @@ namespace AutoLink
 			return (items != null )?items.Count:0;
 		}
 			
+		public override UIView GetViewForHeader (UITableView tableView, int section)
+		{
+			return new UIView(new RectangleF(0,0,0,0));
+		}
+			
 
 		public override UITableViewCell GetCell (UITableView tableView, NSIndexPath indexPath)
 		{
-
+			tableView.SectionHeaderHeight = 0;
 			//set the type
 			items [indexPath.Row].listType = (!string.IsNullOrEmpty (binID)) ? ListType.Bin : ListType.Listings;
 			//add edits
@@ -124,7 +135,9 @@ namespace AutoLink
 
 			cell.Tag = indexPath.Row;
 			cell.SizeToFit ();
-			cell.IndentationLevel = 10; 
+			cell.IndentationLevel = 0; 
+
+
 
 			return cell;
 		}
@@ -134,8 +147,7 @@ namespace AutoLink
 
 		public override float GetHeightForRow(UITableView tableView, NSIndexPath indexPath)
 		{
-	
-			return 400;
+			return 395;
 		}
 
 		public override float GetHeightForHeader (UITableView tableView, int section)
@@ -179,10 +191,20 @@ namespace AutoLink
 		//when click row on ListView
 		public override void RowSelected (UITableView tableView, NSIndexPath indexPath)
 		{
+			var touch = new UITouch ();
 			var cell = GetCell (tableView, indexPath);
+
+			//toolBar frame
+			var testFrame = new RectangleF (0, 390 - 35, cell.ContentView.Frame.Width, 35);
+
+
+			//trying to trap event of toolbar
+			if(testFrame.Contains(touch.LocationInView (cell.ContentView))){
+
+			}
+
 			cell.SetEditing(true,true);
 			tableView.DeselectRow (indexPath, true); 
-
 			app.ShowDetail (searchID,items [indexPath.Row]);
 
 		}
@@ -220,7 +242,7 @@ namespace AutoLink
 
 
 
-		void UpdateItems(UITableView tableView)
+		public void UpdateItems(UITableView tableView)
 		{
 			var list = items.Select (x => x._id).ToArray ();
 

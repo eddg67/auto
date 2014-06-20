@@ -1,1 +1,3 @@
-Primary Build 1.0.3
+Primary Build 1.0.4
+*Updated Build Type with Provisions
+*Added dSYM debugger

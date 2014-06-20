@@ -6,6 +6,8 @@ namespace AutoLink.Models
 	{
 		public int max;
 		public int min;
+
+		public Range(){max=0;min = 0;}
 	}
 }
 

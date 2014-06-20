@@ -40,15 +40,15 @@ namespace AutoLink.Models
 	}
 	public class Mileage
 	{
-		public int max;
-		public int min;
+		public int? max;
+		public int? min;
 
 	}
 
 	public class Price
 	{
-		public int max;
-		public int min;
+		public int? max;
+		public int? min;
 
 
 	}

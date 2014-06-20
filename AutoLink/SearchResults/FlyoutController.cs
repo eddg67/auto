@@ -32,7 +32,7 @@ namespace Autolink
 	{
 		const float sidebarFlickVelocity = 1000.0f;
 		public const int menuWidth = 280;
-		//public UISearchBar SearchBar;
+		UIView navHeader;
 		UIButton closeButton;
 		FlyOutNavigationPosition position;
 		DialogViewController navigation;
@@ -204,20 +204,24 @@ namespace Autolink
 				navFrame.X = currentView.Frame.Width - menuWidth;
 			navigation.View.Frame = navFrame;
 			View.AddSubview(navigation.View);
-			//SearchBar = new UISearchBar(new RectangleF(0, 0, navigation.TableView.Bounds.Width, 44))
-			//	{
-			//		//Delegate = new SearchDelegate (this),
-			//		TintColor = TintColor
-			//	};
-
+		
 			TintColor = UIColor.Black;
 			var version = new System.Version(UIDevice.CurrentDevice.SystemVersion);
 			isIos7 = version.Major >= 7;
-			if(isIos7)
-				navigation.TableView.TableHeaderView = new UIView(new RectangleF(0, 0, 320, 22))
-			{
-				BackgroundColor = UIColor.Clear
-			};
+			if (isIos7) {
+
+				navHeader = new UIView (new RectangleF (0, 0, 320, 45)) {
+					BackgroundColor = UIColor.Black
+				};
+
+				navHeader.AddSubview (CreateToolbarView ());
+
+				//navigation.TableView.TableHeaderView.
+				navigation.TableView.TableHeaderView = navHeader;
+				navigation.TableView.TableHeaderView.BackgroundColor = UIColor.Black;
+				navigation.TableView.TableHeaderView.ClipsToBounds = true;
+				//navHeader = null;
+			}
 			navigation.TableView.TableFooterView = new UIView(new RectangleF(0, 0, 100, 100)) {BackgroundColor = UIColor.Clear};
 			navigation.TableView.ScrollsToTop = false;
 			shadowView = new UIView();
@@ -623,6 +627,21 @@ namespace Autolink
 			BeginInvokeOnMainThread(() =>
 				action()
 			);
+		}
+
+		protected UIToolbar CreateToolbarView()
+		{
+			var tool = new UIToolbar (new RectangleF (0, 0, 320, 60));
+			tool.BackgroundColor = UIColor.Black;
+			var btn = new UIBarButtonItem (UIBarButtonSystemItem.Add, (sender, args) => {
+				// button was clicked
+			});
+
+			tool.SetItems (new UIBarButtonItem[]{ 
+				btn
+			},true);
+
+			return tool;
 		}
 
 		static bool IsMainThread()

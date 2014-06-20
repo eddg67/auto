@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace AutoLink.Models
 {
@@ -9,7 +10,7 @@ namespace AutoLink.Models
 		public BinItems @new;
 		public BinItems seen;
 		public BinItems starred;
-		public string[] custom;
+		public List<Custom> custom;
 	}
 
 	public class BinItems

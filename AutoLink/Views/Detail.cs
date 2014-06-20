@@ -11,14 +11,21 @@ namespace AutoLink
 	public class Detail : UIView
 	{
 		public Listing item { get; set; }
-		public UIImageView ImageView { get; set; }
+		public UIToolbar tool{ get; set; }
+		public UIImageViewClickable ImageView { get; set; }
 		UILabel price,desc,make,mileage,source;
 		string searchID { get; set; }
+		float offset = 10;
 		AppDelegate app = (AppDelegate)UIApplication.SharedApplication.Delegate;
 
 		public Detail (RectangleF frame) : base (frame)
 		{
-
+			ImageView = new UIImageViewClickable();
+			desc = new UILabel();
+			price = new UILabel ();
+			make = new UILabel ();
+			mileage = new UILabel ();
+			source = new UILabel();
 	
 
 		}
@@ -34,22 +41,19 @@ namespace AutoLink
 				//DetailTextLabel.Text = list.description;
 				if (!task.IsFaulted) {
 
-					var img = task.Result;
-					var imgClick = new UIImageViewClickable();
-					imgClick.Image = img;
-					ImageView = imgClick;
-						//ImageView.Image = img;
-
-					imgClick.OnClick += () => {
+				
+					if(!task.IsFaulted){
+						ImageView.Frame = new RectangleF(0, 0 , Frame.Width, 280);
+						ImageView.Image = task.Result;
+						Add(ImageView);
+					}
+			
+					ImageView.OnClick += () => {
 					
 						app.ShowImageController(item);
 					
 					};
-
-
-					ImageView.Frame = new RectangleF(0, 0 , Bounds.Width, 300f);
-
-					desc = new UILabel(new RectangleF(0, ImageView.Frame.Bottom + 60, Bounds.Size.Width -10, 100));
+				
 					desc.TextAlignment = UITextAlignment.Center;
 					desc.LineBreakMode = UILineBreakMode.WordWrap;
 					desc.Font = UIFont.PreferredCaption1;
@@ -57,7 +61,7 @@ namespace AutoLink
 					desc.Text = string.Empty;
 					desc.Text = list.description;
 
-					price = new UILabel(new RectangleF(0, ImageView.Frame.Bottom, Bounds.Size.Width, 20));
+
 					price.LineBreakMode = UILineBreakMode.WordWrap;
 					price.Font = UIFont.PreferredBody;
 					price.Lines = 0;
@@ -65,7 +69,7 @@ namespace AutoLink
 					price.Text = string.Empty;
 					price.Text = string.Format("$ {0}", list.price.ToString());
 
-					make = new UILabel(new RectangleF( 0 , ImageView.Frame.Bottom, Bounds.Size.Width, 20));
+
 					make.LineBreakMode = UILineBreakMode.WordWrap;
 					make.Font = UIFont.PreferredBody;
 					make.Lines = 0;
@@ -73,14 +77,14 @@ namespace AutoLink
 					make.Text = string.Empty;
 					make.Text = list.title;
 
-					mileage = new UILabel(new RectangleF( 0 , make.Frame.Bottom, Bounds.Size.Width, 20));
+
 					mileage.Font = UIFont.PreferredBody;
 					mileage.Lines = 1;
 					mileage.TextAlignment = UITextAlignment.Left;
 					mileage.Text = string.Empty;
 					mileage.Text = string.Format("Mileage : {0} mi",list.mileage.ToString());
 
-					source = new UILabel(new RectangleF( 0 , mileage.Frame.Bottom, Bounds.Size.Width, 20));
+
 					source.Font = UIFont.PreferredBody;
 					source.Lines = 1;
 					source.TextAlignment = UITextAlignment.Left;
@@ -88,29 +92,147 @@ namespace AutoLink
 					source.Text = string.Format("Source : {0}",list.source);
 
 					//dialog = GetDialog(list);
-					Add(ImageView);
-					Add(make);
-					Add(price);
-					Add(mileage);
-					Add(source);
-					Add(desc);
+					//Add(new CircleView());
+					//Add(ImageView);
+				
 
 				}
 
 
 			}));
 		}
-	
-		/*public async Task<UIImage> DownloadImageAsync(string imageUrl)
+
+		public override void LayoutSubviews ()
 		{
-			var httpClient = new HttpClient();
+			base.LayoutSubviews ();
+			ClipsToBounds = true;
 
-			Task <Byte[]> contentsTask = httpClient.GetByteArrayAsync(imageUrl);
+			ImageView.Frame = new RectangleF(0, 0 , Frame.Width, 280);
 
-			var contents = await contentsTask;
+			price.Frame = new RectangleF(offset, ImageView.Frame.Bottom , Bounds.Width - (offset*2), 30);
 
-			return UIImage.LoadFromData(NSData.FromArray(contents));
-		}*/
+			make.Frame = new RectangleF (offset, ImageView.Frame.Bottom, Bounds.Width * 0.70f, 30);
+
+			mileage.Frame = new RectangleF( offset , make.Frame.Bottom + offset , Bounds.Size.Width - offset, 20);
+			source.Frame = new RectangleF( offset , mileage.Frame.Bottom, Bounds.Width  -offset, 20);
+
+			desc.Frame = new RectangleF (offset, source.Frame.Bottom + 40, Bounds.Width - (offset*2), 50);
+
+			Add(make);
+			Add(price);
+			Add(mileage);
+			Add(source);
+
+			using (var line = new LineView (new RectangleF (offset, source.Frame.Bottom + (offset * 2), Bounds.Width - (offset * 2), 1))) {
+				line.BackgroundColor = UIColor.LightGray;
+				Add (line);
+			}
+
+
+			Add(desc);
+
+			using (var line = new LineView (new RectangleF (offset, desc.Frame.Bottom + (offset * 2), Bounds.Width - (offset * 2), 1))) {
+				line.BackgroundColor = UIColor.LightGray;
+				Add (line);
+			}
+
+			Add (GetToolBar ());
+
+		}
+
+		UIToolbar GetToolBar()
+		{
+			UITextAttributes attr = new UITextAttributes ();
+			string local = "Location Not Available";
+			string datesOn = "Unknown List Date";
+			string pricesAbove = "Price Above Edmunds";
+
+			tool = new UIToolbar (new RectangleF (0 , Frame.Height - 35 , Frame.Width, 35));  
+			//tool.Translucent = true;
+			tool.Layer.BorderColor = UIColor.White.CGColor;
+			tool.BarTintColor = UIColor.White;
+			tool.ClipsToBounds = true;
+
+			attr.Font = UIFont.SystemFontOfSize (9);
+			attr.TextColor = UIColor.LightGray;
+
+			//add location and change font color
+			if (item.address.city != null) {
+				local = string.Format ("{0},{1}", item.address.city, item.address.state);
+				attr.TextColor = UIColor.Blue;
+
+			} 
+
+			var location = new UIBarButtonItem (local, UIBarButtonItemStyle.Plain, (s,e)=>{
+				//for event
+
+			});
+			location.SetTitleTextAttributes (attr, UIControlState.Normal);
+
+			if (item.created != null || item.updated != null) {
+
+				datesOn = string.Format ("Listed {0} days ago", CalculateDateDiff ());
+				attr.TextColor = UIColor.LightGray;
+
+			} else if (item.deleted) {
+
+				datesOn = "Listing Removed";
+				attr.TextColor = UIColor.Red;
+			}
+
+			var timeSpan = new UIBarButtonItem (datesOn, UIBarButtonItemStyle.Plain, (s,e)=>{
+				//for event
+			});
+			timeSpan.SetTitleTextAttributes (attr, UIControlState.Normal);
+
+
+			var price = new UIBarButtonItem (pricesAbove, UIBarButtonItemStyle.Plain, delegate {
+				if(item.pricing != null){
+					app.ShowPriceEdmunds(item.pricing);
+				}
+			});
+			if (item.pricing != null) {
+				attr.TextColor = UIColor.Blue;
+			}
+				price.SetTitleTextAttributes (attr, UIControlState.Normal);
+				price.Tag = 22;
+			
+
+			var bbs = new UIBarButtonItem[] {
+				location,
+				new UIBarButtonItem(UIBarButtonSystemItem.FlexibleSpace),
+
+				timeSpan,
+				new UIBarButtonItem(UIBarButtonSystemItem.FlexibleSpace),
+
+				price
+
+			};
+
+
+			tool.SetItems (bbs, true);
+
+			return tool;
+		}
+
+		int CalculateDateDiff()
+		{
+			int result = 0;
+
+			try{
+
+				var res =  item.updated - item.created;
+				result = res.Value.Days;
+
+			}catch(Exception exp){
+
+				Console.WriteLine (exp.Message);
+			}
+			return result;
+		}
+
+	
+
 	}
 }
 

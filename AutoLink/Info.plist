@@ -5,11 +5,11 @@
 	<key>CFBundleDisplayName</key>
 	<string>AutoLink</string>
 	<key>CFBundleIdentifier</key>
-	<string>co.AutoLink.app</string>
+	<string>co.autolink.autoapp</string>
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
 	<key>CFBundleVersion</key>
-	<string>1.0.3</string>
+	<string>1.0.4</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>MinimumOSVersion</key>

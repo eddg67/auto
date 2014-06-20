@@ -14,11 +14,12 @@ namespace AutoLink
 {
 	public partial class SearchResultController : UIViewController
 	{
-		FlyoutController binsController;
+
 		AppDelegate app = (AppDelegate)UIApplication.SharedApplication.Delegate;
 		SearchService service;
-		Bin bins;
-		List<SearchResult> results;
+		public Bin bins;
+		public FlyoutController binsController;
+		public List<SearchResult> results;
 
 		static bool UserInterfaceIdiomIsPhone {
 			get { return UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Phone; }
@@ -46,28 +47,21 @@ namespace AutoLink
 			//BTProgressHUD.Show ("Searching in...");
 			results = service.GetResults ();
 
-			NavigationController.NavigationBar.BackgroundColor = UIColor.Black;
-
 			binsController = new FlyoutController ();
 
 			binsController.Position = FlyOutNavigationPosition.Left;
 			binsController.View.Frame = UIScreen.MainScreen.Bounds;
+			//View.AddSubview (CreateToolbarView ());
 			View.AddSubview (binsController.View);
 			this.AddChildViewController (binsController);
 
 
-			binsController.NavigationRoot = new RootElement ("Live Searches");
-			binsController.NavigationRoot.Add (GetSearchSection ());
-
 			var name = results.Select (x => x.name).ToArray ();
 			var searchIds = results.Select (x => x.id).ToArray ();
 
-			/*var res = results.Where (x => x.newListingsCount > 0)
-				.Select (y => y.id).ToArray();*/
-
 			int count = 0;
 			binsController.ViewControllers = Array.ConvertAll (name, title =>{
-				var nav = new UINavigationController (new Bins (binsController, title,searchIds[count]));
+				var nav = new UINavigationController (new Bins (binsController, title,searchIds[count],false));
 				nav.NavigationBarHidden = false;
 				count++;
 
@@ -79,8 +73,8 @@ namespace AutoLink
 					bins = task.Result.Result;
 					if(bins != null){
 						app.setUpLocalNotifications(bins.@new.count);
-						binsController.NavigationRoot.Add (UpdateBins(bins));
-
+						binsController.NavigationTableView.SectionHeaderHeight = 0;
+						binsController.NavigationTableView.TableHeaderView = null;
 						var vc = binsController.ViewControllers;
 
 						var vcArr = new UIViewController [] {
@@ -94,12 +88,19 @@ namespace AutoLink
 
 						var tmp = vc.Concat(vcArr).ToArray();			
 						binsController.ViewControllers = tmp;
+
+						binsController.NavigationRoot = new RootElement ("Live Searches"){
+							new RootElement("Live Search"){GetSearchSection ()},
+							UpdateBins(bins)
+						};
+
+						//rootElement.Add (UpdateBins(bins));
 					}
 						
 				
 				}));
-					
-			// Perform any additional setusp after loading the view, typically from a nib.
+
+			//UIApplication.SharedApplication.Windows[0].RootViewController = binsController;
 		}
 
 		public override void LoadView ()
@@ -111,15 +112,9 @@ namespace AutoLink
 
 		private Section GetSearchSection()
 		{
-			var header = new UILabel (new RectangleF (0, 0, this.View.Bounds.Width, 60)) {
-				BackgroundColor = UIColor.LightGray,
-				ClipsToBounds = true,
-				Text = "Live Searches"
-			};
 
-			//var name = results.Select (x => x.name).ToArray ();
+			var vals = new Section ("Live Searches");
 
-			var vals = new Section (header, null);
 			vals.AddAll (results.Select 
 				(x => {
 					var str = new StyledStringElement (
@@ -200,11 +195,26 @@ namespace AutoLink
 				deleted.Image = fav.Image;
 			}
 
-			return new Section (header, null) {
+			return new Section ("Bins", null) {
 				stared,allNew,contacted,deleted
 
 			};
 				
+		}
+
+		public UIToolbar CreateToolbarView()
+		{
+			var tool = new UIToolbar (new RectangleF (0, 0, 320, 60));
+			tool.BackgroundColor = UIColor.Black;
+			var btn = new UIBarButtonItem (UIBarButtonSystemItem.Add, (sender, args) => {
+				// button was clicked
+			});
+
+			tool.SetItems (new UIBarButtonItem[]{ 
+				btn
+			},true);
+
+			return tool;
 		}
 
 		class Bins : listViewController
@@ -215,6 +225,11 @@ namespace AutoLink
 				var img = fav.SelectedImage;
 				this.Title = title;	
 
+				navigation.NavigationTableView.TableHeaderView = new UIView (new RectangleF (0, 0, 320, 0)) {
+					BackgroundColor = UIColor.Blue
+				};
+				//navigation.NavigationTableView.TableHeaderView.Add(CreateToolbarView());
+						
 				NavigationItem.RightBarButtonItem = new UIBarButtonItem (fav.SelectedImage,UIBarButtonItemStyle.Plain, delegate {
 					using(var app = (AppDelegate)UIApplication.SharedApplication.Delegate){
 						app.ShowSearch();
@@ -224,9 +239,13 @@ namespace AutoLink
 					navigation.ToggleMenu ();
 				});
 
-				//navigation.NavigationController
-				//navigation.NavigationController.NavigationBar.BackgroundColor = UIColor.Black;
+				//navigation.NavigationController.NavigationBar.TintColor = UIColor.Black;
+
+
+		
 			}
+
+
 		}
 	}
 }

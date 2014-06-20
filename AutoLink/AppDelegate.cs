@@ -37,6 +37,7 @@ namespace AutoLink
 		public ResetController reset;
 		public DetailViewController detail;
 		public ImageViewerViewController imageController;
+		public PriceTabController priceTab;
 
 		MFMailComposeViewController mailController = new MFMailComposeViewController();
 		public NetworkStatus noNetwork;
@@ -131,9 +132,11 @@ namespace AutoLink
 				try {
 					if (validator.isEmail (email)) {
 						mailController.SetToRecipients (new string[]{ email });
-					
-					
-					mailController.SetSubject (title);
+					}
+
+					if(!string.IsNullOrEmpty(title)){
+						mailController.SetSubject (title);
+
 					}
 					//_mailController.SetMessageBody ("this is a test", false);
 					mailController.Finished += ( object s, MFComposeResultEventArgs args) => {
@@ -149,8 +152,7 @@ namespace AutoLink
 
 				}
 			}
-
-
+				
 		}
 
 		public void OpenUrl(string url){
@@ -162,8 +164,8 @@ namespace AutoLink
 		{
 			imageController = new ImageViewerViewController (item);
 		
-			RootController.NavigationBarHidden = true;
-			RootController.ToolbarHidden = false;
+			//RootController.NavigationBarHidden = true;
+			//RootController.ToolbarHidden = false;
 
 			RootController.PushViewController (imageController, true);
 		}
@@ -185,9 +187,9 @@ namespace AutoLink
 
 		public void ShowDetail(string searchID,Listing item)
 		{
-			detail = new DetailViewController ();
-			detail.searchID = searchID;
-			detail.SetItems (item);
+			detail = new DetailViewController (searchID,item);
+			//detail.searchID = searchID;
+			//detail.SetItems (item);
 			RootController.NavigationBarHidden = false;
 			RootController.ToolbarHidden = false;
 		
@@ -221,6 +223,16 @@ namespace AutoLink
 			RootController.ToolbarHidden = true;
 			RootController.PushViewController (forgot, true);
 		}
+
+		public void ShowPriceEdmunds(Pricing price)
+		{
+			BTProgressHUD.Dismiss ();
+			priceTab = new PriceTabController (price);
+			RootController.NavigationBarHidden = false;
+			RootController.ToolbarHidden = true;
+			RootController.PushViewController (priceTab, true);
+		}
+
 
 
 		public void ShowResultList()

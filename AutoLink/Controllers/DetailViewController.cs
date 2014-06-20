@@ -25,10 +25,19 @@ namespace AutoLink
 		UIView contentView;
 
 
-		public DetailViewController ()
+		public DetailViewController (string _searchID,Listing _item)
 			: base (UserInterfaceIdiomIsPhone ? "DetailViewController_iPhone" : "DetailViewController_iPad", null)
 		{
 			service = app.searchService;
+			searchID = _searchID;
+			items = _item;
+		}
+
+		public DetailViewController (IntPtr pointer)
+			: base (UserInterfaceIdiomIsPhone ? "DetailViewController_iPhone" : "DetailViewController_iPad", null)
+		{
+			service = app.searchService;
+
 		}
 
 		public void SetItems(Listing item)
@@ -59,6 +68,40 @@ namespace AutoLink
 		public override void LoadView ()
 		{
 			base.LoadView ();
+
+			NavigationItem.RightBarButtonItem = new UIBarButtonItem (){Title="Mark"};
+			NavigationItem.RightBarButtonItem.Clicked += (sender, e)=>{
+				actionSheet = new UIActionSheet ("Mark Results", null, "Cancel", null, null);
+
+					int markViewed = 0,markAll=0;
+					markViewed = actionSheet.AddButton("Mark as Viewed");
+					markAll = actionSheet.AddButton("All? No Call found");
+
+					actionSheet.DestructiveButtonIndex = 0; // red
+					actionSheet.CancelButtonIndex = markViewed;  // black
+
+					actionSheet.Clicked += (object s, UIButtonEventArgs btnEv) => {
+
+						if(btnEv.ButtonIndex > 0){
+							if(btnEv.ButtonIndex == markViewed){
+
+								var list = new string[]{items._id};
+
+								service.SeenListing(searchID,list).ContinueWith((task) => InvokeOnMainThread(() =>{
+								using(var alert = new UIAlertView ("Listing Marked", "This Listing has been marked seen", null, "OK", null)){
+										alert.Show();
+									}
+							}));
+
+							}else if(btnEv.ButtonIndex == markAll){
+
+
+							}
+						}
+					};
+				actionSheet.ShowFrom(NavigationItem.RightBarButtonItem,true);//.ShowInView(View);
+
+			};
 
 			var detailView = new Detail (View.Bounds);
 
@@ -95,7 +138,12 @@ namespace AutoLink
 
 			var starBtn = new UIBarButtonItem (img, UIBarButtonItemStyle.Plain, null);
 			starBtn.Clicked += (object sender, EventArgs e) => {
-				service.StarListing(searchID,items._id);
+
+				service.StarListing(searchID,items._id).ContinueWith((task) => InvokeOnMainThread(() =>{
+					using(var alert = new UIAlertView ("Listing Marked", "This Listing has been Starred.", null, "OK", null)){
+						alert.Show();
+					}
+				}));
 			};
 
 			var contact = new UIBarButtonItem (UIBarButtonSystemItem.Compose);
@@ -133,7 +181,7 @@ namespace AutoLink
 			var delete = new UIBarButtonItem (UIBarButtonSystemItem.Trash);
 			delete.Clicked += (object sender, EventArgs e) => {
 				int deleteIndex=0;
-				CreateActionSheet("Delete Listing, Are you Sure?");
+				actionSheet = CreateActionSheet("Delete Listing, Are you Sure?");
 
 				deleteIndex = actionSheet.AddButton ("Delete");
 
@@ -144,13 +192,7 @@ namespace AutoLink
 					if(btnEv.ButtonIndex == deleteIndex){
 						//BigTed.BTProgressHUD.Show("Deleting Item...");
 						service.DeleteItem(searchID,items);
-
-						//BigTed.BTProgressHUD.Show("Loading Results...");
-						//app.ShowResultList();
-
-						//BigTed.BTProgressHUD.Dismiss();
-						//app.searchResult.up
-
+						app.searchResult.binsController.NavigationTableView.ReloadData();
 						NavigationController.PopViewControllerAnimated(true);
 
 					}
@@ -163,7 +205,7 @@ namespace AutoLink
 			var action = new UIBarButtonItem (UIBarButtonSystemItem.Action);
 			action.Clicked += (object sender, EventArgs e) => {
 		
-				CreateActionSheet("Menu");
+				actionSheet = CreateActionSheet("Menu");
 
 				int addTo = actionSheet.AddButton ("Add listing to Bin");
 				int shareTo = actionSheet.AddButton ("Share listing");
@@ -180,23 +222,15 @@ namespace AutoLink
 
 						app.OpenUrl(items.url);
 
-					}else{
+					}else if (btnEv.ButtonIndex == addTo){
 
-						service.StarListing(searchID,items._id).ContinueWith((task) => InvokeOnMainThread(() =>
-							{
-								BigTed.BTProgressHUD.Show("Loading Results...");
-								app.ShowResultList();
-								BigTed.BTProgressHUD.Dismiss();
-								//DismissViewController(true,null);
-							}));
-
+					
 					}
 
 				};
 
 				actionSheet.ShowFromToolbar(NavigationController.Toolbar);
 
-				//service.StarListing(searchID,items._id);
 			};
 
 
@@ -226,8 +260,9 @@ namespace AutoLink
 		}
 
 
-		void CreateActionSheet(string title){
+		UIActionSheet CreateActionSheet(string title){
 			actionSheet = new UIActionSheet (title, null, "Cancel",null, null);
+			return actionSheet;
 
 		}
 

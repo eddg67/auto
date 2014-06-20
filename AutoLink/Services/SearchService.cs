@@ -472,6 +472,16 @@ namespace AutoLink.Services
 			);
 		}
 
+		public Task<APIResponse<object>> SeenListing(string searchId,string[] listings)
+		{
+			listings = (listings == null) ? new string[] { } : listings;
+			var request = new SeenListingRequest{searchId= searchId,listingIds=listings};
+			return api.CreateAsync<object>(
+				@"search.seenListings",
+				request
+			);
+		}
+
 
 
 	}
