@@ -1,3 +1,6 @@
-Primary Build 1.0.4
-*Updated Build Type with Provisions
-*Added dSYM debugger
+Primary Build 1.0.5
+*Added new listing icon list view
+*Mark as new detail option
+*Pricing View in Detail View
+* Added Loading Trans
+* Added Location,TimeSpan List view

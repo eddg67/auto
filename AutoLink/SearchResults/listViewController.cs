@@ -9,7 +9,7 @@ using MonoTouch.Dialog;
 
 namespace AutoLink
 {
-	public class listViewController : DialogViewController
+	public class listViewController : UITableViewController
 	{
 		public string searchId  { get; set; }
 		public bool useBinId  { get; set; }
@@ -19,8 +19,9 @@ namespace AutoLink
 			set;
 		}
 
-		public listViewController (string id,bool bin) : base(new RootElement(""), true)
+		public listViewController (string id,bool bin) : base (UITableViewStyle.Grouped)
 		{
+	
 			searchId = id;
 			useBinId = bin;
 			//TableView.TableHeaderView = GetHeader ();

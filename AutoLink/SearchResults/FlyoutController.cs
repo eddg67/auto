@@ -214,12 +214,12 @@ namespace Autolink
 					BackgroundColor = UIColor.Black
 				};
 
-				navHeader.AddSubview (CreateToolbarView ());
+				//navHeader.AddSubview (CreateToolbarView ());
 
 				//navigation.TableView.TableHeaderView.
-				navigation.TableView.TableHeaderView = navHeader;
-				navigation.TableView.TableHeaderView.BackgroundColor = UIColor.Black;
-				navigation.TableView.TableHeaderView.ClipsToBounds = true;
+				//navigation.TableView.TableHeaderView = navHeader;
+				//navigation.TableView.TableHeaderView.BackgroundColor = UIColor.Black;
+				//navigation.TableView.TableHeaderView.ClipsToBounds = true;
 				//navHeader = null;
 			}
 			navigation.TableView.TableFooterView = new UIView(new RectangleF(0, 0, 100, 100)) {BackgroundColor = UIColor.Clear};

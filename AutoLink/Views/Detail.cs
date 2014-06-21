@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using System.Net.Http;
 using MonoTouch.Foundation;
 using System.Drawing;
+using Alliance.Carousel;
 
 namespace AutoLink
 {
@@ -48,11 +49,7 @@ namespace AutoLink
 						Add(ImageView);
 					}
 			
-					ImageView.OnClick += () => {
-					
-						app.ShowImageController(item);
-					
-					};
+				
 				
 					desc.TextAlignment = UITextAlignment.Center;
 					desc.LineBreakMode = UILineBreakMode.WordWrap;
@@ -91,6 +88,12 @@ namespace AutoLink
 					source.Text = string.Empty;
 					source.Text = string.Format("Source : {0}",list.source);
 
+					ImageView.OnClick += () => {
+						//ImageView.OnClick
+						//app.ShowImageController(item);
+
+					};
+
 					//dialog = GetDialog(list);
 					//Add(new CircleView());
 					//Add(ImageView);
@@ -117,6 +120,16 @@ namespace AutoLink
 			source.Frame = new RectangleF( offset , mileage.Frame.Bottom, Bounds.Width  -offset, 20);
 
 			desc.Frame = new RectangleF (offset, source.Frame.Bottom + 40, Bounds.Width - (offset*2), 50);
+
+
+
+			var carousel = new CarouselView(new RectangleF(0,ImageView.Frame.Bottom,Bounds.Width,50));
+			carousel.DataSource = new LinearDataSource(item);
+			carousel.Delegate = new LinearDelegate();
+			carousel.CarouselType = CarouselType.Linear;
+			//carousel.ConfigureView();
+			//Add(carousel);
+			//carousel.Autoscroll = 1.0f;
 
 			Add(make);
 			Add(price);
@@ -147,7 +160,7 @@ namespace AutoLink
 			string datesOn = "Unknown List Date";
 			string pricesAbove = "Price Above Edmunds";
 
-			tool = new UIToolbar (new RectangleF (0 , Frame.Height - 35 , Frame.Width, 35));  
+			tool = new UIToolbar (new RectangleF (0 , Frame.Height - 55 , Frame.Width, 55));  
 			//tool.Translucent = true;
 			tool.Layer.BorderColor = UIColor.White.CGColor;
 			tool.BarTintColor = UIColor.White;

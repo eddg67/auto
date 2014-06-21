@@ -91,7 +91,16 @@ namespace AutoLink
 			};
 			UITapGestureRecognizer labelTap = new UITapGestureRecognizer(() => {
 				service.DeleteItem(searchID,items [indexPath.Row]);
-				CommitEditingStyle(tableView,UITableViewCellEditingStyle.Delete,indexPath);
+
+				tableView.BeginUpdates ();
+				// remove the item from the underlying data source
+				items.RemoveAt(indexPath.Row);
+				// delete the row from the tabsle
+				tableView.DeleteRows (new NSIndexPath[] { indexPath }, UITableViewRowAnimation.Fade);
+				tableView.ReloadData ();
+				tableView.EndUpdates ();
+
+				//CommitEditingStyle(tableView,UITableViewCellEditingStyle.Delete,indexPath);
 
 			});
 
@@ -249,24 +258,21 @@ namespace AutoLink
 			if (string.IsNullOrEmpty (binID)) {
 
 				service.GetListingsAsync (searchID, list).ContinueWith ((task) => InvokeOnMainThread (() => {
-					//tableView.BeginUpdates();
 					if(!task.IsFaulted){
 						listResults = task.Result.Result;
-						var newRes = listResults.listings;
-						if(newRes.Count > 0){
-							items.AddRange (listResults.listings);
-						
-							updating = false;
-							tableView.ReloadData ();
+						if(listResults != null){
+							var newRes = listResults.listings;
+							if(newRes.Count > 0){
+								items.AddRange (listResults.listings);
+							
+								updating = false;
+								tableView.ReloadData ();
 
-						}else{
-							moreResults = false;
+							}else{
+								moreResults = false;
+							}
 						}
 					}
-					//tableView.EndUpdates();
-					
-
-			
 				}));
 
 			} else {

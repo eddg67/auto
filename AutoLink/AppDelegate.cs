@@ -70,6 +70,14 @@ namespace AutoLink
 			//loading services
 			loadServices ();
 
+			UINavigationBar.Appearance.BarTintColor = UIColor.Black;
+			UINavigationBar.Appearance.BackgroundColor = UIColor.Clear;
+			UITextAttributes attr = new UITextAttributes ();
+			attr.TextColor = UIColor.White;
+			attr.Font = UIFont.FromName ("KannadaSangamMN-Bold", 22);
+			UINavigationBar.Appearance.SetTitleTextAttributes (attr);
+			UIApplication.SharedApplication.SetStatusBarStyle (UIStatusBarStyle.LightContent, true);
+
 			RootController = new UINavigationController ();
 
 			//Pass Thru TO list if logged in
@@ -162,10 +170,18 @@ namespace AutoLink
 
 		public void ShowImageController(Listing item)
 		{
-			imageController = new ImageViewerViewController (item);
+			var  flowLayout = new UICollectionViewFlowLayout (){
+				HeaderReferenceSize = new System.Drawing.SizeF (100, 100),
+				SectionInset = new UIEdgeInsets (0,10,10,10),
+				ScrollDirection = UICollectionViewScrollDirection.Vertical,
+				MinimumInteritemSpacing = 10, // minimum spacing between cells
+				MinimumLineSpacing = 50 // minimum spacing between rows if ScrollDirection is Vertical or between columns if Horizontal
+			};
+
+			imageController = new ImageViewerViewController (flowLayout,item.images);
 		
-			//RootController.NavigationBarHidden = true;
-			//RootController.ToolbarHidden = false;
+			RootController.NavigationBarHidden = false;
+			RootController.ToolbarHidden = true;
 
 			RootController.PushViewController (imageController, true);
 		}
@@ -188,8 +204,6 @@ namespace AutoLink
 		public void ShowDetail(string searchID,Listing item)
 		{
 			detail = new DetailViewController (searchID,item);
-			//detail.searchID = searchID;
-			//detail.SetItems (item);
 			RootController.NavigationBarHidden = false;
 			RootController.ToolbarHidden = false;
 		
@@ -237,7 +251,10 @@ namespace AutoLink
 
 		public void ShowResultList()
 		{
-			BTProgressHUD.Show ("Get Search Results...");
+			if (searchResult == null) {
+				BTProgressHUD.Show ("Get Search Results...");
+
+			}
 			searchResult = new SearchResultController ();
 			RootController.NavigationBarHidden = true;
 			RootController.ToolbarHidden = true;

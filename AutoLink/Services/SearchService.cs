@@ -452,15 +452,13 @@ namespace AutoLink.Services
 			} 
 
 			return null;
-
-
 		}
 
 		public Task<APIResponse<object>> DeleteListing(string id,string listingId)
 		{
 			return api.CreateAsync<object>(
 				@"search.deleteListings",
-				new { searchId = id,listingId= listingId }
+				new { searchId = id,listingIds = listingId }
 			);
 		}
 
@@ -468,7 +466,7 @@ namespace AutoLink.Services
 		{
 			return api.CreateAsync<object>(
 				@"bin.deleteListings",
-				new { binId = id,listingId= listingId }
+				new { binId = id,listingIds = listingId }
 			);
 		}
 

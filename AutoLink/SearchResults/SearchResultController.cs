@@ -17,9 +17,13 @@ namespace AutoLink
 
 		AppDelegate app = (AppDelegate)UIApplication.SharedApplication.Delegate;
 		SearchService service;
+		LoadingOverlay over;
 		public Bin bins;
-		public FlyoutController binsController;
+		public FlyoutController navigation;
 		public List<SearchResult> results;
+
+		Section searchSec;
+
 
 		static bool UserInterfaceIdiomIsPhone {
 			get { return UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Phone; }
@@ -44,94 +48,133 @@ namespace AutoLink
 		{
 			base.ViewDidLoad ();
 
-			//BTProgressHUD.Show ("Searching in...");
-			results = service.GetResults ();
+			navigation = new FlyoutController ();
+			navigation.Position = FlyOutNavigationPosition.Left;
+			navigation.View.Frame = UIScreen.MainScreen.Bounds;
+			AddChildViewController (navigation);
 
-			binsController = new FlyoutController ();
+			service.GetResultsAsync ().ContinueWith (
+				(task) => InvokeOnMainThread (() => {
 
-			binsController.Position = FlyOutNavigationPosition.Left;
-			binsController.View.Frame = UIScreen.MainScreen.Bounds;
-			//View.AddSubview (CreateToolbarView ());
-			View.AddSubview (binsController.View);
-			this.AddChildViewController (binsController);
+					results = task.Result.Result;
+
+					View.AddSubview (navigation.View);
+					var searchIds = results.Select (x => x.id).ToArray ();
+
+					int count = 0;
+					navigation.ViewControllers = Array.ConvertAll (
+						results.Select (x => x.name).ToArray (), 
+						title =>{
+						
+							var list = new ListView (navigation, title,searchIds[count],false);
+							var nav = new UINavigationController (list);
+							nav.NavigationBarHidden = false;
+							count++;
+
+							return nav;
+							}
+					);
+						
+					LoadBin();
+
+					count = 0;
+					over.Hide ();
 
 
-			var name = results.Select (x => x.name).ToArray ();
-			var searchIds = results.Select (x => x.id).ToArray ();
+				}
+			));
 
-			int count = 0;
-			binsController.ViewControllers = Array.ConvertAll (name, title =>{
-				var nav = new UINavigationController (new Bins (binsController, title,searchIds[count],false));
-				nav.NavigationBarHidden = false;
-				count++;
 
-				return nav;
-			});
+		
+		}
 
+
+		public void LoadBin()
+		{
 			service.GetBins ().ContinueWith((task) => InvokeOnMainThread(() =>
 				{
 					bins = task.Result.Result;
 					if(bins != null){
+
 						app.setUpLocalNotifications(bins.@new.count);
-						binsController.NavigationTableView.SectionHeaderHeight = 0;
-						binsController.NavigationTableView.TableHeaderView = null;
-						var vc = binsController.ViewControllers;
+						navigation.NavigationTableView.SectionHeaderHeight = 0;
+						navigation.NavigationTableView.TableHeaderView = null;
+
+						var vc = navigation.ViewControllers;
 
 						var vcArr = new UIViewController [] {
-							new UINavigationController ( new Bins (binsController,"Starred",bins.starred.id,true)),
-							new UINavigationController ( new Bins (binsController,"New",bins.@new.id,true)),
-							new UINavigationController ( new Bins (binsController,"Contacted",bins.contacted.id,true )),
-							new UINavigationController (new Bins (binsController,"Deleted",bins.deleted.id,true))
+							new UINavigationController ( new ListView (navigation,"Starred",bins.starred.id,true)),
+							new UINavigationController ( new ListView (navigation,"New",bins.@new.id,true)),
+							new UINavigationController ( new ListView (navigation,"Contacted",bins.contacted.id,true )),
+							new UINavigationController (new ListView (navigation,"Deleted",bins.deleted.id,true))
 
-							//new UINavigationController ( new Bins (binsController,"Seen",bins.seen.id,true))
+							//new UINavigationController ( new Bins (navigation,"Seen",bins.seen.id,true))
 						};
 
-						var tmp = vc.Concat(vcArr).ToArray();			
-						binsController.ViewControllers = tmp;
+						var tmp = vc.Concat(vcArr).ToArray();            
+						navigation.ViewControllers = tmp;
 
-						binsController.NavigationRoot = new RootElement ("Live Searches"){
-							new RootElement("Live Search"){GetSearchSection ()},
+						navigation.NavigationRoot = new RootElement ("Live Searches"){
+							GetSearchSection (),
 							UpdateBins(bins)
+
 						};
 
-						//rootElement.Add (UpdateBins(bins));
+
+						//navigation.NavigationRoot.Add(GetSearchSection());
+						//navigation.NavigationRoot.Add(UpdateBins(bins));
+
 					}
-						
-				
+
+
 				}));
 
-			//UIApplication.SharedApplication.Windows[0].RootViewController = binsController;
 		}
 
 		public override void LoadView ()
 		{
 			base.LoadView ();
-			BTProgressHUD.Dismiss ();
+
+			over = new LoadingOverlay (View.Bounds,"Searching Results...");
+			View.Add (over);
 
 		}
 
 		private Section GetSearchSection()
 		{
 
-			var vals = new Section ("Live Searches");
+			var header = new UILabel (new RectangleF (0, 0, this.View.Bounds.Width, 40)) 
+			{
+				Font = UIFont.SystemFontOfSize(18),
+				BackgroundColor = UIColor.LightTextColor,
+				Text = "Live Searches"
+			};
 
-			vals.AddAll (results.Select 
+			var secSearch = new Section (CreateToolbarView(),null)
+			{
+				//new UIViewElement("",header,true)
+			};
+			secSearch.AddAll (
+				results.Select 
 				(x => {
+
 					var str = new StyledStringElement (
 						x.name,
 						x.newListingsCount.ToString(),
 						UITableViewCellStyle.Value1
 					);
-	
+				
 					str.Accessory = UITableViewCellAccessory.DisclosureIndicator;
-					str.Tapped += () => {binsController.Title = x.name;};
+					str.Tapped += () => {
+						navigation.Title = x.name;
+					};
 
 					return str;
 
 				})
 			);
-			return vals;
 
+		return secSearch;
 		}
 
 		public Section UpdateBins(Bin bin)
@@ -150,11 +193,7 @@ namespace AutoLink
 			);
 
 			stared.Accessory = UITableViewCellAccessory.DisclosureIndicator;
-			using (var fav = new UITabBarItem (UITabBarSystemItem.Favorites, 1)) {
-				stared.Image = fav.SelectedImage;
-			}
-
-			stared.Tapped += () => {binsController.Title =  "Starred";};
+			stared.Tapped += () => {navigation.Title =  "Starred";};
 
 			var allNew = new StyledStringElement (
 				"All New",
@@ -162,12 +201,8 @@ namespace AutoLink
 				UITableViewCellStyle.Value1
 			);
 
-			allNew.Tapped += () => {binsController.Title =  "New";};
+			allNew.Tapped += () => {navigation.Title =  "New";};
 			allNew.Accessory = UITableViewCellAccessory.DisclosureIndicator;
-
-			using (var fav = new UITabBarItem (UITabBarSystemItem.MostRecent, 1)) {
-				allNew.Image = fav.SelectedImage;
-			}
 
 			var contacted = new StyledStringElement (
 				"Contacted",
@@ -175,12 +210,8 @@ namespace AutoLink
 				UITableViewCellStyle.Value1
 			);
 
-			contacted.Tapped += () => {binsController.Title =  "Contacted";};
+			contacted.Tapped += () => {navigation.Title =  "Contacted";};
 			contacted.Accessory = UITableViewCellAccessory.DisclosureIndicator;
-
-			using (var fav = new UITabBarItem (UITabBarSystemItem.Recents, 1)) {
-				contacted.Image = fav.SelectedImage;
-			}
 
 			var deleted = new StyledStringElement (
 				"Deleted Listing",
@@ -188,14 +219,10 @@ namespace AutoLink
 				UITableViewCellStyle.Value1
 			);
 
-			deleted.Tapped += () => {binsController.Title =  "Deleted Listings";};
+			deleted.Tapped += () => {navigation.Title =  "Deleted Listings";};
 			deleted.Accessory = UITableViewCellAccessory.DisclosureIndicator;
 
-			using (var fav = new UITabBarItem (UITabBarSystemItem.History, 1)) {
-				deleted.Image = fav.Image;
-			}
-
-			return new Section ("Bins", null) {
+			return new Section (header, null) {
 				stared,allNew,contacted,deleted
 
 			};
@@ -204,31 +231,34 @@ namespace AutoLink
 
 		public UIToolbar CreateToolbarView()
 		{
-			var tool = new UIToolbar (new RectangleF (0, 0, 320, 60));
+			var tool = new UIToolbar (new RectangleF (0, 5, 320, 60));
 			tool.BackgroundColor = UIColor.Black;
+			tool.TintColor = UIColor.Black;
 			var btn = new UIBarButtonItem (UIBarButtonSystemItem.Add, (sender, args) => {
 				// button was clicked
+				app.ShowSearch();
 			});
+				
 
 			tool.SetItems (new UIBarButtonItem[]{ 
-				btn
+				btn,
+				new UIBarButtonItem(UIBarButtonSystemItem.FlexibleSpace),
+				new UIBarButtonItem("Autolink",UIBarButtonItemStyle.Plain,null),
+				new UIBarButtonItem(UIBarButtonSystemItem.FlexibleSpace),
 			},true);
 
 			return tool;
 		}
 
-		class Bins : listViewController
+		class ListView : listViewController
 		{
-			public Bins (FlyoutController navigation, string title,string list, bool bin=false): base (list,bin)
+			public ListView (FlyoutController navigation, string title,string list, bool bin=false): base (list,bin)
 			{
 				var fav = new UITabBarItem(UITabBarSystemItem.Contacts,1);
 				var img = fav.SelectedImage;
 				this.Title = title;	
 
-				navigation.NavigationTableView.TableHeaderView = new UIView (new RectangleF (0, 0, 320, 0)) {
-					BackgroundColor = UIColor.Blue
-				};
-				//navigation.NavigationTableView.TableHeaderView.Add(CreateToolbarView());
+				navigation.NavigationTableView.SectionHeaderHeight = 0f;
 						
 				NavigationItem.RightBarButtonItem = new UIBarButtonItem (fav.SelectedImage,UIBarButtonItemStyle.Plain, delegate {
 					using(var app = (AppDelegate)UIApplication.SharedApplication.Delegate){
@@ -238,11 +268,7 @@ namespace AutoLink
 				NavigationItem.LeftBarButtonItem = new UIBarButtonItem (UIBarButtonSystemItem.Action, delegate {
 					navigation.ToggleMenu ();
 				});
-
-				//navigation.NavigationController.NavigationBar.TintColor = UIColor.Black;
-
-
-		
+					
 			}
 
 

@@ -30,8 +30,8 @@ namespace AutoLink
 								onCl();
 							}
 						});
-						grTap.CancelsTouchesInView = true;
-						AddGestureRecognizer(grTap);
+					//grTap.CancelsTouchesInView = true;
+					AddGestureRecognizer(grTap);
 					}
 				} else {
 					if (grTap != null) {

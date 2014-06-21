@@ -2,10 +2,6 @@
 using MonoTouch.UIKit;
 using System.Drawing;
 
-//LoadingOverlay loadingOverlay;
-//loadingOverlay = new LoadingOverlay (UIScreen.MainScreen.Bounds);
-//View.Add (loadingOverlay);
-//loadingOverlay.Hide ();
 namespace AutoLink
 {
 	public class LoadingOverlay : UIView {
@@ -13,7 +9,7 @@ namespace AutoLink
 		UIActivityIndicatorView activitySpinner;
 		UILabel loadingLabel;
 
-		public LoadingOverlay (RectangleF frame) : base (frame)
+		public LoadingOverlay (RectangleF frame,string message = "Loading Data...") : base (frame)
 		{
 			// configurable bits
 			BackgroundColor = UIColor.Black;
@@ -47,7 +43,7 @@ namespace AutoLink
 			));
 			loadingLabel.BackgroundColor = UIColor.Clear;
 			loadingLabel.TextColor = UIColor.White;
-			loadingLabel.Text = "Loading Data...";
+			loadingLabel.Text = message;
 			loadingLabel.TextAlignment = UITextAlignment.Center;
 			loadingLabel.AutoresizingMask = UIViewAutoresizing.FlexibleMargins;
 			AddSubview (loadingLabel);
@@ -64,7 +60,6 @@ namespace AutoLink
 				() => { RemoveFromSuperview(); }
 			);
 		}
-	}
-
+	};
 }
 

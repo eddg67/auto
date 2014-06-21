@@ -192,7 +192,7 @@ namespace AutoLink
 					if(btnEv.ButtonIndex == deleteIndex){
 						//BigTed.BTProgressHUD.Show("Deleting Item...");
 						service.DeleteItem(searchID,items);
-						app.searchResult.binsController.NavigationTableView.ReloadData();
+						app.searchResult.navigation.NavigationTableView.ReloadData();
 						NavigationController.PopViewControllerAnimated(true);
 
 					}
@@ -267,7 +267,7 @@ namespace AutoLink
 		}
 
 
-
+		/*
 		[Export ("splitViewController:willHideViewController:withBarButtonItem:forPopoverController:")]
 		public void WillHideViewController (UISplitViewController splitController, UIViewController viewController, UIBarButtonItem barButtonItem, UIPopoverController popoverController)
 		{
@@ -282,7 +282,7 @@ namespace AutoLink
 			// Called when the view is shown again in the split view, invalidating the button and popover controller.
 			NavigationItem.SetLeftBarButtonItem (null, true);
 
-		}
+		}*/
 	}
 }
 

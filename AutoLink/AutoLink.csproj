@@ -211,13 +211,10 @@
     <Compile Include="Services\API.cs" />
     <Compile Include="Models\LoginResult.cs" />
     <Compile Include="Models\SearchResult.cs" />
-    <Compile Include="Screens\LoadingOverlay.cs" />
     <Compile Include="Services\APIRequest.cs" />
     <Compile Include="Services\APIResponse.cs" />
     <Compile Include="Utilities\ViewExtensions.cs" />
     <Compile Include="Controllers\BaseController.cs" />
-    <Compile Include="Screens\InlineElement.cs" />
-    <Compile Include="Screens\DualSection.cs" />
     <Compile Include="Services\SearchService.cs" />
     <Compile Include="Models\Colors.cs" />
     <Compile Include="Models\SearchRequest.cs" />
@@ -255,12 +252,17 @@
     <Compile Include="Controllers\ImageViewerViewController.designer.cs">
       <DependentUpon>ImageViewerViewController.cs</DependentUpon>
     </Compile>
-    <Compile Include="Models\LinearDataSource.cs" />
     <Compile Include="Models\Custom.cs" />
     <Compile Include="Models\SeenListingRequest.cs" />
     <Compile Include="Views\CircleView.cs" />
     <Compile Include="Views\LineView.cs" />
     <Compile Include="Controllers\PriceTabController.cs" />
+    <Compile Include="Models\LinearDataSource.cs" />
+    <Compile Include="Views\ImageCarousel.cs" />
+    <Compile Include="Views\LoadingOverlay.cs" />
+    <Compile Include="Views\InlineElement.cs" />
+    <Compile Include="Controllers\ImageCollectionSource.cs" />
+    <Compile Include="Controllers\ImageCell.cs" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="MainStoryboard_iPhone.storyboard" />
@@ -293,9 +295,7 @@
   <ItemGroup>
     <Folder Include="Utilities\" />
     <Folder Include="Services\" />
-    <Folder Include="Data\" />
     <Folder Include="Controllers\" />
-    <Folder Include="Screens\" />
     <Folder Include="Models\" />
     <Folder Include="Login\" />
     <Folder Include="Search\" />
