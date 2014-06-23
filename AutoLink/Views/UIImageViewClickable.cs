@@ -5,7 +5,7 @@ namespace AutoLink
 {
 		public class UIImageViewClickable: UIImageView
 		{
-			UITapGestureRecognizer grTap;
+			public UITapGestureRecognizer grTap;
 
 			event Action onCl;
 			public event Action OnClick
@@ -30,7 +30,7 @@ namespace AutoLink
 								onCl();
 							}
 						});
-					//grTap.CancelsTouchesInView = true;
+					grTap.CancelsTouchesInView = true;
 					AddGestureRecognizer(grTap);
 					}
 				} else {

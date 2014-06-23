@@ -75,7 +75,8 @@ namespace AutoLink.Services
 							return null;
 
 						} else {
-							Console.Out.WriteLine ("Response Body: \r\n {0}", content);
+								Console.Out.WriteLine ("Response Body: \r\n");
+								//Console.Out.WriteLine ("\r\n {0}", content);
 								result = ParseJson<T> (content);
 						}
 
@@ -120,6 +121,8 @@ namespace AutoLink.Services
 			}
 		
 			var result = await client.UploadStringTaskAsync(new Uri(URL), content);
+			Console.Out.WriteLine ("Response Body: \r\n");
+			//Console.Out.WriteLine ("\r\n {0}", result);
 			return ParseJson<T> (result);
 
 			}catch(Exception exp){

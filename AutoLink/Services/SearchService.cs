@@ -470,6 +470,15 @@ namespace AutoLink.Services
 			);
 		}
 
+
+		public Task<APIResponse<CustomResult>> CreateBin(string id)
+		{
+			return api.CreateAsync<CustomResult>(
+				@"bin.update",
+				new { name = id }
+			);
+		}
+
 		public Task<APIResponse<object>> SeenListing(string searchId,string[] listings)
 		{
 			listings = (listings == null) ? new string[] { } : listings;

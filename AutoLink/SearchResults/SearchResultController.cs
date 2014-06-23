@@ -22,7 +22,7 @@ namespace AutoLink
 		public FlyoutController navigation;
 		public List<SearchResult> results;
 
-		Section searchSec;
+		//Section searchSec;
 
 
 		static bool UserInterfaceIdiomIsPhone {
@@ -65,7 +65,6 @@ namespace AutoLink
 					navigation.ViewControllers = Array.ConvertAll (
 						results.Select (x => x.name).ToArray (), 
 						title =>{
-						
 							var list = new ListView (navigation, title,searchIds[count],false);
 							var nav = new UINavigationController (list);
 							nav.NavigationBarHidden = false;
@@ -97,16 +96,16 @@ namespace AutoLink
 					if(bins != null){
 
 						app.setUpLocalNotifications(bins.@new.count);
-						navigation.NavigationTableView.SectionHeaderHeight = 0;
-						navigation.NavigationTableView.TableHeaderView = null;
+						//navigation.NavigationTableView.SectionHeaderHeight = 0;
+						//navigation.NavigationTableView.TableHeaderView = null;
 
 						var vc = navigation.ViewControllers;
 
 						var vcArr = new UIViewController [] {
-							new UINavigationController ( new ListView (navigation,"Starred",bins.starred.id,true)),
-							new UINavigationController ( new ListView (navigation,"New",bins.@new.id,true)),
-							new UINavigationController ( new ListView (navigation,"Contacted",bins.contacted.id,true )),
-							new UINavigationController (new ListView (navigation,"Deleted",bins.deleted.id,true))
+							new UINavigationController ( new ListView (navigation,"Starred", bins.starred.id, true)),
+							new UINavigationController ( new ListView (navigation,"New", bins.@new.id, true)),
+							new UINavigationController ( new ListView (navigation,"Contacted",bins.contacted.id, true )),
+							new UINavigationController (new ListView (navigation,"Deleted", bins.deleted.id, true))
 
 							//new UINavigationController ( new Bins (navigation,"Seen",bins.seen.id,true))
 						};
@@ -143,12 +142,12 @@ namespace AutoLink
 		private Section GetSearchSection()
 		{
 
-			var header = new UILabel (new RectangleF (0, 0, this.View.Bounds.Width, 40)) 
+			/*	var header = new UILabel (new RectangleF (0, 0, this.View.Bounds.Width, 40)) 
 			{
 				Font = UIFont.SystemFontOfSize(18),
 				BackgroundColor = UIColor.LightTextColor,
 				Text = "Live Searches"
-			};
+			};*/
 
 			var secSearch = new Section (CreateToolbarView(),null)
 			{
@@ -252,7 +251,7 @@ namespace AutoLink
 
 		class ListView : listViewController
 		{
-			public ListView (FlyoutController navigation, string title,string list, bool bin=false): base (list,bin)
+			public ListView (FlyoutController navigation, string title,string id, bool bin=false): base (id,bin)
 			{
 				var fav = new UITabBarItem(UITabBarSystemItem.Contacts,1);
 				var img = fav.SelectedImage;

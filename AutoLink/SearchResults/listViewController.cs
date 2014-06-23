@@ -19,13 +19,14 @@ namespace AutoLink
 			set;
 		}
 
-		public listViewController (string id,bool bin) : base (UITableViewStyle.Grouped)
+		public listViewController (string id, bool bin) : base (UITableViewStyle.Grouped)
 		{
 	
 			searchId = id;
 			useBinId = bin;
 			//TableView.TableHeaderView = GetHeader ();
 			TableView.SeparatorInset = new UIEdgeInsets (0, 0, 0, 0);
+			TableView.SectionHeaderHeight = 0;
 
 			//TableView.ContentInset = new UIEdgeInsets (0, 5, 0, 5); 
 
@@ -37,6 +38,7 @@ namespace AutoLink
 		{
 			var frame = TableView.Frame;
 			TableView.Frame = new RectangleF (0, 0, frame.Width, frame.Height);
+			TableView.SectionHeaderHeight = 0;
 		}
 
 		public override void DidReceiveMemoryWarning ()
@@ -52,8 +54,6 @@ namespace AutoLink
 			base.ViewDidLoad ();
 			TableView.RowHeight = 0;
 
-		
-
 			// Register the TableView's data source
 			if (useBinId) {
 				TableView.Source = new listViewSource ("",searchId);
@@ -62,10 +62,7 @@ namespace AutoLink
 			}
 
 
-
-
 		}
-
 
 
 		public UIToolbar CreateToolbarView()

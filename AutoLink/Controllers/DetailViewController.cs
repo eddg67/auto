@@ -24,7 +24,6 @@ namespace AutoLink
 		UIScrollView scrollView { get; set; }
 		UIView contentView;
 
-
 		public DetailViewController (string _searchID,Listing _item)
 			: base (UserInterfaceIdiomIsPhone ? "DetailViewController_iPhone" : "DetailViewController_iPad", null)
 		{
@@ -43,7 +42,6 @@ namespace AutoLink
 		public void SetItems(Listing item)
 		{
 			items = item;
-
 		}
 
 
@@ -103,7 +101,7 @@ namespace AutoLink
 
 			};
 
-			var detailView = new Detail (View.Bounds);
+			var detailView = new Detail (View.Bounds,this);
 
 			detailView.setItem (items);
 
