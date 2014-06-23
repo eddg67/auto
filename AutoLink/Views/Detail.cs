@@ -14,12 +14,13 @@ namespace AutoLink
 		public Listing item { get; set; }
 		public UIToolbar tool{ get; set; }
 		public UIImageViewClickable ImageView { get; set; }
+		UIViewController controller;
 		UILabel price,desc,make,mileage,source;
 		string searchID { get; set; }
 		float offset = 10;
 		AppDelegate app = (AppDelegate)UIApplication.SharedApplication.Delegate;
 
-		public Detail (RectangleF frame) : base (frame)
+		public Detail (RectangleF frame,UIViewController _controller) : base (frame)
 		{
 			ImageView = new UIImageViewClickable();
 			desc = new UILabel();
@@ -27,7 +28,7 @@ namespace AutoLink
 			make = new UILabel ();
 			mileage = new UILabel ();
 			source = new UILabel();
-	
+			controller = _controller;
 
 		}
 
@@ -48,9 +49,7 @@ namespace AutoLink
 						ImageView.Image = task.Result;
 						Add(ImageView);
 					}
-			
-				
-				
+		
 					desc.TextAlignment = UITextAlignment.Center;
 					desc.LineBreakMode = UILineBreakMode.WordWrap;
 					desc.Font = UIFont.PreferredCaption1;
@@ -89,8 +88,9 @@ namespace AutoLink
 					source.Text = string.Format("Source : {0}",list.source);
 
 					ImageView.OnClick += () => {
-						//ImageView.OnClick
-						//app.ShowImageController(item);
+						((DetailViewController)controller).removeNavigation = false;
+						ImageView.RemoveGestureRecognizer(ImageView.grTap);
+						app.ShowImageController(item);
 
 					};
 
@@ -104,6 +104,8 @@ namespace AutoLink
 
 			}));
 		}
+
+	 
 
 		public override void LayoutSubviews ()
 		{
@@ -119,7 +121,7 @@ namespace AutoLink
 			mileage.Frame = new RectangleF( offset , make.Frame.Bottom + offset , Bounds.Size.Width - offset, 20);
 			source.Frame = new RectangleF( offset , mileage.Frame.Bottom, Bounds.Width  -offset, 20);
 
-			desc.Frame = new RectangleF (offset, source.Frame.Bottom + 40, Bounds.Width - (offset*2), 50);
+			desc.Frame = new RectangleF (offset, source.Frame.Bottom + 40, Bounds.Width - (offset*2), 100);
 
 
 
@@ -160,7 +162,7 @@ namespace AutoLink
 			string datesOn = "Unknown List Date";
 			string pricesAbove = "Price Above Edmunds";
 
-			tool = new UIToolbar (new RectangleF (0 , Frame.Height - 55 , Frame.Width, 55));  
+			tool = new UIToolbar (new RectangleF (0 , Frame.Height - 35 , Frame.Width, 35));  
 			//tool.Translucent = true;
 			tool.Layer.BorderColor = UIColor.White.CGColor;
 			tool.BarTintColor = UIColor.White;

@@ -49,6 +49,12 @@ namespace AutoLink
 			//ImageCell row = Rows[indexPath.Row];
 			//row.Tapped.Invoke();
 		}
+			
+
+		public override void ItemSelected (UICollectionView collectionView, NSIndexPath indexPath)
+		{
+			ImageCell cell = GetCell (collectionView, indexPath) as ImageCell;
+		}
 
 		public override UICollectionViewCell GetCell(UICollectionView collectionView, NSIndexPath indexPath)
 		{
@@ -59,6 +65,17 @@ namespace AutoLink
 			cell.UpdateRow(Rows[indexPath.Row], FontSize, ImageViewSize);
 
 			return cell;
+		}
+
+		public override bool ShouldShowMenu (UICollectionView collectionView, NSIndexPath indexPath)
+		{
+			return true;
+		}
+
+		public override bool CanPerformAction (UICollectionView collectionView, MonoTouch.ObjCRuntime.Selector action, NSIndexPath indexPath, NSObject sender)
+		{
+
+			return true;
 		}
 	}
 

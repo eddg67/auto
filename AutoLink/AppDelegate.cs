@@ -172,10 +172,10 @@ namespace AutoLink
 		{
 			var  flowLayout = new UICollectionViewFlowLayout (){
 				HeaderReferenceSize = new System.Drawing.SizeF (100, 100),
-				SectionInset = new UIEdgeInsets (0,10,10,10),
+				SectionInset = new UIEdgeInsets (50,0,50,50),
 				ScrollDirection = UICollectionViewScrollDirection.Vertical,
-				MinimumInteritemSpacing = 10, // minimum spacing between cells
-				MinimumLineSpacing = 50 // minimum spacing between rows if ScrollDirection is Vertical or between columns if Horizontal
+				MinimumInteritemSpacing = 50, // minimum spacing between cells
+				MinimumLineSpacing = 100 // minimum spacing between rows if ScrollDirection is Vertical or between columns if Horizontal
 			};
 
 			imageController = new ImageViewerViewController (flowLayout,item.images);

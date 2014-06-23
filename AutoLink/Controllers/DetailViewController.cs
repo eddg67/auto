@@ -15,6 +15,7 @@ namespace AutoLink
 		}
 
 		public string searchID { get; set; }
+		public bool removeNavigation { get; set; }
 			
 		Listing items { get; set; }
 		UIToolbar toolbar { get; set; }
@@ -31,6 +32,7 @@ namespace AutoLink
 			service = app.searchService;
 			searchID = _searchID;
 			items = _item;
+			removeNavigation = true;
 		}
 
 		public DetailViewController (IntPtr pointer)
@@ -103,7 +105,7 @@ namespace AutoLink
 
 			};
 
-			var detailView = new Detail (View.Bounds);
+			var detailView = new Detail (View.Bounds,this);
 
 			detailView.setItem (items);
 
@@ -121,13 +123,20 @@ namespace AutoLink
 			scrollView.ContentSize = bounds.Size;
 			scrollView.Frame = bounds;
 		}
-			
+
+		public override void ViewDidAppear (bool animated)
+		{
+			base.ViewDidAppear (animated);
+			removeNavigation = true;
+		}
 
 		public override void ViewWillDisappear (bool animated)
 		{
 			base.ViewWillDisappear (animated);
-			NavigationController.NavigationBarHidden = true;
-			NavigationController.ToolbarHidden = true;
+			if (removeNavigation) {
+				NavigationController.NavigationBarHidden = true;
+				NavigationController.ToolbarHidden = true;
+			}
 		
 		}
 

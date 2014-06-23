@@ -49,6 +49,8 @@ namespace AutoLink
 
 					ImageView.Image = task.Result;
 					ImageView.Frame = new RectangleF(0, 0, imageViewSize.Width, imageViewSize.Height);
+					LabelView.Text = "test";
+					LabelView.BackgroundColor = UIColor.Yellow;
 				
 
 				}
@@ -60,6 +62,7 @@ namespace AutoLink
 
 		
 		}
+			
 
 		public async Task<UIImage> DownloadImageAsync(string imageUrl)
 		{

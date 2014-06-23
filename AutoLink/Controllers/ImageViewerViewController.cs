@@ -20,39 +20,45 @@ namespace AutoLink
 		public ImageViewerViewController(UICollectionViewLayout layout,List<string>  list) : base (layout)
 			{
 			images = list;
-			}
-		public ImageViewerViewController ()
-			
-		{
 
+			}
+	
+		public override void ViewWillDisappear (bool animated)
+		{
+			base.ViewWillDisappear (animated);
+
+			NavigationController.NavigationBarHidden = false;
+			NavigationController.ToolbarHidden = false;
 
 		}
 
 		public override void ViewDidLoad()
 		{
-				base.ViewDidLoad();
+			base.ViewDidLoad();
 
-				Title = "Collection";
+			Title = "Gallery";
 
 			userSource = new ImageCollectionSource(images);
-				userSource.FontSize = 11f;
+			userSource.FontSize = 11f;
 			userSource.ImageViewSize = new SizeF(100, 125);
 
+			CollectionView.BackgroundColor = UIColor.White;
 			CollectionView.RegisterClassForCell (typeof(ImageCell), ImageCell.CellID);
 			CollectionView.Source = userSource;
-			//CollectionView.RegisterClassForSupplementaryView(typeof(Header), UICollectionElementKindSection.Header,Header. );
+			NSString head = new NSString ("Header");
+			CollectionView.RegisterClassForSupplementaryView(typeof(Header), UICollectionElementKindSection.Header,head );
 
 				// add a custom menu item
 				UIMenuController.SharedMenuController.MenuItems = new UIMenuItem[] { 
 					new UIMenuItem ("Custom", new Selector ("custom:")) 
 				};
-
-			NavigationController.NavigationItem.LeftBarButtonItem = new UIBarButtonItem (UIBarButtonSystemItem.Done, delegate {
-				NavigationController.PopViewControllerAnimated(true);
-			});
-		
 		}
 
+		public override void LoadView ()
+		{
+			base.LoadView ();
+		
+		}
 
 
 
@@ -67,40 +73,7 @@ namespace AutoLink
 			return UIImage.LoadFromData(NSData.FromArray(contents));
 		}
 
-		void LoadImages()
-		{
-
-
-			DownloadImageAsync (images [0]).ContinueWith ((task) => InvokeOnMainThread (() => {
-				//DetailTextLabel.Text = list.description;
-				if (!task.IsFaulted) {
-
-
-					//LoadThumbNails ();
-
-				}
-
-
-			}));
-
-		}
-
-		void LoadThumbNails()
-		{
-			foreach (var img in images) {
-
-				DownloadImageAsync (img).ContinueWith ((task) => InvokeOnMainThread (() => {
-					//DetailTextLabel.Text = list.description;
-					if (!task.IsFaulted) {
-
-
-
-					}
-				}));
-
-			}
-		}
-
+	
 
 
 	}
@@ -122,7 +95,9 @@ namespace AutoLink
 		[Export ("initWithFrame:")]
 		public Header (System.Drawing.RectangleF frame) : base (frame)
 		{
-			label = new UILabel (){Frame = new System.Drawing.RectangleF (0,0,300,50), BackgroundColor = UIColor.Yellow};
+			label = new UILabel (){Frame = new System.Drawing.RectangleF (0,0,300,100), BackgroundColor = UIColor.Yellow};
+			label.BackgroundColor = UIColor.Yellow;
+			Text = "Test";
 			AddSubview (label);
 		}
 	}
