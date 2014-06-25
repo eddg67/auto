@@ -93,12 +93,7 @@ namespace AutoLink
 						app.ShowImageController(item);
 
 					};
-
-					//dialog = GetDialog(list);
-					//Add(new CircleView());
-					//Add(ImageView);
-				
-
+						
 				}
 
 
@@ -121,14 +116,14 @@ namespace AutoLink
 			mileage.Frame = new RectangleF( offset , make.Frame.Bottom + offset , Bounds.Size.Width - offset, 20);
 			source.Frame = new RectangleF( offset , mileage.Frame.Bottom, Bounds.Width  -offset, 20);
 
-			desc.Frame = new RectangleF (offset, source.Frame.Bottom + 40, Bounds.Width - (offset*2), 100);
 
 
 
-			var carousel = new CarouselView(new RectangleF(0,ImageView.Frame.Bottom,Bounds.Width,50));
-			carousel.DataSource = new LinearDataSource(item);
-			carousel.Delegate = new LinearDelegate();
-			carousel.CarouselType = CarouselType.Linear;
+
+			//var carousel = new CarouselView(new RectangleF(0,ImageView.Frame.Bottom,Bounds.Width,50));
+			//carousel.DataSource = new LinearDataSource(item);
+			//carousel.Delegate = new LinearDelegate();
+			//carousel.CarouselType = CarouselType.Linear;
 			//carousel.ConfigureView();
 			//Add(carousel);
 			//carousel.Autoscroll = 1.0f;
@@ -141,6 +136,7 @@ namespace AutoLink
 			using (var line = new LineView (new RectangleF (offset, source.Frame.Bottom + (offset * 2), Bounds.Width - (offset * 2), 1))) {
 				line.BackgroundColor = UIColor.LightGray;
 				Add (line);
+				desc.Frame = new RectangleF (offset, line.Frame.Bottom, Bounds.Width - (offset*2), 200);
 			}
 
 
@@ -151,7 +147,10 @@ namespace AutoLink
 				Add (line);
 			}
 
-			Add (GetToolBar ());
+			//Add (GetToolBar ());
+			var f = Frame;
+			f.Height = ImageView.Frame.Height + make.Frame.Height + mileage.Frame.Height + source.Frame.Height + 45;
+			//Frame = f;
 
 		}
 

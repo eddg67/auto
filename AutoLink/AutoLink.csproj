@@ -263,6 +263,10 @@
     <Compile Include="Views\InlineElement.cs" />
     <Compile Include="Controllers\ImageCollectionSource.cs" />
     <Compile Include="Controllers\ImageCell.cs" />
+    <Compile Include="Controllers\ImageViewController.cs" />
+    <Compile Include="Controllers\ImageViewController.designer.cs">
+      <DependentUpon>ImageViewController.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="MainStoryboard_iPhone.storyboard" />
@@ -290,6 +294,8 @@
     <InterfaceDefinition Include="Controllers\DetailViewController_iPad.xib" />
     <InterfaceDefinition Include="Controllers\ImageViewerViewController_iPhone.xib" />
     <InterfaceDefinition Include="Controllers\ImageViewerViewController_iPad.xib" />
+    <InterfaceDefinition Include="Controllers\ImageViewController_iPhone.xib" />
+    <InterfaceDefinition Include="Controllers\ImageViewController_iPad.xib" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

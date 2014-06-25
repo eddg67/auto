@@ -1,16 +1,11 @@
 ﻿<Properties GitUserInfo="UsingGIT">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release|iPhone" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneDeviceTarget.Nichole" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="AutoLink/SearchResults/listViewSource.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.IPhoneRetina.7.1" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="AutoLink/Controllers/ImageCollectionSource.cs">
     <Files>
-      <File FileName="AutoLink/SearchResults/listViewSource.cs" Line="237" Column="20" />
-      <File FileName="AutoLink/SearchResults/listViewCell.cs" Line="73" Column="5" />
-      <File FileName="AutoLink/Controllers/ImageViewerViewController.cs" Line="85" Column="1" />
-      <File FileName="AutoLink/Services/API.cs" Line="208" Column="1" />
-      <File FileName="AutoLink/Search/SearchScreen.cs" Line="213" Column="1" />
-      <File FileName="AutoLink/SearchResults/SearchResultController.cs" Line="75" Column="7" />
-      <File FileName="AutoLink/Controllers/DetailViewController.cs" Line="138" Column="16" />
-      <File FileName="AutoLink/Info.plist" />
-      <File FileName="AutoLink/SearchResults/FlyoutController.cs" Line="1" Column="1" />
+      <File FileName="AutoLink/Controllers/ImageCollectionSource.cs" Line="97" Column="1" />
+      <File FileName="AutoLink/Controllers/ImageViewerViewController.cs" Line="104" Column="4" />
+      <File FileName="AutoLink/AppDelegate.cs" Line="26" Column="3" />
+      <File FileName="AutoLink/Controllers/ImageCell.cs" Line="49" Column="31" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
@@ -25,21 +20,16 @@
       <Breakpoint file="/Users/en-ed/Downloads/xamarin-store-app-master/XamarinStore.iOS/ViewControllers/LoginViewController.cs" line="57" column="1" />
       <Breakpoint file="/Users/en-ed/Downloads/xamarin-store-app-master/XamarinStore.iOS/ViewControllers/LoginViewController.cs" line="74" column="1" />
       <Breakpoint file="/Users/en-ed/Projects/AutoLink/AutoLink/SearchResults/SWTableViewCell.cs" line="172" column="1" />
-      <Breakpoint file="/Users/en-ed/Projects/AutoLink/AutoLink/Services/API.cs" line="126" column="1" />
-      <Breakpoint file="/Users/en-ed/Projects/AutoLink/AutoLink/Controllers/DetailViewController.cs" line="248" column="1" />
-      <Breakpoint file="/Users/en-ed/Projects/AutoLink/AutoLink/Controllers/ImageViewerViewController.cs" line="85" column="1" />
-      <Breakpoint file="/Users/en-ed/Projects/AutoLink/AutoLink/Controllers/ImageViewerViewController.cs" line="88" column="1" />
-      <Breakpoint file="/Users/en-ed/Projects/AutoLink/AutoLink/Controllers/ImageViewerViewController.cs" line="145" column="1" />
-      <Breakpoint file="/Users/en-ed/Projects/AutoLink/AutoLink/Controllers/ImageViewerViewController.cs" line="92" column="1" />
+      <Breakpoint file="/Users/en-ed/Projects/AutoLink/AutoLink/Controllers/ImageViewerViewController.cs" line="124" column="1" />
       <Breakpoint file="/Users/en-ed/Projects/AutoLink/AutoLink/Services/API.cs" line="182" column="1" />
-      <Breakpoint file="/Users/en-ed/Projects/AutoLink/AutoLink/AppDelegate.cs" line="148" column="1" />
       <Breakpoint file="/Users/en-ed/Projects/AutoLink/AutoLink/Search/SearchScreen.cs" line="213" column="1" />
-      <Breakpoint file="/Users/en-ed/Projects/AutoLink/AutoLink/Controllers/DetailViewController.cs" line="154" column="1" />
+      <Breakpoint file="/Users/en-ed/Projects/AutoLink/AutoLink/Views/UIViewFullscreen.cs" line="31" column="1" />
+      <Breakpoint file="/Users/en-ed/Projects/AutoLink/AutoLink/AppDelegate.cs" line="63" column="1" />
+      <Breakpoint file="/Users/en-ed/Projects/AutoLink/AutoLink/Views/UIScrollViewImage.cs" line="89" column="1" />
+      <Breakpoint file="/Users/en-ed/Projects/AutoLink/AutoLink/Models/Bin.cs" line="13" column="18" />
+      <Breakpoint file="/Users/en-ed/Projects/AutoLink/AutoLink/Controllers/ImageCollectionSource.cs" line="71" column="1" />
+      <Breakpoint file="/Users/en-ed/Projects/AutoLink/AutoLink/Controllers/ImageCollectionSource.cs" line="60" column="39" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.ItemProperties.AutoLink>
-    <IPhoneTestFlightSettings_27CRelease ApiToken="882166f753e2dff5252be1403ac9de7a_MTg4Njg0MjIwMTQtMDYtMDIgMDg6MDc6MjIuMTk3NTgy" TeamToken="a12a8285c81a262b1bef61b1733f77e4_Mzg4MDMwMjAxNC0wNi0wMiAwODowOToyMS42Nzk4MDE" ReleaseNotes="Test" NotifyTeamMembers="False" ReplaceBinaries="False" DistributionLists="" UploadDSYMs="False" />
-    <IPhoneTestFlightSettings_27CDebug ApiToken="882166f753e2dff5252be1403ac9de7a_MTg4Njg0MjIwMTQtMDYtMDIgMDg6MDc6MjIuMTk3NTgy" TeamToken="a12a8285c81a262b1bef61b1733f77e4_Mzg4MDMwMjAxNC0wNi0wMiAwODowOToyMS42Nzk4MDE" ReleaseNotes="Primary Build 1.0.3&#xA;" NotifyTeamMembers="True" ReplaceBinaries="True" DistributionLists="" UploadDSYMs="False" />
-  </MonoDevelop.Ide.ItemProperties.AutoLink>
 </Properties>

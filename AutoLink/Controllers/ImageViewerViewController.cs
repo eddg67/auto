@@ -14,12 +14,15 @@ namespace AutoLink
 	public partial class ImageViewerViewController : UICollectionViewController
 	{
 
-			private ImageCollectionSource userSource;
-			List<string> images { get; set; }
+		private ImageCollectionSource userSource;
+		List<string> images { get; set; }
+		static NSString headerId = new NSString ("Header");
+		Listing item;
 
-		public ImageViewerViewController(UICollectionViewLayout layout,List<string>  list) : base (layout)
+		public ImageViewerViewController(UICollectionViewLayout layout,Listing list) : base (layout)
 			{
-			images = list;
+			item = list;
+			images = item.images;
 
 			}
 	
@@ -36,17 +39,17 @@ namespace AutoLink
 		{
 			base.ViewDidLoad();
 
-			Title = "Gallery";
+			Title = item.title;
 
-			userSource = new ImageCollectionSource(images);
+			userSource = new ImageCollectionSource(item);
 			userSource.FontSize = 11f;
 			userSource.ImageViewSize = new SizeF(100, 125);
 
-			CollectionView.BackgroundColor = UIColor.White;
+			CollectionView.BackgroundColor = UIColor.Black;
 			CollectionView.RegisterClassForCell (typeof(ImageCell), ImageCell.CellID);
 			CollectionView.Source = userSource;
-			NSString head = new NSString ("Header");
-			CollectionView.RegisterClassForSupplementaryView(typeof(Header), UICollectionElementKindSection.Header,head );
+
+			//CollectionView.RegisterClassForSupplementaryView(typeof(Header), UICollectionElementKindSection.Header,headerId );
 
 				// add a custom menu item
 				UIMenuController.SharedMenuController.MenuItems = new UIMenuItem[] { 
@@ -59,45 +62,29 @@ namespace AutoLink
 			base.LoadView ();
 		
 		}
-
-
-
-		public async Task<UIImage> DownloadImageAsync(string imageUrl)
-		{
-			var httpClient = new HttpClient();
-
-			Task <Byte[]> contentsTask = httpClient.GetByteArrayAsync(imageUrl);
-
-			var contents = await contentsTask;
-
-			return UIImage.LoadFromData(NSData.FromArray(contents));
-		}
-
-	
+			
 
 
 	}
 
 	public class Header : UICollectionReusableView
 	{
-		UILabel label;
+		UIImageView label;
 
-		public string Text {
+		public UIImage image {
 			get {
-				return label.Text;
+				return label.Image;
 			}
 			set {
-				label.Text = value;
-				SetNeedsDisplay ();
+				label.Image = value;
 			}
 		}
 
 		[Export ("initWithFrame:")]
 		public Header (System.Drawing.RectangleF frame) : base (frame)
 		{
-			label = new UILabel (){Frame = new System.Drawing.RectangleF (0,0,300,100), BackgroundColor = UIColor.Yellow};
-			label.BackgroundColor = UIColor.Yellow;
-			Text = "Test";
+			label = new UIImageView (){Frame = frame, BackgroundColor = UIColor.Yellow};
+
 			AddSubview (label);
 		}
 	}

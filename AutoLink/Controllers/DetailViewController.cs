@@ -104,8 +104,8 @@ namespace AutoLink
 				actionSheet.ShowFrom(NavigationItem.RightBarButtonItem,true);//.ShowInView(View);
 
 			};
-
-			var detailView = new Detail (View.Bounds,this);
+		
+			var detailView = new Detail (View.Frame,this);
 
 			detailView.setItem (items);
 

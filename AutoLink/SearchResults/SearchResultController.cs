@@ -79,13 +79,8 @@ namespace AutoLink
 
 					count = 0;
 					over.Hide ();
-
-
 				}
 			));
-
-
-		
 		}
 
 
@@ -107,11 +102,19 @@ namespace AutoLink
 							new UINavigationController ( new ListView (navigation,"New",bins.@new.id,true)),
 							new UINavigationController ( new ListView (navigation,"Contacted",bins.contacted.id,true )),
 							new UINavigationController (new ListView (navigation,"Deleted",bins.deleted.id,true))
-
-							//new UINavigationController ( new Bins (navigation,"Seen",bins.seen.id,true))
 						};
 
-						var tmp = vc.Concat(vcArr).ToArray();            
+						if(bins.custom != null && bins.custom.Count > 0){
+							var custs = bins.custom.Select(x=>{
+								return new UINavigationController ( new ListView (navigation,x.name,x.id,true));
+							});
+								
+							vcArr = vcArr.Concat(custs.ToArray()).ToArray(); 
+						}
+
+
+
+						var tmp = vc.Concat(vcArr).ToArray();  
 						navigation.ViewControllers = tmp;
 
 						navigation.NavigationRoot = new RootElement ("Live Searches"){
@@ -119,14 +122,10 @@ namespace AutoLink
 							UpdateBins(bins)
 
 						};
-
-
 						//navigation.NavigationRoot.Add(GetSearchSection());
 						//navigation.NavigationRoot.Add(UpdateBins(bins));
 
 					}
-
-
 				}));
 
 		}
@@ -179,12 +178,15 @@ namespace AutoLink
 
 		public Section UpdateBins(Bin bin)
 		{
+			Section result;
+			StyledStringElement[] customBins;
 
 			var header = new UILabel (new RectangleF (0, 0, this.View.Bounds.Width, 60)) {
 				Font = UIFont.SystemFontOfSize(18),
 				BackgroundColor = UIColor.LightGray,
 				Text = "Bins"
 			};
+					
 
 			var stared = new StyledStringElement (
 				             "Starred",
@@ -222,10 +224,29 @@ namespace AutoLink
 			deleted.Tapped += () => {navigation.Title =  "Deleted Listings";};
 			deleted.Accessory = UITableViewCellAccessory.DisclosureIndicator;
 
-			return new Section (header, null) {
-				stared,allNew,contacted,deleted
+			result = new Section (header, null) {
+				stared, allNew, contacted, deleted
 
 			};
+
+			if (bin.custom != null || bin.custom.Count > 0) 
+			{
+				result.AddAll( bin.custom.Select (x => {
+					var str = new StyledStringElement (
+						x.name,
+						x.count.ToString(),
+						UITableViewCellStyle.Value1
+					);
+
+					str.Tapped += () => {navigation.Title =  x.name;};
+					deleted.Accessory = UITableViewCellAccessory.DisclosureIndicator;
+
+					return str;
+				}));
+			}
+
+
+			return result;
 				
 		}
 

@@ -25,12 +25,11 @@ namespace AutoLink
 
 			ContentView.AddSubview(ImageView);
 
-			LabelView = new UILabel();
-			LabelView.BackgroundColor = UIColor.Clear;
-			LabelView.TextColor = UIColor.DarkGray;
-			LabelView.TextAlignment = UITextAlignment.Center;
-
-			ContentView.AddSubview(LabelView);
+			//LabelView = new UILabel();
+			//LabelView.BackgroundColor = UIColor.Yellow;
+			//LabelView.TextColor = UIColor.DarkGray;
+			//LabelView.TextAlignment = UITextAlignment.Center;
+			//ContentView.AddSubview(LabelView);
 		}
 
 		public UIImageView ImageView { get; set; }
@@ -49,20 +48,11 @@ namespace AutoLink
 
 					ImageView.Image = task.Result;
 					ImageView.Frame = new RectangleF(0, 0, imageViewSize.Width, imageViewSize.Height);
-					LabelView.Text = "test";
-					LabelView.BackgroundColor = UIColor.Yellow;
-				
-
 				}
-
-
+					
 			}));
-	
-
-
 		
 		}
-			
 
 		public async Task<UIImage> DownloadImageAsync(string imageUrl)
 		{

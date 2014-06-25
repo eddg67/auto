@@ -36,8 +36,9 @@ namespace AutoLink
 		public SearchScreen search;
 		public ResetController reset;
 		public DetailViewController detail;
-		public ImageViewerViewController imageController;
+		public ImageViewerViewController imageViewerController;
 		public PriceTabController priceTab;
+		public ImageViewController imageViewController;
 
 		MFMailComposeViewController mailController = new MFMailComposeViewController();
 		public NetworkStatus noNetwork;
@@ -171,19 +172,28 @@ namespace AutoLink
 		public void ShowImageController(Listing item)
 		{
 			var  flowLayout = new UICollectionViewFlowLayout (){
-				HeaderReferenceSize = new System.Drawing.SizeF (100, 100),
+				HeaderReferenceSize = new System.Drawing.SizeF (0, 0),
 				SectionInset = new UIEdgeInsets (50,0,50,50),
 				ScrollDirection = UICollectionViewScrollDirection.Vertical,
 				MinimumInteritemSpacing = 50, // minimum spacing between cells
 				MinimumLineSpacing = 100 // minimum spacing between rows if ScrollDirection is Vertical or between columns if Horizontal
 			};
 
-			imageController = new ImageViewerViewController (flowLayout,item.images);
+			imageViewerController = new ImageViewerViewController (flowLayout,item);
 		
 			RootController.NavigationBarHidden = false;
 			RootController.ToolbarHidden = true;
 
-			RootController.PushViewController (imageController, true);
+			RootController.PushViewController (imageViewerController, true);
+		}
+
+		public void ShowLargeImageView(Listing list,int count)
+		{
+			imageViewController = new ImageViewController (list,count);
+			RootController.NavigationBarHidden = false;
+			RootController.ToolbarHidden = true;
+
+			RootController.PushViewController (imageViewController, true);
 		}
 
 		public void SendPhone(string phone)
@@ -218,7 +228,7 @@ namespace AutoLink
 			RootController.PushViewController (reset, true);
 
 		}
-
+			
 		public void ShowSignUp()
 		{
 			signup = new SignupController ();
