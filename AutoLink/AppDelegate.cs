@@ -9,6 +9,7 @@ using AutoLink.Utilities;
 using BigTed;
 using AutoLink.Models;
 using MonoTouch.MessageUI;
+using PerpetualEngine.Storage;
 
 namespace AutoLink
 {
@@ -45,11 +46,14 @@ namespace AutoLink
 		public LoginViewController login;
 
 		public static AppDelegate app;
+		public SimpleStorage storage;
+
 
 
 		public override bool FinishedLaunching (UIApplication application, NSDictionary launchOptions)
 		{
 			app = this;
+			storage = SimpleStorage.EditGroup ("Main");
 			// Override point for customization after application launch.
 			if (UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Pad) {
 				this.loadInitForPad ();

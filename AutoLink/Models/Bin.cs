@@ -3,6 +3,7 @@ using System.Collections.Generic;
 
 namespace AutoLink.Models
 {
+	[Serializable]
 	public class Bin
 	{
 		public BinItems deleted;
@@ -12,7 +13,7 @@ namespace AutoLink.Models
 		public BinItems starred;
 		public List<Custom> custom;
 	}
-
+	[Serializable]
 	public class BinItems
 	{
 		public int count;

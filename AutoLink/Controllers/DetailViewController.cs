@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Drawing;
 using MonoTouch.Foundation;
 using MonoTouch.UIKit;
@@ -233,7 +234,33 @@ namespace AutoLink
 
 					}else if (btnEv.ButtonIndex == addTo){
 
-					
+						var picker = new ActionSheetPicker(View);
+						Bin bins = app.storage.Get<Bin>("Bins");
+						if(bins != null){
+							var model = new ListPicker<string>(bins.custom.Select(x=>x.name).ToList());
+							//TODO set value AND Send in Dimissed Call
+							//returns selected value 
+							model.PickerChanged += (object ss, EventArgs picke) => {
+								var eve = (PickerChangedEventArgs)picke;
+								Console.WriteLine(eve.SelectedItem);
+								var res = bins.custom.Find(x=>x.name == eve.SelectedItem);
+								service.AddListingToBin(res._id,items._id).ContinueWith(
+									(task) => InvokeOnMainThread(() => {
+										app.ShowResultList();
+										picker.ActionSheet.EndEditing(true);
+									}
+									));
+							};
+							picker.Show(model);
+
+							picker.ActionSheet.Dismissed += (object ss, UIButtonEventArgs test) => {
+						
+								var t = (UIActionSheet)ss;
+							};
+
+						}
+						
+
 					}
 
 				};

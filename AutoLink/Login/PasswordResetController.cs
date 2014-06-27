@@ -45,6 +45,10 @@ namespace AutoLink
 				app.ShowReset();
 			};
 
+			this.txtEmail.AttributedPlaceholder = new NSAttributedString ("   Email", null, UIColor.White, null, UIColor.White, null);
+			this.txtEmail.BackgroundColor = UIColor.FromWhiteAlpha (.5f, .5f);
+
+
 
 		}
 	}

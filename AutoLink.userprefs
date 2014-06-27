@@ -1,11 +1,8 @@
 ﻿<Properties GitUserInfo="UsingGIT">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.IPhoneRetina.7.1" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="AutoLink/Controllers/ImageCollectionSource.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.IPhoneRetina4.7.1" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="AutoLink/Login/PasswordResetController.cs">
     <Files>
-      <File FileName="AutoLink/Controllers/ImageCollectionSource.cs" Line="97" Column="1" />
-      <File FileName="AutoLink/Controllers/ImageViewerViewController.cs" Line="104" Column="4" />
-      <File FileName="AutoLink/AppDelegate.cs" Line="26" Column="3" />
-      <File FileName="AutoLink/Controllers/ImageCell.cs" Line="49" Column="31" />
+      <File FileName="AutoLink/Login/PasswordResetController.cs" Line="40" Column="8" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
@@ -20,15 +17,14 @@
       <Breakpoint file="/Users/en-ed/Downloads/xamarin-store-app-master/XamarinStore.iOS/ViewControllers/LoginViewController.cs" line="57" column="1" />
       <Breakpoint file="/Users/en-ed/Downloads/xamarin-store-app-master/XamarinStore.iOS/ViewControllers/LoginViewController.cs" line="74" column="1" />
       <Breakpoint file="/Users/en-ed/Projects/AutoLink/AutoLink/SearchResults/SWTableViewCell.cs" line="172" column="1" />
-      <Breakpoint file="/Users/en-ed/Projects/AutoLink/AutoLink/Controllers/ImageViewerViewController.cs" line="124" column="1" />
+      <Breakpoint file="/Users/en-ed/Projects/AutoLink/AutoLink/Controllers/ImageViewerViewController.cs" line="107" column="1" />
       <Breakpoint file="/Users/en-ed/Projects/AutoLink/AutoLink/Services/API.cs" line="182" column="1" />
       <Breakpoint file="/Users/en-ed/Projects/AutoLink/AutoLink/Search/SearchScreen.cs" line="213" column="1" />
       <Breakpoint file="/Users/en-ed/Projects/AutoLink/AutoLink/Views/UIViewFullscreen.cs" line="31" column="1" />
-      <Breakpoint file="/Users/en-ed/Projects/AutoLink/AutoLink/AppDelegate.cs" line="63" column="1" />
+      <Breakpoint file="/Users/en-ed/Projects/AutoLink/AutoLink/AppDelegate.cs" line="64" column="1" />
       <Breakpoint file="/Users/en-ed/Projects/AutoLink/AutoLink/Views/UIScrollViewImage.cs" line="89" column="1" />
       <Breakpoint file="/Users/en-ed/Projects/AutoLink/AutoLink/Models/Bin.cs" line="13" column="18" />
-      <Breakpoint file="/Users/en-ed/Projects/AutoLink/AutoLink/Controllers/ImageCollectionSource.cs" line="71" column="1" />
-      <Breakpoint file="/Users/en-ed/Projects/AutoLink/AutoLink/Controllers/ImageCollectionSource.cs" line="60" column="39" />
+      <Breakpoint file="/Users/en-ed/Projects/AutoLink/AutoLink/Controllers/ImageCollectionSource.cs" line="99" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />

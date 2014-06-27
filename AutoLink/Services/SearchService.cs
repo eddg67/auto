@@ -260,6 +260,7 @@ namespace AutoLink.Services
 
 					result = response.Result;
 
+
 				}
 			}
 			return result;
@@ -477,6 +478,15 @@ namespace AutoLink.Services
 			return api.CreateAsync<object>(
 				@"search.seenListings",
 				request
+			);
+		}
+
+		public Task<APIResponse<object>> AddListingToBin(string binId,string listings)
+		{
+		
+			return api.CreateAsync<object>(
+				@"bin.addListing",
+				new {binId = binId,listingId=listings}
 			);
 		}
 

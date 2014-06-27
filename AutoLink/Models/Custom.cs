@@ -2,6 +2,7 @@
 
 namespace AutoLink
 {
+	[Serializable]
 	public class Custom
 	{
 		public string __v;

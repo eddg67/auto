@@ -95,11 +95,13 @@ namespace AutoLink
 		public override void PerformAction (UICollectionView collectionView, MonoTouch.ObjCRuntime.Selector action, NSIndexPath indexPath, NSObject sender)
 		{
 			var cell = GetCell (collectionView, indexPath) as ImageCell;
-			cell.ImageView.Image.SaveToPhotosAlbum((image, error) => {
-				//var o = image as UIImage;
-				Console.WriteLine("error:" + error);
-			});
-
+			var url = Rows [indexPath.Row];
+			if (cell.ImageView.Image != null) {
+				cell.ImageView.Image.SaveToPhotosAlbum ((image, error) => {
+					//var o = image as UIImage;
+					Console.WriteLine ("error:" + error);
+				});
+			}
 		}
 	}
 

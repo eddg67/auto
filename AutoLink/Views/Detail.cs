@@ -147,9 +147,8 @@ namespace AutoLink
 				Add (line);
 			}
 
-			//Add (GetToolBar ());
-			var f = Frame;
-			f.Height = ImageView.Frame.Height + make.Frame.Height + mileage.Frame.Height + source.Frame.Height + 45;
+			Add (GetToolBar ());
+
 			//Frame = f;
 
 		}

@@ -50,7 +50,7 @@ namespace AutoLink
 			View.DownloadImageAsync (listing.images [index]).ContinueWith (
 				(task) => InvokeOnMainThread (() => {
 					ImageView.Image = task.Result;
-					TextView.Text = listing.description;
+					//TextView.Text = listing.description;
 				}));
 					
 			

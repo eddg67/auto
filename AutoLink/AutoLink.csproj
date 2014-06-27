@@ -154,6 +154,22 @@
     <BundleResource Include="Resources\ClanBol.TTF">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </BundleResource>
+    <BundleResource Include="Resources\ipad-splash.jpg" />
+    <BundleResource Include="Resources\ipad-splash%402x.jpg" />
+    <BundleResource Include="Resources\iphone5-splash.jpg" />
+    <BundleResource Include="Resources\iphone-splash.jpg" />
+    <BundleResource Include="Resources\iphone-splash%402x.jpg" />
+    <BundleResource Include="Resources\iphone-blankbackground.jpg" />
+    <BundleResource Include="Resources\iphone5-blankbackground.jpg" />
+    <BundleResource Include="Resources\ipad-blankbackground.jpg" />
+    <BundleResource Include="Resources\ipad-blankbackground%402x.jpg" />
+    <BundleResource Include="Resources\iphone-blankbackground%402x.jpg" />
+    <BundleResource Include="Resources\.DS_Store" />
+    <BundleResource Include="Resources\iphone5-logo.png" />
+    <BundleResource Include="Resources\iphone-logo.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </BundleResource>
+    <BundleResource Include="Resources\iphone-logo%402x.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Entitlements.plist" />

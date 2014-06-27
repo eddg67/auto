@@ -215,6 +215,16 @@ namespace AutoLink
 				ScrollTheView(false);
 			};
 
+			this.txtEmail.AttributedPlaceholder = new NSAttributedString ("   Email", null, UIColor.White, null, UIColor.White, null);
+			this.txtPassword.AttributedPlaceholder = new NSAttributedString ("   Password", null, UIColor.White, null, UIColor.White, null);
+			this.txtName.AttributedPlaceholder = new NSAttributedString ("   Name", null, UIColor.White, null, UIColor.White, null);
+			this.txtZip.AttributedPlaceholder = new NSAttributedString ("   Zip", null, UIColor.White, null, UIColor.White, null);
+
+			this.txtEmail.BackgroundColor = UIColor.FromWhiteAlpha (.5f, .5f);
+			this.txtPassword.BackgroundColor = UIColor.FromWhiteAlpha (.5f, .5f);
+			this.txtName.BackgroundColor = UIColor.FromWhiteAlpha (.5f, .5f);
+			this.txtZip.BackgroundColor = UIColor.FromWhiteAlpha (.5f, .5f);
+
 		}
 
 

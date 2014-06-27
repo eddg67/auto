@@ -90,7 +90,7 @@ namespace AutoLink
 				{
 					bins = task.Result.Result;
 					if(bins != null){
-
+						app.storage.Put<Bin>("Bins",bins);
 						app.setUpLocalNotifications(bins.@new.count);
 						navigation.NavigationTableView.SectionHeaderHeight = 0;
 						navigation.NavigationTableView.TableHeaderView = null;
