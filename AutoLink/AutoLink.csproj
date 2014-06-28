@@ -283,6 +283,8 @@
     <Compile Include="Controllers\ImageViewController.designer.cs">
       <DependentUpon>ImageViewController.cs</DependentUpon>
     </Compile>
+    <Compile Include="Services\AccountService.cs" />
+    <Compile Include="Controllers\AccountDialogController.cs" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="MainStoryboard_iPhone.storyboard" />

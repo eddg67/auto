@@ -96,11 +96,13 @@ namespace AutoLink
 		{
 			var cell = GetCell (collectionView, indexPath) as ImageCell;
 			var url = Rows [indexPath.Row];
-			if (cell.ImageView.Image != null) {
-				cell.ImageView.Image.SaveToPhotosAlbum ((image, error) => {
-					//var o = image as UIImage;
-					Console.WriteLine ("error:" + error);
-				});
+			if(action.Name == "save"){
+				if (cell.ImageView.Image != null) {
+					cell.ImageView.Image.SaveToPhotosAlbum ((image, error) => {
+						//var o = image as UIImage;
+						Console.WriteLine ("error:" + error);
+					});
+				}
 			}
 		}
 	}

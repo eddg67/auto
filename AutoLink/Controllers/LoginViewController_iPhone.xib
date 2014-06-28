@@ -62,7 +62,7 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </button>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="iphone-logo.png" highlighted="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2dX-zo-zVu">
-                    <rect key="frame" x="97" y="71" width="124" height="33"/>
+                    <rect key="frame" x="97" y="52" width="124" height="33"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
             </subviews>

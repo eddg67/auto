@@ -134,7 +134,7 @@ namespace AutoLink
 		{
 			base.LoadView ();
 
-			over = new LoadingOverlay (View.Bounds,"Searching Results...");
+			over = new LoadingOverlay (View.Bounds,"Loading Results...");
 			View.Add (over);
 
 		}
@@ -252,14 +252,15 @@ namespace AutoLink
 
 		public UIToolbar CreateToolbarView()
 		{
-			var tool = new UIToolbar (new RectangleF (0, 5, 320, 60));
+			var tool = new UIToolbar (new RectangleF (0, 10, 320, 60));
 			tool.BackgroundColor = UIColor.Black;
 			tool.TintColor = UIColor.Black;
 			var btn = new UIBarButtonItem (UIBarButtonSystemItem.Add, (sender, args) => {
 				// button was clicked
-				app.ShowSearch();
+				//app.ShowSearch();
+				ShowActionPicker();
 			});
-				
+
 
 			tool.SetItems (new UIBarButtonItem[]{ 
 				btn,
@@ -271,6 +272,31 @@ namespace AutoLink
 			return tool;
 		}
 
+		public void ShowActionPicker()
+		{
+			var action = new ActionSheetPicker (View) {
+				Title = "Update"
+			};
+			var model = new ListPicker<string> (
+				            new List<string> { 
+					"New Live Search", "Add New Bin"
+				});
+
+			action.doneButton.TouchUpInside += (sender, e) => {
+				if(model.SelectedItem.Contains("New Live Search")){
+					app.ShowSearch();
+				}else{
+
+				}
+			};
+
+			action.Show (model);
+		}
+
+
+
+
+		///sub class
 		class ListView : listViewController
 		{
 			public ListView (FlyoutController navigation, string title,string list, bool bin=false): base (list,bin)
@@ -283,7 +309,7 @@ namespace AutoLink
 						
 				NavigationItem.RightBarButtonItem = new UIBarButtonItem (fav.SelectedImage,UIBarButtonItemStyle.Plain, delegate {
 					using(var app = (AppDelegate)UIApplication.SharedApplication.Delegate){
-						app.ShowSearch();
+						app.ShowAccount();
 					}
 				});
 				NavigationItem.LeftBarButtonItem = new UIBarButtonItem (UIBarButtonSystemItem.Action, delegate {

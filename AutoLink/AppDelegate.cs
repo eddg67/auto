@@ -27,6 +27,13 @@ namespace AutoLink
 
 		public LoginService loginService;
 		public API webService;
+		public NetworkStatus noNetwork { get; set; }
+		public LoginViewController login { get; set; }
+		public AccountService accountService { get; set; }
+
+		public static AppDelegate app { get; set; }
+		public SimpleStorage storage { get; set; }
+
 		public UINavigationController RootController;
 		public Validator validator;
 		public PasswordResetController forgot;
@@ -40,14 +47,9 @@ namespace AutoLink
 		public ImageViewerViewController imageViewerController;
 		public PriceTabController priceTab;
 		public ImageViewController imageViewController;
+		public AccountDialogController accountViewController;
 
 		MFMailComposeViewController mailController = new MFMailComposeViewController();
-		public NetworkStatus noNetwork;
-		public LoginViewController login;
-
-		public static AppDelegate app;
-		public SimpleStorage storage;
-
 
 
 		public override bool FinishedLaunching (UIApplication application, NSDictionary launchOptions)
@@ -109,6 +111,15 @@ namespace AutoLink
 			RootController.NavigationBarHidden = true;
 			RootController.ToolbarHidden = true;
 			RootController.PushViewController (splash, true);
+
+		}
+
+		public void ShowAccount()
+		{
+			accountViewController = new AccountDialogController ();
+			RootController.NavigationBarHidden = false;
+			RootController.ToolbarHidden = true;
+			RootController.PushViewController (accountViewController, true);
 
 		}
 
@@ -355,6 +366,7 @@ namespace AutoLink
 			loginService = new LoginService ();
 			validator = new Validator ();
 			searchService = new SearchService ();
+			accountService = new AccountService ();
 
 		}
 			

@@ -10,7 +10,7 @@ namespace AutoLink.Models
 	{
 
 		UIActionSheet actionSheet;
-		UIButton doneButton = UIButton.FromType (UIButtonType.System);
+		public UIButton doneButton = UIButton.FromType (UIButtonType.System);
 		UIView owner;
 		UILabel titleLabel = new UILabel ();
 		public string Id;
@@ -54,10 +54,9 @@ namespace AutoLink.Models
 			
 			owner.BackgroundColor = UIColor.White;
 
-
 			// configure the title label
 			titleLabel.BackgroundColor = UIColor.Clear;
-			titleLabel.TextColor = UIColor.LightTextColor;
+			titleLabel.TextColor = UIColor.LightGray;
 			titleLabel.Font = UIFont.BoldSystemFontOfSize (18);
 			Picker.BackgroundColor = UIColor.Clear;
 			Picker.SizeToFit ();
@@ -108,7 +107,7 @@ namespace AutoLink.Models
 	
 
 			// move our label to the top of the action sheet
-			titleLabel.Frame = new RectangleF (10, 4, owner.Frame.Width - 100, 35);
+			//titleLabel.Frame = new RectangleF (10, 4, owner.Frame.Width - 100, 35);
 
 			// move our button
 			doneButton.Frame = new RectangleF (actionSheetSize.Width - doneButtonSize.Width - 10, 7, doneButtonSize.Width, doneButtonSize.Height);

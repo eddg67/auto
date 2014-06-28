@@ -10,6 +10,7 @@ namespace AutoLink.Models
 	public class LoginResult
 	{
 
+		public string _id;
 		public bool emailNotifications;
 		public string email;
 		public List<string> notifications;

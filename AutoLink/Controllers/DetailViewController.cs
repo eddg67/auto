@@ -234,29 +234,27 @@ namespace AutoLink
 
 					}else if (btnEv.ButtonIndex == addTo){
 
-						var picker = new ActionSheetPicker(View);
+						var picker = new ActionSheetPicker(View){
+							Title = "Pick Bins to Add listing"
+						};
 						Bin bins = app.storage.Get<Bin>("Bins");
 						if(bins != null){
 							var model = new ListPicker<string>(bins.custom.Select(x=>x.name).ToList());
-							//TODO set value AND Send in Dimissed Call
-							//returns selected value 
-							model.PickerChanged += (object ss, EventArgs picke) => {
-								var eve = (PickerChangedEventArgs)picke;
-								Console.WriteLine(eve.SelectedItem);
-								var res = bins.custom.Find(x=>x.name == eve.SelectedItem);
+						
+							picker.Show(model);
+
+							picker.doneButton.TouchUpInside += (object doneS, EventArgs doneE) => {
+							
+								var res = bins.custom.Find(x=>x.name == model.SelectedItem);
 								service.AddListingToBin(res._id,items._id).ContinueWith(
 									(task) => InvokeOnMainThread(() => {
 										app.ShowResultList();
-										picker.ActionSheet.EndEditing(true);
 									}
-									));
-							};
-							picker.Show(model);
+								));
 
-							picker.ActionSheet.Dismissed += (object ss, UIButtonEventArgs test) => {
-						
-								var t = (UIActionSheet)ss;
 							};
+
+						
 
 						}
 						
