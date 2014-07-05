@@ -1,6 +1,7 @@
-Primary Build 1.0.5
-*Added new listing icon list view
-*Mark as new detail option
-*Pricing View in Detail View
-* Added Loading Trans
-* Added Location,TimeSpan List view
+Build 1.0.6
+*Updated Resources
+*Added Image Gallery and Full Image View
+* Added Account Update Dialog
+* Added Add to listing detail view with bin picker
+* add picker for menu new live and new bin
+

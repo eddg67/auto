@@ -52,18 +52,13 @@ namespace AutoLink
 			base.ViewDidLoad ();
 			TableView.RowHeight = 0;
 
-		
-
 			// Register the TableView's data source
 			if (useBinId) {
 				TableView.Source = new listViewSource ("",searchId);
 			} else {
 				TableView.Source = new listViewSource (searchId);
 			}
-
-
-
-
+				
 		}
 
 

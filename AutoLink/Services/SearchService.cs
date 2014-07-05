@@ -491,6 +491,15 @@ namespace AutoLink.Services
 		}
 
 
+		public Task<APIResponse<Custom>> AddBin(string name)
+		{
+			return api.CreateAsync<Custom>(
+				@"bin.update",
+				new {name = name}
+			);
+		}
+
+
 
 	}
 }

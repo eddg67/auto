@@ -15,19 +15,20 @@ namespace AutoLink
 		AppDelegate app = (AppDelegate)UIApplication.SharedApplication.Delegate;
 		SearchForm form,form2,form3;
 		SearchRequest postData;
-		//UITextView title,header;
+		SearchResult searchResult;
 		UIBarButtonItem btnCancel,btnNext,btnSpace;
 		private int stepOn = 1;
 		//private ActionSheetPicker actionSheet;
 		public Search searchModel = new Search ();
 
+
 		static bool UserInterfaceIdiomIsPhone {
 			get { return UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Phone; }
 		}
 
-		public SearchScreen () : base (UserInterfaceIdiomIsPhone ? "SearchScreen_iPhone" : "SearchScreen_iPad", null)
+		public SearchScreen (SearchResult _res = null) : base (UserInterfaceIdiomIsPhone ? "SearchScreen_iPhone" : "SearchScreen_iPad", null)
 		{
-
+			searchResult = _res;
 		}
 
 		public override void DidReceiveMemoryWarning ()
@@ -71,7 +72,6 @@ namespace AutoLink
 			form.View.Tag = 1;
 
 			View.AddSubview(form.View); 
-
 
 		}
 
@@ -168,7 +168,7 @@ namespace AutoLink
 		private void InitLoad()
 		{
 
-			form = new SearchForm (null);
+			form = new SearchForm (null,null,searchResult);
 
 			if (btnCancel == null) 
 			{

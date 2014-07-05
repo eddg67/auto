@@ -39,6 +39,7 @@ namespace AutoLink.Models
 		public ActionSheetPicker actionSheet;
 		public SearchService service;
 		public SearchRequest searchReq { get; set; }
+		public SearchResult searchRes { get; set; }
 		public event EventHandler RequestUpdated;
 
 		List<string> yearsList;
@@ -64,16 +65,18 @@ namespace AutoLink.Models
 		#endregion
 
 
-		public SearchForm (RootElement _root,SearchRequest req = null):base(new RootElement("Root"), true)
+		public SearchForm (RootElement _root,SearchRequest req = null,SearchResult _res = null):base(new RootElement("Root"), true)
 		{
 			Root =(_root != null) ? _root : GetRoot("root") ;
 			searchReq = (req == null) ? new SearchRequest () : req;
+			searchRes = _res;
 	
 			AppDelegate app = (AppDelegate)UIApplication.SharedApplication.Delegate;
 
 			TableView.AutoresizingMask = UIViewAutoresizing.None;
 			service = app.searchService;
 			yearsList = service.GetYearList ();
+			GetYear ();
 			maxPriceList = service.GetMaxPricelist ();
 			minPriceList = service.GetMinPricelist ();
 			minDistanceList = service.GetMinDistancelist ();
@@ -87,7 +90,7 @@ namespace AutoLink.Models
 				//colors = task.Result;
 			}
 
-			Name = new EntryElement ("Name", "Create Search Name", string.Empty);
+			Name = new EntryElement ("Name", "Create Search Name", searchRes == null ? string.Empty : searchRes.name);
 			Name.ReturnKeyType = UIReturnKeyType.Done;
 			Name.ShouldReturn += () => {
 				Name.ResignFirstResponder(true);
@@ -108,8 +111,8 @@ namespace AutoLink.Models
 			Exterior = GetExterior ();
 			Interior = GetInterior ();
 			Seller = GetSeller ();
-			SearchAuctions = new BooleanElement ("Search Auctions", true);
-			SendNotifications = new BooleanElement ("Send Notifications", true);
+			SearchAuctions = new BooleanElement ("Search Auctions",searchRes == null ? true : searchRes.auction);
+			SendNotifications = new BooleanElement ("Send Notifications", searchRes == null ? true :(bool) searchRes.notify);
 
 			SendNotifications.ValueChanged += (sender, e) => {
 				searchReq.notify = SendNotifications.Value;
@@ -128,7 +131,6 @@ namespace AutoLink.Models
 					this.RequestUpdated(this, new PostDataEvent{Data=searchReq});
 				}
 			};
-
 
 			//header footer view for sections
 			Header = GetHeader ();
@@ -343,6 +345,10 @@ namespace AutoLink.Models
 
 			};
 
+			if (searchRes != null) {
+				el.Value = searchRes.trim == null ? "All Trims" : searchRes.trim;
+			} 
+
 			return el;
 		}
 
@@ -358,12 +364,16 @@ namespace AutoLink.Models
 
 			};
 
+			if (searchRes != null) {
+				el.Value = searchRes.exteriorColor == null ? "All Colors" : searchRes.exteriorColor;
+			} 
+
 			return el;
 		}
 
 		StyledStringElement GetInterior ()
 		{
-			var el = new StyledStringElement ("Interior", "All Interior", UITableViewCellStyle.Value1)
+			var el = new StyledStringElement ("Interior", "All Interiors", UITableViewCellStyle.Value1)
 			{
 				Accessory = UITableViewCellAccessory.DisclosureIndicator
 			};
@@ -373,6 +383,9 @@ namespace AutoLink.Models
 
 			};
 
+			if (searchRes != null) {
+				el.Value = searchRes.interiorColor == null ? "All Interiors" : searchRes.interiorColor;
+			} 
 			return el;
 		}
 
@@ -383,7 +396,10 @@ namespace AutoLink.Models
 				Accessory = UITableViewCellAccessory.DisclosureIndicator
 			};
 
-
+			if (searchRes != null) {
+				MileageTo.Value = searchRes.miles == null ? "All" : searchRes.miles.max.ToString();
+			} 
+				
 			MileageTo.Tapped += () => {
 				SetActionSheet("MileageTo",MileageTo,maxDistanceList);
 			
@@ -393,6 +409,10 @@ namespace AutoLink.Models
 			{
 				Accessory = UITableViewCellAccessory.DisclosureIndicator
 			};
+
+			if (searchRes != null) {
+				MileageFrom.Value = searchRes.miles == null ? "All" : searchRes.miles.min.ToString();
+			} 
 
 			MileageFrom.Tapped += () => {
 				SetActionSheet("MileageFrom",MileageFrom,minDistanceList);
@@ -431,6 +451,13 @@ namespace AutoLink.Models
 				SetActionSheet("YearFrom",YearFrom,yearsList);
 			};
 
+			if (searchRes != null && searchRes.years != null) 
+			{
+				YearTo.Value = searchRes.years.max;
+				YearFrom.Value = searchRes.years.min;
+				UpdateMakes ();
+			}
+
 
 			return new Section ("Year") {
 				YearFrom,YearTo
@@ -446,8 +473,13 @@ namespace AutoLink.Models
 		{
 			PriceFrom = new StyledStringElement ("From","All",UITableViewCellStyle.Value1) 
 			{
-				Accessory = UITableViewCellAccessory.DisclosureIndicator
+				Accessory = UITableViewCellAccessory.DisclosureIndicator,
+				Value = (searchRes != null && searchRes.price != null) ? searchRes.price.min.ToString() : "All"
 			};
+
+			if (searchRes != null) {
+				PriceFrom.Value = searchRes.price != null ? searchRes.price.min.ToString() : "All";
+			} 
 
 
 			PriceFrom.Tapped += () => {
@@ -459,6 +491,11 @@ namespace AutoLink.Models
 			{
 				Accessory = UITableViewCellAccessory.DisclosureIndicator
 			};
+
+			if (searchRes != null) {
+				PriceTo.Value = searchRes.price == null ? "All" : searchRes.price.max.ToString();
+			} 
+
 
 			PriceTo.Tapped += () => {
 				SetActionSheet("PriceTo",PriceTo,minPriceList);
@@ -485,6 +522,12 @@ namespace AutoLink.Models
 
 			};
 
+
+			if (searchRes != null) {
+				el.Value = searchRes == null ? string.Empty : searchRes.model;
+				UpdateMakes ();
+			} 
+
 			return el;
 		}
 
@@ -494,6 +537,10 @@ namespace AutoLink.Models
 			{
 				Accessory = UITableViewCellAccessory.DisclosureIndicator
 			};
+
+			if (searchRes != null) {
+				el.Value = searchRes == null ? "All Sellers" : searchRes.seller;
+			} 
 
 			el.Tapped += ()=>{
 				SetActionSheet(
@@ -521,6 +568,11 @@ namespace AutoLink.Models
 	
 			};
 
+			if (searchRes != null) {
+				el.Value = searchRes.make == null ? string.Empty : searchRes.make;
+				Make = el;
+				UpdateModels();
+			} 
 			return el;
 		}
 
@@ -539,8 +591,10 @@ namespace AutoLink.Models
 		//TODO 
 		private StyledStringElement GetDistance()
 		{
-			var str = new StyledStringElement ("Distance", "All miles", UITableViewCellStyle.Value1);
-			str.Accessory = UITableViewCellAccessory.DisclosureIndicator;
+			var str = new StyledStringElement ("Distance", "All miles", UITableViewCellStyle.Value1){
+				Accessory = UITableViewCellAccessory.DisclosureIndicator,
+			};
+				
 			var list = new List<string> () {
 				"All", "5 miles", "15 miles", "30 miles",
 				"50 miles", "100 miles", "200 miles",
@@ -709,14 +763,10 @@ namespace AutoLink.Models
 
 		private void UpdateMakes()
 		{
-			var max = YearFrom.Value == "All" ? string.Empty : YearFrom.Value;
-			var min = YearTo.Value == "All" ? string.Empty : YearTo.Value;
-
-			//var result = await service.api.CreateAsync<List<string>> (@"vehicles.listMakes", new {max = max,min = min});
-			//makeList = result.Result;
+			var min = YearFrom.Value == "All" ? string.Empty : YearFrom.Value;
+			var max = YearTo.Value == "All" ? string.Empty : YearTo.Value;
 
 			makeList = service.GetMakes (max, min);
-
 		}
 
 

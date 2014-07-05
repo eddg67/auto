@@ -76,7 +76,7 @@ namespace AutoLink
 			UITableView containingTable, IEnumerable<UIButton> rightUtilityButtons, 
 			UIView leftView):base(style, reuseIdentifier)
 		{
-			this.scrollViewLeft = leftView;
+			this.scrollViewLeft = leftView == null? new UIView():leftView;
 			this.rightUtilityButtons = rightUtilityButtons.ToArray();
 			this.scrollViewButtonViewRight = new SWUtilityButtonView (this.rightUtilityButtons, this);
 

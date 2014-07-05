@@ -22,7 +22,12 @@ namespace AutoLink
 		public FlyoutController navigation;
 		public List<SearchResult> results;
 
-		Section searchSec;
+		Section secSearch;
+
+		static float scrollamount = 0.0f;    // amount to scroll 
+		static float bottom = 0.0f;           // bottom point
+		static float offset = 10.0f;          // extra offset
+		static bool moveViewUp { get; set; }
 
 
 		static bool UserInterfaceIdiomIsPhone {
@@ -33,8 +38,10 @@ namespace AutoLink
 		//: base (UserInterfaceIdiomIsPhone ? "SearchResultController_iPhone" : "SearchResultController_iPad", null)
 		{
 			service = app.searchService;
+			moveViewUp = false;
 
 		}
+
 
 		public override void DidReceiveMemoryWarning ()
 		{
@@ -56,6 +63,7 @@ namespace AutoLink
 			service.GetResultsAsync ().ContinueWith (
 				(task) => InvokeOnMainThread (() => {
 
+					if(!task.IsFaulted){
 					results = task.Result.Result;
 
 					View.AddSubview (navigation.View);
@@ -76,8 +84,8 @@ namespace AutoLink
 					);
 						
 					LoadBin();
-
 					count = 0;
+					}
 					over.Hide ();
 				}
 			));
@@ -118,10 +126,13 @@ namespace AutoLink
 						navigation.ViewControllers = tmp;
 
 						navigation.NavigationRoot = new RootElement ("Live Searches"){
-							GetSearchSection (),
+							new RootElement ("Live Searches"){
+							GetSearchSection ()
+							},
 							UpdateBins(bins)
 
 						};
+						//navigation.NavigationTableView.TableHeaderView = CreateToolbarView();
 						//navigation.NavigationRoot.Add(GetSearchSection());
 						//navigation.NavigationRoot.Add(UpdateBins(bins));
 
@@ -142,17 +153,11 @@ namespace AutoLink
 		private Section GetSearchSection()
 		{
 
-			var header = new UILabel (new RectangleF (0, 0, this.View.Bounds.Width, 40)) 
-			{
-				Font = UIFont.SystemFontOfSize(18),
-				BackgroundColor = UIColor.LightTextColor,
-				Text = "Live Searches"
-			};
-
-			var secSearch = new Section (CreateToolbarView(),null)
+			secSearch = new Section (CreateToolbarView(),null)
 			{
 				//new UIViewElement("",header,true)
 			};
+
 			secSearch.AddAll (
 				results.Select 
 				(x => {
@@ -163,9 +168,13 @@ namespace AutoLink
 						UITableViewCellStyle.Value1
 					);
 				
-					str.Accessory = UITableViewCellAccessory.DisclosureIndicator;
+					str.Accessory = UITableViewCellAccessory.DetailDisclosureButton;
 					str.Tapped += () => {
 						navigation.Title = x.name;
+					};
+
+					str.AccessoryTapped += () => {
+						app.ShowSearch(x);
 					};
 
 					return str;
@@ -179,10 +188,11 @@ namespace AutoLink
 		public Section UpdateBins(Bin bin)
 		{
 			Section result;
-			StyledStringElement[] customBins;
+			//StyledStringElement[] customBins;
 
 			var header = new UILabel (new RectangleF (0, 0, this.View.Bounds.Width, 60)) {
 				Font = UIFont.SystemFontOfSize(18),
+				TintColor = UIColor.LightTextColor,
 				BackgroundColor = UIColor.LightGray,
 				Text = "Bins"
 			};
@@ -196,7 +206,7 @@ namespace AutoLink
 
 			stared.Accessory = UITableViewCellAccessory.DisclosureIndicator;
 			stared.Tapped += () => {navigation.Title =  "Starred";};
-
+		
 			var allNew = new StyledStringElement (
 				"All New",
 				(bin.@new != null)?bin.@new.count.ToString():"0",
@@ -252,20 +262,21 @@ namespace AutoLink
 
 		public UIToolbar CreateToolbarView()
 		{
-			var tool = new UIToolbar (new RectangleF (0, 10, 320, 60));
+			var tool = new UIToolbar (new RectangleF (20, 0, View.Bounds.Width - 10, 66));
 			tool.BackgroundColor = UIColor.Black;
 			tool.TintColor = UIColor.Black;
+			tool.Layer.BackgroundColor = UIColor.Black.CGColor;
 			var btn = new UIBarButtonItem (UIBarButtonSystemItem.Add, (sender, args) => {
 				// button was clicked
-				//app.ShowSearch();
 				ShowActionPicker();
-			});
+			}){TintColor = UIColor.Black};
 
 
 			tool.SetItems (new UIBarButtonItem[]{ 
 				btn,
 				new UIBarButtonItem(UIBarButtonSystemItem.FlexibleSpace),
-				new UIBarButtonItem("Autolink",UIBarButtonItemStyle.Plain,null),
+				new UIBarButtonItem("Autolink",UIBarButtonItemStyle.Plain,null){
+				},
 				new UIBarButtonItem(UIBarButtonSystemItem.FlexibleSpace),
 			},true);
 
@@ -281,16 +292,31 @@ namespace AutoLink
 				            new List<string> { 
 					"New Live Search", "Add New Bin"
 				});
+			action.Show (model);
 
 			action.doneButton.TouchUpInside += (sender, e) => {
-				if(model.SelectedItem.Contains("New Live Search")){
-					app.ShowSearch();
-				}else{
+				if (model.SelectedItem.Contains ("New Live Search")) {
+					app.ShowSearch ();
+				} else {
+					var newBin = new EntryElement (string.Empty, "Enter Bin Name", string.Empty);
+					navigation.NavigationRoot.Last<Section> ().Add (newBin);
 
+					newBin.BecomeFirstResponder(true);
+					newBin.EntryEnded += (s1, e1) => {
+						var name = newBin.Value;
+						if (!string.IsNullOrEmpty (name)) {
+
+							service.AddBin (name)
+									.ContinueWith ((task) => InvokeOnMainThread (() => {
+									if (!task.IsFaulted) {
+										LoadBin ();
+									}
+								}
+							));
+						}
+					};
 				}
 			};
-
-			action.Show (model);
 		}
 
 
@@ -299,6 +325,12 @@ namespace AutoLink
 		///sub class
 		class ListView : listViewController
 		{
+			UIView activeview{ get; set; }            // Controller that activated the keyboard
+			 float scrollamount = 0.0f;    // amount to scroll 
+			 float bottom = 0.0f;           // bottom point
+			 float offset = 10.0f;          // extra offset
+			 bool moveViewUp { get; set; }
+
 			public ListView (FlyoutController navigation, string title,string list, bool bin=false): base (list,bin)
 			{
 				var fav = new UITabBarItem(UITabBarSystemItem.Contacts,1);
@@ -315,7 +347,101 @@ namespace AutoLink
 				NavigationItem.LeftBarButtonItem = new UIBarButtonItem (UIBarButtonSystemItem.Action, delegate {
 					navigation.ToggleMenu ();
 				});
+
+				NSNotificationCenter.DefaultCenter.AddObserver (UIKeyboard.WillHideNotification, OnKeyboardNotification);
+				NSNotificationCenter.DefaultCenter.AddObserver (UIKeyboard.WillShowNotification, OnKeyboardNotification);
 					
+			}
+
+
+			private void OnKeyboardNotification (NSNotification notification)
+			{
+				if (IsViewLoaded) {
+
+					//Check if the keyboard is becoming visible
+					bool visible = notification.Name == UIKeyboard.WillShowNotification;
+
+					//Start an animation, using values from the keyboard
+					UIView.BeginAnimations ("AnimateForKeyboard");
+					UIView.SetAnimationBeginsFromCurrentState (true);
+					UIView.SetAnimationDuration (UIKeyboard.AnimationDurationFromNotification (notification));
+					UIView.SetAnimationCurve ((UIViewAnimationCurve)UIKeyboard.AnimationCurveFromNotification (notification));
+
+					//Pass the notification, calculating keyboard height, etc.
+					bool landscape = InterfaceOrientation == UIInterfaceOrientation.LandscapeLeft || InterfaceOrientation == UIInterfaceOrientation.LandscapeRight;
+					if (visible) {
+						var keyboardFrame = UIKeyboard.FrameEndFromNotification (notification);
+
+						OnKeyboardChanged (visible, landscape ? keyboardFrame.Width : keyboardFrame.Height);
+					} else {
+						var keyboardFrame = UIKeyboard.FrameBeginFromNotification (notification);
+
+						OnKeyboardChanged (visible, landscape ? keyboardFrame.Width : keyboardFrame.Height);
+					}
+
+					//Commit the animation
+					UIView.CommitAnimations ();	
+				}
+			}
+
+			/// <summary>
+			/// Override this method to apply custom logic when the keyboard is shown/hidden
+			/// </summary>
+			/// <param name='visible'>
+			/// If the keyboard is visible
+			/// </param>
+			/// <param name='height'>
+			/// Calculated height of the keyboard (width not generally needed here)
+			/// </param>
+			protected virtual void OnKeyboardChanged (bool visible, float height)
+			{
+
+				// Find what opened the keyboard
+				foreach (UIView view in this.View.Subviews) {
+					if (view.IsFirstResponder)
+						activeview = view;
+				}
+
+				// Bottom of the controller = initial position + height + offset      
+				bottom = (View.Frame.Y + View.Frame.Height + offset);
+
+				// Calculate how far we need to scroll
+				scrollamount = View.Frame.Height + offset;//(height - (View.Frame.Size.Height - bottom)) ;
+				if (visible) {
+					// Perform the scrolling
+					if (scrollamount > 0) {
+						moveViewUp = true;
+						ScrollTheView (moveViewUp);
+					} else {
+						moveViewUp = false;
+					}
+				}
+
+			}
+
+			public void KeyBoardDownNotification(NSNotification notification)
+			{
+				if(moveViewUp){ScrollTheView(false);}
+			}
+
+			public void ScrollTheView(bool move)
+			{
+
+				// scroll the view up or down
+				UIView.BeginAnimations (string.Empty, System.IntPtr.Zero);
+				UIView.SetAnimationDuration (0.3);
+
+				RectangleF frame = View.Frame;
+
+				if (move) {
+					frame.Y -= scrollamount;
+				} else {
+					frame.Y += scrollamount;
+					scrollamount = 0;
+				}
+
+				View.Frame = frame;
+				UIView.CommitAnimations();
 			}
 
 

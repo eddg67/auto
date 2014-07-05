@@ -61,7 +61,7 @@ namespace AutoLink
 						//frame.X = 50f;
 						//frame.Height = siz.Height;
 
-						ImageView.Frame = frame;
+						//ImageView.Frame = frame;
 					}
 					//TextView.Text = listing.description;
 				}));

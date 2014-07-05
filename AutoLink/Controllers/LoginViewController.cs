@@ -78,8 +78,8 @@ namespace AutoLink
 
 			this.txtEmail.AttributedPlaceholder = new NSAttributedString ("   Email", null, UIColor.White, null, UIColor.White, null);
 			this.txtPassword.AttributedPlaceholder = new NSAttributedString ("   Password", null, UIColor.White, null, UIColor.White, null);
-			this.txtEmail.BackgroundColor = UIColor.FromWhiteAlpha (.5f, .5f);
-			this.txtPassword.BackgroundColor = UIColor.FromWhiteAlpha (.5f, .5f);
+			this.txtEmail.BackgroundColor = UIColor.FromWhiteAlpha (.3f, .3f);
+			this.txtPassword.BackgroundColor = UIColor.FromWhiteAlpha (.3f, .3f);
 
 		}
 

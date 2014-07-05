@@ -94,7 +94,6 @@ namespace AutoLink
 				ShowSplash ();
 			}
 				
-
 			Window = new UIWindow (UIScreen.MainScreen.Bounds) {
 				RootViewController = RootController
 			};
@@ -140,10 +139,10 @@ namespace AutoLink
 
 		}
 
-		public void ShowSearch()
+		public void ShowSearch(SearchResult result = null)
 		{
 			BTProgressHUD.Dismiss ();
-			search = new SearchScreen ();
+			search = new SearchScreen (result);
 			RootController.NavigationBarHidden = true;
 			RootController.ToolbarHidden = true;
 			RootController.PushViewController (search, true);

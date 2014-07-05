@@ -21,7 +21,7 @@ namespace AutoLink
 			ImageView.Layer.BorderWidth = 1f;
 			ImageView.Layer.CornerRadius = 3f;
 			ImageView.Layer.MasksToBounds = true;
-			ImageView.ContentMode = UIViewContentMode.ScaleToFill;
+			ImageView.ContentMode = UIViewContentMode.ScaleAspectFill;
 
 			ContentView.AddSubview(ImageView);
 

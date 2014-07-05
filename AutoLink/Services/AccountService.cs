@@ -33,6 +33,17 @@ namespace AutoLink.Services
 				new {}
 			);
 		}
+
+		public Task<APIResponse<string>> UpdateAccount(LoginResult data)
+		{
+			var res = api.CreateAsync<string>(
+				@"account.setAuthUser",
+				data
+			);
+
+			return res;
+
+		}
 	}
 }
 

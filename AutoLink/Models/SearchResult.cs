@@ -30,6 +30,8 @@ namespace AutoLink.Models
 		public Type type;
 		public Location location;
 		public Price price;
+		public Years years;
+		public Mileage miles;
 
 	}
 	public class Location
@@ -55,8 +57,8 @@ namespace AutoLink.Models
 
 	public class Years
 	{
-		public int max;
-		public int min;
+		public string max;
+		public string min;
 	}
 
 	public class Listings

@@ -59,6 +59,7 @@ namespace AutoLink
 					if(!task.IsFaulted){
 						//ImageView.Image = null;
 						ImageView.Image = task.Result;
+						ImageView.ContentMode = UIViewContentMode.ScaleAspectFit;
 					}
 						if (list.@new) {
 							circle = new CircleView ();
@@ -83,7 +84,11 @@ namespace AutoLink
 					price.Lines = 0;
 					price.TextAlignment = UITextAlignment.Right;
 					price.Text = string.Empty;
-					price.Text = string.Format("$ {0}", list.price.ToString());
+					if(!string.IsNullOrEmpty(list.price)){
+						price.Text = string.Format("$ {0}", list.price);
+					}else{
+						price.Text = "No Price Available";
+					}			
 
 					//make = new UILabel(new RectangleF( 0 , ImageView.Frame.Bottom, ContentView.Bounds.Size.Width, 20));
 				
@@ -100,9 +105,11 @@ namespace AutoLink
 					mileage.Lines = 1;
 					mileage.TextAlignment = UITextAlignment.Left;
 					mileage.Text = string.Empty;
-					mileage.Text = string.Format("Mileage : {0} mi",list.mileage.ToString());
-
-					//source = new UILabel(new RectangleF( 0 , mileage.Frame.Bottom, ContentView.Bounds.Size.Width, 20));
+					if(string.IsNullOrEmpty(list.mileage)){
+						mileage.Text = "No Mileage Available";
+					}else{
+						mileage.Text = string.Format("Mileage : {0} mi",list.mileage);
+					}
 				
 					source.Font = UIFont.PreferredBody;
 					source.Lines = 1;
@@ -212,6 +219,8 @@ namespace AutoLink
 			});
 			if (item.pricing != null) {
 				attr.TextColor = UIColor.Blue;
+			} else {
+				price.Title = "Market Value Unavailable";
 			}
 
 			price.SetTitleTextAttributes (attr, UIControlState.Normal);

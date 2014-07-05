@@ -45,8 +45,9 @@ namespace AutoLink
 
 				
 					if(!task.IsFaulted){
-						ImageView.Frame = new RectangleF(0, 0 , Frame.Width, 280);
+						ImageView.Frame = new RectangleF(0, 0 , Frame.Width, task.Result.Size.Height);
 						ImageView.Image = task.Result;
+						//ImageView.ContentMode = UIViewContentMode.ScaleAspectFill;
 						Add(ImageView);
 					}
 		
@@ -63,8 +64,11 @@ namespace AutoLink
 					price.Lines = 0;
 					price.TextAlignment = UITextAlignment.Right;
 					price.Text = string.Empty;
-					price.Text = string.Format("$ {0}", list.price.ToString());
-
+					if(!string.IsNullOrEmpty(list.price)){
+						price.Text = string.Format("$ {0}", list.price);
+					}else{
+						price.Text = "No Price Available";
+					}
 
 					make.LineBreakMode = UILineBreakMode.WordWrap;
 					make.Font = UIFont.PreferredBody;
@@ -78,7 +82,13 @@ namespace AutoLink
 					mileage.Lines = 1;
 					mileage.TextAlignment = UITextAlignment.Left;
 					mileage.Text = string.Empty;
-					mileage.Text = string.Format("Mileage : {0} mi",list.mileage.ToString());
+
+					if(string.IsNullOrEmpty(list.mileage)){
+						mileage.Text = "No Mileage Available";
+					}else{
+						mileage.Text = string.Format("Mileage : {0} mi",list.mileage);
+					}
+
 
 
 					source.Font = UIFont.PreferredBody;
@@ -93,6 +103,8 @@ namespace AutoLink
 						app.ShowImageController(item);
 
 					};
+
+					//LayoutSubviews ();
 						
 				}
 
@@ -107,7 +119,7 @@ namespace AutoLink
 			base.LayoutSubviews ();
 			ClipsToBounds = true;
 
-			ImageView.Frame = new RectangleF(0, 0 , Frame.Width, 280);
+			ImageView.Frame = new RectangleF(0, 0 , Frame.Width, 300);
 
 			price.Frame = new RectangleF(offset, ImageView.Frame.Bottom , Bounds.Width - (offset*2), 30);
 
@@ -115,9 +127,6 @@ namespace AutoLink
 
 			mileage.Frame = new RectangleF( offset , make.Frame.Bottom + offset , Bounds.Size.Width - offset, 20);
 			source.Frame = new RectangleF( offset , mileage.Frame.Bottom, Bounds.Width  -offset, 20);
-
-
-
 
 
 			//var carousel = new CarouselView(new RectangleF(0,ImageView.Frame.Bottom,Bounds.Width,50));

@@ -49,9 +49,8 @@ namespace AutoLink
 			if (items != null) {
 				startCount = items.Count;
 			} 
-				
-
 		}
+			
 
 		public override string TitleForHeader (UITableView tableView, int section)
 		{
@@ -72,24 +71,32 @@ namespace AutoLink
 			
 		public override UIView GetViewForHeader (UITableView tableView, int section)
 		{
-			return new UIView(new RectangleF(0,0,0,0));
+			return null;//new UIView(new RectangleF(0,0,0,0));
 		}
 			
 
 		public override UITableViewCell GetCell (UITableView tableView, NSIndexPath indexPath)
 		{
 			tableView.SectionHeaderHeight = 0;
-			//set the type
+			//set the type (bin or search)
 			items [indexPath.Row].listType = (!string.IsNullOrEmpty (binID)) ? ListType.Bin : ListType.Listings;
-			//add edits
-			var leftView = new UILabel () {
-				Frame = new RectangleF (0, 0, 75, tableView.RowHeight/2),
-				BackgroundColor = UIColor.Red,
-				Text = "Delete!",
-				TextColor = UIColor.White,
-				TextAlignment = UITextAlignment.Left
-			};
-			UITapGestureRecognizer labelTap = new UITapGestureRecognizer(() => {
+
+			//add edit Buttons
+			var buttons = new List<UIButton> ();
+		
+			buttons.AddUtilityButton ("Delete", UIColor.Red);
+			buttons.AddUtilityButton ("Star", UIColor.Blue);
+
+			tableView.RowHeight = GetHeightForRow(tableView, indexPath);
+			var cell = tableView.DequeueReusableCell (listViewCell.Key) as listViewCell;
+
+			if (cell == null) {
+				cell = new listViewCell (items [indexPath.Row],tableView,buttons,null );
+			} else {
+				cell.UpdateCell (items [indexPath.Row], tableView, buttons, null,indexPath);
+			}
+
+			buttons[0].TouchUpInside += (object sender, EventArgs e) => {
 				service.DeleteItem(searchID,items [indexPath.Row]);
 
 				tableView.BeginUpdates ();
@@ -99,29 +106,9 @@ namespace AutoLink
 				tableView.DeleteRows (new NSIndexPath[] { indexPath }, UITableViewRowAnimation.Fade);
 				tableView.ReloadData ();
 				tableView.EndUpdates ();
+			};
 
-				//CommitEditingStyle(tableView,UITableViewCellEditingStyle.Delete,indexPath);
-
-			});
-
-			leftView.UserInteractionEnabled = true;
-			leftView.AddGestureRecognizer(labelTap);
-
-
-			var buttons = new List<UIButton> ();
-			//buttons.AddUtilityButton ("More", UIColor.LightGray);
-			buttons.AddUtilityButton ("Star", UIColor.Blue);
-
-			tableView.RowHeight = GetHeightForRow(tableView, indexPath);
-			var cell = tableView.DequeueReusableCell (listViewCell.Key) as listViewCell;
-
-			if (cell == null) {
-				cell = new listViewCell (items [indexPath.Row],tableView,buttons,leftView );
-			} else {
-				cell.UpdateCell (items [indexPath.Row], tableView, buttons, leftView,indexPath);
-			}
-
-			buttons[0].TouchUpInside += (object sender, EventArgs e) => {
+			buttons[1].TouchUpInside += (object sender, EventArgs e) => {
 				service.StarListing(searchID,items[indexPath.Row]._id).ContinueWith((task) => InvokeOnMainThread(() =>
 					{
 						new UIAlertView("Result Starred","Result Starred",null,"OK",null).Show();
@@ -145,8 +132,6 @@ namespace AutoLink
 			cell.Tag = indexPath.Row;
 			cell.SizeToFit ();
 			cell.IndentationLevel = 0; 
-
-
 
 			return cell;
 		}
@@ -263,6 +248,7 @@ namespace AutoLink
 						if(listResults != null){
 							var newRes = listResults.listings;
 							if(newRes.Count > 0){
+								//startCount = newRes.Count;
 								items.AddRange (listResults.listings);
 							
 								updating = false;
@@ -282,6 +268,7 @@ namespace AutoLink
 					if(!task.IsFaulted){
 						var tmp = task.Result.Result;
 						if(tmp.Count > 0){
+							//startCount = tmp.Count;
 							items.AddRange (tmp);
 
 							updating = false;
