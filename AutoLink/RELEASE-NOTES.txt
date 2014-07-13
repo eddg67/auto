@@ -1,7 +1,9 @@
-Build 1.0.6
-*Updated Resources
-*Added Image Gallery and Full Image View
-* Added Account Update Dialog
-* Added Add to listing detail view with bin picker
-* add picker for menu new live and new bin
+Build 1.0.7
+* Update account Profile
+* Altered Cell Edit Options (Swipe Buttons)
+* Add New Bin
+* Update Search Options
+* Altered image Aspect 
+* Updated for no Price return and also fixed null price issue
+
 

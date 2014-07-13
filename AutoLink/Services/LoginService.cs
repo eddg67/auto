@@ -138,12 +138,23 @@ namespace AutoLink.Services
 			FBSettings.DefaultAppID = FacebookAppId;
 			FBSettings.DefaultDisplayName = DisplayName;
 		}
+
 		//float x=150,float y=120,float width=0,float height = 0
 		public SignInButton CreateGooglePlusBtn(float x=160,float y=135,float width=0,float height = 0)
 		{
-			return new SignInButton () {
+			var btn = new SignInButton () {
 				Frame = new RectangleF (x, y, width, height)
 			};
+			btn.SetStyle (SignInButtonStyle.IconOnly);
+			btn.SetColorScheme (SignInButtonColorScheme.Light);
+			btn.Opaque = true;
+			//btn.ImageView.Image = null;
+
+			//var fr = btn.Frame;
+			//fr.Width = width;
+			//btn.Frame = fr;
+			//btn.BackgroundColor = UIColor.Red;
+			return btn;
 		
 		}
 		//float x=22,float y=120,float width=130,float height = 200
@@ -153,6 +164,9 @@ namespace AutoLink.Services
 				Frame = new RectangleF (x, y, width, height)
 
 			};
+			//the actual button in the view
+		//	var backBTN = (UIButton)btn.Subviews [0];
+			//backBTN.SetBackgroundImage (null, UIControlState.Normal);
 			btn.FetchedUserInfo += (sender, e) => {
 
 				var user = e.User;

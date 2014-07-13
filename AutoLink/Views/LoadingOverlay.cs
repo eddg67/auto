@@ -46,6 +46,7 @@ namespace AutoLink
 			loadingLabel.Text = message;
 			loadingLabel.TextAlignment = UITextAlignment.Center;
 			loadingLabel.AutoresizingMask = UIViewAutoresizing.FlexibleMargins;
+			loadingLabel.Font = UIFont.FromName("Clan-Medium", 20f);
 			AddSubview (loadingLabel);
 		}
 

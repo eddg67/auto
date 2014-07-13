@@ -243,7 +243,7 @@ namespace AutoLink
 			if (string.IsNullOrEmpty (binID)) {
 
 				service.GetListingsAsync (searchID, list).ContinueWith ((task) => InvokeOnMainThread (() => {
-					if(!task.IsFaulted){
+					if(!task.IsFaulted && task.Result != null){
 						listResults = task.Result.Result;
 						if(listResults != null){
 							var newRes = listResults.listings;
@@ -265,7 +265,7 @@ namespace AutoLink
 		
 				service.GetBinsListingAsync (binID, list).ContinueWith ((task) => InvokeOnMainThread (() => {
 					//dont change more results flag to retry BANG BANG BITCH
-					if(!task.IsFaulted){
+					if(!task.IsFaulted  && task.Result != null){
 						var tmp = task.Result.Result;
 						if(tmp.Count > 0){
 							//startCount = tmp.Count;

@@ -24,10 +24,11 @@ namespace AutoLink
 	
 			searchId = id;
 			useBinId = bin;
-			//TableView.TableHeaderView = GetHeader ();
+			TableView.TableHeaderView = GetHeader ();
 			TableView.SeparatorInset = new UIEdgeInsets (0, 0, 0, 0);
+			TableView.SeparatorStyle = UITableViewCellSeparatorStyle.None;
 
-			//TableView.ContentInset = new UIEdgeInsets (0, 5, 0, 5); 
+			TableView.ContentInset = new UIEdgeInsets (-25, 0, 0, 0); 
 
 		}
 
@@ -37,6 +38,7 @@ namespace AutoLink
 		{
 			var frame = TableView.Frame;
 			TableView.Frame = new RectangleF (0, 0, frame.Width, frame.Height);
+			//View.Frame = new RectangleF (0, 20, frame.Width, frame.Height);;
 		}
 
 		public override void DidReceiveMemoryWarning ()
@@ -51,6 +53,8 @@ namespace AutoLink
 		{
 			base.ViewDidLoad ();
 			TableView.RowHeight = 0;
+			TableView.TableHeaderView = null;
+			TableView.SectionHeaderHeight = 0f;
 
 			// Register the TableView's data source
 			if (useBinId) {

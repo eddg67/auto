@@ -1,38 +1,34 @@
 ﻿<Properties GitUserInfo="UsingGIT">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.IPhoneRetina4_64.7.1" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="AutoLink/Models/SearchForm.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="AutoLink/SearchResults/listViewController.cs">
     <Files>
-      <File FileName="AutoLink/AppDelegate.cs" Line="91" Column="8" />
-      <File FileName="AutoLink/Services/API.cs" Line="182" Column="1" />
-      <File FileName="AutoLink/Models/SearchForm.cs" Line="761" Column="1" />
-      <File FileName="AutoLink/Models/SearchResult.cs" Line="37" Column="23" />
+      <File FileName="AutoLink/AppDelegate.cs" Line="1" Column="1" />
+      <File FileName="AutoLink/SearchResults/FlyoutController.cs" Line="1" Column="1" />
+      <File FileName="AutoLink/SearchResults/SearchResultController.cs" Line="1" Column="1" />
+      <File FileName="AutoLink/SearchResults/listViewController.cs" Line="56" Column="11" />
+      <File FileName="AutoLink/SearchResults/listViewCell.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
       <Breakpoint file="/Users/en-ed/Projects/AutoLink/AutoLink/Login/SignUpController.cs" line="129" column="1" />
-      <Breakpoint file="/Users/en-ed/Projects/AutoLink/AutoLink/Utilities/ViewExtensions.cs" line="27" column="1" />
-      <Breakpoint file="/Users/en-ed/Projects/AutoLink/AutoLink/Utilities/ViewExtensions.cs" line="33" column="1" />
       <Breakpoint file="/Users/en-ed/Projects/AutoLink/AutoLink/Login/LoginScreenController.cs" line="121" column="1" />
       <Breakpoint file="/Users/en-ed/Projects/AutoLink/AutoLink/Login/SignUpController.cs" line="141" column="1" />
       <Breakpoint file="/Users/en-ed/Downloads/xamarin-store-app-master/XamarinStore.iOS/ViewControllers/LoginViewController.cs" line="64" column="1" />
       <Breakpoint file="/Users/en-ed/Downloads/xamarin-store-app-master/XamarinStore.iOS/ViewControllers/LoginViewController.cs" line="57" column="1" />
       <Breakpoint file="/Users/en-ed/Downloads/xamarin-store-app-master/XamarinStore.iOS/ViewControllers/LoginViewController.cs" line="74" column="1" />
-      <Breakpoint file="/Users/en-ed/Projects/AutoLink/AutoLink/SearchResults/SWTableViewCell.cs" line="172" column="1" />
       <Breakpoint file="/Users/en-ed/Projects/AutoLink/AutoLink/Controllers/ImageViewerViewController.cs" line="107" column="1" />
       <Breakpoint file="/Users/en-ed/Projects/AutoLink/AutoLink/Views/UIViewFullscreen.cs" line="31" column="1" />
       <Breakpoint file="/Users/en-ed/Projects/AutoLink/AutoLink/Views/UIScrollViewImage.cs" line="89" column="1" />
       <Breakpoint file="/Users/en-ed/Projects/AutoLink/AutoLink/Models/Bin.cs" line="14" column="18" />
       <Breakpoint file="/Users/en-ed/Projects/AutoLink/AutoLink/Controllers/ImageCollectionSource.cs" line="100" column="1" />
-      <Breakpoint file="/Users/en-ed/Projects/AutoLink/AutoLink/SearchResults/listViewSource.cs" line="141" column="1" />
-      <Breakpoint file="/Users/en-ed/Projects/AutoLink/AutoLink/SearchResults/listViewSource.cs" line="285" column="1" />
-      <Breakpoint file="/Users/en-ed/Projects/AutoLink/AutoLink/SearchResults/listViewSource.cs" line="265" column="1" />
-      <Breakpoint file="/Users/en-ed/Projects/AutoLink/AutoLink/SearchResults/listViewSource.cs" line="256" column="1" />
-      <Breakpoint file="/Users/en-ed/Projects/AutoLink/AutoLink/Services/API.cs" line="182" column="1" />
+      <Breakpoint file="/Users/en-ed/Projects/AutoLink/AutoLink/SearchResults/listViewSource.cs" line="272" column="1" />
+      <Breakpoint file="/Users/en-ed/Projects/AutoLink/AutoLink/Services/LoginService.cs" line="88" column="1" />
+      <Breakpoint file="/Users/en-ed/Projects/AutoLink/AutoLink/Services/LoginService.cs" line="94" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.ItemProperties.AutoLink>
-    <IPhoneTestFlightSettings_27CDebug ApiToken="882166f753e2dff5252be1403ac9de7a_MTg4Njg0MjIwMTQtMDYtMDIgMDg6MDc6MjIuMTk3NTgy" TeamToken="a12a8285c81a262b1bef61b1733f77e4_Mzg4MDMwMjAxNC0wNi0wMiAwODowOToyMS42Nzk4MDE" ReleaseNotes="Build 1.0.6&#xA;*Updated Resources&#xA;*Added Image Gallery and Full Image View&#xA;* Added Account Update Dialog&#xA;* Added Add to listing detail view with bin picker&#xA;* add picker for menu new live and new bin&#xA;&#xA;" NotifyTeamMembers="True" ReplaceBinaries="True" DistributionLists="" />
+    <IPhoneTestFlightSettings_27CDebug ApiToken="882166f753e2dff5252be1403ac9de7a_MTg4Njg0MjIwMTQtMDYtMDIgMDg6MDc6MjIuMTk3NTgy" TeamToken="a12a8285c81a262b1bef61b1733f77e4_Mzg4MDMwMjAxNC0wNi0wMiAwODowOToyMS42Nzk4MDE" ReleaseNotes="Build 1.0.7&#xA;* Update account Profile&#xA;* Altered Cell Edit Options (Swipe Buttons)&#xA;* Add New Bin&#xA;* Update Search Options&#xA;* Altered image Aspect &#xA;* Updated for no Price return and also fixed null price issue&#xA;&#xA;&#xA;" NotifyTeamMembers="True" ReplaceBinaries="True" DistributionLists="" />
   </MonoDevelop.Ide.ItemProperties.AutoLink>
 </Properties>

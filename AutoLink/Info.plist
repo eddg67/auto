@@ -9,7 +9,7 @@
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
 	<key>CFBundleVersion</key>
-	<string>1.0.6</string>
+	<string>1.0.7</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>MinimumOSVersion</key>
@@ -33,9 +33,8 @@
 	</array>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
-		<string>UIInterfaceOrientationPortrait</string>
-		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 		<string>UIInterfaceOrientationLandscapeLeft</string>
+		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>UIPrerenderedIcon</key>
 	<true/>
@@ -48,10 +47,10 @@
 	<array>
 		<dict>
 			<key>CFBundleURLName</key>
-			<string>co.autolink.app</string>
+			<string>co.autolink.autoapp</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>co.autolink.app</string>
+				<string>co.autolink.autoapp</string>
 			</array>
 			<key>CFBundleURLTypes</key>
 			<string>Editor</string>
@@ -59,8 +58,9 @@
 	</array>
 	<key>UIAppFonts</key>
 	<array>
-		<string>FF Clan-Bold</string>
-		<string>ClanBol.TTF</string>
+		<string>Clan-Bold.ttf</string>
+		<string>Clan-Book.ttf</string>
+		<string>Clan-Medium.ttf</string>
 	</array>
 </dict>
 </plist>

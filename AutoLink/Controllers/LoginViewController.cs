@@ -41,10 +41,6 @@ namespace AutoLink
 
 			this.NavigationController.NavigationBarHidden = true;
 
-
-			this.btnLogin.Layer.BorderWidth = 1.0f;
-			this.btnLogin.Layer.BorderColor = UIColor.White.CGColor;
-
 			HandleTxt ();
 
 			HandleBtn ();
@@ -52,8 +48,12 @@ namespace AutoLink
 			// Perform any additional setup after loading the view, typically from a nib.
 			//add facebook/google+ btn
 			//float x=22,float y=120,float width=130,float height = 200
-			View.AddSubview( loginService.CreateFaceBookBtn (22,120,270,50));
-			View.AddSubview( loginService.CreateGooglePlusBtn (22,170,270,50));
+			if (UserInterfaceIdiomIsPhone) {
+				View.AddSubview (loginService.CreateFaceBookBtn (22, 120, 270, 50));
+				View.AddSubview (loginService.CreateGooglePlusBtn (22, 170, 270, 50));
+			} else {
+				//ipad
+			}
 		}
 
 		void HandleTxt()
@@ -85,9 +85,13 @@ namespace AutoLink
 
 		void HandleBtn()
 		{
-			this.btnLogin.Layer.BorderWidth = 1.0f;
-			this.btnLogin.Layer.BorderColor = UIColor.White.CGColor;
+		
+			btnLogin.Layer.BorderWidth = .5f;
+			btnLogin.Layer.BorderColor = UIColor.White.CGColor;
+			btnLogin.TitleLabel.Font =  UIFont.FromName("Clan-Medium", 14f);
+			btbSignUp.Font =  UIFont.FromName("Clan-Medium", 14f);
 
+			//this.btnLogin.Title
 			this.btnLogin.TouchUpInside += (object sender, EventArgs e) => {
 				if(this.validate.isEmail(txtEmail) && !this.validate.isEmptyTxt(txtPassword)){
 					//loading screen
@@ -117,11 +121,15 @@ namespace AutoLink
 				app.ShowSignUp();
 			};
 
+
+
 			this.btnForgot.TouchUpInside += (sender, e) => {
 				DismissViewController(true,null);
 				app.ShowForgotPassword();
 				//ForgotSelect();
 			};
+
+
 
 
 

@@ -240,17 +240,21 @@ namespace AutoLink
 						Bin bins = app.storage.Get<Bin>("Bins");
 						if(bins != null){
 							var model = new ListPicker<string>(bins.custom.Select(x=>x.name).ToList());
-						
+							if(model.Items.Count == 0 ){
+								model.Items.Add("Please Add a Bin Prior than Listing");
+							}
 							picker.Show(model);
 
 							picker.doneButton.TouchUpInside += (object doneS, EventArgs doneE) => {
 							
 								var res = bins.custom.Find(x=>x.name == model.SelectedItem);
-								service.AddListingToBin(res._id,items._id).ContinueWith(
-									(task) => InvokeOnMainThread(() => {
-										app.ShowResultList();
-									}
-								));
+								if(res != null){
+									service.AddListingToBin(res._id,items._id).ContinueWith(
+										(task) => InvokeOnMainThread(() => {
+											app.ShowResultList();
+										}
+									));
+								}
 
 							};
 

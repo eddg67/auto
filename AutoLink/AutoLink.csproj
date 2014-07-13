@@ -133,27 +133,6 @@
     <BundleResource Include="Resources\questionmark%402x.png" />
     <BundleResource Include="Resources\Placeholder.jpg" />
     <BundleResource Include="Resources\Placeholder%402x.jpg" />
-    <BundleResource Include="Resources\FF Clan-Bold">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </BundleResource>
-    <BundleResource Include="Resources\FF Clan-Book">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </BundleResource>
-    <BundleResource Include="Resources\FF Clan-Medium">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </BundleResource>
-    <BundleResource Include="Resources\FF Clan-News">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </BundleResource>
-    <BundleResource Include="Resources\FF Clan-Thin">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </BundleResource>
-    <BundleResource Include="Resources\ClanThi">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </BundleResource>
-    <BundleResource Include="Resources\ClanBol.TTF">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </BundleResource>
     <BundleResource Include="Resources\ipad-splash.jpg" />
     <BundleResource Include="Resources\ipad-splash%402x.jpg" />
     <BundleResource Include="Resources\iphone5-splash.jpg" />
@@ -170,6 +149,18 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </BundleResource>
     <BundleResource Include="Resources\iphone-logo%402x.png" />
+    <BundleResource Include="Resources\SF Hollywood Hills.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </BundleResource>
+    <BundleResource Include="Resources\Clan-Book.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </BundleResource>
+    <BundleResource Include="Resources\Clan-Medium.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </BundleResource>
+    <BundleResource Include="Resources\Clan-Bold.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </BundleResource>
   </ItemGroup>
   <ItemGroup>
     <None Include="Entitlements.plist" />
@@ -193,18 +184,6 @@
     <Compile Include="Models\SearchForm.cs">
       <DeployService-Deploy>True</DeployService-Deploy>
       <DeployService-HasPathReferences>True</DeployService-HasPathReferences>
-    </Compile>
-    <Compile Include="Login\LoginScreenController.cs" />
-    <Compile Include="Login\LoginScreenController.designer.cs">
-      <DependentUpon>LoginScreenController.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Login\PasswordResetController.cs" />
-    <Compile Include="Login\PasswordResetController.designer.cs">
-      <DependentUpon>PasswordResetController.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Login\ResetController.cs" />
-    <Compile Include="Login\ResetController.designer.cs">
-      <DependentUpon>ResetController.cs</DependentUpon>
     </Compile>
     <Compile Include="Search\SearchScreen.cs" />
     <Compile Include="Search\SearchScreen.designer.cs">
@@ -285,16 +264,18 @@
     </Compile>
     <Compile Include="Services\AccountService.cs" />
     <Compile Include="Controllers\AccountDialogController.cs" />
+    <Compile Include="Controllers\PasswordResetController.cs" />
+    <Compile Include="Controllers\PasswordResetController.designer.cs">
+      <DependentUpon>PasswordResetController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\ResetController.cs" />
+    <Compile Include="Controllers\ResetController.designer.cs">
+      <DependentUpon>ResetController.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="MainStoryboard_iPhone.storyboard" />
     <InterfaceDefinition Include="MainStoryboard_iPad.storyboard" />
-    <InterfaceDefinition Include="Login\LoginScreenController_iPad.xib" />
-    <InterfaceDefinition Include="Login\LoginScreenController_iPhone.xib" />
-    <InterfaceDefinition Include="Login\PasswordResetController_iPad.xib" />
-    <InterfaceDefinition Include="Login\PasswordResetController_iPhone.xib" />
-    <InterfaceDefinition Include="Login\ResetController_iPad.xib" />
-    <InterfaceDefinition Include="Login\ResetController_iPhone.xib" />
     <InterfaceDefinition Include="Search\SearchScreen_iPad.xib" />
     <InterfaceDefinition Include="Search\SearchScreen_iPhone.xib" />
     <InterfaceDefinition Include="Controllers\MainScreenController_iPad.xib" />
@@ -314,6 +295,10 @@
     <InterfaceDefinition Include="Controllers\ImageViewerViewController_iPad.xib" />
     <InterfaceDefinition Include="Controllers\ImageViewController_iPhone.xib" />
     <InterfaceDefinition Include="Controllers\ImageViewController_iPad.xib" />
+    <InterfaceDefinition Include="Controllers\PasswordResetController_iPad.xib" />
+    <InterfaceDefinition Include="Controllers\PasswordResetController_iPhone.xib" />
+    <InterfaceDefinition Include="Controllers\ResetController_iPad.xib" />
+    <InterfaceDefinition Include="Controllers\ResetController_iPhone.xib" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -321,7 +306,6 @@
     <Folder Include="Services\" />
     <Folder Include="Controllers\" />
     <Folder Include="Models\" />
-    <Folder Include="Login\" />
     <Folder Include="Search\" />
     <Folder Include="SearchResults\" />
     <Folder Include="Views\" />

@@ -210,9 +210,9 @@ namespace Autolink
 			isIos7 = version.Major >= 7;
 			if (isIos7) {
 
-				navHeader = new UIView (new RectangleF (0, 0, 320, 45)) {
+				/*navHeader = new UIView (new RectangleF (0, 0, 320, 45)) {
 					BackgroundColor = UIColor.Black
-				};
+				};*/
 
 				//navHeader.AddSubview (CreateToolbarView ());
 
@@ -316,6 +316,8 @@ namespace Autolink
 				navFrame.X = currentView.Frame.Width - menuWidth;
 			navFrame.Location = PointF.Empty;
 			navigation.View.Frame = navFrame;
+			NavigationTableView.TableHeaderView = null;
+			NavigationTableView.SectionHeaderHeight = 0f;
 			View.BackgroundColor = NavigationTableView.BackgroundColor;
 			if (currentView != null) {
 				var frame = currentView.Frame;
@@ -402,7 +404,7 @@ namespace Autolink
 					shadowView.Frame = frame;
 					closeButton.Frame = frame;
 					statusFrame.X = currentView.Frame.X;
-					statusFrame.Height = 100f;
+					statusFrame.Height = 0f;
 					statusImage.Frame = statusFrame;
 
 					statusImage.BackgroundColor = UIColor.Black;

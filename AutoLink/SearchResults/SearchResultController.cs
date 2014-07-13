@@ -63,7 +63,7 @@ namespace AutoLink
 			service.GetResultsAsync ().ContinueWith (
 				(task) => InvokeOnMainThread (() => {
 
-					if(!task.IsFaulted){
+					if(!task.IsFaulted && task.Result != null){
 					results = task.Result.Result;
 
 					View.AddSubview (navigation.View);
@@ -75,8 +75,11 @@ namespace AutoLink
 						title =>{
 						
 							var list = new ListView (navigation, title,searchIds[count],false);
+								list.TableView.TableHeaderView = null;
+								list.TableView.SectionHeaderHeight = 0f;
 							var nav = new UINavigationController (list);
 							nav.NavigationBarHidden = false;
+							
 							count++;
 
 							return nav;
@@ -158,6 +161,10 @@ namespace AutoLink
 				//new UIViewElement("",header,true)
 			};
 
+			secSearch.Caption = "Live Search";
+			//secSearch.Header = "Live Search";
+
+
 			secSearch.AddAll (
 				results.Select 
 				(x => {
@@ -191,7 +198,7 @@ namespace AutoLink
 			//StyledStringElement[] customBins;
 
 			var header = new UILabel (new RectangleF (0, 0, this.View.Bounds.Width, 60)) {
-				Font = UIFont.SystemFontOfSize(18),
+				Font = UIFont.FromName("Clan-Bold", 16f),
 				TintColor = UIColor.LightTextColor,
 				BackgroundColor = UIColor.LightGray,
 				Text = "Bins"
@@ -265,11 +272,13 @@ namespace AutoLink
 			var tool = new UIToolbar (new RectangleF (20, 0, View.Bounds.Width - 10, 66));
 			tool.BackgroundColor = UIColor.Black;
 			tool.TintColor = UIColor.Black;
+
 			tool.Layer.BackgroundColor = UIColor.Black.CGColor;
 			var btn = new UIBarButtonItem (UIBarButtonSystemItem.Add, (sender, args) => {
 				// button was clicked
 				ShowActionPicker();
 			}){TintColor = UIColor.Black};
+
 
 
 			tool.SetItems (new UIBarButtonItem[]{ 
@@ -327,7 +336,7 @@ namespace AutoLink
 		{
 			UIView activeview{ get; set; }            // Controller that activated the keyboard
 			 float scrollamount = 0.0f;    // amount to scroll 
-			 float bottom = 0.0f;           // bottom point
+			// float bottom = 0.0f;           // bottom point
 			 float offset = 10.0f;          // extra offset
 			 bool moveViewUp { get; set; }
 
@@ -336,6 +345,11 @@ namespace AutoLink
 				var fav = new UITabBarItem(UITabBarSystemItem.Contacts,1);
 				var img = fav.SelectedImage;
 				this.Title = title;	
+
+				var topV = View.Subviews[0];
+				topV.Layer.BackgroundColor = UIColor.White.CGColor;
+
+				//navigation.RotatingHeaderView
 
 				navigation.NavigationTableView.SectionHeaderHeight = 0f;
 						
@@ -352,7 +366,6 @@ namespace AutoLink
 				NSNotificationCenter.DefaultCenter.AddObserver (UIKeyboard.WillShowNotification, OnKeyboardNotification);
 					
 			}
-
 
 			private void OnKeyboardNotification (NSNotification notification)
 			{

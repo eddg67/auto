@@ -172,7 +172,7 @@ namespace AutoLink.Models
 				Text = @"New live search",
 				Editable = false,
 				AutosizesSubviews = true,
-				Font = UIFont.FromName ("KannadaSangamMN-Bold", 30f)
+			 	Font = UIFont.FromName("Clan-Bold", 16f),
 
 			}; 
 
@@ -188,7 +188,7 @@ namespace AutoLink.Models
 				Text = @"New live searches are always working in the background, you dont have to.",
 				Editable = false,
 				AutosizesSubviews = true,
-				Font = UIFont.FromName ("KannadaSangamMN", 12)
+				Font = UIFont.FromName("Clan-Book", 16f),
 
 			};
 
@@ -213,7 +213,7 @@ namespace AutoLink.Models
 				Text = @"Note",
 				Editable = false,
 				AutosizesSubviews = true,
-				Font = UIFont.FromName ("KannadaSangamMN", 20f)
+				Font = UIFont.FromName("Clan-Bold", 16f),
 
 			}; 
 
@@ -227,7 +227,7 @@ namespace AutoLink.Models
 				Text = @"You can always add an advance search after a live search is created.",
 				Editable = false,
 				AutosizesSubviews = true,
-				Font = UIFont.FromName ("Oriya Sangam MN", 12)
+				Font = UIFont.FromName("Clan-Book", 12f),
 
 			};
 

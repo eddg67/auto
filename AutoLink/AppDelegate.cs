@@ -79,16 +79,21 @@ namespace AutoLink
 
 			UINavigationBar.Appearance.BarTintColor = UIColor.Black;
 			UINavigationBar.Appearance.BackgroundColor = UIColor.Clear;
+
 			UITextAttributes attr = new UITextAttributes ();
 			attr.TextColor = UIColor.White;
-			attr.Font = UIFont.FromName ("KannadaSangamMN-Bold", 22);
+			//attr.Font = UIFont.FromName ("KannadaSangamMN-Bold", 22);
+			attr.Font = UIFont.FromName("Clan-Bold", 16f);
 			UINavigationBar.Appearance.SetTitleTextAttributes (attr);
 			UIApplication.SharedApplication.SetStatusBarStyle (UIStatusBarStyle.LightContent, true);
+			UILabel.Appearance.Font = UIFont.FromName("Clan-Book", 14f);
+
+
 
 			RootController = new UINavigationController ();
 
 			//Pass Thru TO list if logged in
-			if (loginService.IsLoggedIn()) {
+			if (!loginService.IsLoggedIn()) {
 				ShowResultList ();
 			} else {
 				ShowSplash ();
