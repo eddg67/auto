@@ -1,6 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 
-namespace AutoLink
+namespace AutoLink.Models
 {
 	[Serializable]
 	public class Custom
@@ -14,6 +15,11 @@ namespace AutoLink
 		public DateTime created;
 		public string id;
 		public int count;
+	}
+
+	public class CustomResult : Custom
+	{
+		public List<Listing> listings;
 	}
 }
 
