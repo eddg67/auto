@@ -24,7 +24,7 @@ namespace AutoLink
 	
 			searchId = id;
 			useBinId = bin;
-			TableView.TableHeaderView = GetHeader ();
+			//TableView.TableHeaderView = GetHeader ();
 			TableView.SeparatorInset = new UIEdgeInsets (0, 0, 0, 0);
 			TableView.SeparatorStyle = UITableViewCellSeparatorStyle.None;
 
@@ -38,7 +38,7 @@ namespace AutoLink
 		{
 			var frame = TableView.Frame;
 			TableView.Frame = new RectangleF (0, 0, frame.Width, frame.Height);
-			//View.Frame = new RectangleF (0, 20, frame.Width, frame.Height);;
+			//View.Frame = new RectangleF (0, 20, frame.Width, frame.Height); 
 		}
 
 		public override void DidReceiveMemoryWarning ()
@@ -75,6 +75,11 @@ namespace AutoLink
 				// button was clicked
 			});
 
+			var attr = new UITextAttributes ();
+			attr.Font =  UIFont.FromName("Clan-Book", 14f);
+			btn.SetTitleTextAttributes (attr,UIControlState.Application);
+			//btn.SetTitleTextAttributes(
+
 			tool.SetItems (new UIBarButtonItem[]{ 
 				btn
 			},true);
@@ -95,7 +100,7 @@ namespace AutoLink
 				Text = @"New live search",
 				Editable = false,
 				AutosizesSubviews = true,
-				Font = UIFont.FromName ("KannadaSangamMN-Bold", 30f)
+				Font = UIFont.FromName ("Clan-Bold", 30f)
 
 			}; 
 

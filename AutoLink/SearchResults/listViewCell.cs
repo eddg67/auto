@@ -72,7 +72,7 @@ namespace AutoLink
 					
 					desc.TextAlignment = UITextAlignment.Center;
 					desc.LineBreakMode = UILineBreakMode.TailTruncation;
-					desc.Font = UIFont.PreferredCaption1;
+					desc.Font =  UIFont.FromName("Clan-Book", 10f);
 					desc.Lines = 0;
 					desc.Text = string.Empty;
 					desc.Text = list.descriptionCollapsed;
@@ -80,7 +80,7 @@ namespace AutoLink
 					//price = new UILabel(new RectangleF(0, ImageView.Frame.Bottom, ContentView.Bounds.Size.Width, 20));
 
 					price.LineBreakMode = UILineBreakMode.WordWrap;
-					price.Font = UIFont.PreferredBody;
+					price.Font = UIFont.FromName("Clan-Medium", 12f);
 					price.Lines = 0;
 					price.TextAlignment = UITextAlignment.Right;
 					price.Text = string.Empty;
@@ -93,7 +93,7 @@ namespace AutoLink
 					//make = new UILabel(new RectangleF( 0 , ImageView.Frame.Bottom, ContentView.Bounds.Size.Width, 20));
 				
 					make.LineBreakMode = UILineBreakMode.TailTruncation;
-					make.Font = UIFont.PreferredBody;
+					make.Font =  UIFont.FromName("Clan-Medium", 12f);
 					make.Lines = 1;
 					make.TextAlignment = UITextAlignment.Left;
 					make.Text = string.Empty;
@@ -101,7 +101,7 @@ namespace AutoLink
 
 					//mileage = new UILabel(new RectangleF( 0 , make.Frame.Bottom, ContentView.Bounds.Size.Width, 20));
 				
-					mileage.Font = UIFont.PreferredSubheadline;
+					mileage.Font = UIFont.FromName("Clan-Book", 12f);
 					mileage.Lines = 1;
 					mileage.TextAlignment = UITextAlignment.Left;
 					mileage.Text = string.Empty;
@@ -111,7 +111,7 @@ namespace AutoLink
 						mileage.Text = string.Format("Mileage : {0} mi",list.mileage);
 					}
 				
-					source.Font = UIFont.PreferredBody;
+					source.Font = UIFont.FromName("Clan-Book", 12f);
 					source.Lines = 1;
 					source.TextAlignment = UITextAlignment.Left;
 					source.Text = string.Empty;
@@ -180,7 +180,7 @@ namespace AutoLink
 			tool.BarTintColor = UIColor.White;
 			tool.ClipsToBounds = true;
 
-			attr.Font = UIFont.SystemFontOfSize (9);
+			attr.Font = UIFont.FromName("Clan-Book", 9f);
 			attr.TextColor = UIColor.LightGray;
 
 			//add location and change font color
@@ -280,6 +280,9 @@ namespace AutoLink
 				string.Format("source: {0}",item.source),
 				     UITableViewCellStyle.Subtitle
 			   );
+
+			prRow.Font = UIFont.FromName("Clan-Book", 12f);
+			mileSource.Font = UIFont.FromName("Clan-Book", 12f);
 
 			var line = new UIViewElement ("", new UIView (new RectangleF (10, 0, ContentView.Bounds.Size.Width-20, 1)){
 				BackgroundColor = UIColor.DarkGray

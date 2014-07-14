@@ -45,22 +45,23 @@ namespace AutoLink
 
 				
 					if(!task.IsFaulted){
-						ImageView.Frame = new RectangleF(0, 0 , Frame.Width, task.Result.Size.Height);
+
 						ImageView.Image = task.Result;
-						//ImageView.ContentMode = UIViewContentMode.ScaleAspectFill;
+						ImageView.ContentMode = UIViewContentMode.ScaleAspectFill;
 						Add(ImageView);
 					}
 		
 					desc.TextAlignment = UITextAlignment.Center;
 					desc.LineBreakMode = UILineBreakMode.WordWrap;
-					desc.Font = UIFont.PreferredCaption1;
+					desc.Font =  UIFont.FromName("Clan-Book", 10f);
 					desc.Lines = 0;
 					desc.Text = string.Empty;
-					desc.Text = list.description;
+					desc.Text = list.descriptionCollapsed;
 
+					//price = new UILabel(new RectangleF(0, ImageView.Frame.Bottom, ContentView.Bounds.Size.Width, 20));
 
 					price.LineBreakMode = UILineBreakMode.WordWrap;
-					price.Font = UIFont.PreferredBody;
+					price.Font = UIFont.FromName("Clan-Medium", 12f);
 					price.Lines = 0;
 					price.TextAlignment = UITextAlignment.Right;
 					price.Text = string.Empty;
@@ -68,30 +69,30 @@ namespace AutoLink
 						price.Text = string.Format("$ {0}", list.price);
 					}else{
 						price.Text = "No Price Available";
-					}
+					}			
 
-					make.LineBreakMode = UILineBreakMode.WordWrap;
-					make.Font = UIFont.PreferredBody;
-					make.Lines = 0;
+					//make = new UILabel(new RectangleF( 0 , ImageView.Frame.Bottom, ContentView.Bounds.Size.Width, 20));
+
+					make.LineBreakMode = UILineBreakMode.TailTruncation;
+					make.Font =  UIFont.FromName("Clan-Medium", 12f);
+					make.Lines = 1;
 					make.TextAlignment = UITextAlignment.Left;
 					make.Text = string.Empty;
 					make.Text = list.title;
 
+					//mileage = new UILabel(new RectangleF( 0 , make.Frame.Bottom, ContentView.Bounds.Size.Width, 20));
 
-					mileage.Font = UIFont.PreferredBody;
+					mileage.Font = UIFont.FromName("Clan-Book", 12f);
 					mileage.Lines = 1;
 					mileage.TextAlignment = UITextAlignment.Left;
 					mileage.Text = string.Empty;
-
 					if(string.IsNullOrEmpty(list.mileage)){
 						mileage.Text = "No Mileage Available";
 					}else{
 						mileage.Text = string.Format("Mileage : {0} mi",list.mileage);
 					}
 
-
-
-					source.Font = UIFont.PreferredBody;
+					source.Font = UIFont.FromName("Clan-Book", 12f);
 					source.Lines = 1;
 					source.TextAlignment = UITextAlignment.Left;
 					source.Text = string.Empty;
@@ -128,15 +129,6 @@ namespace AutoLink
 			mileage.Frame = new RectangleF( offset , make.Frame.Bottom + offset , Bounds.Size.Width - offset, 20);
 			source.Frame = new RectangleF( offset , mileage.Frame.Bottom, Bounds.Width  -offset, 20);
 
-
-			//var carousel = new CarouselView(new RectangleF(0,ImageView.Frame.Bottom,Bounds.Width,50));
-			//carousel.DataSource = new LinearDataSource(item);
-			//carousel.Delegate = new LinearDelegate();
-			//carousel.CarouselType = CarouselType.Linear;
-			//carousel.ConfigureView();
-			//Add(carousel);
-			//carousel.Autoscroll = 1.0f;
-
 			Add(make);
 			Add(price);
 			Add(mileage);
@@ -145,11 +137,11 @@ namespace AutoLink
 			using (var line = new LineView (new RectangleF (offset, source.Frame.Bottom + (offset * 2), Bounds.Width - (offset * 2), 1))) {
 				line.BackgroundColor = UIColor.LightGray;
 				Add (line);
-				desc.Frame = new RectangleF (offset, line.Frame.Bottom, Bounds.Width - (offset*2), 200);
+				//desc.Frame = new RectangleF (offset, line.Frame.Bottom, Bounds.Width - (offset*2), 200);
 			}
 
 
-			Add(desc);
+			AddSubview(desc);
 
 			using (var line = new LineView (new RectangleF (offset, desc.Frame.Bottom + (offset * 2), Bounds.Width - (offset * 2), 1))) {
 				line.BackgroundColor = UIColor.LightGray;

@@ -162,8 +162,6 @@ namespace AutoLink
 			};
 
 			secSearch.Caption = "Live Search";
-			//secSearch.Header = "Live Search";
-
 
 			secSearch.AddAll (
 				results.Select 
@@ -174,7 +172,7 @@ namespace AutoLink
 						x.newListingsCount.ToString(),
 						UITableViewCellStyle.Value1
 					);
-				
+					str.Font = UIFont.FromName("Clan-Book", 12f);
 					str.Accessory = UITableViewCellAccessory.DetailDisclosureButton;
 					str.Tapped += () => {
 						navigation.Title = x.name;
@@ -210,7 +208,7 @@ namespace AutoLink
 				(bin.starred != null) ? bin.starred.count.ToString () : "0",
 				UITableViewCellStyle.Value1
 			);
-
+			stared.Font = UIFont.FromName("Clan-Book", 12f);
 			stared.Accessory = UITableViewCellAccessory.DisclosureIndicator;
 			stared.Tapped += () => {navigation.Title =  "Starred";};
 		
@@ -220,6 +218,7 @@ namespace AutoLink
 				UITableViewCellStyle.Value1
 			);
 
+			allNew.Font = UIFont.FromName("Clan-Book", 12f);
 			allNew.Tapped += () => {navigation.Title =  "New";};
 			allNew.Accessory = UITableViewCellAccessory.DisclosureIndicator;
 
@@ -229,6 +228,7 @@ namespace AutoLink
 				UITableViewCellStyle.Value1
 			);
 
+			contacted.Font = UIFont.FromName("Clan-Book", 12f);
 			contacted.Tapped += () => {navigation.Title =  "Contacted";};
 			contacted.Accessory = UITableViewCellAccessory.DisclosureIndicator;
 
@@ -238,6 +238,7 @@ namespace AutoLink
 				UITableViewCellStyle.Value1
 			);
 
+			deleted.Font = UIFont.FromName("Clan-Book", 12f);
 			deleted.Tapped += () => {navigation.Title =  "Deleted Listings";};
 			deleted.Accessory = UITableViewCellAccessory.DisclosureIndicator;
 
@@ -255,6 +256,7 @@ namespace AutoLink
 						UITableViewCellStyle.Value1
 					);
 
+					str.Font = UIFont.FromName("Clan-Book", 12f);
 					str.Tapped += () => {navigation.Title =  x.name;};
 					deleted.Accessory = UITableViewCellAccessory.DisclosureIndicator;
 
@@ -279,7 +281,10 @@ namespace AutoLink
 				ShowActionPicker();
 			}){TintColor = UIColor.Black};
 
-
+			UITextAttributes attr = new UITextAttributes ();
+			attr.TextColor = UIColor.White;
+			attr.Font =  UIFont.FromName("Clan-Book", 12f);
+			btn.SetTitleTextAttributes (attr,UIControlState.Normal);
 
 			tool.SetItems (new UIBarButtonItem[]{ 
 				btn,

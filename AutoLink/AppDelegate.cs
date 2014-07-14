@@ -93,7 +93,7 @@ namespace AutoLink
 			RootController = new UINavigationController ();
 
 			//Pass Thru TO list if logged in
-			if (!loginService.IsLoggedIn()) {
+			if (loginService.IsLoggedIn()) {
 				ShowResultList ();
 			} else {
 				ShowSplash ();
