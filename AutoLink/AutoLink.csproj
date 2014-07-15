@@ -161,6 +161,7 @@
     <BundleResource Include="Resources\Clan-Bold.ttf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </BundleResource>
+    <BundleResource Include="Resources\options.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Entitlements.plist" />

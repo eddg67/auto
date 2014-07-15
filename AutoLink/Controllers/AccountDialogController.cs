@@ -46,7 +46,7 @@ namespace AutoLink
 			app.accountService.GetAccount ().ContinueWith (
 				(task) => InvokeOnMainThread (() => {
 
-					if(task.Result.Result != null){
+					if(!task.IsFaulted && task.Result.Result != null){
 						result = task.Result.Result;
 
 						var name = new EntryElement ("Your Name:", "Enter name", result.name);

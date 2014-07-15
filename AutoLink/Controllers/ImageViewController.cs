@@ -55,8 +55,10 @@ namespace AutoLink
 
 					if(task.Result != null){
 						var res = task.Result;
-						var siz = res.Size;
+						//var siz = res.Size;
+						ImageView.ContentMode = UIViewContentMode.ScaleAspectFit;
 						ImageView.Image = res;
+						ImageView.BackgroundColor = UIColor.Black;
 						var frame = View.Bounds;
 						//frame.X = 50f;
 						//frame.Height = siz.Height;

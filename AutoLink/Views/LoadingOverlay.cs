@@ -12,9 +12,10 @@ namespace AutoLink
 		public LoadingOverlay (RectangleF frame,string message = "Loading Data...") : base (frame)
 		{
 			// configurable bits
-			BackgroundColor = UIColor.Black;
-			Alpha = 0.75f;
+			BackgroundColor = UIColor.Black;// UIColor.FromWhiteAlpha(.5f,.5f);
+			Alpha = 0.65f;
 			AutoresizingMask = UIViewAutoresizing.FlexibleDimensions;
+			Opaque = true;
 
 			float labelHeight = 22;
 			float labelWidth = Frame.Width - 20;
@@ -46,7 +47,7 @@ namespace AutoLink
 			loadingLabel.Text = message;
 			loadingLabel.TextAlignment = UITextAlignment.Center;
 			loadingLabel.AutoresizingMask = UIViewAutoresizing.FlexibleMargins;
-			loadingLabel.Font = UIFont.FromName("Clan-Book", 20f);
+			loadingLabel.Font = UIFont.FromName("Clan-Medium", 20f);
 			AddSubview (loadingLabel);
 		}
 

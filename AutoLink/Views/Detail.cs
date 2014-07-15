@@ -20,7 +20,7 @@ namespace AutoLink
 		float offset = 10;
 		AppDelegate app = (AppDelegate)UIApplication.SharedApplication.Delegate;
 
-		public Detail (RectangleF frame,UIViewController _controller) : base (frame)
+		public Detail (RectangleF frame,UIViewController _controller) : base ()
 		{
 			ImageView = new UIImageViewClickable();
 			desc = new UILabel();
@@ -29,6 +29,9 @@ namespace AutoLink
 			mileage = new UILabel ();
 			source = new UILabel();
 			controller = _controller;
+			ContentMode = UIViewContentMode.ScaleAspectFit;
+
+			//AutosizesSubviews = true;
 
 		}
 
@@ -106,6 +109,7 @@ namespace AutoLink
 					};
 
 					//LayoutSubviews ();
+
 						
 				}
 
@@ -129,29 +133,46 @@ namespace AutoLink
 			mileage.Frame = new RectangleF( offset , make.Frame.Bottom + offset , Bounds.Size.Width - offset, 20);
 			source.Frame = new RectangleF( offset , mileage.Frame.Bottom, Bounds.Width  -offset, 20);
 
-			Add(make);
-			Add(price);
-			Add(mileage);
-			Add(source);
-
-			using (var line = new LineView (new RectangleF (offset, source.Frame.Bottom + (offset * 2), Bounds.Width - (offset * 2), 1))) {
+			AddSubview(make);
+			AddSubview(price);
+			AddSubview(mileage);
+			AddSubview(source);
+		
+			using (var line = new LineView (new RectangleF (offset, source.Frame.Bottom + offset, Bounds.Width - (offset * 2), 1))) {
 				line.BackgroundColor = UIColor.LightGray;
-				Add (line);
-				//desc.Frame = new RectangleF (offset, line.Frame.Bottom, Bounds.Width - (offset*2), 200);
+				//desc.InsertSubviewAbove (line,);
+				AddSubview (line);
+				if (desc.Text != null) {
+					var s = desc.StringSize (desc.Text, UIFont.FromName ("Clan-Book", 12f),Frame.Size, UILineBreakMode.WordWrap);
+					desc.Frame = new RectangleF (offset, line.Frame.Bottom + offset, Bounds.Width - (offset * 2), s.Height);
+				}
+			
 			}
 
 
 			AddSubview(desc);
 
-			using (var line = new LineView (new RectangleF (offset, desc.Frame.Bottom + (offset * 2), Bounds.Width - (offset * 2), 1))) {
-				line.BackgroundColor = UIColor.LightGray;
-				Add (line);
-			}
 
-			Add (GetToolBar ());
-
+			var h = ImageView.Frame.Height + price.Frame.Height + mileage.Frame.Height + source.Frame.Height + desc.Frame.Height + 50;
+			this.Frame = new RectangleF(0,0,Frame.Width,(float)Math.Ceiling(h));
 			//Frame = f;
 
+			if (desc.Frame.Height > 0) {
+
+				using (var line = new LineView (new RectangleF (offset, desc.Frame.Bottom + offset, Bounds.Width - (offset * 2), 1))) {
+					line.BackgroundColor = UIColor.LightGray;
+					AddSubview (line);
+				}
+				GetToolBar ();
+
+				AddSubview (tool);
+			}
+		}
+
+
+		public override SizeF SizeThatFits (SizeF size)
+		{
+			return base.SizeThatFits (size);
 		}
 
 		UIToolbar GetToolBar()
@@ -167,7 +188,7 @@ namespace AutoLink
 			tool.BarTintColor = UIColor.White;
 			tool.ClipsToBounds = true;
 
-			attr.Font = UIFont.SystemFontOfSize (9);
+			attr.Font =  UIFont.FromName("Clan-Medium", 9f);
 			attr.TextColor = UIColor.LightGray;
 
 			//add location and change font color

@@ -54,6 +54,7 @@ namespace AutoLink
 		public override void ViewDidLoad ()
 		{
 			base.ViewDidLoad ();
+			View.BackgroundColor = UIColor.Black;
 
 			navigation = new FlyoutController ();
 			navigation.Position = FlyOutNavigationPosition.Left;
@@ -196,10 +197,12 @@ namespace AutoLink
 			//StyledStringElement[] customBins;
 
 			var header = new UILabel (new RectangleF (0, 0, this.View.Bounds.Width, 60)) {
-				Font = UIFont.FromName("Clan-Bold", 16f),
+				Font = UIFont.FromName("Clan-Book", 16f),
 				TintColor = UIColor.LightTextColor,
 				BackgroundColor = UIColor.LightGray,
-				Text = "Bins"
+				Alpha=0.5f,
+				Text = "Bins",
+				ClipsToBounds = true
 			};
 					
 
@@ -271,7 +274,7 @@ namespace AutoLink
 
 		public UIToolbar CreateToolbarView()
 		{
-			var tool = new UIToolbar (new RectangleF (20, 0, View.Bounds.Width - 10, 66));
+			var tool = new UIToolbar (new RectangleF (0, 0, View.Bounds.Width - 10, 66));
 			tool.BackgroundColor = UIColor.Black;
 			tool.TintColor = UIColor.Black;
 
@@ -280,6 +283,7 @@ namespace AutoLink
 				// button was clicked
 				ShowActionPicker();
 			}){TintColor = UIColor.Black};
+			btn.ImageInsets = new UIEdgeInsets(17.5f,20,0,0);
 
 			UITextAttributes attr = new UITextAttributes ();
 			attr.TextColor = UIColor.White;

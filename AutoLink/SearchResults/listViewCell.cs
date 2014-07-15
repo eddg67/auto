@@ -180,7 +180,7 @@ namespace AutoLink
 			tool.BarTintColor = UIColor.White;
 			tool.ClipsToBounds = true;
 
-			attr.Font = UIFont.FromName("Clan-Book", 9f);
+			attr.Font = UIFont.FromName("Clan-Medium", 8f);
 			attr.TextColor = UIColor.LightGray;
 
 			//add location and change font color
