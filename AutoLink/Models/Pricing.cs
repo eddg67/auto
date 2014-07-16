@@ -2,6 +2,7 @@
 
 namespace AutoLink
 {
+	[Serializable]
 	public class Pricing
 	{
 		public string[] trade;

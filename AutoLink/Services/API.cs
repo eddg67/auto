@@ -11,16 +11,19 @@ using System.Net.Http.Headers;
 using PerpetualEngine.Storage;
 using System.Collections.Generic;
 using Newtonsoft.Json.Serialization;
+using AutoLink.Utilities;
+using System.Threading;
 
 namespace AutoLink.Services
 {
-	public class API
+	public class API //: ImageDownloader
 	{
 		public string Token { get; set; }
 		public string URL = @"http://api.autolink.co/rpc/";
 		public HttpWebRequest request;
 		public HttpWebResponse response;
 		public int TimeOutFlag = 8000;
+		Semaphore throttle;
 
 		private SimpleStorage storage;
 
@@ -29,7 +32,9 @@ namespace AutoLink.Services
 		{
 			storage = SimpleStorage.EditGroup("login");
 			Token = storage.Get("token") ?? null;
+			throttle = new Semaphore (1, 3);
 		}
+
 
 		public APIResponse<T> CreateRequest<T>(string method,object parameters=null)
 		{
@@ -97,7 +102,9 @@ namespace AutoLink.Services
 
 		public async Task<APIResponse<T>> CreateAsync<T>(string method,object parameters = null)
 		{
+			throttle.WaitOne ();
 			try{
+
 			// Create a client
 			WebClient client = new WebClient();
 
@@ -120,15 +127,20 @@ namespace AutoLink.Services
 
 			}
 		
-			var result = await client.UploadStringTaskAsync(new Uri(URL), content);
-			Console.Out.WriteLine ("Response Body: \r\n");
-			//Console.Out.WriteLine ("\r\n {0}", result);
-			return ParseJson<T> (result);
+				var result = await client.UploadStringTaskAsync(new Uri(URL), content);
+				Console.Out.WriteLine ("Response Body: \r\n");
+				//Console.Out.WriteLine ("\r\n {0}", result);
+				throttle.Release ();
+				var res = ParseJson<T> (result);
+				//await storage.PutAsync<APIResponse<T>>(method,res);
+			return res;
 
 			}catch(Exception exp){
+				throttle.Release ();
 				HandleError<T>(exp);
 				return null;
 			}
+
 		}
 
 
@@ -209,7 +221,6 @@ namespace AutoLink.Services
 			if (Token == null) {
 				Token = storage.Get ("token") ?? token;
 				Console.Write (Token);
-				//storage.Put ("token", Token);
 			}
 		}
 			

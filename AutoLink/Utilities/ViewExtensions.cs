@@ -4,12 +4,14 @@ using MonoTouch.Foundation;
 using System.Drawing;
 using System.Threading.Tasks;
 using System.Net.Http;
+using System.Threading;
 
 namespace AutoLink
 {
 	public static class ViewExtensions
 	{
 		public static LoadingOverlay overlayView { get; set; }
+		public static Semaphore throttle = new Semaphore (1, 3);
 	
 		/// <summary>
 		/// Find the first responder in the <paramref name="view"/>'s subview hierarchy
@@ -193,11 +195,13 @@ namespace AutoLink
 
 		public static async Task<UIImage> DownloadImageAsync(this UIView view,string imageUrl)
 		{
+			throttle.WaitOne ();
 			var httpClient = new HttpClient();
 
 			Task <Byte[]> contentsTask = httpClient.GetByteArrayAsync(imageUrl);
-
+			throttle.Release ();
 			var contents = await contentsTask;
+
 
 			return UIImage.LoadFromData(NSData.FromArray(contents));
 		}

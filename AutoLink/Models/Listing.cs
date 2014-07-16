@@ -8,6 +8,7 @@ namespace AutoLink.Models
 		Listings,
 		Custom
 	};
+	[Serializable]
 	public class Listing
 	{
 		public ListType listType;

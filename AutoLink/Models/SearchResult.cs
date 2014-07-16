@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 namespace AutoLink.Models
 {
+	[Serializable]
 	public class SearchResult
 	{
 		public string __v;

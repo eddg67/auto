@@ -30,7 +30,7 @@ namespace AutoLink
 			source = new UILabel();
 			controller = _controller;
 			ContentMode = UIViewContentMode.ScaleAspectFit;
-
+		
 			//AutosizesSubviews = true;
 
 		}

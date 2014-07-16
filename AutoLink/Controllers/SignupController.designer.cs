@@ -19,6 +19,9 @@ namespace AutoLink
 		MonoTouch.UIKit.UIButton btnSubmit { get; set; }
 
 		[Outlet]
+		MonoTouch.UIKit.UILabel txtDisclaimer { get; set; }
+
+		[Outlet]
 		MonoTouch.UIKit.UITextField txtEmail { get; set; }
 
 		[Outlet]
@@ -42,14 +45,19 @@ namespace AutoLink
 				btnSubmit = null;
 			}
 
+			if (txtEmail != null) {
+				txtEmail.Dispose ();
+				txtEmail = null;
+			}
+
 			if (txtName != null) {
 				txtName.Dispose ();
 				txtName = null;
 			}
 
-			if (txtEmail != null) {
-				txtEmail.Dispose ();
-				txtEmail = null;
+			if (txtPassword != null) {
+				txtPassword.Dispose ();
+				txtPassword = null;
 			}
 
 			if (txtZip != null) {
@@ -57,9 +65,9 @@ namespace AutoLink
 				txtZip = null;
 			}
 
-			if (txtPassword != null) {
-				txtPassword.Dispose ();
-				txtPassword = null;
+			if (txtDisclaimer != null) {
+				txtDisclaimer.Dispose ();
+				txtDisclaimer = null;
 			}
 		}
 	}

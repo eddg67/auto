@@ -16,6 +16,7 @@ namespace AutoLink
 
 		Listing listing;
 		int index;
+		LoadingOverlay over;
 
 		public ImageViewController (Listing _listing,int row)
 			: base (UserInterfaceIdiomIsPhone ? "ImageViewController_iPhone" : "ImageViewController_iPad", null)
@@ -38,6 +39,8 @@ namespace AutoLink
 			base.ViewWillAppear (animated);
 			NavigationController.NavigationBarHidden = false;
 			NavigationController.ToolbarHidden = true;
+			over = new LoadingOverlay (View.Bounds, "Image Loading");
+			View.Add(over);
 
 		}
 
@@ -49,6 +52,7 @@ namespace AutoLink
 
 			View.DownloadImageAsync (listing.images [index]).ContinueWith (
 				(task) => InvokeOnMainThread (() => {
+					over.Hide();
 					if(task.IsFaulted){
 						return;
 					}
@@ -60,10 +64,7 @@ namespace AutoLink
 						ImageView.Image = res;
 						ImageView.BackgroundColor = UIColor.Black;
 						var frame = View.Bounds;
-						//frame.X = 50f;
-						//frame.Height = siz.Height;
-
-						//ImageView.Frame = frame;
+					
 					}
 					//TextView.Text = listing.description;
 				}));

@@ -2,6 +2,7 @@
 
 namespace AutoLink.Models
 {
+	[Serializable]
 	public class Range
 	{
 		public int max;

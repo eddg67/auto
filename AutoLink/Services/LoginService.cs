@@ -145,14 +145,14 @@ namespace AutoLink.Services
 			var btn = new SignInButton () {
 				Frame = new RectangleF (x, y, width, height)
 			};
-			btn.SetStyle (SignInButtonStyle.IconOnly);
+			btn.SetStyle (SignInButtonStyle.Standard);
 			btn.SetColorScheme (SignInButtonColorScheme.Light);
 			btn.Opaque = true;
-			//btn.ImageView.Image = null;
 
-			//var fr = btn.Frame;
-			//fr.Width = width;
-			//btn.Frame = fr;
+			//btn.Frame = new RectangleF (x, y, width, height);
+			btn.ImageView.Image = UIImage.FromBundle("google_login.png");
+			btn.ImageView.Image.Scale(new SizeF (width, height));
+			//btn.Frame = new RectangleF (x, y, width, height);
 			//btn.BackgroundColor = UIColor.Red;
 			return btn;
 		
@@ -165,8 +165,9 @@ namespace AutoLink.Services
 
 			};
 			//the actual button in the view
-		//	var backBTN = (UIButton)btn.Subviews [0];
-			//backBTN.SetBackgroundImage (null, UIControlState.Normal);
+			var backBTN = (UIButton)btn.Subviews [0];
+			backBTN.SetBackgroundImage ( UIImage.FromBundle("facebook_login.png"), UIControlState.Normal);
+			//backBTN.ImageView.Image.Scale(new SizeF (width, height));
 			btn.FetchedUserInfo += (sender, e) => {
 
 				var user = e.User;

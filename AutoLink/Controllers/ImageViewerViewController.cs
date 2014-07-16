@@ -16,7 +16,7 @@ namespace AutoLink
 
 		private ImageCollectionSource userSource;
 		List<string> images { get; set; }
-		static NSString headerId = new NSString ("Header");
+		//static NSString headerId = new NSString ("Header");
 		Listing item;
 
 		public ImageViewerViewController(UICollectionViewLayout layout,Listing list) : base (layout)

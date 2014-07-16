@@ -56,8 +56,9 @@ namespace AutoLink.Utilities
 				(now - lastWriteTime.Value) < cacheDuration;
 		}
 
-		public Task<object> GetImageAsync (Uri uri)
+		public Task<object> GetImageAsync (string url)
 		{
+			var uri = new Uri (url);
 			return Task.Factory.StartNew (() => {
 				return GetImage (uri);
 			});

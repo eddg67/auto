@@ -30,6 +30,7 @@ namespace AutoLink
 		public NetworkStatus noNetwork { get; set; }
 		public LoginViewController login { get; set; }
 		public AccountService accountService { get; set; }
+		public ImageService imageService { get; set; }
 
 		public static AppDelegate app { get; set; }
 		public SimpleStorage storage { get; set; }
@@ -76,19 +77,7 @@ namespace AutoLink
 
 			//loading services
 			loadServices ();
-
-			UINavigationBar.Appearance.BarTintColor = UIColor.Black;
-			UINavigationBar.Appearance.BackgroundColor = UIColor.Clear;
-
-			UITextAttributes attr = new UITextAttributes ();
-			attr.TextColor = UIColor.White;
-			//attr.Font = UIFont.FromName ("KannadaSangamMN-Bold", 22);
-			attr.Font = UIFont.FromName("Clan-Bold", 16f);
-			UINavigationBar.Appearance.SetTitleTextAttributes (attr);
-			UIApplication.SharedApplication.SetStatusBarStyle (UIStatusBarStyle.LightContent, true);
-			UILabel.Appearance.Font = UIFont.FromName("Clan-Book", 14f);
-
-
+			setThemeStyle ();
 
 			RootController = new UINavigationController ();
 
@@ -106,6 +95,22 @@ namespace AutoLink
 			this.Window.MakeKeyAndVisible (); 
 
 			return true;
+		}
+
+		void setThemeStyle()
+		{
+			UINavigationBar.Appearance.BarTintColor = UIColor.Black;
+			UINavigationBar.Appearance.BackgroundColor = UIColor.Clear;
+
+			UITextAttributes attr = new UITextAttributes ();
+			attr.TextColor = UIColor.White;
+			//attr.Font = UIFont.FromName ("KannadaSangamMN-Bold", 22);
+			attr.Font = UIFont.FromName("Clan-Bold", 16f);
+			UINavigationBar.Appearance.SetTitleTextAttributes (attr);
+			UIApplication.SharedApplication.SetStatusBarStyle (UIStatusBarStyle.LightContent, true);
+			UILabel.Appearance.Font = UIFont.FromName("Clan-Book", 14f);
+
+
 		}
 
 
@@ -371,6 +376,7 @@ namespace AutoLink
 			validator = new Validator ();
 			searchService = new SearchService ();
 			accountService = new AccountService ();
+			imageService = new ImageService ();
 
 		}
 			

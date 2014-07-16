@@ -2,6 +2,7 @@
 
 namespace AutoLink.Models
 {
+	[Serializable]
 	public class SellerContact
 	{
 		public string email;

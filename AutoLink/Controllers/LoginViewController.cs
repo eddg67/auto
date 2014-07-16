@@ -42,15 +42,14 @@ namespace AutoLink
 			this.NavigationController.NavigationBarHidden = true;
 
 			HandleTxt ();
-
 			HandleBtn ();
 			
 			// Perform any additional setup after loading the view, typically from a nib.
 			//add facebook/google+ btn
 			//float x=22,float y=120,float width=130,float height = 200
 			if (UserInterfaceIdiomIsPhone) {
-				View.AddSubview (loginService.CreateFaceBookBtn (22, 120, 270, 50));
-				View.AddSubview (loginService.CreateGooglePlusBtn (22, 170, 270, 50));
+				View.AddSubview (loginService.CreateFaceBookBtn (10f, 130f, 149f, 80f));
+				View.AddSubview (loginService.CreateGooglePlusBtn (165f, 130f, 100f, 48f));
 			} else {
 				//ipad
 			}

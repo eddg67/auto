@@ -52,13 +52,13 @@ namespace AutoLink
 			//check if visible 
 			if (tableView.IndexPathsForVisibleRows.ToList ().Select (x => x.Equals (indexPath)) != null) {
 
-				this.DownloadImageAsync(list.images[0]).ContinueWith((task) => InvokeOnMainThread(() =>
+				app.imageService.GetImageAsync(list.images[0]).ContinueWith((task) => InvokeOnMainThread(() =>
 				{
 					//var cellShown = tableView.IndexPathsForVisibleRows.ToList().Select(x=>x.Equals(indexPath));
 					//DetailTextLabel.Text = list.description;
 					if(!task.IsFaulted){
 						//ImageView.Image = null;
-						ImageView.Image = task.Result;
+						ImageView.Image = (UIImage)task.Result;
 						ImageView.ContentMode = UIViewContentMode.ScaleAspectFit;
 					}
 						if (list.@new) {
@@ -68,16 +68,6 @@ namespace AutoLink
 						}
 
 
-					//desc = new UILabel(new RectangleF(0, ImageView.Frame.Bottom + 60, ContentView.Bounds.Size.Width -10, 100));
-					
-					desc.TextAlignment = UITextAlignment.Center;
-					desc.LineBreakMode = UILineBreakMode.TailTruncation;
-					desc.Font =  UIFont.FromName("Clan-Book", 10f);
-					desc.Lines = 0;
-					desc.Text = string.Empty;
-					desc.Text = list.descriptionCollapsed;
-
-					//price = new UILabel(new RectangleF(0, ImageView.Frame.Bottom, ContentView.Bounds.Size.Width, 20));
 
 					price.LineBreakMode = UILineBreakMode.WordWrap;
 					price.Font = UIFont.FromName("Clan-Medium", 12f);
@@ -101,7 +91,7 @@ namespace AutoLink
 
 					//mileage = new UILabel(new RectangleF( 0 , make.Frame.Bottom, ContentView.Bounds.Size.Width, 20));
 				
-					mileage.Font = UIFont.FromName("Clan-Book", 12f);
+					mileage.Font = UIFont.FromName("Clan-Book", 10f);
 					mileage.Lines = 1;
 					mileage.TextAlignment = UITextAlignment.Left;
 					mileage.Text = string.Empty;
@@ -111,11 +101,19 @@ namespace AutoLink
 						mileage.Text = string.Format("Mileage : {0} mi",list.mileage);
 					}
 				
-					source.Font = UIFont.FromName("Clan-Book", 12f);
+					source.Font = UIFont.FromName("Clan-Book", 10f);
 					source.Lines = 1;
 					source.TextAlignment = UITextAlignment.Left;
 					source.Text = string.Empty;
 					source.Text = string.Format("Source : {0}",list.source);
+
+
+					desc.TextAlignment = UITextAlignment.Center;
+					desc.LineBreakMode = UILineBreakMode.TailTruncation;
+					desc.Font =  UIFont.FromName("Clan-Book", 10f);
+					desc.Lines = 0;
+					desc.Text = string.Empty;
+					desc.Text = list.descriptionCollapsed;
 
 					tool = GetToolBar();
 
@@ -162,7 +160,7 @@ namespace AutoLink
 				ContentView.Add (line);
 			}
 
-			ContentView.Add(GetToolBar ());
+			ContentView.Add (GetToolBar());
 		}
 			
 

@@ -45,6 +45,7 @@ namespace AutoLink
 			base.ViewDidLoad ();
 			this.btnSubmit.Layer.BorderWidth = 1.0f;
 			this.btnSubmit.Layer.BorderColor = UIColor.White.CGColor;
+			this.txtDisclaimer.Font = UIFont.FromName("Clan-Book", 8f);
 
 			handleBtn ();
 			handleTxt ();

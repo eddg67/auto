@@ -16,7 +16,7 @@ namespace AutoLink.Models
 		public string id;
 		public int count;
 	}
-
+	[Serializable]
 	public class CustomResult : Custom
 	{
 		public List<Listing> listings;

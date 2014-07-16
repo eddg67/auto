@@ -55,7 +55,7 @@ namespace AutoLink
 
 		public override void ItemSelected (UICollectionView collectionView, NSIndexPath indexPath)
 		{
-			var cell = (ImageCell) collectionView.DequeueReusableCell(ImageCell.CellID, indexPath);
+			//var cell = (ImageCell) collectionView.DequeueReusableCell(ImageCell.CellID, indexPath);
 			//var headerView = (Header)collectionView.DequeueReusableSupplementaryView (new NSString ("UICollectionElementKindSectionHeader"), new NSString ("Header"), indexPath);
 			//headerView.image = cell.ImageView.Image;
 

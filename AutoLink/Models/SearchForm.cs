@@ -12,7 +12,7 @@ namespace AutoLink.Models
 {
 	public class SearchForm: DialogViewController
 	{
-		public EntryElement Name { get; set; }
+		public StyledEntryElement Name { get; set; }
 		public StyledStringElement Type { get; set; }
 
 		public StyledStringElement YearTo { get; set; }
@@ -34,7 +34,7 @@ namespace AutoLink.Models
 		public BooleanElement SearchAuctions { get; set; }
 		public BooleanElement SendNotifications { get; set; }
 
-		public EntryElement Zip { get; set; }
+		public StyledEntryElement Zip { get; set; }
 
 		public ActionSheetPicker actionSheet;
 		public SearchService service;
@@ -90,7 +90,7 @@ namespace AutoLink.Models
 				//colors = task.Result;
 			}
 
-			Name = new EntryElement ("Name", "Create Search Name", searchRes == null ? string.Empty : searchRes.name);
+			Name = new StyledEntryElement ("Name", "Create Search Name", searchRes == null ? string.Empty : searchRes.name);
 			Name.ReturnKeyType = UIReturnKeyType.Done;
 			Name.ShouldReturn += () => {
 				Name.ResignFirstResponder(true);
@@ -105,7 +105,7 @@ namespace AutoLink.Models
 			Type = GetSearchType ();
 			Model = GetCarModel ();
 			Make = GetCarMake ();
-			Zip = new EntryElement ("Zip", "Postal Code",string.Empty);
+			Zip = new StyledEntryElement ("Zip", "Postal Code",string.Empty);
 			Distance = GetDistance ();
 			Trim = GetTrim ();
 			Exterior = GetExterior ();
@@ -172,7 +172,7 @@ namespace AutoLink.Models
 				Text = @"New live search",
 				Editable = false,
 				AutosizesSubviews = true,
-			 	Font = UIFont.FromName("Clan-Bold", 16f),
+			 	Font = UIFont.FromName("Clan-Medium", 22f),
 
 			}; 
 
@@ -188,7 +188,7 @@ namespace AutoLink.Models
 				Text = @"New live searches are always working in the background, you dont have to.",
 				Editable = false,
 				AutosizesSubviews = true,
-				Font = UIFont.FromName("Clan-Book", 16f),
+				Font = UIFont.FromName("Clan-Book", 12f),
 
 			};
 
@@ -213,7 +213,7 @@ namespace AutoLink.Models
 				Text = @"Note",
 				Editable = false,
 				AutosizesSubviews = true,
-				Font = UIFont.FromName("Clan-Bold", 16f),
+				Font = UIFont.FromName("Clan-Book", 16f),
 
 			}; 
 
@@ -337,6 +337,7 @@ namespace AutoLink.Models
 				Accessory = UITableViewCellAccessory.DisclosureIndicator
 			};
 
+			el.Font = UIFont.FromName("Clan-Book", 12f);
 			el.Tapped += ()=>{
 				SetActionSheet("Trim",el,
 					new List<string> {
@@ -358,7 +359,7 @@ namespace AutoLink.Models
 			{
 				Accessory = UITableViewCellAccessory.DisclosureIndicator
 			};
-
+			el.Font = UIFont.FromName("Clan-Book", 12f);
 			el.Tapped += ()=>{
 				SetActionSheet("Exterior",el,colors);
 
@@ -377,7 +378,7 @@ namespace AutoLink.Models
 			{
 				Accessory = UITableViewCellAccessory.DisclosureIndicator
 			};
-
+			el.Font = UIFont.FromName("Clan-Book", 12f);
 			el.Tapped += ()=>{
 				SetActionSheet("Interior",el,colors);
 
@@ -395,7 +396,7 @@ namespace AutoLink.Models
 			{
 				Accessory = UITableViewCellAccessory.DisclosureIndicator
 			};
-
+			MileageTo.Font = UIFont.FromName("Clan-Book", 12f);
 			if (searchRes != null) {
 				MileageTo.Value = searchRes.miles == null ? "All" : searchRes.miles.max.ToString();
 			} 
@@ -409,7 +410,7 @@ namespace AutoLink.Models
 			{
 				Accessory = UITableViewCellAccessory.DisclosureIndicator
 			};
-
+			MileageFrom.Font = UIFont.FromName("Clan-Book", 12f);
 			if (searchRes != null) {
 				MileageFrom.Value = searchRes.miles == null ? "All" : searchRes.miles.min.ToString();
 			} 
@@ -437,7 +438,7 @@ namespace AutoLink.Models
 				Accessory = UITableViewCellAccessory.DisclosureIndicator
 			};
 
-
+			YearTo.Font = UIFont.FromName("Clan-Book", 12f);
 			YearTo.Tapped += () => {
 				SetActionSheet("YearTo",YearTo,yearsList);
 			};
@@ -446,7 +447,7 @@ namespace AutoLink.Models
 			{
 				Accessory = UITableViewCellAccessory.DisclosureIndicator
 			};
-
+			YearFrom.Font = UIFont.FromName("Clan-Book", 12f);
 			YearFrom.Tapped += () => {
 				SetActionSheet("YearFrom",YearFrom,yearsList);
 			};
@@ -476,7 +477,7 @@ namespace AutoLink.Models
 				Accessory = UITableViewCellAccessory.DisclosureIndicator,
 				Value = (searchRes != null && searchRes.price != null) ? searchRes.price.min.ToString() : "All"
 			};
-
+			PriceFrom.Font = UIFont.FromName("Clan-Book", 12f);
 			if (searchRes != null) {
 				PriceFrom.Value = searchRes.price != null ? searchRes.price.min.ToString() : "All";
 			} 
@@ -491,7 +492,7 @@ namespace AutoLink.Models
 			{
 				Accessory = UITableViewCellAccessory.DisclosureIndicator
 			};
-
+			PriceTo.Font = UIFont.FromName("Clan-Book", 12f);
 			if (searchRes != null) {
 				PriceTo.Value = searchRes.price == null ? "All" : searchRes.price.max.ToString();
 			} 
@@ -516,7 +517,7 @@ namespace AutoLink.Models
 			{
 				Accessory = UITableViewCellAccessory.DisclosureIndicator
 			};
-
+			el.Font = UIFont.FromName("Clan-Book", 12f);
 			el.Tapped += ()=>{
 				SetActionSheet("Model",el,modelList);
 
@@ -537,7 +538,7 @@ namespace AutoLink.Models
 			{
 				Accessory = UITableViewCellAccessory.DisclosureIndicator
 			};
-
+			el.Font = UIFont.FromName("Clan-Book", 12f);
 			if (searchRes != null) {
 				el.Value = searchRes == null ? "All Sellers" : searchRes.seller;
 			} 
@@ -562,7 +563,7 @@ namespace AutoLink.Models
 			{
 				Accessory = UITableViewCellAccessory.DisclosureIndicator
 			};
-
+			el.Font = UIFont.FromName("Clan-Book", 12f);
 			el.Tapped += ()=>{
 				SetActionSheet("Make", el,makeList);
 	
@@ -580,6 +581,7 @@ namespace AutoLink.Models
 		private StyledStringElement GetSearchType()
 		{
 			var str = new StyledStringElement ("Type", "All", UITableViewCellStyle.Value1);
+			str.Font = UIFont.FromName("Clan-Book", 12f);
 			str.Accessory = UITableViewCellAccessory.DisclosureIndicator;
 			str.Tapped += () => {
 				SetActionSheet( "Type", str,new List<string> () {"All", "New", "Used"});
@@ -594,7 +596,7 @@ namespace AutoLink.Models
 			var str = new StyledStringElement ("Distance", "All miles", UITableViewCellStyle.Value1){
 				Accessory = UITableViewCellAccessory.DisclosureIndicator,
 			};
-				
+			str.Font = UIFont.FromName("Clan-Book", 12f);
 			var list = new List<string> () {
 				"All", "5 miles", "15 miles", "30 miles",
 				"50 miles", "100 miles", "200 miles",
@@ -613,7 +615,6 @@ namespace AutoLink.Models
 				this.ParentViewController.DismissViewController(true,()=>{
 				});
 			});
-
 
 			return result;
 		}

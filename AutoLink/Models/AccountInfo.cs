@@ -4,6 +4,7 @@ using MonoTouch.UIKit;
 
 namespace AutoLink.Models
 {
+	[Serializable]
 	public class AccountInfo
 	{
 		[Section]

@@ -2,6 +2,7 @@
 
 namespace AutoLink.Models
 {
+	[Serializable]
 	public class Search
 	{
 		public string searchName { get; set; }

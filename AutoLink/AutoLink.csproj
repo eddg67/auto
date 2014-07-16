@@ -162,6 +162,17 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </BundleResource>
     <BundleResource Include="Resources\options.png" />
+    <BundleResource Include="Resources\accounticon.png" />
+    <BundleResource Include="Resources\contacticon.png" />
+    <BundleResource Include="Resources\facebook_login.png" />
+    <BundleResource Include="Resources\google_login.png" />
+    <BundleResource Include="Resources\landing.jpg" />
+    <BundleResource Include="Resources\more_icon.png" />
+    <BundleResource Include="Resources\splashpage_highres.jpg" />
+    <BundleResource Include="Resources\splashpage_lowres.jpg" />
+    <BundleResource Include="Resources\staricon.png" />
+    <BundleResource Include="Resources\tabbedicon.png" />
+    <BundleResource Include="Resources\trashicon.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Entitlements.plist" />
@@ -198,7 +209,6 @@
     <Compile Include="SearchResults\FlyoutController.cs" />
     <Compile Include="SearchResults\OpenMenuGestureRecognizer.cs" />
     <Compile Include="SearchResults\listViewCell.cs" />
-    <Compile Include="SearchResults\listViewController.cs" />
     <Compile Include="SearchResults\listViewSource.cs" />
     <Compile Include="SearchResults\SearchResultController.cs" />
     <Compile Include="SearchResults\SearchResultController.designer.cs">
@@ -273,6 +283,10 @@
     <Compile Include="Controllers\ResetController.designer.cs">
       <DependentUpon>ResetController.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\StyledEntryElement.cs" />
+    <Compile Include="Views\MenuListView.cs" />
+    <Compile Include="SearchResults\ListViewController.cs" />
+    <Compile Include="Services\ImageService.cs" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="MainStoryboard_iPhone.storyboard" />

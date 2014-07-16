@@ -8,6 +8,7 @@
             <connections>
                 <outlet property="btnClose" destination="Yvs-WF-bl1" id="Pwy-kB-Dxx"/>
                 <outlet property="btnSubmit" destination="wLl-Ch-uaC" id="Mox-HE-aRh"/>
+                <outlet property="txtDisclaimer" destination="cmd-Kr-1Uw" id="Hl3-1p-66H"/>
                 <outlet property="txtEmail" destination="bft-2f-IWS" id="1Jo-6V-y3P"/>
                 <outlet property="txtName" destination="Zda-mA-xVY" id="S9M-0I-YKN"/>
                 <outlet property="txtPassword" destination="5rJ-vb-UhI" id="08D-oe-LVS"/>
@@ -53,7 +54,7 @@
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="By signing up you agree To our Terms and Conditions" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cmd-Kr-1Uw">
                     <rect key="frame" x="45" y="524" width="230" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="9"/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="9"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>

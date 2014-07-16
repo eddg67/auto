@@ -29,7 +29,6 @@ namespace AutoLink
 			LoadData ();
 			TableView.BackgroundColor = UIColor.White;
 
-
 		}
 
 		public override void ViewWillDisappear (bool animated)
@@ -41,21 +40,18 @@ namespace AutoLink
 
 		public void LoadData(){
 
-
-
 			app.accountService.GetAccount ().ContinueWith (
 				(task) => InvokeOnMainThread (() => {
 
 					if(!task.IsFaulted && task.Result.Result != null){
 						result = task.Result.Result;
 
-						var name = new EntryElement ("Your Name:", "Enter name", result.name);
-						var email = new EntryElement ("Your Email:", "Enter email", result.email);
-						var zip = new EntryElement ("Your Zip Code:", "Enter zip code",result.zip);
-						var password = new EntryElement ("Password:", "Enter new password", string.Empty);
-						var confirmPassword = new EntryElement ("Confirm Password:", "Enter new password", string.Empty);
+						var name = new StyledEntryElement ("Your Name:", "Enter name", result.name);
+						var email = new StyledEntryElement ("Your Email:", "Enter email", result.email);
+						var zip = new StyledEntryElement ("Your Zip Code:", "Enter zip code",result.zip);
+						var password = new StyledEntryElement ("Password:", "Enter new password", string.Empty);
+						var confirmPassword = new StyledEntryElement ("Confirm Password:", "Enter new password", string.Empty);
 						var notify = new BooleanElement ("Receive Auto Link emails?", result.emailNotifications);
-
 
 						name.Changed += (object sender, EventArgs e) => {
 							result.name = name.Value;
@@ -79,7 +75,8 @@ namespace AutoLink
 							
 						var saveBtn = new StyledStringElement("Save"){
 							Alignment = UITextAlignment.Center,
-							TextColor = UIColor.Blue
+							TextColor = UIColor.Blue,
+							Font = UIFont.FromName("Clan-Medium", 16f)
 						};
 
 					
@@ -93,6 +90,7 @@ namespace AutoLink
 						var deleteBtn = new StringElement("Delete"){
 							Alignment = UITextAlignment.Center
 						};
+
 
 						deleteBtn.Tapped += () => {
 							new UIAlertView("Delete Profile", "Delete Profile",null,"ok").Show();

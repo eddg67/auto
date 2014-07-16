@@ -24,12 +24,6 @@ namespace AutoLink
 
 		Section secSearch;
 
-		static float scrollamount = 0.0f;    // amount to scroll 
-		static float bottom = 0.0f;           // bottom point
-		static float offset = 10.0f;          // extra offset
-		static bool moveViewUp { get; set; }
-
-
 		static bool UserInterfaceIdiomIsPhone {
 			get { return UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Phone; }
 		}
@@ -38,7 +32,6 @@ namespace AutoLink
 		//: base (UserInterfaceIdiomIsPhone ? "SearchResultController_iPhone" : "SearchResultController_iPad", null)
 		{
 			service = app.searchService;
-			moveViewUp = false;
 
 		}
 
@@ -54,11 +47,13 @@ namespace AutoLink
 		public override void ViewDidLoad ()
 		{
 			base.ViewDidLoad ();
-			View.BackgroundColor = UIColor.Black;
 
 			navigation = new FlyoutController ();
 			navigation.Position = FlyOutNavigationPosition.Left;
-			navigation.View.Frame = UIScreen.MainScreen.Bounds;
+			navigation.View.Frame = View.Bounds;//UIScreen.MainScreen.Bounds;
+			navigation.NavigationTableView.Frame = new RectangleF (View.Bounds.X, 66f, View.Bounds.Width, View.Bounds.Height);
+			//navigation.NavigationTableView.BackgroundColor = UIColor.Black;
+
 			AddChildViewController (navigation);
 
 			service.GetResultsAsync ().ContinueWith (
@@ -75,9 +70,7 @@ namespace AutoLink
 						results.Select (x => x.name).ToArray (), 
 						title =>{
 						
-							var list = new ListView (navigation, title,searchIds[count],false);
-								list.TableView.TableHeaderView = null;
-								list.TableView.SectionHeaderHeight = 0f;
+							var list = new ListViewController (navigation, title,searchIds[count],false);
 							var nav = new UINavigationController (list);
 							nav.NavigationBarHidden = false;
 							
@@ -91,6 +84,7 @@ namespace AutoLink
 					count = 0;
 					}
 					over.Hide ();
+
 				}
 			));
 		}
@@ -104,21 +98,19 @@ namespace AutoLink
 					if(bins != null){
 						app.storage.Put<Bin>("Bins",bins);
 						app.setUpLocalNotifications(bins.@new.count);
-						navigation.NavigationTableView.SectionHeaderHeight = 0;
-						navigation.NavigationTableView.TableHeaderView = null;
 
 						var vc = navigation.ViewControllers;
 
 						var vcArr = new UIViewController [] {
-							new UINavigationController ( new ListView (navigation,"Starred",bins.starred.id,true)),
-							new UINavigationController ( new ListView (navigation,"New",bins.@new.id,true)),
-							new UINavigationController ( new ListView (navigation,"Contacted",bins.contacted.id,true )),
-							new UINavigationController (new ListView (navigation,"Deleted",bins.deleted.id,true))
+							new UINavigationController ( new ListViewController (navigation,"Starred",bins.starred.id,true)),
+							new UINavigationController ( new ListViewController (navigation,"New",bins.@new.id,true)),
+							new UINavigationController ( new ListViewController (navigation,"Contacted",bins.contacted.id,true )),
+							new UINavigationController (new ListViewController (navigation,"Deleted",bins.deleted.id,true))
 						};
 
 						if(bins.custom != null && bins.custom.Count > 0){
 							var custs = bins.custom.Select(x=>{
-								return new UINavigationController ( new ListView (navigation,x.name,x.id,true));
+								return new UINavigationController ( new ListViewController (navigation,x.name,x.id,true));
 							});
 								
 							vcArr = vcArr.Concat(custs.ToArray()).ToArray(); 
@@ -153,14 +145,12 @@ namespace AutoLink
 			View.Add (over);
 
 		}
+			
 
 		private Section GetSearchSection()
 		{
 
-			secSearch = new Section (CreateToolbarView(),null)
-			{
-				//new UIViewElement("",header,true)
-			};
+			secSearch = new Section (CreateToolbarView (), null);
 
 			secSearch.Caption = "Live Search";
 
@@ -202,7 +192,7 @@ namespace AutoLink
 				BackgroundColor = UIColor.LightGray,
 				Alpha=0.5f,
 				Text = "Bins",
-				ClipsToBounds = true
+				ClipsToBounds = false
 			};
 					
 
@@ -275,19 +265,19 @@ namespace AutoLink
 		public UIToolbar CreateToolbarView()
 		{
 			var tool = new UIToolbar (new RectangleF (0, 0, View.Bounds.Width - 10, 66));
-			tool.BackgroundColor = UIColor.Black;
-			tool.TintColor = UIColor.Black;
+			tool.BarTintColor = UIColor.Black;
+			tool.TintColor = UIColor.White;
 
-			tool.Layer.BackgroundColor = UIColor.Black.CGColor;
+			//tool.Layer.BackgroundColor = UIColor.Black.CGColor;
 			var btn = new UIBarButtonItem (UIBarButtonSystemItem.Add, (sender, args) => {
 				// button was clicked
 				ShowActionPicker();
-			}){TintColor = UIColor.Black};
+			}){TintColor = UIColor.White};
 			btn.ImageInsets = new UIEdgeInsets(17.5f,20,0,0);
 
 			UITextAttributes attr = new UITextAttributes ();
 			attr.TextColor = UIColor.White;
-			attr.Font =  UIFont.FromName("Clan-Book", 12f);
+			attr.Font =  UIFont.FromName("Clan-Book", 14f);
 			btn.SetTitleTextAttributes (attr,UIControlState.Normal);
 
 			tool.SetItems (new UIBarButtonItem[]{ 
@@ -338,136 +328,6 @@ namespace AutoLink
 		}
 
 
-
-
-		///sub class
-		class ListView : listViewController
-		{
-			UIView activeview{ get; set; }            // Controller that activated the keyboard
-			 float scrollamount = 0.0f;    // amount to scroll 
-			// float bottom = 0.0f;           // bottom point
-			 float offset = 10.0f;          // extra offset
-			 bool moveViewUp { get; set; }
-
-			public ListView (FlyoutController navigation, string title,string list, bool bin=false): base (list,bin)
-			{
-				var fav = new UITabBarItem(UITabBarSystemItem.Contacts,1);
-				var img = fav.SelectedImage;
-				this.Title = title;	
-
-				var topV = View.Subviews[0];
-				topV.Layer.BackgroundColor = UIColor.White.CGColor;
-
-				//navigation.RotatingHeaderView
-
-				navigation.NavigationTableView.SectionHeaderHeight = 0f;
-						
-				NavigationItem.RightBarButtonItem = new UIBarButtonItem (fav.SelectedImage,UIBarButtonItemStyle.Plain, delegate {
-					using(var app = (AppDelegate)UIApplication.SharedApplication.Delegate){
-						app.ShowAccount();
-					}
-				});
-				NavigationItem.LeftBarButtonItem = new UIBarButtonItem (UIBarButtonSystemItem.Action, delegate {
-					navigation.ToggleMenu ();
-				});
-
-				NSNotificationCenter.DefaultCenter.AddObserver (UIKeyboard.WillHideNotification, OnKeyboardNotification);
-				NSNotificationCenter.DefaultCenter.AddObserver (UIKeyboard.WillShowNotification, OnKeyboardNotification);
-					
-			}
-
-			private void OnKeyboardNotification (NSNotification notification)
-			{
-				if (IsViewLoaded) {
-
-					//Check if the keyboard is becoming visible
-					bool visible = notification.Name == UIKeyboard.WillShowNotification;
-
-					//Start an animation, using values from the keyboard
-					UIView.BeginAnimations ("AnimateForKeyboard");
-					UIView.SetAnimationBeginsFromCurrentState (true);
-					UIView.SetAnimationDuration (UIKeyboard.AnimationDurationFromNotification (notification));
-					UIView.SetAnimationCurve ((UIViewAnimationCurve)UIKeyboard.AnimationCurveFromNotification (notification));
-
-					//Pass the notification, calculating keyboard height, etc.
-					bool landscape = InterfaceOrientation == UIInterfaceOrientation.LandscapeLeft || InterfaceOrientation == UIInterfaceOrientation.LandscapeRight;
-					if (visible) {
-						var keyboardFrame = UIKeyboard.FrameEndFromNotification (notification);
-
-						OnKeyboardChanged (visible, landscape ? keyboardFrame.Width : keyboardFrame.Height);
-					} else {
-						var keyboardFrame = UIKeyboard.FrameBeginFromNotification (notification);
-
-						OnKeyboardChanged (visible, landscape ? keyboardFrame.Width : keyboardFrame.Height);
-					}
-
-					//Commit the animation
-					UIView.CommitAnimations ();	
-				}
-			}
-
-			/// <summary>
-			/// Override this method to apply custom logic when the keyboard is shown/hidden
-			/// </summary>
-			/// <param name='visible'>
-			/// If the keyboard is visible
-			/// </param>
-			/// <param name='height'>
-			/// Calculated height of the keyboard (width not generally needed here)
-			/// </param>
-			protected virtual void OnKeyboardChanged (bool visible, float height)
-			{
-
-				// Find what opened the keyboard
-				foreach (UIView view in this.View.Subviews) {
-					if (view.IsFirstResponder)
-						activeview = view;
-				}
-
-				// Bottom of the controller = initial position + height + offset      
-				bottom = (View.Frame.Y + View.Frame.Height + offset);
-
-				// Calculate how far we need to scroll
-				scrollamount = View.Frame.Height + offset;//(height - (View.Frame.Size.Height - bottom)) ;
-				if (visible) {
-					// Perform the scrolling
-					if (scrollamount > 0) {
-						moveViewUp = true;
-						ScrollTheView (moveViewUp);
-					} else {
-						moveViewUp = false;
-					}
-				}
-
-			}
-
-			public void KeyBoardDownNotification(NSNotification notification)
-			{
-				if(moveViewUp){ScrollTheView(false);}
-			}
-
-			public void ScrollTheView(bool move)
-			{
-
-				// scroll the view up or down
-				UIView.BeginAnimations (string.Empty, System.IntPtr.Zero);
-				UIView.SetAnimationDuration (0.3);
-
-				RectangleF frame = View.Frame;
-
-				if (move) {
-					frame.Y -= scrollamount;
-				} else {
-					frame.Y += scrollamount;
-					scrollamount = 0;
-				}
-
-				View.Frame = frame;
-				UIView.CommitAnimations();
-			}
-
-
-		}
 	}
 }
 

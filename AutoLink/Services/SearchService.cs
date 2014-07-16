@@ -259,6 +259,7 @@ namespace AutoLink.Services
 				}else if(response.Result != null){
 
 					result = response.Result;
+					storage.Put<List<SearchResult>>("searchGet",result);
 
 
 				}
@@ -292,7 +293,14 @@ namespace AutoLink.Services
 					}
 					//we good TODO
 				}
+				//cache results
+				if (response.Result.Result != null) {
+					storage.Put<List<SearchResult>> ("searchGet", response.Result.Result);
+				}
 			}
+
+
+
 			return response;
 
 		}
@@ -322,6 +330,11 @@ namespace AutoLink.Services
 				}else if(response.Result != null){
 
 					result = response.Result;
+
+					//cache results
+					if (result != null) {
+						storage.Put<ListResult> (id, result);
+					}
 
 				}
 			}
@@ -355,7 +368,10 @@ namespace AutoLink.Services
 					{
 						alert.Show ();
 					}
-					//we good TODO
+					//cache results
+					if (response.Result.Result != null) {
+						storage.Put<ListResult> (id, response.Result.Result);
+					}
 				}
 			}
 			return response;
@@ -395,6 +411,10 @@ namespace AutoLink.Services
 				}else if(response.Result != null){
 
 					result = response.Result;
+					//cache results
+					if (result != null) {
+						storage.Put<List<Listing>> (binId, result);
+					}
 
 				}
 			}
