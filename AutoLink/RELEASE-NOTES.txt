@@ -1,9 +1,4 @@
-Build 1.0.7
-* Update account Profile
-* Altered Cell Edit Options (Swipe Buttons)
-* Add New Bin
-* Update Search Options
-* Altered image Aspect 
-* Updated for no Price return and also fixed null price issue
-
-
+Build 1.0.8
+* Migration Test Build 
+* Image Caching
+* Global Theming
