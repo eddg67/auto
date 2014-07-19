@@ -200,7 +200,7 @@ namespace AutoLink
 				             "Starred",
 				(bin.starred != null) ? bin.starred.count.ToString () : "0",
 				UITableViewCellStyle.Value1
-			);s
+			);
 			stared.Font = UIFont.FromName("Clan-Book", 12f);
 			stared.Accessory = UITableViewCellAccessory.DisclosureIndicator;
 			stared.Tapped += () => {navigation.Title =  "Starred";};
