@@ -78,14 +78,15 @@ namespace AutoLink
 		public override UITableViewCell GetCell (UITableView tableView, NSIndexPath indexPath)
 		{
 			tableView.SectionHeaderHeight = 0;
+
 			//set the type (bin or search)
 			items [indexPath.Row].listType = (!string.IsNullOrEmpty (binID)) ? ListType.Bin : ListType.Listings;
 
 			//add edit Buttons
 			var buttons = new List<UIButton> ();
 		
-			buttons.AddUtilityButton ("Delete", UIColor.Red);
-			buttons.AddUtilityButton ("Star", UIColor.Blue);
+			var deleteBtn = buttons.AddUtilityButton ("Delete", UIColor.Red, UIImage.FromBundle("trashicon"));
+			var starBtn = buttons.AddUtilityButton ("Star", UIColor.Blue,UIImage.FromBundle("staricon") );
 
 			tableView.RowHeight = GetHeightForRow(tableView, indexPath);
 			var cell = tableView.DequeueReusableCell (listViewCell.Key) as listViewCell;
@@ -95,21 +96,26 @@ namespace AutoLink
 			} else {
 				cell.UpdateCell (items [indexPath.Row], tableView, buttons, null,indexPath);
 			}
+			cell.Tag = indexPath.Row;
 
 			buttons[0].TouchUpInside += (object sender, EventArgs e) => {
-				service.DeleteItem(searchID,items [indexPath.Row]);
+
 
 				tableView.BeginUpdates ();
-				// remove the item from the underlying data source
-				items.RemoveAt(indexPath.Row);
-				// delete the row from the tabsle
-				tableView.DeleteRows (new NSIndexPath[] { indexPath }, UITableViewRowAnimation.Fade);
+
+				using (var thisPath = tableView.IndexPathForCell(cell)){
+					service.DeleteItem(searchID,items [cell.Tag]);
+					items.RemoveAt(thisPath.Row);
+					// delete the row from the tabsle
+					tableView.DeleteRows (new NSIndexPath[] { thisPath }, UITableViewRowAnimation.Bottom);
+				}
+					
 				tableView.ReloadData ();
 				tableView.EndUpdates ();
 			};
 
 			buttons[1].TouchUpInside += (object sender, EventArgs e) => {
-				service.StarListing(searchID,items[indexPath.Row]._id).ContinueWith((task) => InvokeOnMainThread(() =>
+				service.StarListing(searchID,items[cell.Tag]._id).ContinueWith((task) => InvokeOnMainThread(() =>
 					{
 						new UIAlertView("Result Starred","Result Starred",null,"OK",null).Show();
 						cell.HideSwipedContent(true);
@@ -129,7 +135,7 @@ namespace AutoLink
 				UpdateItems (tableView);
 			}
 
-			cell.Tag = indexPath.Row;
+
 			cell.SizeToFit ();
 			cell.IndentationLevel = 0; 
 
@@ -165,7 +171,7 @@ namespace AutoLink
 				// remove the item from the underlying data source
 				items.RemoveAt(indexPath.Row);
 				// delete the row from the tabsle
-				tableView.DeleteRows (new NSIndexPath[] { indexPath }, UITableViewRowAnimation.Fade);
+				tableView.DeleteRows (new NSIndexPath[] { indexPath }, UITableViewRowAnimation.Bottom);
 				tableView.ReloadData ();
 				tableView.EndUpdates ();
 				break;

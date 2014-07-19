@@ -42,7 +42,6 @@ namespace AutoLink.Services
 			);
 
 			return res;
-
 		}
 	}
 }

@@ -28,7 +28,7 @@ namespace AutoLink
 
 	public partial class SWTableViewCell : UITableViewCell
 	{
-		public const float UtilityButtonsWidthMax = 260;
+		public const float UtilityButtonsWidthMax = 200;
 		public const float UtilityButtonWidthDefault = 90;
 		public const float SectionIndexWidth = 15;
 
@@ -347,14 +347,20 @@ namespace AutoLink
 
 	public static class SWButtonCellExtensions
 	{
-		public static void AddUtilityButton(this List<UIButton> list,  string title, UIColor color)
+		public static UIButton AddUtilityButton(this List<UIButton> list,  string title, UIColor color, UIImage img = null)
 		{
 			var button = new UIButton (UIButtonType.Custom);
 			button.BackgroundColor = color;
 			button.SetTitle (title, UIControlState.Normal);
 			button.SetTitleColor (UIColor.White, UIControlState.Normal);
+			if(img != null){
+				button.ImageEdgeInsets = new UIEdgeInsets (80f, 30f, 0f, 0f);
+				button.SetImage (img, UIControlState.Normal);
+				button.TitleLabel.Font = UIFont.FromName ("Clan-Book", 14f);
+				button.TitleEdgeInsets = new UIEdgeInsets (0f, -20f,0f, 10f);
+			}
 			list.Add (button);
-
+			return button;
 		}
 	}
 

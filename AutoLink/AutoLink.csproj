@@ -149,9 +149,6 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </BundleResource>
     <BundleResource Include="Resources\iphone-logo%402x.png" />
-    <BundleResource Include="Resources\SF Hollywood Hills.ttf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </BundleResource>
     <BundleResource Include="Resources\Clan-Book.ttf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </BundleResource>
@@ -162,7 +159,6 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </BundleResource>
     <BundleResource Include="Resources\options.png" />
-    <BundleResource Include="Resources\accounticon.png" />
     <BundleResource Include="Resources\contacticon.png" />
     <BundleResource Include="Resources\facebook_login.png" />
     <BundleResource Include="Resources\google_login.png" />
@@ -173,6 +169,26 @@
     <BundleResource Include="Resources\staricon.png" />
     <BundleResource Include="Resources\tabbedicon.png" />
     <BundleResource Include="Resources\trashicon.png" />
+    <BundleResource Include="Resources\Newactionsheet.psd" />
+    <BundleResource Include="Resources\binicon_allnew.png" />
+    <BundleResource Include="Resources\binicon_contacted.png" />
+    <BundleResource Include="Resources\binicon_deleted.png" />
+    <BundleResource Include="Resources\binicon_star.png" />
+    <BundleResource Include="Resources\binicon_usercreatedbin.png" />
+    <BundleResource Include="Resources\cog.png" />
+    <BundleResource Include="Resources\facebook_login_notext.png" />
+    <BundleResource Include="Resources\google_login_notext.png" />
+    <BundleResource Include="Resources\linesicon.png" />
+    <BundleResource Include="Resources\stats_locationoff.png" />
+    <BundleResource Include="Resources\stats_locationon.png" />
+    <BundleResource Include="Resources\stats_priceoff.png" />
+    <BundleResource Include="Resources\stats_priceon.png" />
+    <BundleResource Include="Resources\stats_timingoff.png" />
+    <BundleResource Include="Resources\stats_timingon.png" />
+    <BundleResource Include="Resources\tab_contact.png" />
+    <BundleResource Include="Resources\tab_more.png" />
+    <BundleResource Include="Resources\tab_star.png" />
+    <BundleResource Include="Resources\accounticon.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Entitlements.plist" />

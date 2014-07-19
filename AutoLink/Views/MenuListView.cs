@@ -79,7 +79,7 @@ namespace AutoLink
 		/// <param name='height'>
 		/// Calculated height of the keyboard (width not generally needed here)
 		/// </param>
-		protected virtual void OnKeyboardChanged (bool visible, float height)
+		protected override void OnKeyboardChanged (bool visible, float height)
 		{
 
 			// Find what opened the keyboard

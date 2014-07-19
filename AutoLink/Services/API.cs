@@ -16,7 +16,7 @@ using System.Threading;
 
 namespace AutoLink.Services
 {
-	public class API //: ImageDownloader
+	public class API
 	{
 		public string Token { get; set; }
 		public string URL = @"http://api.autolink.co/rpc/";
@@ -63,7 +63,6 @@ namespace AutoLink.Services
 			Stream newStream = this.request.GetRequestStream();
 			newStream.Write(data,0,data.Length);
 			newStream.Close ();
-
 
 			using (HttpWebResponse resp = request.GetResponse() as HttpWebResponse)
 			{

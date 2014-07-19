@@ -70,7 +70,7 @@ namespace AutoLink
 
 
 					price.LineBreakMode = UILineBreakMode.WordWrap;
-					price.Font = UIFont.FromName("Clan-Medium", 12f);
+					price.Font = UIFont.FromName("Clan-Medium", 14f);
 					price.Lines = 0;
 					price.TextAlignment = UITextAlignment.Right;
 					price.Text = string.Empty;
@@ -83,7 +83,7 @@ namespace AutoLink
 					//make = new UILabel(new RectangleF( 0 , ImageView.Frame.Bottom, ContentView.Bounds.Size.Width, 20));
 				
 					make.LineBreakMode = UILineBreakMode.TailTruncation;
-					make.Font =  UIFont.FromName("Clan-Medium", 12f);
+					make.Font =  UIFont.FromName("Clan-Medium", 14f);
 					make.Lines = 1;
 					make.TextAlignment = UITextAlignment.Left;
 					make.Text = string.Empty;

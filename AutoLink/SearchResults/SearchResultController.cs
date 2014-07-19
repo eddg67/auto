@@ -200,10 +200,11 @@ namespace AutoLink
 				             "Starred",
 				(bin.starred != null) ? bin.starred.count.ToString () : "0",
 				UITableViewCellStyle.Value1
-			);
+			);s
 			stared.Font = UIFont.FromName("Clan-Book", 12f);
 			stared.Accessory = UITableViewCellAccessory.DisclosureIndicator;
 			stared.Tapped += () => {navigation.Title =  "Starred";};
+			//stared.Image = UIImage.FromBundle ("binicon_star.png");
 		
 			var allNew = new StyledStringElement (
 				"All New",
@@ -273,7 +274,7 @@ namespace AutoLink
 				// button was clicked
 				ShowActionPicker();
 			}){TintColor = UIColor.White};
-			btn.ImageInsets = new UIEdgeInsets(17.5f,20,0,0);
+			btn.ImageInsets = new UIEdgeInsets(16.5f,20,0,0);
 
 			UITextAttributes attr = new UITextAttributes ();
 			attr.TextColor = UIColor.White;
@@ -283,7 +284,7 @@ namespace AutoLink
 			tool.SetItems (new UIBarButtonItem[]{ 
 				btn,
 				new UIBarButtonItem(UIBarButtonSystemItem.FlexibleSpace),
-				new UIBarButtonItem("Autolink",UIBarButtonItemStyle.Plain,null){
+				new UIBarButtonItem("autolink",UIBarButtonItemStyle.Plain,null){
 				},
 				new UIBarButtonItem(UIBarButtonSystemItem.FlexibleSpace),
 			},true);

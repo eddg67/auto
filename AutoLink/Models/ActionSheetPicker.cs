@@ -52,13 +52,13 @@ namespace AutoLink.Models
 		
 			this.owner = owner.Window != null?owner:window;
 			
-			owner.BackgroundColor = UIColor.White;
+			//owner.BackgroundColor = UIColor.White;
 
 			// configure the title label
-			titleLabel.BackgroundColor = UIColor.Clear;
-			titleLabel.TextColor = UIColor.LightGray;
-			titleLabel.Font = UIFont.BoldSystemFontOfSize (18);
-			Picker.BackgroundColor = UIColor.Clear;
+			//titleLabel.BackgroundColor = UIColor.Clear;
+			//titleLabel.TextColor = UIColor.LightGray;
+			titleLabel.Font = UIFont.FromName("Clan-Bold", 18f);
+			//Picker.BackgroundColor = UIColor.Clear;
 			Picker.SizeToFit ();
 
 			// configure the done button
@@ -68,9 +68,9 @@ namespace AutoLink.Models
 			};
 
 			// create + configure the action sheet
-			actionSheet = new UIActionSheet () { Style = UIActionSheetStyle.BlackOpaque };//Style = UIActionSheetStyle.BlackTranslucent
+			actionSheet = new UIActionSheet () { };//Style = UIActionSheetStyle.BlackTranslucent
 			actionSheet.Clicked += (s, e) => { Console.WriteLine ("Clicked on item {0}", e.ButtonIndex); };
-			actionSheet.BackgroundColor = UIColor.Clear;
+			//actionSheet.BackgroundColor = UIColor.Clear;
 
 			// add our controls to the action sheet
 			actionSheet.AddSubview (Picker);

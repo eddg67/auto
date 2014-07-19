@@ -43,7 +43,7 @@ namespace AutoLink.Models
 		public event EventHandler RequestUpdated;
 
 		List<string> yearsList;
-		List<string> maxPriceList;
+		//List<string> maxPriceList;
 		List<string> minPriceList;
 		List<string> makeList;
 		List<string> modelList;
@@ -77,12 +77,11 @@ namespace AutoLink.Models
 			service = app.searchService;
 			yearsList = service.GetYearList ();
 			GetYear ();
-			maxPriceList = service.GetMaxPricelist ();
+			//maxPriceList = service.GetMaxPricelist ();
 			minPriceList = service.GetMinPricelist ();
 			minDistanceList = service.GetMinDistancelist ();
 			maxDistanceList = service.GetMaxDistancelist ();
-			maxPriceList = service.GetMaxDistancelist ();
-
+	
 			//TODO add to storage
 			if (colors == null) {
 

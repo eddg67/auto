@@ -150,7 +150,7 @@ namespace AutoLink.Services
 			btn.Opaque = true;
 
 			//btn.Frame = new RectangleF (x, y, width, height);
-			btn.ImageView.Image = UIImage.FromBundle("google_login.png");
+			btn.ImageView.Image = UIImage.FromBundle("google_login_notext.png");
 			btn.ImageView.Image.Scale(new SizeF (width, height));
 			//btn.Frame = new RectangleF (x, y, width, height);
 			//btn.BackgroundColor = UIColor.Red;
@@ -166,7 +166,7 @@ namespace AutoLink.Services
 			};
 			//the actual button in the view
 			var backBTN = (UIButton)btn.Subviews [0];
-			backBTN.SetBackgroundImage ( UIImage.FromBundle("facebook_login.png"), UIControlState.Normal);
+			backBTN.SetBackgroundImage ( UIImage.FromBundle("facebook_login_notext.png"), UIControlState.Normal);
 			//backBTN.ImageView.Image.Scale(new SizeF (width, height));
 			btn.FetchedUserInfo += (sender, e) => {
 

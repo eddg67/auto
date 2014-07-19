@@ -37,8 +37,12 @@ namespace AutoLink
 			TableView.ContentInset = new UIEdgeInsets (-25, 0, 0, 0); 
 
 
-			var fav = new UITabBarItem(UITabBarSystemItem.Contacts,1);
-			var img = fav.SelectedImage;
+			var accountImg = UIImage.FromBundle("accounticon.png");
+			accountImg.Scale (new SizeF (22f, 22f));
+
+			var listImg = UIImage.FromBundle("tabbedicon.png");
+			listImg.Scale (new SizeF (22f, 22f));
+
 			this.Title = title;	
 
 			var topV = View.Subviews[0];
@@ -47,13 +51,12 @@ namespace AutoLink
 			//navigation.RotatingHeaderView
 
 			navigation.NavigationTableView.SectionHeaderHeight = 0f;
-
-			NavigationItem.RightBarButtonItem = new UIBarButtonItem (fav.SelectedImage,UIBarButtonItemStyle.Plain, delegate {
+			NavigationItem.RightBarButtonItem = new UIBarButtonItem (accountImg,UIBarButtonItemStyle.Plain, delegate {
 				using(var app = (AppDelegate)UIApplication.SharedApplication.Delegate){
 					app.ShowAccount();
 				}
 			});
-			NavigationItem.LeftBarButtonItem = new UIBarButtonItem (UIBarButtonSystemItem.Action, delegate {
+			NavigationItem.LeftBarButtonItem = new UIBarButtonItem (listImg,UIBarButtonItemStyle.Plain, delegate {
 				navigation.ToggleMenu ();
 			});
 
