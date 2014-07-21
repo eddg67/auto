@@ -169,7 +169,6 @@
     <BundleResource Include="Resources\staricon.png" />
     <BundleResource Include="Resources\tabbedicon.png" />
     <BundleResource Include="Resources\trashicon.png" />
-    <BundleResource Include="Resources\Newactionsheet.psd" />
     <BundleResource Include="Resources\binicon_allnew.png" />
     <BundleResource Include="Resources\binicon_contacted.png" />
     <BundleResource Include="Resources\binicon_deleted.png" />

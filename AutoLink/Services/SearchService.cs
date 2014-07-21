@@ -293,10 +293,7 @@ namespace AutoLink.Services
 					}
 					//we good TODO
 				}
-				//cache results
-				if (response.Result.Result != null) {
-					storage.Put<List<SearchResult>> ("searchGet", response.Result.Result);
-				}
+
 			}
 
 

@@ -9,6 +9,7 @@ using AutoLink.Models;
 using System.Collections.Generic;
 using MonoTouch.Dialog;
 using BigTed;
+using PerpetualEngine.Storage;
 
 namespace AutoLink
 {
@@ -18,6 +19,7 @@ namespace AutoLink
 		AppDelegate app = (AppDelegate)UIApplication.SharedApplication.Delegate;
 		SearchService service;
 		LoadingOverlay over;
+		SimpleStorage storage;
 		public Bin bins;
 		public FlyoutController navigation;
 		public List<SearchResult> results;
@@ -32,6 +34,7 @@ namespace AutoLink
 		//: base (UserInterfaceIdiomIsPhone ? "SearchResultController_iPhone" : "SearchResultController_iPad", null)
 		{
 			service = app.searchService;
+			storage = SimpleStorage.EditGroup ("SearchResult");
 
 		}
 
@@ -52,42 +55,74 @@ namespace AutoLink
 			navigation.Position = FlyOutNavigationPosition.Left;
 			navigation.View.Frame = View.Bounds;//UIScreen.MainScreen.Bounds;
 			navigation.NavigationTableView.Frame = new RectangleF (View.Bounds.X, 66f, View.Bounds.Width, View.Bounds.Height);
-			//navigation.NavigationTableView.BackgroundColor = UIColor.Black;
 
 			AddChildViewController (navigation);
+
+			//get results from cache
+			results = storage.Get<List<SearchResult>> ("getResults");
+
+			if (results != null) {
+				UpdateResults (results);
+				//over.Hide ();
+			} else {
+				LoadResults ();
+			}
+
+
+
+
+
+		}
+
+		public void LoadResults()
+		{
 
 			service.GetResultsAsync ().ContinueWith (
 				(task) => InvokeOnMainThread (() => {
 
 					if(!task.IsFaulted && task.Result != null){
-					results = task.Result.Result;
 
-					View.AddSubview (navigation.View);
-					var searchIds = results.Select (x => x.id).ToArray ();
+						results = task.Result.Result;
+						storage.Put<List<SearchResult>>("getResults",results);
+						UpdateResults(results);
 
-					int count = 0;
-					navigation.ViewControllers = Array.ConvertAll (
-						results.Select (x => x.name).ToArray (), 
-						title =>{
-						
-							var list = new ListViewController (navigation, title,searchIds[count],false);
-							var nav = new UINavigationController (list);
-							nav.NavigationBarHidden = false;
-							
-							count++;
+					}else{
 
-							return nav;
-							}
-					);
-						
-					LoadBin();
-					count = 0;
+						over.Hide ();
 					}
-					over.Hide ();
 
 				}
-			));
+				));
 		}
+
+		public void UpdateResults(List<SearchResult> newResult)
+		{
+
+			View.AddSubview (navigation.View);
+			var searchIds = newResult.Select (x => x.id).ToArray ();
+
+			int count = 0;
+			navigation.ViewControllers = Array.ConvertAll (
+				newResult.Select (x => x.name).ToArray (), 
+				title =>{
+
+					var list = new ListViewController (navigation, title, searchIds[count],false);
+					var nav = new UINavigationController (list);
+					nav.NavigationBarHidden = false;
+
+					count++;
+
+					return nav;
+				}
+			);
+
+			LoadBin();
+			count = 0;
+			over.Hide ();
+
+		}
+
+
 
 
 		public void LoadBin()
@@ -96,7 +131,7 @@ namespace AutoLink
 				{
 					bins = task.Result.Result;
 					if(bins != null){
-						app.storage.Put<Bin>("Bins",bins);
+						storage.Put<Bin>("Bins",bins);
 						app.setUpLocalNotifications(bins.@new.count);
 
 						var vc = navigation.ViewControllers;
@@ -152,7 +187,16 @@ namespace AutoLink
 
 			secSearch = new Section (CreateToolbarView (), null);
 
-			secSearch.Caption = "Live Search";
+			var header = new UILabel (new RectangleF (0, 0, this.View.Bounds.Width, 60)) {
+				Font = UIFont.FromName("Clan-Book", 16f),
+				TintColor = UIColor.LightTextColor,
+				BackgroundColor = UIColor.LightGray,
+				Alpha=0.5f,
+				Text = "Live Search",
+				ClipsToBounds = false
+			};
+
+			secSearch.Add (new UIViewElement ("", header, true));
 
 			secSearch.AddAll (
 				results.Select 
@@ -180,6 +224,7 @@ namespace AutoLink
 
 		return secSearch;
 		}
+			
 
 		public Section UpdateBins(Bin bin)
 		{
@@ -204,7 +249,7 @@ namespace AutoLink
 			stared.Font = UIFont.FromName("Clan-Book", 12f);
 			stared.Accessory = UITableViewCellAccessory.DisclosureIndicator;
 			stared.Tapped += () => {navigation.Title =  "Starred";};
-			//stared.Image = UIImage.FromBundle ("binicon_star.png");
+			stared.Image = UIImage.FromBundle ("binicon_star.png");
 		
 			var allNew = new StyledStringElement (
 				"All New",
@@ -215,6 +260,7 @@ namespace AutoLink
 			allNew.Font = UIFont.FromName("Clan-Book", 12f);
 			allNew.Tapped += () => {navigation.Title =  "New";};
 			allNew.Accessory = UITableViewCellAccessory.DisclosureIndicator;
+			allNew.Image = UIImage.FromBundle ("binicon_allnew.png");
 
 			var contacted = new StyledStringElement (
 				"Contacted",
@@ -225,6 +271,7 @@ namespace AutoLink
 			contacted.Font = UIFont.FromName("Clan-Book", 12f);
 			contacted.Tapped += () => {navigation.Title =  "Contacted";};
 			contacted.Accessory = UITableViewCellAccessory.DisclosureIndicator;
+			contacted.Image = UIImage.FromBundle ("binicon_contacted.png");
 
 			var deleted = new StyledStringElement (
 				"Deleted Listing",
@@ -235,6 +282,7 @@ namespace AutoLink
 			deleted.Font = UIFont.FromName("Clan-Book", 12f);
 			deleted.Tapped += () => {navigation.Title =  "Deleted Listings";};
 			deleted.Accessory = UITableViewCellAccessory.DisclosureIndicator;
+			deleted.Image = UIImage.FromBundle ("binicon_deleted.png");
 
 			result = new Section (header, null) {
 				stared, allNew, contacted, deleted

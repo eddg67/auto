@@ -34,6 +34,7 @@ namespace AutoLink
 
 		public static AppDelegate app { get; set; }
 		public SimpleStorage storage { get; set; }
+		public SimpleStorage searchStorage { get; set; }
 
 		public UINavigationController RootController;
 		public Validator validator;
@@ -57,6 +58,7 @@ namespace AutoLink
 		{
 			app = this;
 			storage = SimpleStorage.EditGroup ("Main");
+			searchStorage = SimpleStorage.EditGroup ("SearchService");
 			// Override point for customization after application launch.
 			if (UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Pad) {
 				this.loadInitForPad ();

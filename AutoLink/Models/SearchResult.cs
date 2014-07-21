@@ -35,19 +35,21 @@ namespace AutoLink.Models
 		public Mileage miles;
 
 	}
+	[Serializable]
 	public class Location
 	{
 		public string range;
 		public string zip;
 
 	}
+	[Serializable]
 	public class Mileage
 	{
 		public int? max;
 		public int? min;
 
 	}
-
+	[Serializable]
 	public class Price
 	{
 		public int? max;
@@ -55,13 +57,13 @@ namespace AutoLink.Models
 
 
 	}
-
+	[Serializable]
 	public class Years
 	{
 		public string max;
 		public string min;
 	}
-
+	[Serializable]
 	public class Listings
 	{
 		public string[] all;
