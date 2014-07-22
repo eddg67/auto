@@ -60,9 +60,11 @@ namespace AutoLink
 					if(task.Result != null){
 						var res = task.Result;
 						//var siz = res.Size;
-						ImageView.ContentMode = UIViewContentMode.ScaleAspectFit;
-						ImageView.Image = res;
-						ImageView.BackgroundColor = UIColor.Black;
+						if(ImageView != null){
+							ImageView.ContentMode = UIViewContentMode.ScaleAspectFit;
+							ImageView.Image = res;
+							ImageView.BackgroundColor = UIColor.Black;
+						}
 						var frame = View.Bounds;
 					
 					}

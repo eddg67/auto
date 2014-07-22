@@ -196,6 +196,14 @@ namespace AutoLink
 				ClipsToBounds = false
 			};
 
+			var cogImg = UIImage.FromBundle ("cog.png");
+
+			var assBtn = new UIButton (RectangleF (0, 0, cogImg.Size.Width, cogImg.Size.Height));
+			assBtn.SetBackgroundImage (cogImg, UIControlState.Normal);
+
+
+			header.Tag = 0;
+
 			secSearch.Add (new UIViewElement ("", header, true));
 
 			secSearch.AddAll (
@@ -208,6 +216,7 @@ namespace AutoLink
 						UITableViewCellStyle.Value1
 					);
 					str.Font = UIFont.FromName("Clan-Book", 12f);
+				
 					str.Accessory = UITableViewCellAccessory.DetailDisclosureButton;
 					str.Tapped += () => {
 						navigation.Title = x.name;
@@ -241,7 +250,7 @@ namespace AutoLink
 			};
 					
 
-			var stared = new StyledStringElement (
+			var stared = new BinElement (
 				             "Starred",
 				(bin.starred != null) ? bin.starred.count.ToString () : "0",
 				UITableViewCellStyle.Value1
@@ -251,7 +260,7 @@ namespace AutoLink
 			stared.Tapped += () => {navigation.Title =  "Starred";};
 			stared.Image = UIImage.FromBundle ("binicon_star.png");
 		
-			var allNew = new StyledStringElement (
+			var allNew = new BinElement (
 				"All New",
 				(bin.@new != null)?bin.@new.count.ToString():"0",
 				UITableViewCellStyle.Value1
@@ -262,7 +271,7 @@ namespace AutoLink
 			allNew.Accessory = UITableViewCellAccessory.DisclosureIndicator;
 			allNew.Image = UIImage.FromBundle ("binicon_allnew.png");
 
-			var contacted = new StyledStringElement (
+			var contacted = new BinElement (
 				"Contacted",
 				(bin.contacted != null)?bin.contacted.count.ToString():"0",
 				UITableViewCellStyle.Value1
@@ -273,7 +282,7 @@ namespace AutoLink
 			contacted.Accessory = UITableViewCellAccessory.DisclosureIndicator;
 			contacted.Image = UIImage.FromBundle ("binicon_contacted.png");
 
-			var deleted = new StyledStringElement (
+			var deleted = new BinElement (
 				"Deleted Listing",
 				(bin.deleted != null)?bin.deleted.count.ToString():"0",
 				UITableViewCellStyle.Value1

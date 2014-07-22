@@ -552,7 +552,8 @@ namespace Autolink
 				rowCount += navigation.Root[section].Count;
 				section ++;
 			}
-			return rowCount + indexPath.Row;
+			//updated for add header
+			return (rowCount + indexPath.Row > 0) ? (rowCount + indexPath.Row) - 1: rowCount + indexPath.Row;
 		}
 
 		protected NSIndexPath GetIndexPath(int index)
