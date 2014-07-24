@@ -187,7 +187,7 @@ namespace AutoLink
 
 			secSearch = new Section (CreateToolbarView (), null);
 
-			var header = new UILabel (new RectangleF (0, 0, this.View.Bounds.Width, 60)) {
+			var header = new UILabel (new RectangleF (0, 0, this.View.Bounds.Width, 80)) {
 				Font = UIFont.FromName("Clan-Book", 16f),
 				TintColor = UIColor.LightTextColor,
 				BackgroundColor = UIColor.LightGray,
@@ -198,7 +198,7 @@ namespace AutoLink
 
 			var cogImg = UIImage.FromBundle ("cog.png");
 
-			var assBtn = new UIButton (RectangleF (0, 0, cogImg.Size.Width, cogImg.Size.Height));
+			var assBtn = new UIButton (new RectangleF (0, 0, cogImg.Size.Width, cogImg.Size.Height));
 			assBtn.SetBackgroundImage (cogImg, UIControlState.Normal);
 
 
@@ -240,7 +240,7 @@ namespace AutoLink
 			Section result;
 			//StyledStringElement[] customBins;
 
-			var header = new UILabel (new RectangleF (0, 0, this.View.Bounds.Width, 60)) {
+			var header = new UILabel (new RectangleF (0, 0, this.View.Bounds.Width, 80)) {
 				Font = UIFont.FromName("Clan-Book", 16f),
 				TintColor = UIColor.LightTextColor,
 				BackgroundColor = UIColor.LightGray,
@@ -329,24 +329,68 @@ namespace AutoLink
 			//tool.Layer.BackgroundColor = UIColor.Black.CGColor;
 			var btn = new UIBarButtonItem (UIBarButtonSystemItem.Add, (sender, args) => {
 				// button was clicked
-				ShowActionPicker();
+				ShowOptionMenu();
 			}){TintColor = UIColor.White};
-			btn.ImageInsets = new UIEdgeInsets(16.5f,20,0,0);
+			btn.ImageInsets = new UIEdgeInsets(15f,10,0,0);
 
 			UITextAttributes attr = new UITextAttributes ();
 			attr.TextColor = UIColor.White;
 			attr.Font =  UIFont.FromName("Clan-Book", 14f);
 			btn.SetTitleTextAttributes (attr,UIControlState.Normal);
 
+			var autoHeader = new UIBarButtonItem ("autolink", UIBarButtonItemStyle.Plain, null);
+			attr.Font =  UIFont.FromName("Clan-Book", 18f);
+			autoHeader.SetTitleTextAttributes(attr,UIControlState.Normal);
+
 			tool.SetItems (new UIBarButtonItem[]{ 
 				btn,
 				new UIBarButtonItem(UIBarButtonSystemItem.FlexibleSpace),
-				new UIBarButtonItem("autolink",UIBarButtonItemStyle.Plain,null){
-				},
+				autoHeader,
 				new UIBarButtonItem(UIBarButtonSystemItem.FlexibleSpace),
 			},true);
 
 			return tool;
+		}
+
+		void ShowOptionMenu()
+		{
+			var action = new UIActionSheet ("Update", null, "Cancel", "Done", null);
+			var searchIndex = action.AddButton ("New Live Search");
+			var binIndex = action.AddButton ("Add New Bin");
+
+			action.Clicked += (s, e) => { 
+				Console.WriteLine ("Clicked on item {0}", e.ButtonIndex); 
+
+				if(e.ButtonIndex == searchIndex){
+					app.ShowSearch ();
+				}else if(e.ButtonIndex == binIndex){
+					AddNewBin();
+				}
+			
+			};
+
+			action.ShowInView (View);
+
+		}
+
+		void AddNewBin(){
+			var newBin = new EntryElement (string.Empty, "Enter Bin Name", string.Empty);
+			navigation.NavigationRoot.Last<Section> ().Add (newBin);
+
+			newBin.BecomeFirstResponder(true);
+			newBin.EntryEnded += (s1, e1) => {
+				var name = newBin.Value;
+				if (!string.IsNullOrEmpty (name)) {
+
+					service.AddBin (name)
+						.ContinueWith ((task) => InvokeOnMainThread (() => {
+							if (!task.IsFaulted) {
+								LoadBin ();
+							}
+						}
+						));
+				}
+			};
 		}
 
 		public void ShowActionPicker()
