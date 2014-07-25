@@ -303,6 +303,7 @@
     <Compile Include="SearchResults\ListViewController.cs" />
     <Compile Include="Services\ImageService.cs" />
     <Compile Include="Views\BinElement.cs" />
+    <Compile Include="Views\ToolBarItem.cs" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="MainStoryboard_iPhone.storyboard" />

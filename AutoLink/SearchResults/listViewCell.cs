@@ -116,7 +116,7 @@ namespace AutoLink
 					desc.Text = list.descriptionCollapsed;
 
 					tool = GetToolBar();
-
+						//if no longer visible
 					if(tableView.IndexPathsForVisibleRows.ToList ().Select (x => x.Equals (indexPath)) != null && indexPath != null){
 						//tableView.ReloadRows (new NSIndexPath[] { indexPath },UITableViewRowAnimation.Left);
 					}
@@ -181,44 +181,59 @@ namespace AutoLink
 			attr.Font = UIFont.FromName("Clan-Medium", 8f);
 			attr.TextColor = UIColor.LightGray;
 
-			//add location and change font color
-			if (item.address.city != null) {
-				local = string.Format ("{0},{1}", item.address.city, item.address.state);
-				attr.TextColor = UIColor.Blue;
-
-			} 
-				
-			var location = new UIBarButtonItem (local, UIBarButtonItemStyle.Plain, (s,e)=>{
-				//for event
-
-			});
-			location.SetTitleTextAttributes (attr, UIControlState.Normal);
-
-			if (item.created != null || item.updated != null) {
-
-				datesOn = string.Format ("Listed {0} days ago", CalculateDateDiff ());
-				attr.TextColor = UIColor.LightGray;
-
-			} else if (item.deleted) {
-
-				datesOn = "Listing Removed";
-				attr.TextColor = UIColor.Red;
-			}
-
-			var timeSpan = new UIBarButtonItem (datesOn, UIBarButtonItemStyle.Plain, (s,e)=>{
-				//for event
-			});
-			timeSpan.SetTitleTextAttributes (attr, UIControlState.Normal);
-
+			var location = new UIBarButtonItem (local, UIBarButtonItemStyle.Plain,null);
+			var timeSpan = new UIBarButtonItem (datesOn, UIBarButtonItemStyle.Plain,null);
 			var price = new UIBarButtonItem (pricesAbove, UIBarButtonItemStyle.Plain, delegate {
 				if(item.pricing != null){
 					app.ShowPriceEdmunds(item.pricing);
 				}
 			});
-			if (item.pricing != null) {
+
+			//add location and change font color
+			if (item.address.city != null) {
+				local = string.Format ("{0},{1}", item.address.city, item.address.state);
+				location.Image = UIImage.FromBundle ("stats_locationon.png");
 				attr.TextColor = UIColor.Blue;
+
 			} else {
+
+				location.Image = UIImage.FromBundle ("stats_locationoff.png");
+				attr.TextColor = UIColor.LightGray;
+			}
+				
+			location.SetTitleTextAttributes (attr, UIControlState.Normal);
+
+			if (item.created != null || item.updated != null) {
+
+				timeSpan.Image = UIImage.FromBundle ("stats_timingon.png");
+				datesOn = string.Format ("Listed {0} days ago", CalculateDateDiff ());
+				attr.TextColor = UIColor.LightGray;
+
+			} else if (item.deleted) {
+
+				timeSpan.Image = UIImage.FromBundle ("stats_timingoff.png");
+				datesOn = "Listing Removed";
+				attr.TextColor = UIColor.Red;
+
+			} else {
+
+				timeSpan.Image = UIImage.FromBundle ("stats_timingoff.png");
+				datesOn = string.Format ("Listed {0} days ago", CalculateDateDiff ());
+				attr.TextColor = UIColor.LightGray;
+			}
+				
+			timeSpan.SetTitleTextAttributes (attr, UIControlState.Normal);
+
+			if (item.pricing != null) {
+
+				price.Image = UIImage.FromBundle ("stats_priceon.png");
+				attr.TextColor = UIColor.Blue;
+
+			} else {
+
+				price.Image = UIImage.FromBundle ("stats_priceoff.png");
 				price.Title = "Market Value Unavailable";
+				attr.TextColor = UIColor.LightGray;
 			}
 
 			price.SetTitleTextAttributes (attr, UIControlState.Normal);
@@ -230,11 +245,9 @@ namespace AutoLink
 
 				timeSpan,
 				new UIBarButtonItem(UIBarButtonSystemItem.FlexibleSpace),
-
 				price
 
 			};
-
 
 			tool.SetItems (bbs, true);
 

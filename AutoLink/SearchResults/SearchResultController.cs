@@ -119,7 +119,10 @@ namespace AutoLink
 			LoadBin();
 			count = 0;
 			over.Hide ();
+		}
 
+		void UpdateBinResults()
+		{
 		}
 
 
@@ -127,6 +130,8 @@ namespace AutoLink
 
 		public void LoadBin()
 		{
+			//bins = storage.Get<Bin> ("Bins");
+
 			service.GetBins ().ContinueWith((task) => InvokeOnMainThread(() =>
 				{
 					bins = task.Result.Result;
@@ -309,7 +314,8 @@ namespace AutoLink
 
 					str.Font = UIFont.FromName("Clan-Book", 12f);
 					str.Tapped += () => {navigation.Title =  x.name;};
-					deleted.Accessory = UITableViewCellAccessory.DisclosureIndicator;
+					str.Image = UIImage.FromBundle ("binicon_usercreatebin.png");
+					str.Accessory = UITableViewCellAccessory.DisclosureIndicator;
 
 					return str;
 				}));
@@ -358,6 +364,11 @@ namespace AutoLink
 			var searchIndex = action.AddButton ("New Live Search");
 			var binIndex = action.AddButton ("Add New Bin");
 
+			//styling
+			action.DestructiveButtonIndex = searchIndex;
+			action.CancelButtonIndex = 0;
+			action.Opaque = true;
+
 			action.Clicked += (s, e) => { 
 				Console.WriteLine ("Clicked on item {0}", e.ButtonIndex); 
 
@@ -392,42 +403,7 @@ namespace AutoLink
 				}
 			};
 		}
-
-		public void ShowActionPicker()
-		{
-			var action = new ActionSheetPicker (View) {
-				Title = "Update"
-			};
-			var model = new ListPicker<string> (
-				            new List<string> { 
-					"New Live Search", "Add New Bin"
-				});
-			action.Show (model);
-
-			action.doneButton.TouchUpInside += (sender, e) => {
-				if (model.SelectedItem.Contains ("New Live Search")) {
-					app.ShowSearch ();
-				} else {
-					var newBin = new EntryElement (string.Empty, "Enter Bin Name", string.Empty);
-					navigation.NavigationRoot.Last<Section> ().Add (newBin);
-
-					newBin.BecomeFirstResponder(true);
-					newBin.EntryEnded += (s1, e1) => {
-						var name = newBin.Value;
-						if (!string.IsNullOrEmpty (name)) {
-
-							service.AddBin (name)
-									.ContinueWith ((task) => InvokeOnMainThread (() => {
-									if (!task.IsFaulted) {
-										LoadBin ();
-									}
-								}
-							));
-						}
-					};
-				}
-			};
-		}
+			
 
 
 	}
