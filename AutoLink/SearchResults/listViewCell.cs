@@ -26,7 +26,6 @@ namespace AutoLink
 		{
 		
 			item = list;
-
 			ContentView.AutosizesSubviews = true;
 			UpdateCell (item, tableView, rightsBtns, leftView,null);
 
@@ -180,6 +179,18 @@ namespace AutoLink
 
 			attr.Font = UIFont.FromName("Clan-Medium", 8f);
 			attr.TextColor = UIColor.LightGray;
+
+			var button = new UIButton (UIButtonType.Custom);
+
+			button.SetTitle (local, UIControlState.Normal);
+			button.SetTitleColor (UIColor.White, UIControlState.Normal);
+
+			button.ImageEdgeInsets = new UIEdgeInsets (0, 30f, 0f, 0f);
+			button.SetImage (UIImage.FromBundle ("stats_locationon.png"), UIControlState.Normal);
+			button.TitleLabel.Font = UIFont.FromName("Clan-Medium", 8f);
+			button.TitleEdgeInsets = new UIEdgeInsets (0f, -20f,0f, 10f);
+
+
 
 			var location = new UIBarButtonItem (local, UIBarButtonItemStyle.Plain,null);
 			var timeSpan = new UIBarButtonItem (datesOn, UIBarButtonItemStyle.Plain,null);

@@ -188,6 +188,12 @@
     <BundleResource Include="Resources\tab_more.png" />
     <BundleResource Include="Resources\tab_star.png" />
     <BundleResource Include="Resources\accounticon.png" />
+    <BundleResource Include="Resources\3line-icon.png" />
+    <BundleResource Include="Resources\account-icon.png" />
+    <BundleResource Include="Resources\star-icon.png" />
+    <BundleResource Include="Resources\trash-icon.png" />
+    <BundleResource Include="Resources\3line-icon%402.png" />
+    <BundleResource Include="Resources\account-icon%402.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Entitlements.plist" />
@@ -304,6 +310,7 @@
     <Compile Include="Services\ImageService.cs" />
     <Compile Include="Views\BinElement.cs" />
     <Compile Include="Views\ToolBarItem.cs" />
+    <Compile Include="Views\NoResultsView.cs" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="MainStoryboard_iPhone.storyboard" />

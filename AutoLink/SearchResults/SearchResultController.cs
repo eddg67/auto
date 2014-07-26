@@ -197,7 +197,7 @@ namespace AutoLink
 				TintColor = UIColor.LightTextColor,
 				BackgroundColor = UIColor.LightGray,
 				Alpha=0.5f,
-				Text = "Live Search",
+				Text = "    Live Search",
 				ClipsToBounds = false
 			};
 
@@ -221,7 +221,7 @@ namespace AutoLink
 						UITableViewCellStyle.Value1
 					);
 					str.Font = UIFont.FromName("Clan-Book", 12f);
-				
+
 					str.Accessory = UITableViewCellAccessory.DetailDisclosureButton;
 					str.Tapped += () => {
 						navigation.Title = x.name;
@@ -250,7 +250,7 @@ namespace AutoLink
 				TintColor = UIColor.LightTextColor,
 				BackgroundColor = UIColor.LightGray,
 				Alpha=0.5f,
-				Text = "Bins",
+				Text = "    Bins",
 				ClipsToBounds = false
 			};
 					
@@ -306,7 +306,7 @@ namespace AutoLink
 			if (bin.custom != null || bin.custom.Count > 0) 
 			{
 				result.AddAll( bin.custom.Select (x => {
-					var str = new StyledStringElement (
+					var str = new BinElement (
 						x.name,
 						x.count.ToString(),
 						UITableViewCellStyle.Value1
@@ -314,7 +314,7 @@ namespace AutoLink
 
 					str.Font = UIFont.FromName("Clan-Book", 12f);
 					str.Tapped += () => {navigation.Title =  x.name;};
-					str.Image = UIImage.FromBundle ("binicon_usercreatebin.png");
+					str.Image = UIImage.FromBundle ("binicon_usercreatedbin.png");
 					str.Accessory = UITableViewCellAccessory.DisclosureIndicator;
 
 					return str;

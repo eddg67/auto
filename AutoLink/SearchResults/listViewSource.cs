@@ -22,6 +22,9 @@ namespace AutoLink
 		int startCount = 0;
 		bool moreResults = true;
 
+		event Action onCl;
+		public EventHandler NoResults;
+
 		public DetailViewController DetailViewController {
 			get;
 			set;
@@ -48,7 +51,14 @@ namespace AutoLink
 
 			if (items != null) {
 				startCount = items.Count;
+
+				if (items.Count == 0) 
+				{
+					//NoResults (this,new EventArgs());
+				}
 			} 
+
+
 		}
 			
 
@@ -85,8 +95,8 @@ namespace AutoLink
 			//add edit Buttons
 			var buttons = new List<UIButton> ();
 		
-			var deleteBtn = buttons.AddUtilityButton ("Delete", UIColor.Red, UIImage.FromBundle("trashicon"));
-			var starBtn = buttons.AddUtilityButton ("Star", UIColor.Blue,UIImage.FromBundle("staricon") );
+			var deleteBtn = buttons.AddUtilityButton ("Delete", UIColor.Red, UIImage.FromBundle("trash-icon.png"));
+			var starBtn = buttons.AddUtilityButton ("Star", UIColor.Blue,UIImage.FromBundle("star-icon.png") );
 
 			tableView.RowHeight = GetHeightForRow(tableView, indexPath);
 			var cell = tableView.DequeueReusableCell (listViewCell.Key) as listViewCell;
@@ -98,8 +108,7 @@ namespace AutoLink
 			}
 			cell.Tag = indexPath.Row;
 
-			buttons[0].TouchUpInside += (object sender, EventArgs e) => {
-
+			deleteBtn.TouchUpInside += (object sender, EventArgs e) => {
 
 				tableView.BeginUpdates ();
 
@@ -114,7 +123,7 @@ namespace AutoLink
 				tableView.EndUpdates ();
 			};
 
-			buttons[1].TouchUpInside += (object sender, EventArgs e) => {
+			starBtn.TouchUpInside += (object sender, EventArgs e) => {
 				service.StarListing(searchID,items[cell.Tag]._id).ContinueWith((task) => InvokeOnMainThread(() =>
 					{
 						new UIAlertView("Result Starred","Result Starred",null,"OK",null).Show();

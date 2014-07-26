@@ -14,6 +14,7 @@ namespace AutoLink
 	{
 		public string searchId  { get; set; }
 		public bool useBinId  { get; set; }
+		listViewSource source { get; set; }
 
 		public DetailViewController DetailViewController {
 			get;
@@ -37,11 +38,12 @@ namespace AutoLink
 			TableView.ContentInset = new UIEdgeInsets (-25, 0, 0, 0); 
 
 
-			var accountImg = UIImage.FromBundle("accounticon.png");
-			accountImg.Scale (new SizeF (22f, 22f));
+			var accountImg = UIImage.FromBundle("account-icon.png");
+			var sI = accountImg.Size;
+			//accountImg.Scale (new SizeF (22f, 22f));
 
-			var listImg = UIImage.FromBundle("tabbedicon.png");
-			listImg.Scale (new SizeF (22f, 22f));
+			var listImg = UIImage.FromBundle("3line-icon.png");
+			//listImg.Scale (new SizeF (22f, 22f));
 
 			this.Title = title;	
 
@@ -55,10 +57,10 @@ namespace AutoLink
 				using(var app = (AppDelegate)UIApplication.SharedApplication.Delegate){
 					app.ShowAccount();
 				}
-			});
+			}){TintColor = UIColor.White};
 			NavigationItem.LeftBarButtonItem = new UIBarButtonItem (listImg,UIBarButtonItemStyle.Plain, delegate {
 				navigation.ToggleMenu ();
-			});
+			}){TintColor = UIColor.White};
 
 			NSNotificationCenter.DefaultCenter.AddObserver (UIKeyboard.WillHideNotification, OnKeyboardNotification);
 			NSNotificationCenter.DefaultCenter.AddObserver (UIKeyboard.WillShowNotification, OnKeyboardNotification);
@@ -89,10 +91,18 @@ namespace AutoLink
 
 			// Register the TableView's data source
 			if (useBinId) {
-				TableView.Source = new listViewSource ("",searchId);
+				source = new listViewSource ("",searchId);
+
 			} else {
-				TableView.Source = new listViewSource (searchId);
+				source = new listViewSource (searchId);
 			}
+
+			source.NoResults += (s,e) => {
+				var noRes = new NoResultsView(View.Bounds,searchId);
+				TableView.Add(noRes);
+			};
+			TableView.Source = source;
+
 				
 		}
 

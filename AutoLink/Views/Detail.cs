@@ -20,7 +20,7 @@ namespace AutoLink
 		float offset = 10;
 		AppDelegate app = (AppDelegate)UIApplication.SharedApplication.Delegate;
 
-		public Detail (RectangleF frame,UIViewController _controller) : base ()
+		public Detail (RectangleF frame,UIViewController _controller,Listing list) : base ()
 		{
 			ImageView = new UIImageViewClickable();
 			desc = new UILabel();
@@ -30,7 +30,8 @@ namespace AutoLink
 			source = new UILabel();
 			controller = _controller;
 			ContentMode = UIViewContentMode.ScaleAspectFit;
-		
+			setItem (list);
+
 			//AutosizesSubviews = true;
 
 		}
@@ -42,14 +43,13 @@ namespace AutoLink
 		public void setItem(Listing list){
 			item = list;
 
-			this.DownloadImageAsync (item.images [0]).ContinueWith ((task) => InvokeOnMainThread (() => {
+			app.imageService.GetImageAsync (item.images [0]).ContinueWith ((task) => InvokeOnMainThread (() => {
 				//DetailTextLabel.Text = list.description;
 				if (!task.IsFaulted) {
-
 				
-					if(!task.IsFaulted){
+					if((UIImage)task.Result != null){
 
-						ImageView.Image = task.Result;
+						ImageView.Image = (UIImage)task.Result;
 						ImageView.ContentMode = UIViewContentMode.ScaleAspectFill;
 						Add(ImageView);
 					}
@@ -117,7 +117,7 @@ namespace AutoLink
 			}));
 		}
 
-	 
+
 
 		public override void LayoutSubviews ()
 		{
@@ -164,7 +164,6 @@ namespace AutoLink
 					AddSubview (line);
 				}
 				GetToolBar ();
-
 				AddSubview (tool);
 			}
 		}

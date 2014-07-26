@@ -72,46 +72,27 @@ namespace AutoLink
 		{
 			base.LoadView ();
 
-			NavigationItem.RightBarButtonItem = new UIBarButtonItem (){Title="Mark"};
-			NavigationItem.RightBarButtonItem.Clicked += (sender, e)=>{
-				actionSheet = new UIActionSheet ("Mark Results", null, "Cancel", null, null);
-
-					int markViewed = 0,markAll=0;
-					markViewed = actionSheet.AddButton("Mark as Viewed");
-					markAll = actionSheet.AddButton("All? No Call found");
-
-					actionSheet.DestructiveButtonIndex = 0; // red
-					actionSheet.CancelButtonIndex = markViewed;  // black
-
-					actionSheet.Clicked += (object s, UIButtonEventArgs btnEv) => {
-
-						if(btnEv.ButtonIndex > 0){
-							if(btnEv.ButtonIndex == markViewed){
-
-								var list = new string[]{items._id};
-
-								service.SeenListing(searchID,list).ContinueWith((task) => InvokeOnMainThread(() =>{
-								using(var alert = new UIAlertView ("Listing Marked", "This Listing has been marked seen", null, "OK", null)){
-										alert.Show();
-									}
-							}));
-
-							}else if(btnEv.ButtonIndex == markAll){
-
-
-							}
-						}
-					};
-				actionSheet.ShowFrom(NavigationItem.RightBarButtonItem,true);//.ShowInView(View);
-
-			};
+			AddNavBar ();
 		
-			var detailView = new Detail (View.Frame,this);
+			var detailView = new Detail (View.Frame,this,items);
 
-			detailView.setItem (items);
+			detailView.AutosizesSubviews = true;
+			detailView.ClipsToBounds = true;
+			detailView.ContentMode = UIViewContentMode.ScaleAspectFit;
+			detailView.SizeToFit ();
 
-			View.AddSubview (scrollView = new UIScrollView (View.Bounds));
+			var scrollBounds = View.Bounds;
+			scrollBounds.Height = scrollBounds.Size.Height + 40f;
+
+			View.AddSubview (scrollView = new UIScrollView (scrollBounds));
+
 			scrollView.Add (contentView = detailView);
+			scrollView.AlwaysBounceHorizontal = false;
+			scrollView.ContentInset = new UIEdgeInsets (0, 0, 40f, 0);
+			scrollView.AutoresizingMask = UIViewAutoresizing.FlexibleHeight;
+			scrollView.AlwaysBounceVertical = false;
+			//scrollView.ContentSize = new SizeF (scrollBounds.Width, detailView.Bounds.Height);
+			//scrollView.Bounces = false;
 
 			//View.Add (detailView);
 
@@ -139,6 +120,42 @@ namespace AutoLink
 				NavigationController.ToolbarHidden = true;
 			}
 		
+		}
+
+		void AddNavBar(){
+			NavigationItem.RightBarButtonItem = new UIBarButtonItem (){Title="Mark"};
+			NavigationItem.RightBarButtonItem.Clicked += (sender, e)=>{
+				actionSheet = new UIActionSheet ("Mark Results", null, "Cancel", null, null);
+
+				int markViewed = 0,markAll=0;
+				markViewed = actionSheet.AddButton("Mark as Viewed");
+				markAll = actionSheet.AddButton("All? No Call found");
+
+				actionSheet.DestructiveButtonIndex = 0; // red
+				actionSheet.CancelButtonIndex = markViewed;  // black
+
+				actionSheet.Clicked += (object s, UIButtonEventArgs btnEv) => {
+
+					if(btnEv.ButtonIndex > 0){
+						if(btnEv.ButtonIndex == markViewed){
+
+							var list = new string[]{items._id};
+
+							service.SeenListing(searchID,list).ContinueWith((task) => InvokeOnMainThread(() =>{
+								using(var alert = new UIAlertView ("Listing Marked", "This Listing has been marked seen", null, "OK", null)){
+									alert.Show();
+								}
+							}));
+
+						}else if(btnEv.ButtonIndex == markAll){
+
+
+						}
+					}
+				};
+				actionSheet.ShowFrom(NavigationItem.RightBarButtonItem,true);//.ShowInView(View);
+
+			};
 		}
 
 		void BuildDetailToolbar()

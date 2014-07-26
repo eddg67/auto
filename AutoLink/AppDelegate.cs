@@ -106,16 +106,13 @@ namespace AutoLink
 
 			UITextAttributes attr = new UITextAttributes ();
 			attr.TextColor = UIColor.White;
-			//attr.Font = UIFont.FromName ("KannadaSangamMN-Bold", 22);
-			attr.Font = UIFont.FromName("Clan-Bold", 16f);
+			attr.Font = UIFont.FromName("Clan-Book", 16f);
 			UINavigationBar.Appearance.SetTitleTextAttributes (attr);
 			UIApplication.SharedApplication.SetStatusBarStyle (UIStatusBarStyle.LightContent, true);
 			UILabel.Appearance.Font = UIFont.FromName("Clan-Book", 14f);
 
-
 		}
-
-
+			
 		public void ShowSplash()
 		{
 			splash = new MainScreenController ();
@@ -148,7 +145,6 @@ namespace AutoLink
 				ShowResultList();
 			};
 				
-
 		}
 
 		public void ShowSearch(SearchResult result = null)
@@ -251,8 +247,8 @@ namespace AutoLink
 			reset = new ResetController();
 			RootController.NavigationBarHidden = true;
 			RootController.ToolbarHidden = true;
-			RootController.PushViewController (reset, true);
 
+			RootController.PushViewController (reset, true);
 		}
 			
 		public void ShowSignUp()
@@ -261,8 +257,6 @@ namespace AutoLink
 			RootController.NavigationBarHidden = true;
 			RootController.ToolbarHidden = true;
 			RootController.PushViewController (signup, true);
-
-
 		}
 
 		public void ShowForgotPassword()
