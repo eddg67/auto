@@ -98,7 +98,7 @@ namespace AutoLink.Utilities
 		protected virtual Stream OpenStorage (string fileName, FileMode mode)
 		{
 			return store.OpenFile (Path.Combine ("ImageCache", fileName), mode);
-		}
+		} 
 
 		protected abstract object LoadImage (Stream stream);
 	}

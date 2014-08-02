@@ -163,37 +163,37 @@
     <BundleResource Include="Resources\facebook_login.png" />
     <BundleResource Include="Resources\google_login.png" />
     <BundleResource Include="Resources\landing.jpg" />
-    <BundleResource Include="Resources\more_icon.png" />
     <BundleResource Include="Resources\splashpage_highres.jpg" />
     <BundleResource Include="Resources\splashpage_lowres.jpg" />
     <BundleResource Include="Resources\staricon.png" />
     <BundleResource Include="Resources\tabbedicon.png" />
     <BundleResource Include="Resources\trashicon.png" />
-    <BundleResource Include="Resources\binicon_allnew.png" />
-    <BundleResource Include="Resources\binicon_contacted.png" />
-    <BundleResource Include="Resources\binicon_deleted.png" />
-    <BundleResource Include="Resources\binicon_star.png" />
-    <BundleResource Include="Resources\binicon_usercreatedbin.png" />
-    <BundleResource Include="Resources\cog.png" />
-    <BundleResource Include="Resources\facebook_login_notext.png" />
-    <BundleResource Include="Resources\google_login_notext.png" />
     <BundleResource Include="Resources\linesicon.png" />
-    <BundleResource Include="Resources\stats_locationoff.png" />
-    <BundleResource Include="Resources\stats_locationon.png" />
-    <BundleResource Include="Resources\stats_priceoff.png" />
-    <BundleResource Include="Resources\stats_priceon.png" />
-    <BundleResource Include="Resources\stats_timingoff.png" />
-    <BundleResource Include="Resources\stats_timingon.png" />
-    <BundleResource Include="Resources\tab_contact.png" />
-    <BundleResource Include="Resources\tab_more.png" />
-    <BundleResource Include="Resources\tab_star.png" />
     <BundleResource Include="Resources\accounticon.png" />
     <BundleResource Include="Resources\3line-icon.png" />
     <BundleResource Include="Resources\account-icon.png" />
-    <BundleResource Include="Resources\star-icon.png" />
-    <BundleResource Include="Resources\trash-icon.png" />
-    <BundleResource Include="Resources\3line-icon%402.png" />
-    <BundleResource Include="Resources\account-icon%402.png" />
+    <BundleResource Include="Resources\3line-icon%402x.png" />
+    <BundleResource Include="Resources\account-icon%402x.png" />
+    <BundleResource Include="Resources\stats_locationoff%402x.png" />
+    <BundleResource Include="Resources\stats_locationon%402x.png" />
+    <BundleResource Include="Resources\stats_priceoff%402x.png" />
+    <BundleResource Include="Resources\stats_priceon%402x.png" />
+    <BundleResource Include="Resources\stats_timingoff%402x.png" />
+    <BundleResource Include="Resources\stats_timingon%402x.png" />
+    <BundleResource Include="Resources\star-icon%402x.png" />
+    <BundleResource Include="Resources\binicon_usercreatedbin%402x.png" />
+    <BundleResource Include="Resources\binicon_star%402x.png" />
+    <BundleResource Include="Resources\binicon_deleted%402x.png" />
+    <BundleResource Include="Resources\binicon_contacted%402x.png" />
+    <BundleResource Include="Resources\binicon_allnew%402x.png" />
+    <BundleResource Include="Resources\facebook_login_notext%402x.png" />
+    <BundleResource Include="Resources\google_login_notext%402x.png" />
+    <BundleResource Include="Resources\more_icon%402x.png" />
+    <BundleResource Include="Resources\trash-icon%402x.png" />
+    <BundleResource Include="Resources\tab_star%402x.png" />
+    <BundleResource Include="Resources\tab_more%402x.png" />
+    <BundleResource Include="Resources\tab_contact%402x.png" />
+    <BundleResource Include="Resources\cog%402x.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Entitlements.plist" />
@@ -305,7 +305,6 @@
       <DependentUpon>ResetController.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\StyledEntryElement.cs" />
-    <Compile Include="Views\MenuListView.cs" />
     <Compile Include="SearchResults\ListViewController.cs" />
     <Compile Include="Services\ImageService.cs" />
     <Compile Include="Views\BinElement.cs" />

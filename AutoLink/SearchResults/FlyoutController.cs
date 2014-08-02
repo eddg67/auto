@@ -90,10 +90,11 @@ namespace Autolink
 					return;
 				hideShadow = value;
 				if (hideShadow) {
-					if (currentView != null)
-						View.InsertSubviewBelow (shadowView, currentView);
+					if (currentView != null) {
+						//View.InsertSubviewBelow (shadowView, currentView);
+					}
 				} else {
-					shadowView.RemoveFromSuperview ();
+					//shadowView.RemoveFromSuperview ();
 				}
 
 			}
@@ -264,7 +265,7 @@ namespace Autolink
 			if (ShouldStayOpen || currentView == null)
 				return;
 			if (!HideShadow)
-				View.InsertSubviewBelow(shadowView, currentView);
+				//View.InsertSubviewBelow(shadowView, currentView);
 			navigation.View.Hidden = false;
 			RectangleF frame = currentView.Frame;
 			shadowView.Frame = frame;
@@ -391,7 +392,7 @@ namespace Autolink
 					if (!ShouldStayOpen)
 						View.AddSubview(closeButton);
 					if (!HideShadow)
-						View.InsertSubviewBelow (shadowView, currentView);
+						//View.InsertSubviewBelow (shadowView, currentView);
 					UIView.BeginAnimations("slideMenu");
 					UIView.SetAnimationCurve(UIViewAnimationCurve.EaseIn);
 					//UIView.SetAnimationDuration(2);
@@ -407,7 +408,7 @@ namespace Autolink
 					statusFrame.Height = 0f;
 					statusImage.Frame = statusFrame;
 
-					statusImage.BackgroundColor = UIColor.Black;
+					statusImage.BackgroundColor = UIColor.White;
 				
 
 
@@ -458,6 +459,7 @@ namespace Autolink
 			foreach (var view in statusImage.Subviews)
 				view.RemoveFromSuperview ();
 			statusImage.AddSubview (image);
+			UIApplication.SharedApplication.StatusBarStyle = UIStatusBarStyle.LightContent;
 			statusImage.Frame = UIApplication.SharedApplication.StatusBarFrame;
 			UIApplication.SharedApplication.StatusBarHidden = true;
 
@@ -478,7 +480,7 @@ namespace Autolink
 			if (!isIos7)
 				return;
 			statusImage.RemoveFromSuperview();
-			UIApplication.SharedApplication.StatusBarHidden = false;
+		//	UIApplication.SharedApplication.StatusBarHidden = false;
 		}
 
 		public void HideMenu()
@@ -489,6 +491,7 @@ namespace Autolink
 			EnsureInvokedOnMainThread(delegate
 				{
 					//isOpen = false;
+
 					navigation.FinishSearch();
 					closeButton.RemoveFromSuperview();
 					shadowView.Frame = currentView.Frame;
@@ -514,7 +517,7 @@ namespace Autolink
 		void hideComplete()
 		{
 			hideStatus();
-			shadowView.RemoveFromSuperview();
+			//shadowView.RemoveFromSuperview();
 			navigation.View.Hidden = true;
 		}
 

@@ -38,11 +38,11 @@ namespace AutoLink
 			TableView.ContentInset = new UIEdgeInsets (-25, 0, 0, 0); 
 
 
-			var accountImg = UIImage.FromBundle("account-icon.png");
+			var accountImg = UIImage.FromBundle("account-icon");
 			var sI = accountImg.Size;
 			//accountImg.Scale (new SizeF (22f, 22f));
 
-			var listImg = UIImage.FromBundle("3line-icon.png");
+			var listImg = UIImage.FromBundle("3line-icon");
 			//listImg.Scale (new SizeF (22f, 22f));
 
 			this.Title = title;	
@@ -61,6 +61,9 @@ namespace AutoLink
 			NavigationItem.LeftBarButtonItem = new UIBarButtonItem (listImg,UIBarButtonItemStyle.Plain, delegate {
 				navigation.ToggleMenu ();
 			}){TintColor = UIColor.White};
+
+
+			UIApplication.SharedApplication.StatusBarStyle = UIStatusBarStyle.LightContent;
 
 			NSNotificationCenter.DefaultCenter.AddObserver (UIKeyboard.WillHideNotification, OnKeyboardNotification);
 			NSNotificationCenter.DefaultCenter.AddObserver (UIKeyboard.WillShowNotification, OnKeyboardNotification);
@@ -179,11 +182,10 @@ namespace AutoLink
 				bool landscape = InterfaceOrientation == UIInterfaceOrientation.LandscapeLeft || InterfaceOrientation == UIInterfaceOrientation.LandscapeRight;
 				if (visible) {
 					var keyboardFrame = UIKeyboard.FrameEndFromNotification (notification);
-
 					OnKeyboardChanged (visible, landscape ? keyboardFrame.Width : keyboardFrame.Height);
+
 				} else {
 					var keyboardFrame = UIKeyboard.FrameBeginFromNotification (notification);
-
 					OnKeyboardChanged (visible, landscape ? keyboardFrame.Width : keyboardFrame.Height);
 				}
 

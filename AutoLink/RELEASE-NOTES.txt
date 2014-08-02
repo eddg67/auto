@@ -1,4 +1,5 @@
-Build 1.0.8
-* Migration Test Build 
-* Image Caching
-* Global Theming
+Build 1.0.9
+*added new Resources 
+* Updated Cache more Cache Services
+* Updated To actionsheets for Live/Bin
+* Working on styling issues globally 

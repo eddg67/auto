@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using MonoTouch.Foundation;
 using MonoTouch.UIKit;
 using Google.Plus;
@@ -10,6 +11,7 @@ using BigTed;
 using AutoLink.Models;
 using MonoTouch.MessageUI;
 using PerpetualEngine.Storage;
+using System.Collections.Generic;
 
 namespace AutoLink
 {
@@ -150,6 +152,17 @@ namespace AutoLink
 		public void ShowSearch(SearchResult result = null)
 		{
 			BTProgressHUD.Dismiss ();
+			search = new SearchScreen (result);
+			RootController.NavigationBarHidden = true;
+			RootController.ToolbarHidden = true;
+			RootController.PushViewController (search, true);
+
+		}
+
+		public void ShowSearch(string id)
+		{
+			var resultList = SimpleStorage.EditGroup ("SearchResult").Get<List<SearchResult>> ("getResults");
+			var result =resultList != null ? resultList.Find (x => x._id == id): null;
 			search = new SearchScreen (result);
 			RootController.NavigationBarHidden = true;
 			RootController.ToolbarHidden = true;

@@ -35,6 +35,9 @@ namespace AutoLink
 		{
 			service = app.searchService;
 			storage = SimpleStorage.EditGroup ("SearchResult");
+			UIApplication.SharedApplication.StatusBarStyle = UIStatusBarStyle.LightContent;
+			RestorationIdentifier = "SearchResult";
+
 
 		}
 
@@ -67,16 +70,11 @@ namespace AutoLink
 			} else {
 				LoadResults ();
 			}
-
-
-
-
-
 		}
+
 
 		public void LoadResults()
 		{
-
 			service.GetResultsAsync ().ContinueWith (
 				(task) => InvokeOnMainThread (() => {
 
@@ -155,9 +153,7 @@ namespace AutoLink
 								
 							vcArr = vcArr.Concat(custs.ToArray()).ToArray(); 
 						}
-
-
-
+							
 						var tmp = vc.Concat(vcArr).ToArray();  
 						navigation.ViewControllers = tmp;
 
@@ -185,6 +181,11 @@ namespace AutoLink
 			View.Add (over);
 
 		}
+
+		public override UIStatusBarStyle PreferredStatusBarStyle ()
+		{
+			return UIStatusBarStyle.LightContent;
+		}
 			
 
 		private Section GetSearchSection()
@@ -205,8 +206,6 @@ namespace AutoLink
 
 			var assBtn = new UIButton (new RectangleF (0, 0, cogImg.Size.Width, cogImg.Size.Height));
 			assBtn.SetBackgroundImage (cogImg, UIControlState.Normal);
-
-
 			header.Tag = 0;
 
 			secSearch.Add (new UIViewElement ("", header, true));
@@ -219,12 +218,13 @@ namespace AutoLink
 						x.name,
 						x.newListingsCount.ToString(),
 						UITableViewCellStyle.Value1
-					);
-					str.Font = UIFont.FromName("Clan-Book", 12f);
+					){Font = UIFont.FromName("Clan-Book", 12f)};
+
+					str.TextColor = UIColor.LightGray;
 
 					str.Accessory = UITableViewCellAccessory.DetailDisclosureButton;
 					str.Tapped += () => {
-						navigation.Title = x.name;
+						navigation.Title = string.Format("{0}({1})",x.name,x.newListingsCount);
 					};
 
 					str.AccessoryTapped += () => {
@@ -243,7 +243,6 @@ namespace AutoLink
 		public Section UpdateBins(Bin bin)
 		{
 			Section result;
-			//StyledStringElement[] customBins;
 
 			var header = new UILabel (new RectangleF (0, 0, this.View.Bounds.Width, 80)) {
 				Font = UIFont.FromName("Clan-Book", 16f),
@@ -252,11 +251,10 @@ namespace AutoLink
 				Alpha=0.5f,
 				Text = "    Bins",
 				ClipsToBounds = false
-			};
-					
+			};	
 
 			var stared = new BinElement (
-				             "Starred",
+				 "Starred",
 				(bin.starred != null) ? bin.starred.count.ToString () : "0",
 				UITableViewCellStyle.Value1
 			);
@@ -313,7 +311,7 @@ namespace AutoLink
 					);
 
 					str.Font = UIFont.FromName("Clan-Book", 12f);
-					str.Tapped += () => {navigation.Title =  x.name;};
+					str.Tapped += () => {navigation.Title =  string.Format("{0}({1})",x.name,x.count.ToString());};
 					str.Image = UIImage.FromBundle ("binicon_usercreatedbin.png");
 					str.Accessory = UITableViewCellAccessory.DisclosureIndicator;
 
@@ -360,14 +358,37 @@ namespace AutoLink
 
 		void ShowOptionMenu()
 		{
-			var action = new UIActionSheet ("Update", null, "Cancel", "Done", null);
+			var action = new UIActionSheet ();
 			var searchIndex = action.AddButton ("New Live Search");
 			var binIndex = action.AddButton ("Add New Bin");
+			var cancelIndex = action.AddButton ("Cancel");
 
 			//styling
-			action.DestructiveButtonIndex = searchIndex;
-			action.CancelButtonIndex = 0;
-			action.Opaque = true;
+			//action.DestructiveButtonIndex = searchIndex;
+			action.CancelButtonIndex = cancelIndex;
+			//action.Opaque = true;
+			action.Style = UIActionSheetStyle.BlackTranslucent;
+
+			var searchBtn = (UIButton)action.Subviews[searchIndex];
+			searchBtn.SetImage (UIImage.FromBundle ("binicon_usercreatedbin.png"),UIControlState.Normal);
+			searchBtn.ImageEdgeInsets = new UIEdgeInsets (0, 0, 0, 0);
+			searchBtn.TitleLabel.Font = UIFont.FromName("Clan-Book", 10f);
+			searchBtn.SetTitleColor (UIColor.Black, UIControlState.Normal);
+			searchBtn.BackgroundColor = UIColor.Clear;
+			searchBtn.ContentEdgeInsets = new UIEdgeInsets (0, 0, 0, 0);
+			searchBtn.Font = UIFont.FromName("Clan-Book", 10f);
+			searchBtn.ImageView.Frame = new RectangleF (0, 0, 0, 0);
+
+
+			var binBtn = (UIButton)action.Subviews[binIndex];
+			binBtn.SetImage (UIImage.FromBundle ("binicon_usercreatedbin.png"),UIControlState.Normal);
+			binBtn.ImageEdgeInsets = new UIEdgeInsets (0, 0, 0, 0);
+			binBtn.TitleLabel.Font = UIFont.FromName("Clan-Book", 10f);
+			binBtn.SetTitleColor (UIColor.Black, UIControlState.Normal);
+
+			binBtn.BackgroundColor = UIColor.Clear;
+			binBtn.ContentEdgeInsets = new UIEdgeInsets (0, 0, 0, 0);
+			binBtn.Font = UIFont.FromName("Clan-Book", 10f);
 
 			action.Clicked += (s, e) => { 
 				Console.WriteLine ("Clicked on item {0}", e.ButtonIndex); 

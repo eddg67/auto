@@ -34,6 +34,14 @@ namespace AutoLink
 		public void UpdateCell (Listing list,UITableView tableView, List<UIButton> rightsBtns, UIView leftView,NSIndexPath indexPath)
 		{
 				ContentView.RemoveAllSubViews ();
+
+				var act = new UIActivityIndicatorView (new RectangleF(0,0,ContentView.Bounds.Width,180));
+				act.ActivityIndicatorViewStyle = UIActivityIndicatorViewStyle.WhiteLarge;
+				act.BackgroundColor = UIColor.LightGray;
+				//ImageView.Image = null;
+				ImageView.AddSubview (act);
+				act.StartAnimating ();
+
 				desc = new UILabel();
 				price = new UILabel();
 				make = new UILabel();
@@ -45,20 +53,25 @@ namespace AutoLink
 			//if not visible remove info
 			if (tableView.IndexPathsForVisibleRows.ToList ().Select (x => x.Equals (indexPath)) == null) {
 				ImageView.Image = null;
+			
 			}
 
 
 			//check if visible 
 			if (tableView.IndexPathsForVisibleRows.ToList ().Select (x => x.Equals (indexPath)) != null) {
+	
+				var url = app.imageService.AddProxyToURL(list.images[0],ContentView.Bounds.Width.ToString(),"180");
 
-				app.imageService.GetImageAsync(list.images[0]).ContinueWith((task) => InvokeOnMainThread(() =>
+				app.imageService.GetImageAsync(url).ContinueWith((task) => InvokeOnMainThread(() =>
 				{
-					//var cellShown = tableView.IndexPathsForVisibleRows.ToList().Select(x=>x.Equals(indexPath));
-					//DetailTextLabel.Text = list.description;
+
 					if(!task.IsFaulted){
 						//ImageView.Image = null;
-						ImageView.Image = (UIImage)task.Result;
-						ImageView.ContentMode = UIViewContentMode.ScaleAspectFit;
+						if (tableView.IndexPathsForVisibleRows.ToList ().Select (x => x.Equals (indexPath)) != null) {
+								act.RemoveFromSuperview();
+							ImageView.Image = (UIImage)task.Result;
+							ImageView.ContentMode = UIViewContentMode.ScaleAspectFit;
+						}
 					}
 						if (list.@new) {
 							circle = new CircleView ();
@@ -106,8 +119,7 @@ namespace AutoLink
 					source.Text = string.Empty;
 					source.Text = string.Format("Source : {0}",list.source);
 
-
-					desc.TextAlignment = UITextAlignment.Center;
+					desc.TextAlignment = UITextAlignment.Left;
 					desc.LineBreakMode = UILineBreakMode.TailTruncation;
 					desc.Font =  UIFont.FromName("Clan-Book", 10f);
 					desc.Lines = 0;
@@ -189,8 +201,6 @@ namespace AutoLink
 			button.SetImage (UIImage.FromBundle ("stats_locationon.png"), UIControlState.Normal);
 			button.TitleLabel.Font = UIFont.FromName("Clan-Medium", 8f);
 			button.TitleEdgeInsets = new UIEdgeInsets (0f, -20f,0f, 10f);
-
-
 
 			var location = new UIBarButtonItem (local, UIBarButtonItemStyle.Plain,null);
 			var timeSpan = new UIBarButtonItem (datesOn, UIBarButtonItemStyle.Plain,null);

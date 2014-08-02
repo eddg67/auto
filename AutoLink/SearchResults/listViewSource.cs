@@ -23,7 +23,8 @@ namespace AutoLink
 		bool moreResults = true;
 
 		event Action onCl;
-		public EventHandler NoResults;
+	
+		public event EventHandler NoResults;
 
 		public DetailViewController DetailViewController {
 			get;
@@ -52,9 +53,9 @@ namespace AutoLink
 			if (items != null) {
 				startCount = items.Count;
 
-				if (items.Count == 0) 
+				if (items.Count == 0 && NoResults != null) 
 				{
-					//NoResults (this,new EventArgs());
+					 NoResults (this, new LisSourcedEventArgs{SearchID=id,BinID=binId });
 				}
 			} 
 
@@ -75,6 +76,11 @@ namespace AutoLink
 
 		public override int RowsInSection (UITableView tableview, int section)
 		{
+			if (items != null) {
+				if (items.Count == 0 && NoResults != null) {
+					NoResults (this, new LisSourcedEventArgs{ SearchID = searchID, BinID = binID });
+				}
+			}
 			// TODO: return the actual number of items in the section
 			return (items != null )?items.Count:0;
 		}
@@ -104,8 +110,10 @@ namespace AutoLink
 			if (cell == null) {
 				cell = new listViewCell (items [indexPath.Row],tableView,buttons,null );
 			} else {
+
 				cell.UpdateCell (items [indexPath.Row], tableView, buttons, null,indexPath);
 			}
+
 			cell.Tag = indexPath.Row;
 
 			deleteBtn.TouchUpInside += (object sender, EventArgs e) => {
@@ -299,8 +307,11 @@ namespace AutoLink
 			}
 		}
 
+	}
 
-
+	public class LisSourcedEventArgs : EventArgs{
+		public string SearchID {get;set;}
+		public string BinID{ get; set; }
 	}
 }
 
